@@ -19,6 +19,8 @@ source-code: https://github.com/CollectionBuilder/collectionbuilder-csv
 #
 # title of site appears in banner
 title: Peapicker's Postershop
+# zusterproject, gelinkt in de footer en bovenaan de posterpagina
+printshop-url: https://peapickers.github.io/printshoppeapickers/
 # tagline, a short phrase that will appear throughout the site in the top banner
 tagline: Licensed reproductions
 # description appears in meta tags and other locations

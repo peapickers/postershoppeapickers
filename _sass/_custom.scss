@@ -48,3 +48,8 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 
 // strook bovenaan: voorbeeldsite zonder verkoop
 .voorbeeld-strook { background: #1a1a1a; color: #F7F7F6; }
+
+// subtiele link naar de Printshop bovenaan de posterpagina
+.printshop-hint { color: #8a8a8a; }
+.printshop-hint a { color: inherit; text-decoration: underline; text-decoration-color: #c8c8c8; text-underline-offset: 2px; }
+.printshop-hint a:hover { color: #1a1a1a; }
