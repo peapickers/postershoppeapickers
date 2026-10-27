@@ -45,3 +45,6 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 #about-feature, #about-toc-wrapper, #about-toc, #about-toc-list, #about-toc .btn-light { background-color: $eggshell !important; }
 /* Register: een handeling per lijn */
 .register-lijst li { padding: .35rem 0; border-bottom: 1px solid rgba(17,17,17,.15); overflow-wrap: anywhere; }
+
+// strook bovenaan: voorbeeldsite zonder verkoop
+.voorbeeld-strook { background: #1a1a1a; color: #F7F7F6; }
