@@ -1,0 +1,110 @@
+{% comment %} Mand en bestelformulier. VOORBEELD zonder verkoop: niets wordt verstuurd, de rekening in de QR-code is ongeldig. {% endcomment %}
+<div class="row g-4">
+  <div class="col-12 col-lg-7" style="min-width:0">
+    <h2 class="h4">In je mand</h2>
+    <div id="mand-leeg" class="small">Je mand is leeg. Kies een poster bij <a href="{{ '/index.html' | relative_url }}">Posters</a>.</div>
+    <div class="table-responsive">
+      <table class="table table-sm align-middle" id="mand-tabel" hidden style="font-variant-numeric: tabular-nums">
+        <thead><tr><th scope="col">Poster</th><th scope="col">Aantal</th><th scope="col" class="text-end">Bedrag</th></tr></thead>
+        <tbody id="mand-rijen"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-12 col-lg-5" style="min-width:0">
+    <form id="bestelformulier" novalidate>
+      <h2 class="h4">Levering</h2>
+      <fieldset class="mb-3">
+        <legend class="h6">Leverzone</legend>
+        <div class="form-check"><input class="form-check-input" type="radio" name="zone" id="zone-gent" value="0" checked><label class="form-check-label" for="zone-gent">Gent: gratis</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="zone" id="zone-16" value="3"><label class="form-check-label" for="zone-16">Tot 16 km van Gent: € 3,00</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="zone" id="zone-bpost" value="bpost"><label class="form-check-label" for="zone-bpost">Verder: bpost (tarief nog te bepalen, niet in het totaal)</label></div>
+      </fieldset>
+      <div class="mb-2"><label class="form-label" for="naam">Naam</label><input class="form-control" id="naam" required autocomplete="name"></div>
+      <div class="mb-2"><label class="form-label" for="email">E-mail</label><input class="form-control" id="email" type="email" required autocomplete="email"></div>
+      <div class="mb-3"><label class="form-label" for="adres">Adres</label><textarea class="form-control" id="adres" rows="2" required autocomplete="street-address"></textarea></div>
+      <table class="table table-sm mb-3" style="font-variant-numeric: tabular-nums">
+        <tr><td>Posters</td><td class="text-end" id="sub">€ 0,00</td></tr>
+        <tr><td>Verzending</td><td class="text-end" id="verz">€ 0,00</td></tr>
+        <tr><th>Totaal</th><th class="text-end" id="tot">€ 0,00</th></tr>
+      </table>
+      <div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="voorwaarden" required><label class="form-check-label small" for="voorwaarden">Ik heb de algemene voorwaarden, het herroepingsrecht en de privacyverklaring gelezen (nog op te stellen).</label></div>
+      <p class="small text-danger" id="fout" role="alert"></p>
+      <button class="btn btn-dark w-100" type="submit" id="bestel-knop">Bestellen met betalingsverplichting</button>
+    </form>
+  </div>
+</div>
+
+<section id="betaling" class="card my-4" hidden aria-live="polite">
+  <div class="card-header">Betalen met overschrijving (voorbeeld)</div>
+  <div class="card-body row g-4 align-items-center">
+    <div class="col-12 col-md-5 text-center"><div id="qr" class="d-inline-block p-2" style="background:#fff;max-width:100%"></div></div>
+    <div class="col-12 col-md-7" style="min-width:0">
+      <p class="mb-1">Bestelling <strong id="b-nr"></strong></p>
+      <dl class="row small mb-2" style="font-variant-numeric: tabular-nums">
+        <dt class="col-5">Bedrag</dt><dd class="col-7" id="b-bedrag"></dd>
+        <dt class="col-5">Begunstigde</dt><dd class="col-7">VOORBEELD, NIET BETALEN</dd>
+        <dt class="col-5">Rekening</dt><dd class="col-7">BE00 0000 0000 0000 (ongeldig voorbeeld)</dd>
+        <dt class="col-5">Mededeling</dt><dd class="col-7" id="b-ogm"></dd>
+      </dl>
+      <p class="small mb-0">Scan de code met je bankapp. Later stuurt Peapickers je een bevestiging zodra de betaling binnen is, en drukt dan je posters. In dit voorbeeld wordt niets verstuurd.</p>
+    </div>
+  </div>
+</section>
+
+<script src="{{ '/assets/lib/qrcode-generator-1.4.4.js' | relative_url }}"></script>
+<script>
+(function () {
+  function zone() { return document.querySelector('input[name="zone"]:checked').value; }
+  function subtotaal() { return ppMand.lees().reduce(function (s, r) { return s + r.prijs * r.aantal; }, 0); }
+  function verzending() { var z = zone(); return z === 'bpost' ? 0 : parseFloat(z); }
+  function teken() {
+    var m = ppMand.lees(), rij = document.getElementById('mand-rijen');
+    document.getElementById('mand-leeg').hidden = m.length > 0;
+    document.getElementById('mand-tabel').hidden = m.length === 0;
+    rij.innerHTML = '';
+    m.forEach(function (r, i) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td><strong></strong> · <span class="fmt"></span><br><span class="small"></span></td>' +
+        '<td><div class="d-flex gap-1 align-items-center"><button type="button" class="btn btn-sm btn-outline-dark" aria-label="Eén minder">−</button><span></span><button type="button" class="btn btn-sm btn-outline-dark" aria-label="Eén meer">+</button></div></td>' +
+        '<td class="text-end"></td>';
+      tr.querySelector('strong').textContent = r.code;
+      tr.querySelector('.small').textContent = r.titel + (r.maker ? ' · ' + r.maker : '');
+      tr.querySelector('.fmt').textContent = r.formaat;
+      tr.querySelector('.d-flex span').textContent = r.aantal;
+      tr.children[2].textContent = ppMand.euro(r.prijs * r.aantal);
+      var k = tr.querySelectorAll('button');
+      k[0].onclick = function () { m[i].aantal -= 1; if (m[i].aantal < 1) m.splice(i, 1); ppMand.bewaar(m); teken(); };
+      k[1].onclick = function () { m[i].aantal += 1; ppMand.bewaar(m); teken(); };
+      rij.appendChild(tr);
+    });
+    document.getElementById('sub').textContent = ppMand.euro(subtotaal());
+    document.getElementById('verz').textContent = zone() === 'bpost' ? 'nog te bepalen' : ppMand.euro(verzending());
+    document.getElementById('tot').textContent = ppMand.euro(subtotaal() + verzending());
+  }
+  // Belgische gestructureerde mededeling: 10 cijfers + controlegetal (rest van deling door 97, 0 wordt 97)
+  function ogm() {
+    var d = new Date(), basis = String(d.getFullYear() % 100).padStart(2, '0') + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + String(Math.floor(Math.random() * 10000)).padStart(4, '0');
+    var c = Number(BigInt(basis) % 97n) || 97, s = basis + String(c).padStart(2, '0');
+    return { nr: 'PP-' + basis, tekst: '+++' + s.slice(0, 3) + '/' + s.slice(3, 7) + '/' + s.slice(7) + '+++' };
+  }
+  document.querySelectorAll('input[name="zone"]').forEach(function (i) { i.addEventListener('change', teken); });
+  document.getElementById('bestelformulier').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var fout = document.getElementById('fout');
+    if (!ppMand.lees().length) { fout.textContent = 'Je mand is leeg. Leg eerst een poster in de mand.'; return; }
+    if (!this.checkValidity()) { fout.textContent = 'Vul je naam, e-mail en adres in en vink de voorwaarden aan.'; return; }
+    fout.textContent = '';
+    var bedrag = subtotaal() + verzending(), o = ogm();
+    // EPC-QR (versie 002). De mededeling staat in het vrije veld; of Belgische banken ze daar als gestructureerd herkennen, is nog na te kijken.
+    var epc = ['BCD', '002', '1', 'SCT', '', 'VOORBEELD NIET BETALEN', 'BE00000000000000', 'EUR' + bedrag.toFixed(2), '', '', o.tekst].join('\n');
+    var qr = qrcode(0, 'M'); qr.addData(epc); qr.make();
+    document.getElementById('qr').innerHTML = qr.createSvgTag({ cellSize: 5, margin: 2, scalable: true });
+    document.querySelector('#qr svg').setAttribute('style', 'width:220px;max-width:100%;height:auto');
+    document.getElementById('b-nr').textContent = o.nr;
+    document.getElementById('b-bedrag').textContent = ppMand.euro(bedrag) + (zone() === 'bpost' ? ' + bpost' : '');
+    document.getElementById('b-ogm').textContent = o.tekst;
+    var b = document.getElementById('betaling'); b.hidden = false; b.scrollIntoView({ behavior: 'smooth' });
+  });
+  teken();
+})();
+</script>

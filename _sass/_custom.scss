@@ -1,0 +1,47 @@
+/* Peapicker's Postershop: neutraal papierwit, zwart, Courier Prime, kaders van 1 px */
+$eggshell: #F7F7F6; /* neutraal, lichter dan het eggshell van het archief (#F0EAD6) */
+$ink: #111111;
+
+body, .bg-light, .navbar.bg-light, .card, .modal-content, .list-group-item, .dropdown-menu, .table, footer, #footer {
+  background-color: $eggshell !important;
+  color: $ink;
+}
+.table { --bs-table-bg: #{$eggshell}; --bs-table-color: #{$ink}; }
+h1, h2, h3, h4, h5, .navbar-brand, .btn, .form-control, .badge {
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+a { color: $ink; text-decoration: underline; text-underline-offset: 2px; }
+.navbar { border-bottom: 1px solid $ink; }
+.card, .form-control, .list-group-item, .modal-content { border: 1px solid $ink !important; border-radius: 0 !important; }
+.btn, .badge { border-radius: 0 !important; }
+.btn-primary, .btn-dark, .bg-primary, .bg-dark, .btn-outline-primary:hover, .btn-outline-dark:hover {
+  background-color: $ink !important; border-color: $ink !important; color: $eggshell !important;
+}
+.btn-outline-primary, .btn-outline-dark, .btn-secondary, .btn-outline-secondary {
+  background-color: transparent; border: 1px solid $ink !important; color: $ink !important;
+}
+.text-primary { color: $ink !important; }
+img { filter: none; }
+#metadata dt, .item-metadata dt, dt { font-weight: 700; }
+.breadcrumb, nav[aria-label="breadcrumb"] .breadcrumb { background-color: transparent !important; border: 1px solid $ink; border-radius: 0; }
+.alert-warning { background-color: $eggshell; color: $ink; border: 1px dashed $ink; border-radius: 0; }
+.cloud, #cloud, .card-body, h1, h2 { overflow-wrap: anywhere; }
+a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
+/* Postershop: bedragen en kolomkoppen niet afbreken, gekozen formaat in inkt */
+#shop-box th, #shop-box td.text-end, #mand-tabel th, #mand-tabel td.text-end { white-space: nowrap; overflow-wrap: normal; }
+.btn-check:checked + .btn, .btn-check:checked + .btn:hover { background-color: $ink !important; color: $eggshell !important; border-color: $ink !important; }
+/* Postershop: tegels met enkel het beeld, overlay bij hover of focus */
+.poster-tegel { position: relative; display: block; border: 1px solid $ink; background: $ink; text-decoration: none; overflow: hidden; }
+.poster-tegel img { display: block; width: 100%; height: auto; transition: filter .2s ease; }
+.poster-tegel .poster-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: .25rem; padding: .75rem; color: $eggshell; opacity: 0; transition: opacity .2s ease; overflow-wrap: anywhere; }
+.poster-tegel:hover img, .poster-tegel:focus-visible img { filter: brightness(.6); }
+.poster-tegel:hover .poster-overlay, .poster-tegel:focus-visible .poster-overlay { opacity: 1; }
+.poster-tegel:focus-visible { outline: 2px solid $ink; outline-offset: 2px; }
+.poster-titel { font-family: 'Courier Prime', 'Courier New', monospace; font-weight: 700; font-size: 1.1rem; line-height: 1.2; }
+.poster-maker, .poster-code { font-size: .8rem; }
+.poster-leeg { display: block; aspect-ratio: 3 / 4; }
+@media (prefers-reduced-motion: reduce) { .poster-tegel img, .poster-tegel .poster-overlay { transition: none; } }
+/* Over-pagina: geen aparte achtergrond voor kop en inhoudstafel */
+#about-feature, #about-toc-wrapper, #about-toc, #about-toc-list, #about-toc .btn-light { background-color: $eggshell !important; }
+/* Register: een handeling per lijn */
+.register-lijst li { padding: .35rem 0; border-bottom: 1px solid rgba(17,17,17,.15); overflow-wrap: anywhere; }

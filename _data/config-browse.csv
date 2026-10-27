@@ -1,0 +1,8 @@
+field,display_name,btn,hidden,sort_name,facet_name
+identiteitscode,,,,Identiteitscode,
+creator,Maker,,,Maker,Maker
+date,Jaar,,,Jaar,Jaar
+genre,,true,,,Genre
+curatie,,true,,,Curatie
+subject,,true,true,,Onderwerp
+description,,,true,

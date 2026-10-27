@@ -1,0 +1,76 @@
+{% comment %} Publiek register: rijen uit _data/register.csv. Bovenaan de totalen over alle rijen, daaronder een filterbare tabel. {% endcomment %}
+<section aria-labelledby="stand" class="my-3">
+  <h2 class="h4" id="stand">Stand van de postershop</h2>
+  <div class="row g-2" id="register-kaarten" style="font-variant-numeric: tabular-nums"></div>
+</section>
+
+<h2 class="h4 mt-4" id="alle-handelingen">Alle handelingen</h2>
+
+<ul class="list-unstyled register-lijst" id="register-rijen" style="font-variant-numeric: tabular-nums"></ul>
+<p class="small" id="register-totaal"></p>
+<h3 class="h6 mt-3">Filter de lijst</h3>
+<form class="row g-2 align-items-end mb-2" id="register-filter" role="search" onsubmit="return false">
+  <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small" for="f-soort">Soort</label>
+    <select class="form-select" id="f-soort"><option value="">Alle soorten</option>{% assign soorten = site.data.register | map: "soort" | uniq %}{% for s in soorten %}<option>{{ s }}</option>{% endfor %}</select></div>
+  <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small" for="f-code">Archiefstuk</label>
+    <input class="form-control" id="f-code" list="codes" placeholder="bv. 2026-001-01"><datalist id="codes">{% assign codes = site.data.register | map: "identiteitscode" | uniq %}{% for c in codes %}{% if c %}<option value="{{ c }}">{% endif %}{% endfor %}</datalist></div>
+  <div class="col-6 col-lg-2"><label class="form-label small" for="f-van">Van</label><input class="form-control" type="date" id="f-van"></div>
+  <div class="col-6 col-lg-2"><label class="form-label small" for="f-tot">Tot</label><input class="form-control" type="date" id="f-tot"></div>
+  <div class="col-12 col-lg-2"><button type="button" class="btn btn-outline-dark w-100" id="f-reset">Wis filters</button></div>
+</form>
+<p class="small" id="register-telling" role="status" aria-live="polite"></p>
+
+<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen: 1 materiaal, 3 maker, 2 financier, 1 Peapickers. Auteursrechten worden per kwartaal uitbetaald; de roerende voorheffing van 15% wordt ingehouden en aangegeven.</p>
+<script>
+(function () {
+  var rijen = {{ site.data.register | jsonify }};
+  rijen.sort(function (a, b) { return a.datum < b.datum ? -1 : a.datum > b.datum ? 1 : 0; });
+  var g = function (r, k) { return parseFloat(r[k]) || 0; };
+  var saldo = 0; rijen.forEach(function (r) { saldo += g(r, 'ontvangen') - g(r, 'betaald'); r._saldo = saldo; });
+  function e(x) { return ppMand.euro(x).replace('€ -', '− € '); }
+  function som(lijst, k, soort) { return lijst.reduce(function (t, r) { return t + ((!soort || soort.indexOf(r.soort) > -1) ? g(r, k) : 0); }, 0); }
+
+  // Kaarten: totalen over het hele register
+  var auteurNetto = som(rijen, 'betaald', ['uitbetaling']), voorheffing = som(rijen, 'betaald', ['voorheffing']), auteurBetaald = auteurNetto + voorheffing;
+  var auteurVerdiend = som(rijen, 'maker');
+  var materiaal = som(rijen, 'betaald', ['investering', 'materiaalkost']);
+  var pp = som(rijen, 'peapickers'), vast = som(rijen, 'betaald', ['vaste kosten']);
+  var schuld = som(rijen, 'schuld'), terug = som(rijen, 'betaald', ['terugbetaling']);
+  var verkocht = rijen.reduce(function (t, r) { return t + (r.soort === 'bestelling' ? +r.aantal : r.soort === 'herroeping' ? -r.aantal : 0); }, 0);
+  var kaarten = [
+    ['Op de rekening', e(saldo), 'Saldo na de laatste handeling'],
+    ['Uitgekeerd aan makers', e(auteurNetto), 'Netto auteursrecht. <a href="#alle-handelingen" data-filter="voorheffing">Roerende voorheffing: ' + e(voorheffing) + '</a>, ingehouden en aangegeven. Nog uit te keren: ' + e(auteurVerdiend - auteurBetaald)],
+    ['Materiaal en investeringen', e(materiaal), 'Papier, inkt en verpakking'],
+    ['Naar Peapickers', e(pp), 'Eén deel van elke verkoop. Vaste kosten betaald: ' + e(vast)],
+    ['Schulden', e(schuld), 'Open lening. Al terugbetaald: ' + e(terug)],
+    ['Posters verkocht', String(verkocht), 'Na herroepingen']
+  ];
+  document.getElementById('register-kaarten').innerHTML = kaarten.map(function (k) {
+    return '<div class="col-6 col-lg-4"><div class="card h-100"><div class="card-body p-2"><div class="small">' + k[0] + '</div><div class="h4 mb-1">' + k[1] + '</div><div class="small">' + k[2] + '</div></div></div></div>';
+  }).join('');
+
+  function teken() {
+    var s = document.getElementById('f-soort').value, c = document.getElementById('f-code').value.trim().toUpperCase(),
+        van = document.getElementById('f-van').value, tot = document.getElementById('f-tot').value;
+    var sel = rijen.filter(function (r) {
+      return (!s || r.soort === s) && (!c || (r.identiteitscode || '').toUpperCase().indexOf(c) > -1) && (!van || r.datum >= van) && (!tot || r.datum <= tot);
+    });
+    var ul = document.getElementById('register-rijen'); ul.innerHTML = '';
+    sel.slice().reverse().forEach(function (r) {
+      var netto = g(r, 'ontvangen') - g(r, 'betaald'), li = document.createElement('li');
+      li.textContent = r.datum + ': ' + (netto >= 0 ? '+ ' : '− ') + ppMand.euro(Math.abs(netto)) + '; ' + r.omschrijving;
+      ul.appendChild(li);
+    });
+    var t = som(sel, 'ontvangen') - som(sel, 'betaald');
+    document.getElementById('register-totaal').textContent = 'Netto voor deze selectie: ' + (t >= 0 ? '+ ' : '− ') + ppMand.euro(Math.abs(t));
+    document.getElementById('register-telling').textContent = sel.length + ' van ' + rijen.length + ' handelingen';
+  }
+  ['f-soort', 'f-code', 'f-van', 'f-tot'].forEach(function (id) { document.getElementById(id).addEventListener('input', teken); });
+  document.getElementById('register-kaarten').addEventListener('click', function (ev) {
+    var a = ev.target.closest('[data-filter]'); if (!a) return;
+    document.getElementById('register-filter').reset(); document.getElementById('f-soort').value = a.dataset.filter; teken();
+  });
+  document.getElementById('f-reset').addEventListener('click', function () { document.getElementById('register-filter').reset(); teken(); });
+  teken();
+})();
+</script>

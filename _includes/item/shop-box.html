@@ -1,0 +1,60 @@
+{% comment %} Bestelvak per archiefstuk: formaat kiezen, open prijs van 7 × M, in de mand leggen. Prijzen komen uit de kolommen m_a4, m_a3, m_a2 van de CSV. {% endcomment %}
+{% if page.m_a2 %}
+<div class="card my-4 text-start" id="shop-box">
+  <div class="card-header">Als poster bestellen</div>
+  <div class="card-body">
+    <p class="mb-2"><strong>{{ page.identiteitscode }}</strong> · {{ page.title }}{% if page.creator %} · {{ page.creator }}{% endif %}</p>
+    <p class="small mb-3">Budgetdruk, door Peapickers zelf gedrukt. Geen fine-art print, wel een verzorgde afdruk van goed werk.</p>
+    <fieldset class="mb-3">
+      <legend class="h6">Formaat</legend>
+      <div class="d-flex flex-wrap gap-2" id="formaten">
+        {% assign fm = "A4,A3,A2" | split: "," %}
+        {% for f in fm %}{% assign key = "m_" | append: f | downcase %}
+        <input type="radio" class="btn-check" name="formaat" id="formaat-{{ f }}" value="{{ f }}" data-m="{{ page[key] }}" {% if forloop.first %}checked{% endif %}>
+        <label class="btn btn-outline-dark" for="formaat-{{ f }}">{{ f }}</label>
+        {% endfor %}
+      </div>
+    </fieldset>
+    <p class="h4 mb-1" id="prijs" style="font-variant-numeric: tabular-nums"></p>
+    <p class="small mb-3">Verkoopprijs = 7 × M, de materiaalkost van papier, inkt en verpakking (+ 20% voor misdrukken). Werkuren tellen niet mee. Verzending komt erbij in de mand.</p>
+    <div class="table-responsive">
+    <table class="table table-sm small mb-3" style="font-variant-numeric: tabular-nums">
+      <caption class="small">Waar je geld naartoe gaat (voorbeeldbedragen uit plan v4)</caption>
+      <thead><tr><th scope="col">Delen</th><th scope="col">Naar</th><th scope="col" class="text-end">Bedrag</th></tr></thead>
+      <tbody id="opbouw"></tbody>
+    </table>
+    </div>
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+      <button type="button" class="btn btn-dark" id="in-mand">In de mand</button>
+      <a class="btn btn-outline-dark" href="{{ '/mand.html' | relative_url }}">Naar de mand</a>
+      <span class="small" id="mand-melding" role="status" aria-live="polite"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var delen = [
+    [1, 'Materiaal: wie het voorschoot (de drukker)'],
+    [3, 'Maker: bruto auteursrecht'],
+    [2, 'Terugbetaling van de projectfinancierder; daarna 1 deel buffer Peapickers + 1 deel extra voor de maker'],
+    [1, 'Peapickers: vaste kosten']
+  ];
+  function gekozen() { return document.querySelector('#formaten input:checked'); }
+  function toon() {
+    var r = gekozen(), m = parseFloat(r.dataset.m);
+    document.getElementById('prijs').textContent = r.value + ' · ' + ppMand.euro(7 * m);
+    document.getElementById('opbouw').innerHTML = delen.map(function (d) {
+      return '<tr><td>' + d[0] + '</td><td>' + d[1] + '</td><td class="text-end">' + ppMand.euro(d[0] * m) + '</td></tr>';
+    }).join('') + '<tr><th>7</th><th>Verkoopprijs</th><th class="text-end">' + ppMand.euro(7 * m) + '</th></tr>';
+  }
+  document.querySelectorAll('#formaten input').forEach(function (i) { i.addEventListener('change', toon); });
+  document.getElementById('in-mand').addEventListener('click', function () {
+    var r = gekozen(), m = parseFloat(r.dataset.m);
+    ppMand.voegToe({ code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, formaat: r.value, prijs: 7 * m });
+    document.getElementById('mand-melding').textContent = r.value + ' ligt in de mand.';
+  });
+  toon();
+})();
+</script>
+{% endif %}

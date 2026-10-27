@@ -1,0 +1,19 @@
+---
+# Startpagina Peapicker's Postershop
+layout: page
+---
+<div class="row">
+  <div class="col-md-8">
+    {% include feature/alert.html text="Voorbeeldshop. Alle archiefstukken zijn fictieve placeholders en niets is te koop: vzw Peapickers is nog niet opgericht." color="warning" %}
+    <h2 class="h3">Goede kunst, goedkoop gedrukt.</h2>
+    <p>Peapicker's Postershop verkoopt posters van mensen uit Gent en omstreken die heel goed beelden maken, maar niet in de kunstindustrie werken. Je krijgt geen fine-art print op museumpapier. Je krijgt een verzorgde afdruk van goed werk, tegen een prijs die we volledig openleggen.</p>
+    <p>Elke poster is een <strong>archiefstuk</strong>: met een vaste code, zoveel mogelijk metadata en het verhaal van hoe het werk ontstond. De maker krijgt voor elke verkochte poster een vergoeding in auteursrechten.</p>
+    <p><a class="btn btn-dark" href="{{ '/index.html' | relative_url }}">Bekijk de posters</a> <a class="btn btn-outline-dark" href="{{ '/about.html' | relative_url }}">Hoe de prijs werkt</a></p>
+    {% include index/carousel.html title="Uit de shop" %}
+  </div>
+  <div class="col-md-4">
+    {% include index/featured-terms.html field="curatie" title="Curaties" btn-color="outline-secondary" %}
+    {% include index/featured-terms.html field="subject" title="Onderwerpen" btn-color="primary" %}
+    {% include index/content.html %}
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{% comment %} Winkelmand van Peapicker's Postershop: bewaard in de browser (localStorage), geen server. VOORBEELD: er wordt niets verkocht. {% endcomment %}
+<script>
+window.ppMand = (function () {
+  var KEY = 'pp-mand-v1';
+  function lees() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function bewaar(m) { try { localStorage.setItem(KEY, JSON.stringify(m)); } catch (e) {} teller(); }
+  function euro(x) { return '€ ' + x.toFixed(2).replace('.', ','); }
+  function teller() {
+    var n = lees().reduce(function (s, r) { return s + r.aantal; }, 0);
+    document.querySelectorAll('[data-mand-teller]').forEach(function (el) { el.textContent = n ? ' (' + n + ')' : ''; });
+  }
+  function voegToe(r) {
+    var m = lees(), bestaand = m.find(function (x) { return x.code === r.code && x.formaat === r.formaat; });
+    if (bestaand) bestaand.aantal += 1; else { r.aantal = 1; m.push(r); }
+    bewaar(m);
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.navbar a[href$="mand.html"]').forEach(function (a) {
+      if (!a.querySelector('[data-mand-teller]')) { var s = document.createElement('span'); s.setAttribute('data-mand-teller', ''); a.appendChild(s); }
+    });
+    teller();
+  });
+  return { lees: lees, bewaar: bewaar, euro: euro, voegToe: voegToe, teller: teller };
+})();
+</script>
