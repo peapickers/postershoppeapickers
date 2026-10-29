@@ -15,11 +15,13 @@ We meten de materiaalkost **M** van één product: papier, inkt en verpakking, p
 
 | | | A2 (M = € 6,00) |
 |---|---|---|
-| 1 | Materiaal, voor wie het voorschoot | € 6,00 |
-| 3 | Maker, bruto auteursrecht | € 18,00 |
-| 2 | Terugbetaling van de projectfinancierder; daarna 1 deel buffer + 1 deel extra voor de maker | € 12,00 |
-| 1 | Peapickers, vaste kosten | € 6,00 |
-| **7** | **Verkoopprijs** | **€ 42,00** |
+| 1M: | Materiaal, voor wie het voorschoot | € 6,00 |
+| 3M: | Maker, bruto auteursrecht | € 18,00 |
+| | &emsp;↳ netto auteursrecht, naar de maker | € 15,30 |
+| | &emsp;↳ roerende voorheffing (15%), ingehouden en doorgestort door vzw Peapickers | € 2,70 |
+| 2M: | Terugbetaling van de projectfinancierder; daarna 1 deel buffer + 1 deel extra voor de maker | € 12,00 |
+| 1M: | Peapickers, vaste kosten | € 6,00 |
+| **7M:** | **Verkoopprijs** | **€ 42,00** |
 
 Rekenvoorbeeld uit het ondernemingsplan: A2 € 42,00 · A3 € 21,00 · A4 € 10,50. Verzending komt erbij: gratis in Gent, € 3,00 tot 16 km, verder met bpost.
 
