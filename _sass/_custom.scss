@@ -114,3 +114,8 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
   .ps-d-pad::before { content: "2M · Twee mogelijke paden · € 12,00"; background: #e6e6e3; }
   .ps-d-peapickers::before { content: "1M · Peapickers · € 6,00"; background: #fff; }
 }
+
+// Mand als icoon rechtsboven, boven de zoekbalk
+.pp-mand-knop { display: inline-flex; align-items: center; gap: .25rem; text-decoration: none; }
+.pp-mand-knop:hover, .pp-mand-knop:focus-visible { opacity: .7; }
+.pp-mand-teller { font-size: .9rem; font-weight: 700; }
