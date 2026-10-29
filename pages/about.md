@@ -13,17 +13,7 @@ sub-heading:
 
 We meten de materiaalkost **M** van één product: papier, inkt en verpakking, plus 20% voor misdrukken. De verkoopprijs is altijd 7 × M. Werkuren tellen niet mee.
 
-| | | A2 (M = € 6,00) |
-|---|---|---|
-| 1M: | Materiaal, voor wie het voorschoot | € 6,00 |
-| 3M: | Maker, bruto auteursrecht | € 18,00 |
-| | &emsp;↳ netto auteursrecht, naar de maker | € 15,30 |
-| | &emsp;↳ roerende voorheffing (15%), ingehouden en doorgestort door vzw Peapickers | € 2,70 |
-| 2M: | Twee mogelijke paden | € 12,00 |
-| | &emsp;↳ met projectfinancierder: 2M naar de financierder, tot alles terugbetaald is | € 12,00 |
-| | &emsp;↳ zonder projectfinancierder: 1M extra bruto auteursrecht voor de maker en 1M voor Peapickers | € 6,00 + € 6,00 |
-| 1M: | Peapickers, vaste kosten | € 6,00 |
-| **7M:** | **Verkoopprijs** | **€ 42,00** |
+{% include prijs-schema.html %}
 
 Deze prijsdeconstructie zie je ook per product als je erop doorklikt.
 

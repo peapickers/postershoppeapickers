@@ -1,0 +1,32 @@
+{% comment %} Prijsschema 7M als balk van zeven gelijke delen, met de opsplitsing van het auteursrecht en de twee paden voor 2M. Rekenvoorbeeld A2, M = € 6,00. {% endcomment %}
+<figure class="prijs-schema" aria-label="Prijsopbouw: 7 delen van de materiaalkost M">
+  <div class="ps-balk">
+    <div class="ps-deel ps-materiaal" style="--n:1"><span class="ps-m">1M</span><span class="ps-naam">Materiaal</span><span class="ps-bedrag">€ 6,00</span></div>
+    <div class="ps-deel ps-maker" style="--n:3"><span class="ps-m">3M</span><span class="ps-naam">Maker, bruto auteursrecht</span><span class="ps-bedrag">€ 18,00</span></div>
+    <div class="ps-deel ps-pad" style="--n:2"><span class="ps-m">2M</span><span class="ps-naam">Twee mogelijke paden</span><span class="ps-bedrag">€ 12,00</span></div>
+    <div class="ps-deel ps-peapickers" style="--n:1"><span class="ps-m">1M</span><span class="ps-naam">Peapickers</span><span class="ps-bedrag">€ 6,00</span></div>
+  </div>
+
+  <div class="ps-details">
+    <div class="ps-detail ps-d-materiaal" style="--n:1">
+      <p>Voor wie het materiaal voorschoot: papier, inkt, verpakking.</p>
+    </div>
+    <div class="ps-detail ps-d-maker" style="--n:3">
+      <div class="ps-mini" aria-hidden="true"><span style="flex:85">netto</span><span style="flex:15">RV</span></div>
+      <dl>
+        <div><dt>Netto auteursrecht, naar de maker</dt><dd>€ 15,30</dd></div>
+        <div><dt>Roerende voorheffing (15%), ingehouden en doorgestort door vzw Peapickers</dt><dd>€ 2,70</dd></div>
+      </dl>
+    </div>
+    <div class="ps-detail ps-d-pad" style="--n:2">
+      <div class="ps-optie"><strong>Met projectfinancierder</strong><span>2M naar de financierder, tot alles terugbetaald is</span><span class="ps-bedrag">€ 12,00</span></div>
+      <div class="ps-of">of</div>
+      <div class="ps-optie"><strong>Zonder projectfinancierder</strong><span>1M extra bruto auteursrecht voor de maker</span><span class="ps-bedrag">€ 6,00</span><span>1M voor Peapickers</span><span class="ps-bedrag">€ 6,00</span></div>
+    </div>
+    <div class="ps-detail ps-d-peapickers" style="--n:1">
+      <p>Vaste kosten van de vzw.</p>
+    </div>
+  </div>
+
+  <figcaption class="ps-totaal"><span><strong>7M</strong> = verkoopprijs</span><strong>€ 42,00</strong><span class="small">Rekenvoorbeeld A2, M = € 6,00</span></figcaption>
+</figure>
