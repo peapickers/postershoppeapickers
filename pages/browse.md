@@ -1,6 +1,6 @@
 ---
 title: Producten
-layout: browse
+layout: producten
 permalink: /index.html
 ---
 
