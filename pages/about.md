@@ -9,14 +9,6 @@ sub-heading:
 
 {% include feature/alert.html text="Voorbeeldshop. Alle archiefstukken zijn fictieve placeholders en er wordt niets verkocht tot vzw Peapickers is opgericht." color="warning" %}
 
-## Wat je hier koopt
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-
-## Wie de beelden maakt
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
 ## De prijs: altijd 7 × de materiaalkost
 
 We meten de materiaalkost **M** van één poster: papier, inkt en verpakking, plus 20% voor misdrukken. De verkoopprijs is altijd 7 × M. Werkuren tellen niet mee.
