@@ -9,7 +9,7 @@ sub-heading:
 
 {% include feature/alert.html text="Voorbeeldshop. Alle archiefstukken zijn fictieve placeholders en er wordt niets verkocht tot vzw Peapickers is opgericht." color="warning" %}
 
-## De prijs: altijd 7 × de materiaalkost
+## De prijs
 
 We meten de materiaalkost **M** van één poster: papier, inkt en verpakking, plus 20% voor misdrukken. De verkoopprijs is altijd 7 × M. Werkuren tellen niet mee.
 
