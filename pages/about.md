@@ -1,9 +1,9 @@
 ---
-title: Over
+title: Hoe laat is het?
 layout: about
 permalink: /about.html
 credits: true
-heading: Over de Postershop
+heading: Fiscaliteit
 sub-heading:
 ---
 
