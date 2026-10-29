@@ -27,9 +27,13 @@ We meten de materiaalkost **M** van één product: papier, inkt en verpakking, p
 
 Deze prijsdeconstructie zie je ook per product als je erop doorklikt.
 
+## Public Ledger
+
+Vzw Peapickers stelt zich uniek op in de markt door onze financiële transparantie. Naast de prijsontleding delen we onze volledige boekhouding in de [public ledger]({{ "/register.html" | relative_url }}). Hier vind je een tijdslijn met alle financiële gegevens, geanonimiseerde administratieve acties (aankopen en verkopen) en de context die deze nonprofit maakt tot wat hij is.
+
 ## De maker wordt betaald in auteursrechten
 
-Voor elk archiefstuk tekent de maker een eigen overeenkomst voor verkoop. Elk kwartaal krijgt de maker zijn auteursrechten uitbetaald. Peapickers houdt de roerende voorheffing in en geeft ze aan. Elke verkoop staat, zonder namen, in het [publieke register]({{ '/register.html' | relative_url }}).
+Voor elk archiefstuk tekent de maker een eigen overeenkomst voor verkoop. Elk kwartaal krijgt de maker de auteursrechten uitbetaald. Peapickers houdt de roerende voorheffing in en geeft ze aan. Elke verkoop staat, zonder namen, in het [publieke register]({{ '/register.html' | relative_url }}).
 
 ## De identiteitscode
 
