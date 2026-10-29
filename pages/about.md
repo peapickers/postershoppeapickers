@@ -33,7 +33,7 @@ Vzw Peapickers stelt zich uniek op in de markt door onze financiële transparant
 
 ## De maker wordt betaald in auteursrechten
 
-Voor elk archiefstuk tekent de maker een eigen overeenkomst voor verkoop. Elk kwartaal krijgt de maker de auteursrechten uitbetaald. Peapickers houdt de roerende voorheffing in en geeft ze aan. Elke verkoop staat, zonder namen, in het [publieke register]({{ '/register.html' | relative_url }}).
+Voor elk kunstwerk dat je hier kunt kopen, sluit vzw Peapickers een exploitatieovereenkomst met de maker. Zo krijgt Peapickers een licentie: eenvoudig gezegd het recht om reproducties te verkopen van de kunst die je hier ziet. Dat kan in verschillende vormen, zoals posters, textieldruk of boeken. Dankzij de auteursrechtenwetgeving krijgen de makers hun deel als particulier uitbetaald, in de vorm van auteursrechten.
 
 ## De identiteitscode
 
