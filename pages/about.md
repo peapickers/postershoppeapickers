@@ -35,10 +35,6 @@ Vzw Peapickers stelt zich uniek op in de markt door onze financiële transparant
 
 Voor elk kunstwerk dat je hier kunt kopen, sluit vzw Peapickers een exploitatieovereenkomst met de maker. Zo krijgt Peapickers een licentie: eenvoudig gezegd het recht om reproducties te verkopen van de kunst die je hier ziet. Dat kan in verschillende vormen, zoals posters, textieldruk of boeken. Dankzij de auteursrechtenwetgeving krijgen de makers hun deel als particulier uitbetaald, in de vorm van auteursrechten.
 
-## De identiteitscode
-
-Elke poster draagt de code van zijn archiefstuk, bijvoorbeeld **ARCHIEFSTUK2026-001-01**. De code verandert nooit en wordt nooit hergebruikt. Bij elk archiefstuk zie je naast elk metadataveld het MARC21-veld waar het vandaan komt, bijvoorbeeld *Titel · 245 $a*.
-
 ## Betalen
 
 Enkel met overschrijving: na je bestelling verschijnt een QR-code met het bedrag en een gestructureerde mededeling. Zodra de betaling binnen is, drukken we je posters.
