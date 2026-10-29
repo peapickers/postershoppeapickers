@@ -25,7 +25,7 @@ We meten de materiaalkost **M** van één product: papier, inkt en verpakking, p
 | 1M: | Peapickers, vaste kosten | € 6,00 |
 | **7M:** | **Verkoopprijs** | **€ 42,00** |
 
-Rekenvoorbeeld uit het ondernemingsplan: A2 € 42,00 · A3 € 21,00 · A4 € 10,50. Verzending komt erbij: gratis in Gent, € 3,00 tot 16 km, verder met bpost.
+Deze prijsdeconstructie zie je ook per product als je erop doorklikt.
 
 ## De maker wordt betaald in auteursrechten
 
