@@ -50,9 +50,10 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .voorbeeld-strook { background: #1a1a1a; color: #F7F7F6; }
 
 // subtiele link naar de Printshop bovenaan de posterpagina
-.printshop-hint { color: #8a8a8a; }
-.printshop-hint a { color: inherit; text-decoration: underline; text-decoration-color: #c8c8c8; text-underline-offset: 2px; }
-.printshop-hint a:hover { color: #1a1a1a; }
+/* Knop naar de printshop in het menu, gespiegeld aan de postershop-knop van de printshop */
+.navbar .nav-link.pp-printshop-knop { background: #1a1a1a; color: #f7f7f5; border: 1px solid #1a1a1a; padding: .35rem .8rem; margin-left: .5rem; font-size: .92rem; }
+.navbar .nav-link.pp-printshop-knop:hover, .navbar .nav-link.pp-printshop-knop:focus-visible { background: #f7f7f5; color: #1a1a1a; }
+@media (max-width: 1199.98px) { .navbar .nav-link.pp-printshop-knop { margin: .5rem 0; display: inline-block; } }
 
 // Productoverzicht: filters links (ongeveer 30%), altijd open
 .pp-browse { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -119,3 +120,4 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .pp-mand-knop { display: inline-flex; align-items: center; gap: .25rem; text-decoration: none; }
 .pp-mand-knop:hover, .pp-mand-knop:focus-visible { opacity: .7; }
 .pp-mand-teller { font-size: .9rem; font-weight: 700; }
+@media (min-width: 1200px) { .navbar .nav-link { white-space: nowrap; } .navbar .nav-link.pp-printshop-knop { margin-right: 1rem; } }

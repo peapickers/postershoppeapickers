@@ -9,13 +9,13 @@
     The color theme options can be set in "theme.yml"
 
 {%- endcomment -%}
-<nav class="navbar navbar-expand-lg {{ site.data.theme.navbar-background | default: 'bg-black' }}" data-bs-theme="{{ site.data.theme.navbar-color | default: 'dark' }}">
+<nav class="navbar navbar-expand-xl {{ site.data.theme.navbar-background | default: 'bg-black' }}" data-bs-theme="{{ site.data.theme.navbar-color | default: 'dark' }}">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        {% if site.organization-logo-nav %}<span class="d-lg-none text-end">
+        {% if site.organization-logo-nav %}<span class="d-xl-none text-end">
             <a href="{{ site.organization-link }}">
                 <img class="img-fluid" id="mobile-nav-image" src="{{ site.organization-logo-nav | relative_url }}" title="{{ site.organization-name }}" alt="{{ site.organization-name | escape }} home" >
             </a>
@@ -42,6 +42,7 @@
                 </li>
                 {% endif %}
                 {%- endfor -%}
+                {% if site.printshop-url %}<li class="nav-item d-flex align-items-center"><a class="nav-link pp-printshop-knop" href="{{ site.printshop-url }}" target="_blank" rel="noopener">Peapicker's Printshop ↗</a></li>{% endif %}
             </ul>
             
             {% include nav-search-lunr.html %}

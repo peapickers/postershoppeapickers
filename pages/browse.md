@@ -4,7 +4,6 @@ layout: producten
 permalink: /index.html
 ---
 
-<p class="printshop-hint small text-end mb-1">Eigen beelden laten drukken? <a href="{{ site.printshop-url }}">Peapicker's Printshop</a></p>
 
 ## Producten
 
