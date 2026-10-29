@@ -1,5 +1,5 @@
 ---
-title: Publiek register
+title: Public Ledger
 layout: page
 permalink: /register.html
 ---
