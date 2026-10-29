@@ -11,9 +11,9 @@ sub-heading:
 
 ## De prijs
 
-We meten de materiaalkost **M** van één poster: papier, inkt en verpakking, plus 20% voor misdrukken. De verkoopprijs is altijd 7 × M. Werkuren tellen niet mee.
+We meten de materiaalkost **M** van één product: papier, inkt en verpakking, plus 20% voor misdrukken. De verkoopprijs is altijd 7 × M. Werkuren tellen niet mee.
 
-| Delen | Naar | A2 (M = € 6,00) |
+| | | A2 (M = € 6,00) |
 |---|---|---|
 | 1 | Materiaal, voor wie het voorschoot | € 6,00 |
 | 3 | Maker, bruto auteursrecht | € 18,00 |
