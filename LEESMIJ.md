@@ -1,6 +1,6 @@
 # 2026-10-27_Peapickers Postershop (prototype)
 
-**Kern.** Prototype van de budget-postershop van vzw Peapickers, gebouwd op dezelfde CollectionBuilder-basis als de archiefsite. Elke poster is een archiefstuk met identiteitscode en volledige metadata. **Er wordt niets verkocht**: de vzw is nog niet opgericht. De mand, het bestelformulier en de QR-code zijn een voorbeeld; er wordt niets verstuurd en de QR-code gebruikt het ongeldige voorbeeldrekeningnummer BE00 0000 0000 0000. Alle archiefstukken zijn fictieve placeholders.
+**Kern.** Prototype van de budget-postershop van Peapickers, gebouwd op dezelfde CollectionBuilder-basis als de archiefsite. Elke poster is een archiefstuk met identiteitscode en volledige metadata. **Er wordt niets verkocht**: de vzw is nog niet opgericht. De mand, het bestelformulier en de QR-code zijn een voorbeeld; er wordt niets verstuurd en de QR-code gebruikt het ongeldige voorbeeldrekeningnummer BE00 0000 0000 0000. Alle archiefstukken zijn fictieve placeholders.
 
 Preview: https://claude.ai/artifact/VvCbo1vpHSqTzNJaN3CgLA
 Overeenkomst voor verkoop per archiefstuk (concept voor jurist): https://claude.ai/artifact/AGDDDqjyhMFbgi1fxstJ1Q
