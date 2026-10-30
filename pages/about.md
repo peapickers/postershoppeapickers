@@ -7,7 +7,7 @@ heading: Fiscaliteit
 sub-heading:
 ---
 
-{% include feature/alert.html text="Voorbeeldshop. Alle archiefstukken zijn fictieve placeholders en er wordt niets verkocht tot Peapickers een juridisch statuut heeft (ten vroegste na februari 2029)." color="warning" %}
+{% include feature/alert.html text="Voorbeeldshop. Alle archiefstukken zijn fictieve placeholders en er wordt niets verkocht tot Peapickers een juridisch statuut heeft (ten vroegste na februari 2029, als vzw)." color="warning" %}
 
 ## De prijs
 
