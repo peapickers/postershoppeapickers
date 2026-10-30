@@ -1,4 +1,4 @@
-# 2026-10-27_Peapicker's Postershop (prototype)
+# 2026-10-27_Peapickers Postershop (prototype)
 
 **Kern.** Prototype van de budget-postershop van vzw Peapickers, gebouwd op dezelfde CollectionBuilder-basis als de archiefsite. Elke poster is een archiefstuk met identiteitscode en volledige metadata. **Er wordt niets verkocht**: de vzw is nog niet opgericht. De mand, het bestelformulier en de QR-code zijn een voorbeeld; er wordt niets verstuurd en de QR-code gebruikt het ongeldige voorbeeldrekeningnummer BE00 0000 0000 0000. Alle archiefstukken zijn fictieve placeholders.
 
@@ -14,7 +14,7 @@ Overeenkomst voor verkoop per archiefstuk (concept voor jurist): https://claude.
 
 ## Wat er veranderd is tegenover de archiefsite
 
-- Naam en tagline: Peapicker's Postershop, "Licensed reproductions" (27-10, opmerking Jonas).
+- Naam en tagline: Peapickers Postershop, "Licensed reproductions" (27-10, opmerking Jonas).
 - Achtergrond #F7F7F6 (neutraal, lichter dan eggshell #F0EAD6); Courier Prime blijft. Kleur aanpassen in `_sass/_custom.scss`.
 - Bestelvak per archiefstuk (`_includes/item/shop-box.html`): formaat A4/A3/A2, prijs 7 × M en de zeven delen.
 - Mand (`/mand.html`, `_includes/mand.html`, `_includes/js/mand-js.html`): bewaard in de browser, leverzones uit Beslissingen 26-10, gestructureerde mededeling met controlegetal (mod 97), EPC-QR.
