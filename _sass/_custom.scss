@@ -55,15 +55,14 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .navbar .nav-link.pp-printshop-knop:hover, .navbar .nav-link.pp-printshop-knop:focus-visible { background: #f7f7f5; color: #1a1a1a; }
 @media (max-width: 1199.98px) { .navbar .nav-link.pp-printshop-knop { margin: .5rem 0; display: inline-block; } }
 
-// Productoverzicht: filters links (ongeveer 30%), altijd open
-.pp-browse { display: flex; flex-direction: column; gap: 1.5rem; }
-.pp-filters { border: 1px solid $ink; padding: 1rem; background: $eggshell; }
+// Productoverzicht: posters over de volle breedte, filters ingeklapt achter een knop
+.pp-container { padding-top: .75rem; padding-bottom: 2rem; }
+.pp-balk { margin-bottom: .75rem; }
+.pp-filters { border: 1px solid $ink; padding: 1rem; background: $eggshell; margin-bottom: 1rem; }
+.pp-zoek { max-width: 20rem; }
+#pp-facetten { columns: 14rem auto; column-gap: 2rem; }
+.pp-facet { break-inside: avoid; }
 .pp-resultaat { min-width: 0; }
-@media (min-width: 992px) {
-  .pp-browse { flex-direction: row; align-items: flex-start; }
-  .pp-filters { flex: 0 0 30%; max-width: 30%; position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
-  .pp-resultaat { flex: 1 1 auto; }
-}
 .pp-facet { margin-bottom: 1rem; }
 .pp-facet legend { font-size: .95rem; font-weight: 700; margin-bottom: .25rem; border-bottom: 1px solid $ink; }
 .pp-facet .form-check { font-size: .85rem; }
@@ -74,8 +73,9 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .pp-jaar { margin-bottom: 1.5rem; }
 .pp-strook { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .5rem; }
 .pp-strook:focus-visible { outline: 2px solid $ink; outline-offset: 2px; }
-.pp-strook-item { flex: 0 0 60%; scroll-snap-align: start; }
-@media (min-width: 576px) { .pp-strook-item { flex-basis: 220px; } }
+.pp-strook-item { flex: 0 0 85%; scroll-snap-align: start; }
+@media (min-width: 576px) { .pp-strook-item { flex-basis: 45%; } }
+@media (min-width: 992px) { .pp-strook-item { flex-basis: calc((100% - 2rem) / 3); } }
 
 // Prijsschema 7M op de Hoe laat is het?-pagina
 .prijs-schema { margin: 1.5rem 0; }
@@ -121,3 +121,14 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .pp-mand-knop:hover, .pp-mand-knop:focus-visible { opacity: .7; }
 .pp-mand-teller { font-size: .9rem; font-weight: 700; }
 @media (min-width: 1200px) { .navbar .nav-link { white-space: nowrap; } .navbar .nav-link.pp-printshop-knop { margin-right: 1rem; } }
+
+// Menu: één minimalistische regel vlak onder de titel, geen kader
+#title h1 { margin-top: .5rem !important; margin-bottom: .25rem !important; font-size: 1.6rem; }
+.navbar.pp-menu { border-bottom: 0; padding-top: 0; padding-bottom: .25rem; }
+.pp-menu .navbar-toggler { display: none; }
+.pp-menu .navbar-nav { flex-wrap: wrap; column-gap: 1.1rem; }
+.pp-menu .navbar-nav .nav-link { padding: .1rem 0; font-size: .9rem; text-decoration: none; }
+.pp-menu .navbar-nav .nav-link.active, .pp-menu .navbar-nav .nav-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.navbar.pp-menu .nav-link.pp-printshop-knop { padding: .1rem .5rem; margin: 0; font-size: .85rem; }
+.pp-menu #nav-search-box { padding: .1rem .5rem; font-size: .85rem; min-height: 0; width: 9rem; }
+@media (max-width: 767.98px) { .pp-menu #nav-search { display: none; } }

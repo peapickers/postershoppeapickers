@@ -39,7 +39,7 @@
     var facDiv = document.getElementById('pp-facetten');
     var itemsDiv = document.getElementById('pp-items');
 
-    // Filters bouwen: elke facet een vaste, altijd open lijst met vinkjes.
+    // Filters bouwen: elke facet een lijst met vinkjes, in het inklapbare paneel.
     FACETTEN.forEach(function (f) {
         var alle = {};
         items.forEach(function (it) { waarden(it, f.veld).forEach(function (w) { alle[w] = true; }); });
@@ -78,6 +78,8 @@
         var res = items.filter(function (it) { return past(it); });
         var weergave = document.querySelector('input[name="pp-weergave"]:checked').value;
         document.getElementById('pp-aantal').textContent = res.length + (res.length === 1 ? ' product' : ' producten');
+        var nGekozen = FACETTEN.reduce(function (n, f) { return n + gekozen[f.veld].size; }, 0) + (zoek.value.trim() ? 1 : 0);
+        document.getElementById('pp-filterteller').textContent = nGekozen ? '(' + nGekozen + ')' : '';
 
         // Tellingen: hoeveel producten je krijgt als je die waarde (ook) aanvinkt.
         document.querySelectorAll('.pp-telling').forEach(function (el) {
@@ -97,7 +99,7 @@
                     perJaar[j].map(function (it) { return '<div class="pp-strook-item">' + tegel(it) + '</div>'; }).join('') + '</div></section>';
             }).join('');
         } else {
-            itemsDiv.innerHTML = '<div class="row g-3">' + res.map(function (it) { return '<div class="col-6 col-xl-4">' + tegel(it) + '</div>'; }).join('') + '</div>';
+            itemsDiv.innerHTML = '<div class="row g-2 g-md-3">' + res.map(function (it) { return '<div class="col-12 col-sm-6 col-lg-4">' + tegel(it) + '</div>'; }).join('') + '</div>';
         }
     }
 
