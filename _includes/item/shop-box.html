@@ -16,10 +16,10 @@
       </div>
     </fieldset>
     <p class="h4 mb-1" id="prijs" style="font-variant-numeric: tabular-nums"></p>
-    <p class="small mb-3">Verkoopprijs = 7 × M, de materiaalkost van papier, inkt en verpakking (+ 20% voor misdrukken). Werkuren tellen niet mee. Verzending komt erbij in de mand.</p>
+    <p class="small mb-3">Prijs excl. btw = 7 × M, de materiaalkost van inkt, papier en verpakking (+ 20% voor misdrukken). Btw komt erbovenop, verzending komt erbij in de mand.</p>
     <div class="table-responsive">
     <table class="table table-sm small mb-3" style="font-variant-numeric: tabular-nums">
-      <caption class="small">Waar je geld naartoe gaat (voorbeeldbedragen uit plan v4)</caption>
+      <caption class="small">Waar je geld naartoe gaat (verdeling ondernemingsvoorstel 2026-10-31)</caption>
       <thead><tr><th scope="col">Delen</th><th scope="col">Naar</th><th scope="col" class="text-end">Bedrag</th></tr></thead>
       <tbody id="opbouw"></tbody>
     </table>
@@ -35,18 +35,17 @@
 <script>
 (function () {
   var delen = [
-    [1, 'Materiaal: wie het voorschoot (de drukker)'],
-    [3, 'Maker: bruto auteursrecht'],
-    [2, 'Met projectfinancierder: naar de financierder tot alles terugbetaald is. Zonder: 1 deel extra bruto auteursrecht voor de maker en 1 deel Peapickers'],
-    [1, 'Peapickers: vaste kosten']
+    [1, 'Materiaal: inkt, papier, verpakking (+ 20%)'],
+    [3.5, 'Auteur: bruto auteursrecht (waarvan 15% roerende voorheffing)'],
+    [2.5, 'Onderneming: winkel, drukken, buffer en belastingen']
   ];
   function gekozen() { return document.querySelector('#formaten input:checked'); }
   function toon() {
     var r = gekozen(), m = parseFloat(r.dataset.m);
     document.getElementById('prijs').textContent = r.value + ' · ' + ppMand.euro(7 * m);
     document.getElementById('opbouw').innerHTML = delen.map(function (d) {
-      return '<tr><td>' + d[0] + '</td><td>' + d[1] + '</td><td class="text-end">' + ppMand.euro(d[0] * m) + '</td></tr>';
-    }).join('') + '<tr><th>7</th><th>Verkoopprijs</th><th class="text-end">' + ppMand.euro(7 * m) + '</th></tr>';
+      return '<tr><td>' + String(d[0]).replace('.', ',') + '</td><td>' + d[1] + '</td><td class="text-end">' + ppMand.euro(d[0] * m) + '</td></tr>';
+    }).join('') + '<tr><th>7</th><th>Prijs excl. btw</th><th class="text-end">' + ppMand.euro(7 * m) + '</th></tr>';
   }
   document.querySelectorAll('#formaten input').forEach(function (i) { i.addEventListener('change', toon); });
   document.getElementById('in-mand').addEventListener('click', function () {

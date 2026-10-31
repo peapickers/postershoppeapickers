@@ -6,8 +6,6 @@ permalink: /vzw.html
 
 ## Over Peapickers
 
-{% include feature/alert.html text="Voorlopige tekst. Peapickers heeft nog geen juridisch statuut en verkoopt nog niets." color="warning" %}
-
 Peapickers is de naam waaronder alles valt: het [archief](https://peapickers.github.io/peapickersarchief/), de postershop en de [printshop](https://peapickers.github.io/printshoppeapickers/). De naam verwijst naar Dorothea Langes foto *Destitute Peapickers*: solidariteit met wie maakt, ook als dat werk niet lijkt te tellen.
 
 **Het archief blijft niet-commercieel.** Peapickers Archief verzamelt, bewaart en toont werk van particulierkunstenaars en nonprofits of onafhankelijke collectieven. Het verkoopt niets en dat blijft zo.
