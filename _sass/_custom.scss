@@ -79,7 +79,7 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 
 // Prijsschema 7M op de Hoe laat is het?-pagina
 .prijs-schema { margin: 1.5rem 0; }
-.ps-balk, .ps-details { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; }
+.ps-balk, .ps-details { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
 .ps-deel, .ps-detail { grid-column: span var(--n); min-width: 0; }
 .ps-deel { display: flex; flex-direction: column; gap: .15rem; padding: .6rem .6rem .7rem; min-height: 6.5rem; border: 1px solid $ink; font-size: .8rem; line-height: 1.25; overflow-wrap: anywhere; }
 .ps-m { font-size: 1.4rem; font-weight: 700; line-height: 1; }
@@ -110,8 +110,8 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
   .ps-detail { border-top: 0; padding-top: 0; }
   .ps-detail::before { display: block; padding: .4rem .5rem; margin-bottom: .4rem; font-weight: 700; border: 1px solid $ink; }
   .ps-d-materiaal::before { content: "1M · Materiaal · € 2,70"; background: #d9d9d6; }
-  .ps-d-maker::before { content: "3,5M · Auteur, bruto auteursrecht · € 9,45"; background: $ink; color: $eggshell; }
-  .ps-d-onderneming::before { content: "2,5M · Onderneming, bruto · € 6,75"; background: #fff; }
+  .ps-d-maker::before { content: "3M · Auteur, bruto auteursrecht · € 8,10"; background: $ink; color: $eggshell; }
+  .ps-d-onderneming::before { content: "3M · Onderneming, bruto · € 8,10"; background: #fff; }
 }
 
 // Mand als icoon rechtsboven, boven de zoekbalk
