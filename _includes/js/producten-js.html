@@ -26,6 +26,16 @@
         }{% unless forloop.last %},{% endunless %}{% endfor %}
     ];
 
+    // Bij elke pagina-lading een nieuwe willekeurige volgorde (Fisher-Yates),
+    // zodat geen enkele poster vaker bovenaan staat dan een andere.
+    function shuffle() {
+        for (var i = items.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = items[i]; items[i] = items[j]; items[j] = t;
+        }
+    }
+    shuffle();
+
     function waarden(item, veld) {
         return String(item[veld] || '').split(';').map(function (w) { return w.trim(); }).filter(Boolean);
     }
@@ -110,6 +120,7 @@
     });
     zoek.addEventListener('input', teken);
     document.querySelectorAll('input[name="pp-weergave"]').forEach(function (r) { r.addEventListener('change', teken); });
+    document.getElementById('pp-shuffle').addEventListener('click', function () { shuffle(); teken(); });
     document.getElementById('pp-reset').addEventListener('click', function () {
         zoek.value = '';
         facDiv.querySelectorAll('input:checked').forEach(function (cb) { cb.checked = false; });
