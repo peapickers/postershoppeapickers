@@ -1,6 +1,6 @@
-# Maakt de placeholderbeelden opnieuw met een watermerk "©<maker>" per archiefstuk.
+# Maakt de placeholderbeelden opnieuw met een watermerk "©<maker>" per kunstwerk.
 # Moeilijker weg te werken: schuin, over het hele beeld én over de tekst, onregelmatig
-# geplaatst (per archiefstuk andere spreiding, grootte en hoek), met omlijnde letters.
+# geplaatst (per kunstwerk andere spreiding, grootte en hoek), met omlijnde letters.
 import csv, os, random, sys
 from PIL import Image, ImageDraw, ImageFont
 CB = sys.argv[1]
@@ -39,7 +39,7 @@ for r in csv.DictReader(open(os.path.join(CB, '_data/peapickers-archief.csv'))):
     im = Image.new('RGB', (w, h), (12, 12, 12)); d = ImageDraw.Draw(im)
     d.rectangle([40, 40, w - 41, h - 41], outline=(235, 229, 210), width=2)
     d.text((80, h // 2 - 90), code, font=ImageFont.truetype(FB, 58), fill=(240, 234, 214))
-    d.text((80, h // 2), 'PLACEHOLDER · fictief archiefstuk', font=ImageFont.truetype(FR, 30), fill=(150, 146, 135))
+    d.text((80, h // 2), 'PLACEHOLDER · fictief kunstwerk', font=ImageFont.truetype(FR, 30), fill=(150, 146, 135))
     d.text((80, h - 110), f'©{maker} · max. 1200 px', font=ImageFont.truetype(FR, 30), fill=(150, 146, 135))
     im = watermerk(im, f'©{maker}', oid)
     im.save(pad, quality=85)
