@@ -5,8 +5,17 @@
   <div class="card-body">
     <p class="mb-2"><strong>{{ page.identiteitscode }}</strong> · {{ page.title }}{% if page.creator %} · {{ page.creator }}{% endif %}</p>
     <p class="small mb-3">Kleine oplage, genummerd en gesigneerd door de kunstenaar. Gedrukt door vzw peapickers op zeer kwalitatief papier. peapickers is een beginnende fine-art printer: fouten in de afdruk worden tot een minimum beperkt, maar zijn mogelijk.</p>
+    <fieldset class="mb-3">
+      <legend class="h6">Maat van het vel</legend>
+      <p class="small mb-2">Het beeld blijft ten hoogste A3+ en wordt enkel verkleind, nooit bijgesneden. Je kiest de maat van het vel met de witte rand, tot 42 × 60 cm; vierkant kan ook. De prijs blijft dezelfde.</p>
+      <label class="form-label small mb-0" for="vel-b">Breedte: <span id="vel-b-txt">42</span> cm</label>
+      <input type="range" class="form-range" id="vel-b" min="30" max="42" step="1" value="42">
+      <label class="form-label small mb-0" for="vel-h">Hoogte: <span id="vel-h-txt">60</span> cm</label>
+      <input type="range" class="form-range" id="vel-h" min="30" max="60" step="1" value="60">
+      <button type="button" class="btn btn-sm btn-outline-dark" id="vel-vierkant">Vierkant</button>
+    </fieldset>
     <p class="h4 mb-1" id="prijs" style="font-variant-numeric: tabular-nums"></p>
-    <p class="small mb-3">Inclusief 21% btw. Beeld ten hoogste A3+. Verzending komt erbij in de mand.</p>
+    <p class="small mb-3">Inclusief 21% btw. Verzending komt erbij in de mand.</p>
     <div class="table-responsive">
     <table class="table table-sm small mb-3" style="font-variant-numeric: tabular-nums">
       <caption class="small">Waar je geld naartoe gaat</caption>
@@ -38,8 +47,12 @@
   document.getElementById('opbouw').innerHTML = rijen.map(function (r) {
     return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td class="text-end">' + r[2] + '</td></tr>';
   }).join('') + '<tr><th></th><th>Prijs incl. btw</th><th class="text-end">' + e(incl) + '</th></tr>';
+  var vb = document.getElementById('vel-b'), vh = document.getElementById('vel-h');
+  function vel() { document.getElementById('vel-b-txt').textContent = vb.value; document.getElementById('vel-h-txt').textContent = vh.value; return 'vel ' + vb.value + ' × ' + vh.value + ' cm'; }
+  vb.addEventListener('input', vel); vh.addEventListener('input', vel);
+  document.getElementById('vel-vierkant').addEventListener('click', function () { vh.value = vb.value; vel(); });
   document.getElementById('in-mand').addEventListener('click', function () {
-    ppMand.voegToe({ code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, formaat: 'A3+', prijs: incl });
+    ppMand.voegToe({ code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, formaat: vel(), prijs: incl });
     document.getElementById('mand-melding').textContent = 'De poster ligt in de mand.';
   });
 })();

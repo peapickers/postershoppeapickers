@@ -154,3 +154,6 @@ footer.pp-footer { border-top: 1px solid $line; color: $muted; text-align: cente
 footer.pp-footer .container { justify-content: center !important; flex-direction: column; align-items: center; font-size: .75rem; }
 footer.pp-footer a { color: $muted; }
 #about-title-box, #about-wrapper { max-width: 800px !important; }
+
+// Filter naaktheid: beelden op een posterpagina met filter blijven wazig tot de bezoeker ze toont
+body.pp-verborgen main img { filter: blur(28px); }

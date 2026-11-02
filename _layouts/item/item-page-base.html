@@ -6,6 +6,27 @@ layout: default
 item-meta: true
 ---
 <div class="container py-3">
+{% if page.filter and page.filter != "" %}
+    <div class="alert alert-dark d-flex flex-wrap align-items-center gap-2" id="pp-naakt-melding" role="alert">
+        <span>Dit werk toont naaktheid (18+). Het beeld is verborgen.</span>
+        <button type="button" class="btn btn-sm btn-light" id="pp-naakt-toon">Toon het beeld</button>
+    </div>
+    <script>
+    (function () {
+        var toon = false;
+        try { toon = localStorage.getItem('pp-naakt') === 'ja'; } catch (e) {}
+        function zichtbaar() {
+            document.body.classList.remove('pp-verborgen');
+            var m = document.getElementById('pp-naakt-melding'); if (m) m.remove();
+        }
+        if (toon) { document.addEventListener('DOMContentLoaded', zichtbaar); } else { document.body.classList.add('pp-verborgen'); }
+        document.getElementById('pp-naakt-toon').addEventListener('click', function () {
+            try { localStorage.setItem('pp-naakt', 'ja'); } catch (e) {}
+            zichtbaar();
+        });
+    })();
+    </script>
+{% endif %}
 
     <h2 class="mb-3">{{ page.title }} 
         {% unless page.display_template == 'record' %}<a href="#metadata" class="ms-5 btn btn-sm btn-outline-dark small">Metadata 

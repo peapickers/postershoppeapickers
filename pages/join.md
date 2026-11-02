@@ -22,7 +22,7 @@ Elk punt moet kloppen.
 - [ ] Staat er een herkenbare persoon op het werk, dan stemt die persoon schriftelijk in met de voorwaarden. Die persoon kan altijd intrekken.
 - [ ] Zitten er merken, logo's of werk van anderen in, dan heb je hun schriftelijke toestemming.
 - [ ] Bewerking met AI mag, als ze bij het maken een bewust deel van je werkwijze was, zoals verscherpen of een filter. Volledig door AI gemaakte beelden worden voorlopig afgewezen, tenzij het verhaal erachter absoluut overtuigt.
-- [ ] Je bent geen bestuurder van vzw peapickers en geen familie van een bestuurder.
+- [ ] Je bent geen bestuurder van vzw peapickers, en ook niet de partner, ouder, kind, broer of zus van een bestuurder.
 
 ### 2. Ideologische lat
 
@@ -71,8 +71,8 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 
 ### 7. Aanmelden
 
-1. Stuur een e-mail met ten hoogste 5 beelden in lage resolutie. Stuur nog geen originele bestanden.
+1. Stuur een e-mail naar [postershoppeapickers@proton.me](mailto:postershoppeapickers@proton.me) met ten hoogste 5 beelden in lage resolutie. Stuur nog geen originele bestanden.
 2. We maken een afspraak. Je tekent nooit tijdens het eerste gesprek. Gratis advies vind je bij Cultuurloket.
 3. Lees vooraf de [licentieovereenkomst]({{ '/assets/docs/2026-11-02_Licentieovereenkomst-concept-3.pdf' | relative_url }}) en, als er een herkenbare persoon op je werk staat, de [modelovereenkomst voor geportretteerden]({{ '/assets/docs/2026-11-02_Modelovereenkomst-geportretteerden-concept-1.pdf' | relative_url }}). Beide zijn een concept, nog na te lezen door een jurist.
 
-Er wordt nog niets verkocht zolang vzw peapickers niet is opgericht. Contactgegevens volgen.
+Er wordt nog niets verkocht zolang vzw peapickers niet is opgericht.
