@@ -20,7 +20,7 @@
 </form>
 <p class="small" id="register-telling" role="status" aria-live="polite"></p>
 
-<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen: 1 materiaal, 3 maker, 2 financier, 1 Peapickers. Auteursrechten worden per kwartaal uitbetaald; de roerende voorheffing van 15% wordt ingehouden en aangegeven.</p>
+<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen: 1 materiaal, 3 maker, 2 financier, 1 peapickers. Auteursrechten worden per kwartaal uitbetaald; de roerende voorheffing van 15% wordt ingehouden en aangegeven.</p>
 <script>
 (function () {
   var rijen = {{ site.data.register | jsonify }};
@@ -41,7 +41,7 @@
     ['Op de rekening', e(saldo), 'Saldo na de laatste handeling'],
     ['Uitgekeerd aan makers', e(auteurNetto), 'Netto auteursrecht. <a href="#alle-handelingen" data-filter="voorheffing">Roerende voorheffing: ' + e(voorheffing) + '</a>, ingehouden en aangegeven. Nog uit te keren: ' + e(auteurVerdiend - auteurBetaald)],
     ['Materiaal en investeringen', e(materiaal), 'Papier, inkt en verpakking'],
-    ['Naar Peapickers', e(pp), 'Eén deel van elke verkoop. Vaste kosten betaald: ' + e(vast)],
+    ['Naar peapickers', e(pp), 'Eén deel van elke verkoop. Vaste kosten betaald: ' + e(vast)],
     ['Schulden', e(schuld), 'Open lening. Al terugbetaald: ' + e(terug)],
     ['Posters verkocht', String(verkocht), 'Na herroepingen']
   ];

@@ -1,4 +1,4 @@
-/* Peapickers Postershop: look van de Peapickers-site. IBM Plex Sans KR, gecentreerd,
+/* peapickers postershop: look van de peapickers-site. IBM Plex Sans KR, gecentreerd,
    bijna-wit en bijna-zwart, dunne lijnen in zacht grijs. */
 $eggshell: #FBFBFA; /* achtergrond: een drupje grijzer dan wit */
 $ink: #222222;      /* tekst: een drupje lichter dan zwart */
@@ -126,7 +126,7 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
   #about-contents-wrapper { padding: 0 0 2rem; }
 }
 
-// ── Kop zoals de Peapickers-site: gecentreerd, ruim, dunne grijze lijn eronder
+// ── Kop zoals de peapickers-site: gecentreerd, ruim, dunne grijze lijn eronder
 .pp-kop { text-align: center; padding: 3.25rem 1.5rem 1.75rem; }
 .pp-kop h1 { font-size: 2rem; font-weight: 600; margin: 0 0 .35rem; letter-spacing: -0.02em; }
 .pp-kop h1 a { color: $ink; text-decoration: none; }
@@ -154,3 +154,6 @@ footer.pp-footer { border-top: 1px solid $line; color: $muted; text-align: cente
 footer.pp-footer .container { justify-content: center !important; flex-direction: column; align-items: center; font-size: .75rem; }
 footer.pp-footer a { color: $muted; }
 #about-title-box, #about-wrapper { max-width: 800px !important; }
+
+// Filter naaktheid: beelden op een posterpagina met filter blijven wazig tot de bezoeker ze toont
+body.pp-verborgen main img { filter: blur(28px); }

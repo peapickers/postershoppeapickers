@@ -21,6 +21,7 @@
             img: {{ item.image_small | default: item.image_thumb | relative_url | jsonify }},
             alt: {{ item.image_alt_text | default: item.title | jsonify }},
             beschrijving: {{ item.description | jsonify }},
+            filter: {{ item.filter | default: '' | jsonify }},
             {% for f in site.data.config-producten %}{{ f.veld }}: {{ item[f.veld] | jsonify }},{% endfor %}
             href: {{ '/items/' | append: item.objectid | append: '.html' | relative_url | jsonify }}
         }{% unless forloop.last %},{% endunless %}{% endfor %}
@@ -64,7 +65,16 @@
         facDiv.insertAdjacentHTML('beforeend', html + '</fieldset>');
     });
 
+    // Filter naaktheid (vragenlijst 2, B2): werken met een waarde in de kolom "filter" zijn standaard verborgen.
+    var naaktToggle = document.getElementById('pp-naakt');
+    try { naaktToggle.checked = localStorage.getItem('pp-naakt') === 'ja'; } catch (e) {}
+    naaktToggle.addEventListener('change', function () {
+        try { localStorage.setItem('pp-naakt', naaktToggle.checked ? 'ja' : 'nee'); } catch (e) {}
+        teken();
+    });
+
     function past(it, behalveVeld) {
+        if (it.filter && !naaktToggle.checked) return false;
         var q = zoek.value.trim().toLowerCase();
         if (q) {
             var tekst = [it.title, it.code, it.beschrijving].concat(FACETTEN.map(function (f) { return it[f.veld]; })).join(' ').toLowerCase();

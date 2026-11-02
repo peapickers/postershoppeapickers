@@ -1,6 +1,6 @@
 {% comment %}
 
-    Collection Navbar, Peapickers-stijl: één gecentreerde regel met onderlijnde links.
+    Collection Navbar, peapickers-stijl: één gecentreerde regel met onderlijnde links.
     De menu-items komen uit "_data/config-nav.csv"; de printshop-link uit "printshop-url" in "_config.yml".
     Daarna volgen de mand en het zoekveld.
 
@@ -12,7 +12,7 @@
         <li><a class="{% if page.url == nav.stub %}active{% endif %}" {% if page.url == nav.stub %}aria-current="page" {% endif %}href="{{ nav.stub | relative_url }}">{{ nav.display_name }}</a></li>
         {%- endfor -%}
         {% if site.printshop-url %}
-        <li><a href="{{ site.printshop-url }}" target="_blank" rel="noopener">Peapickers Printshop ↗</a></li>{% endif %}
+        <li><a href="{{ site.printshop-url }}" target="_blank" rel="noopener">peapickers printshop ↗</a></li>{% endif %}
         <li><a class="{% if page.url == '/mand.html' %}active{% endif %}" href="{{ '/mand.html' | relative_url }}">Mand<span data-mand-teller></span></a></li>
         <li class="pp-menu-zoek">{% include nav-search-lunr.html %}</li>
     </ul>
