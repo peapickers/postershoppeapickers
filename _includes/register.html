@@ -12,7 +12,7 @@
 <form class="row g-2 align-items-end mb-2" id="register-filter" role="search" onsubmit="return false">
   <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small" for="f-soort">Soort</label>
     <select class="form-select" id="f-soort"><option value="">Alle soorten</option>{% assign soorten = site.data.register | map: "soort" | uniq %}{% for s in soorten %}<option>{{ s }}</option>{% endfor %}</select></div>
-  <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small" for="f-code">Archiefstuk</label>
+  <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small" for="f-code">Kunstwerk</label>
     <input class="form-control" id="f-code" list="codes" placeholder="bv. 2026-001-01"><datalist id="codes">{% assign codes = site.data.register | map: "identiteitscode" | uniq %}{% for c in codes %}{% if c %}<option value="{{ c }}">{% endif %}{% endfor %}</datalist></div>
   <div class="col-6 col-lg-2"><label class="form-label small" for="f-van">Van</label><input class="form-control" type="date" id="f-van"></div>
   <div class="col-6 col-lg-2"><label class="form-label small" for="f-tot">Tot</label><input class="form-control" type="date" id="f-tot"></div>

@@ -12,6 +12,6 @@ Peapickers is de naam waaronder alles valt: het [archief](https://peapickers.git
 
 **De postershop en de printshop zijn commercieel.** Daarvoor wordt later vzw peapickers opgericht, ten vroegste na februari 2029. Een vzw keert geen winst uit: de opbrengsten dienen om de makers in auteursrechten te betalen en de vaste kosten te dekken. Tot dan wordt er niets verkocht.
 
-**De maker wordt correct vergoed.** Een archiefstuk komt pas in de postershop met een aparte, schriftelijke overeenkomst met de maker, per stuk. De maker wordt betaald in auteursrechten.
+**De maker wordt correct vergoed.** Een kunstwerk komt pas in de postershop met een aparte, schriftelijke overeenkomst met de maker, per stuk. De maker wordt betaald in auteursrechten.
 
 Alle administratieve stukken staan in de [Public Ledger](https://peapickers.github.io/peapickersarchief/ledger.html).

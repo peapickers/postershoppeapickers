@@ -16,14 +16,14 @@
     - "heading_level" = customize the level of the heading if necessary for accessibility, choose "h1", "h2", "h3", etc (optional, default "h2")
     - "max" = maximum images selected for slide show (optional, default 9. Do not make too big!)
     - "btn-color" = a bootstrap color class to theme the buttons. Can be any bootstrap template color (e.g. info, success) or outline (e.g. outline-info, outline-success), including colors created in config-theme-colors. (optional, default "primary")
-    - "btn-text" = the label used in the link btn to view the carousel item (optional, default "Bekijk archiefstuk")
+    - "btn-text" = the label used in the link btn to view the carousel item (optional, default "Bekijk kunstwerk")
     - "filter-field" and "filter-value" = use these options together to filter which set of items will appear in the carousel based on a particular metadata field and value in that field. filter-field must match a column in your metadata. any item with a value in the filter-field that "contains" the filter-value will be included, it does not need to be an exact match. (optional)
     
 {%- endcomment -%}
 
 {%- assign carousel-max = include.max | default: 9 -%}
 {%- assign btn-color = include.btn-color | default: "primary" -%}
-{%- assign btn-text = include.btn-text | default: "Bekijk archiefstuk" -%}
+{%- assign btn-text = include.btn-text | default: "Bekijk kunstwerk" -%}
 {% if include.child-objects == true %}
 {%- assign carousel-items = site.data[site.metadata] | where_exp: 'item','item.objectid' | where_exp: "item","item.image_small != nil or item.image_thumb != nil"-%}
 {% else %}
