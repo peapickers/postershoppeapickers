@@ -1,70 +1,65 @@
-/* Peapickers Postershop: neutraal papierwit, zwart, Courier Prime, kaders van 1 px */
-$eggshell: #F7F7F6; /* neutraal, lichter dan het eggshell van het archief (#F0EAD6) */
-$ink: #111111;
-
+/* Peapickers Postershop: look van de Peapickers-site. IBM Plex Sans KR, gecentreerd,
+   bijna-wit en bijna-zwart, dunne lijnen in zacht grijs. */
+$eggshell: #FBFBFA; /* achtergrond: een drupje grijzer dan wit */
+$ink: #222222;      /* tekst: een drupje lichter dan zwart */
+$muted: #666666;    /* menu en bijschriften */
+$line: #DDDDDB;     /* subtiele lijnen */
+$line-strong: #BDBDBA;
 body, .bg-light, .navbar.bg-light, .card, .modal-content, .list-group-item, .dropdown-menu, .table, footer, #footer {
   background-color: $eggshell !important;
   color: $ink;
 }
 .table { --bs-table-bg: #{$eggshell}; --bs-table-color: #{$ink}; }
-h1, h2, h3, h4, h5, .navbar-brand, .btn, .form-control, .badge {
-  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-}
+h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.02em; }
+body { letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; line-height: 1.6; }
 a { color: $ink; text-decoration: underline; text-underline-offset: 2px; }
-.navbar { border-bottom: 1px solid $ink; }
-.card, .form-control, .list-group-item, .modal-content { border: 1px solid $ink !important; border-radius: 0 !important; }
+.card, .form-control, .list-group-item, .modal-content { border: 1px solid $line-strong !important; border-radius: 0 !important; }
 .btn, .badge { border-radius: 0 !important; }
 .btn-primary, .btn-dark, .bg-primary, .bg-dark, .btn-outline-primary:hover, .btn-outline-dark:hover {
   background-color: $ink !important; border-color: $ink !important; color: $eggshell !important;
 }
 .btn-outline-primary, .btn-outline-dark, .btn-secondary, .btn-outline-secondary {
-  background-color: transparent; border: 1px solid $ink !important; color: $ink !important;
+  background-color: transparent; border: 1px solid $line-strong !important; color: $ink !important;
 }
 .text-primary { color: $ink !important; }
 img { filter: none; }
 #metadata dt, .item-metadata dt, dt { font-weight: 700; }
-.breadcrumb, nav[aria-label="breadcrumb"] .breadcrumb { background-color: transparent !important; border: 1px solid $ink; border-radius: 0; }
-.alert-warning { background-color: $eggshell; color: $ink; border: 1px dashed $ink; border-radius: 0; }
+.breadcrumb, nav[aria-label="breadcrumb"] .breadcrumb { background-color: transparent !important; border: 1px solid $line; border-radius: 0; }
+.alert-warning { background-color: $eggshell; color: $ink; border: 1px dashed $line-strong; border-radius: 0; }
 .cloud, #cloud, .card-body, h1, h2 { overflow-wrap: anywhere; }
 a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
 /* Postershop: bedragen en kolomkoppen niet afbreken, gekozen formaat in inkt */
 #shop-box th, #shop-box td.text-end, #mand-tabel th, #mand-tabel td.text-end { white-space: nowrap; overflow-wrap: normal; }
 .btn-check:checked + .btn, .btn-check:checked + .btn:hover { background-color: $ink !important; color: $eggshell !important; border-color: $ink !important; }
 /* Postershop: tegels met enkel het beeld, overlay bij hover of focus */
-.poster-tegel { position: relative; display: block; border: 1px solid $ink; background: $ink; text-decoration: none; overflow: hidden; }
+.poster-tegel { position: relative; display: block; border: 1px solid $line; background: $ink; text-decoration: none; overflow: hidden; }
 .poster-tegel img { display: block; width: 100%; height: auto; transition: filter .2s ease; }
 .poster-tegel .poster-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: .25rem; padding: .75rem; color: $eggshell; opacity: 0; transition: opacity .2s ease; overflow-wrap: anywhere; }
 .poster-tegel:hover img, .poster-tegel:focus-visible img { filter: brightness(.6); }
 .poster-tegel:hover .poster-overlay, .poster-tegel:focus-visible .poster-overlay { opacity: 1; }
 .poster-tegel:focus-visible { outline: 2px solid $ink; outline-offset: 2px; }
-.poster-titel { font-family: 'Courier Prime', 'Courier New', monospace; font-weight: 700; font-size: 1.1rem; line-height: 1.2; }
+.poster-titel { font-weight: 600; font-size: 1.1rem; line-height: 1.2; }
 .poster-maker, .poster-code { font-size: .8rem; }
 .poster-leeg { display: block; aspect-ratio: 3 / 4; }
 @media (prefers-reduced-motion: reduce) { .poster-tegel img, .poster-tegel .poster-overlay { transition: none; } }
 /* Over-pagina: geen aparte achtergrond voor kop en inhoudstafel */
 #about-feature, #about-toc-wrapper, #about-toc, #about-toc-list, #about-toc .btn-light { background-color: $eggshell !important; }
 /* Register: een handeling per lijn */
-.register-lijst li { padding: .35rem 0; border-bottom: 1px solid rgba(17,17,17,.15); overflow-wrap: anywhere; }
+.register-lijst li { padding: .35rem 0; border-bottom: 1px solid $line; overflow-wrap: anywhere; }
 
 // strook bovenaan: voorbeeldsite zonder verkoop
-.voorbeeld-strook { background: #1a1a1a; color: #F7F7F6; }
-
-// subtiele link naar de Printshop bovenaan de posterpagina
-/* Knop naar de printshop in het menu, gespiegeld aan de postershop-knop van de printshop */
-.navbar .nav-link.pp-printshop-knop { background: #1a1a1a; color: #f7f7f5; border: 1px solid #1a1a1a; padding: .35rem .8rem; margin-left: .5rem; font-size: .92rem; }
-.navbar .nav-link.pp-printshop-knop:hover, .navbar .nav-link.pp-printshop-knop:focus-visible { background: #f7f7f5; color: #1a1a1a; }
-@media (max-width: 1199.98px) { .navbar .nav-link.pp-printshop-knop { margin: .5rem 0; display: inline-block; } }
+.voorbeeld-strook { background: $ink; color: $eggshell; letter-spacing: 0; }
 
 // Productoverzicht: posters over de volle breedte, filters ingeklapt achter een knop
 .pp-container { padding-top: .75rem; padding-bottom: 2rem; }
 .pp-balk { margin-bottom: .75rem; }
-.pp-filters { border: 1px solid $ink; padding: 1rem; background: $eggshell; margin-bottom: 1rem; }
+.pp-filters { border: 1px solid $line; padding: 1rem; background: $eggshell; margin-bottom: 1rem; }
 .pp-zoek { max-width: 20rem; }
 #pp-facetten { columns: 14rem auto; column-gap: 2rem; }
 .pp-facet { break-inside: avoid; }
 .pp-resultaat { min-width: 0; }
 .pp-facet { margin-bottom: 1rem; }
-.pp-facet legend { font-size: .95rem; font-weight: 700; margin-bottom: .25rem; border-bottom: 1px solid $ink; }
+.pp-facet legend { font-size: .95rem; margin-bottom: .25rem; border-bottom: 1px solid $line; font-weight: 600; }
 .pp-facet .form-check { font-size: .85rem; }
 .pp-facet .form-check-input:checked { background-color: $ink; border-color: $ink; }
 .pp-telling { color: #6b6b6b; }
@@ -81,58 +76,41 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .prijs-schema { margin: 1.5rem 0; }
 .ps-balk, .ps-details { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
 .ps-deel, .ps-detail { grid-column: span var(--n); min-width: 0; }
-.ps-deel { display: flex; flex-direction: column; gap: .15rem; padding: .6rem .6rem .7rem; min-height: 6.5rem; border: 1px solid $ink; font-size: .8rem; line-height: 1.25; overflow-wrap: anywhere; }
+.ps-deel { display: flex; flex-direction: column; gap: .15rem; padding: .6rem .6rem .7rem; min-height: 6.5rem; border: 1px solid $line-strong; font-size: .8rem; line-height: 1.25; overflow-wrap: anywhere; }
 .ps-m { font-size: 1.4rem; font-weight: 700; line-height: 1; }
 .ps-deel .ps-bedrag { margin-top: auto; font-weight: 700; white-space: nowrap; }
 .ps-materiaal { background: #d9d9d6; }
 .ps-maker { background: $ink; color: $eggshell; }
 .ps-onderneming { background: #fff; }
 .ps-details { margin-top: .5rem; font-size: .8rem; }
-.ps-detail { border-top: 3px solid $ink; padding-top: .5rem; }
+.ps-detail { border-top: 2px solid $line-strong; padding-top: .5rem; }
 .ps-detail p { margin: 0; }
 .ps-mini { display: flex; height: 1.4rem; margin-bottom: .4rem; font-size: .7rem; }
 .ps-mini span { display: flex; align-items: center; padding: 0 .3rem; overflow: hidden; }
 .ps-mini span:first-child { background: $ink; color: $eggshell; }
-.ps-mini span:last-child { background: #fff; border: 1px solid $ink; }
+.ps-mini span:last-child { background: #fff; border: 1px solid $line-strong; }
 .ps-detail dl { margin: 0; }
-.ps-detail dl div { display: flex; justify-content: space-between; gap: .5rem; padding: .2rem 0; border-bottom: 1px dotted #999; }
+.ps-detail dl div { display: flex; justify-content: space-between; gap: .5rem; padding: .2rem 0; border-bottom: 1px dotted $line-strong; }
 .ps-detail dd { margin: 0; white-space: nowrap; font-weight: 700; }
-.ps-optie { display: grid; grid-template-columns: 1fr auto; gap: .1rem .5rem; border: 1px solid $ink; background: #fff; padding: .4rem .5rem; }
+.ps-optie { display: grid; grid-template-columns: 1fr auto; gap: .1rem .5rem; border: 1px solid $line-strong; background: #fff; padding: .4rem .5rem; }
 .ps-optie strong { grid-column: 1 / -1; }
 .ps-optie .ps-bedrag { white-space: nowrap; font-weight: 700; }
 .ps-of { text-align: center; font-style: italic; padding: .15rem 0; }
-.ps-totaal { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; margin-top: .75rem; padding-top: .5rem; border-top: 2px solid $ink; font-size: 1rem; }
+.ps-totaal { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; margin-top: .75rem; padding-top: .5rem; border-top: 1px solid $line-strong; font-size: 1rem; }
 @media (max-width: 767.98px) {
   .ps-balk, .ps-details { grid-template-columns: 1fr; }
   .ps-deel, .ps-detail { grid-column: auto; }
   .ps-balk { display: none; }
   .ps-details { gap: 1rem; }
   .ps-detail { border-top: 0; padding-top: 0; }
-  .ps-detail::before { display: block; padding: .4rem .5rem; margin-bottom: .4rem; font-weight: 700; border: 1px solid $ink; }
+  .ps-detail::before { display: block; padding: .4rem .5rem; margin-bottom: .4rem; font-weight: 600; border: 1px solid $line-strong; }
   .ps-d-materiaal::before { content: "1M · Materiaal · € 2,70"; background: #d9d9d6; }
   .ps-d-maker::before { content: "3M · Auteur, bruto auteursrecht · € 8,10"; background: $ink; color: $eggshell; }
   .ps-d-onderneming::before { content: "3M · Onderneming, bruto · € 8,10"; background: #fff; }
 }
 
-// Mand als icoon rechtsboven, boven de zoekbalk
-.pp-mand-knop { display: inline-flex; align-items: center; gap: .25rem; text-decoration: none; }
-.pp-mand-knop:hover, .pp-mand-knop:focus-visible { opacity: .7; }
-.pp-mand-teller { font-size: .9rem; font-weight: 700; }
-@media (min-width: 1200px) { .navbar .nav-link { white-space: nowrap; } .navbar .nav-link.pp-printshop-knop { margin-right: 1rem; } }
-
-// Menu: één minimalistische regel vlak onder de titel, geen kader
-#title h1 { margin-top: .5rem !important; margin-bottom: .25rem !important; font-size: 1.6rem; }
-.navbar.pp-menu { border-bottom: 0; padding-top: 0; padding-bottom: .25rem; }
-.pp-menu .navbar-toggler { display: none; }
-.pp-menu .navbar-nav { flex-wrap: wrap; column-gap: 1.1rem; }
-.pp-menu .navbar-nav .nav-link { padding: .1rem 0; font-size: .9rem; text-decoration: none; }
-.pp-menu .navbar-nav .nav-link.active, .pp-menu .navbar-nav .nav-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.navbar.pp-menu .nav-link.pp-printshop-knop { padding: .1rem .5rem; margin: 0; font-size: .85rem; }
-.pp-menu #nav-search-box { padding: .1rem .5rem; font-size: .85rem; min-height: 0; width: 9rem; }
-@media (max-width: 767.98px) { .pp-menu #nav-search { display: none; } }
-
 // Minimalistische footer en paginakoppen
-footer.pp-footer { border-top: 1px solid $ink; }
+
 #about-feature .display-2 { font-size: 2rem; }
 .about-title { padding-left: 0 !important; }
 #about-feature { padding-top: .75rem !important; }
@@ -147,3 +125,32 @@ footer.pp-footer { border-top: 1px solid $ink; }
   #about-wrapper { display: block; }
   #about-contents-wrapper { padding: 0 0 2rem; }
 }
+
+// ── Kop zoals de Peapickers-site: gecentreerd, ruim, dunne grijze lijn eronder
+.pp-kop { text-align: center; padding: 3.25rem 1.5rem 1.75rem; }
+.pp-kop h1 { font-size: 2rem; font-weight: 600; margin: 0 0 .35rem; letter-spacing: -0.02em; }
+.pp-kop h1 a { color: $ink; text-decoration: none; }
+.pp-kop .pp-tagline { margin: 0; color: $muted; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
+
+// ── Menu: één gecentreerde regel, elke link eenvoudig onderlijnd, grijs; actief en hover in inkt
+.pp-menu { border-bottom: 1px solid $line; padding: 0 1rem 1.5rem; }
+.pp-menu ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .5rem 1.75rem; }
+.pp-menu a { color: $muted; text-decoration: underline; text-decoration-color: $line-strong; text-underline-offset: 4px; font-size: .95rem; }
+.pp-menu a:hover, .pp-menu a:focus-visible, .pp-menu a.active { color: $ink; text-decoration-color: $ink; }
+.pp-menu #nav-search-box { border: 0 !important; border-bottom: 1px solid $line-strong !important; background: transparent; padding: .1rem .25rem; font-size: .9rem; width: 8rem; min-height: 0; box-shadow: none; }
+.pp-menu #nav-search-box:focus { border-bottom-color: $ink !important; }
+
+// ── Inhoud gecentreerd, met lucht; tekstpagina's in een smalle kolom zoals de oude site
+.pp-container { max-width: 1140px; padding-top: 2rem; padding-bottom: 3rem; }
+.pp-balk { margin-bottom: 1.5rem; }
+#pp-aantal { color: $muted; }
+main > .container.my-4 { max-width: 800px; padding-top: 1.5rem; padding-bottom: 2rem; }
+main h2 { font-size: 1.5rem; margin: 1.5rem 0 1rem; }
+main h3 { font-size: 1.15rem; margin: 1.5rem 0 .5rem; }
+main p { color: #2a2a2a; }
+
+// ── Footer gecentreerd, klein, grijs, dunne lijn erboven
+footer.pp-footer { border-top: 1px solid $line; color: $muted; text-align: center; }
+footer.pp-footer .container { justify-content: center !important; flex-direction: column; align-items: center; font-size: .75rem; }
+footer.pp-footer a { color: $muted; }
+#about-title-box, #about-wrapper { max-width: 800px !important; }

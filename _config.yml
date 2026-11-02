@@ -22,12 +22,13 @@ title: Peapickers Postershop
 # zusterproject, gelinkt in de footer en bovenaan de posterpagina
 printshop-url: https://peapickers.github.io/printshoppeapickers/
 # tagline, a short phrase that will appear throughout the site in the top banner
-tagline: Licensed reproductions
+tagline: kunstenaars zonder statuut
+header-title: PEAPICKERS
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "Posters van lokale makers die niet in de kunstindustrie werken. Elke poster is een archiefstuk met een vaste code, volledige metadata en een open prijs van 7 × de materiaalkost."
+description: "Posters van particulierkunstenaars: makers zonder professioneel statuut of kunstenaarsattest. Elke poster is een kunstwerk met een vaste code, volledige metadata en een open prijs."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
-keywords: posters; archiefstukken; lokale makers; Gent
+keywords: posters; kunstwerken; particulierkunstenaars; Gent
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
 author: Peapickers
 

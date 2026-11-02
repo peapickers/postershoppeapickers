@@ -335,7 +335,7 @@ function updateDisplay(filteredItems, query = "", field = "", startDate = "", en
     browseItemsDiv.appendChild(fragment);
     
     // Update count
-    document.querySelector("#numberOf").innerHTML = `${filteredItems.length} van {{ items | size }} archiefstukken`;
+    document.querySelector("#numberOf").innerHTML = `${filteredItems.length} van {{ items | size }} kunstwerken`;
     
     // Focus active input (only if needed)
     if (query || startDate || endDate) {

@@ -8,4 +8,4 @@ permalink: /data.html
 
 ## Collection Metadata
 
-Deze tabel toont alle archiefstukken. Met de knop CSV download je wat je ziet; met Download rechtsboven de volledige metadata.
+Deze tabel toont alle kunstwerken. Met de knop CSV download je wat je ziet; met Download rechtsboven de volledige metadata.
