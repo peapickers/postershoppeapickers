@@ -18,19 +18,22 @@ source-code: https://github.com/CollectionBuilder/collectionbuilder-csv
 # SITE SETTINGS
 #
 # title of site appears in banner
-title: Peapickers Postershop
+title: peapickers postershop
 # zusterproject, gelinkt in de footer en bovenaan de posterpagina
 printshop-url: https://peapickers.github.io/printshoppeapickers/
 # tagline, a short phrase that will appear throughout the site in the top banner
 tagline: uit de archieven van onafhankelijke kunstenaars
-header-title: PEAPICKERS
+header-title: peapickers postershop
+# prijs per poster (vragenlijst 2, 02-11-2026): M = enkel papiervel en inkt; prijs excl. btw = 7 × M; met 21% btw afgerond, het verschil draagt de vzw
+prijs-m: 5.00
+prijs-incl-btw: 42.00
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "Posters van particulierkunstenaars: makers zonder professioneel statuut of kunstenaarsattest. Elke poster is een kunstwerk met een vaste code, volledige metadata en een open prijs."
+description: "Posters van onafhankelijke kunstenaars: makers zonder professioneel statuut of kunstenaarsattest. Elke poster is een kunstwerk met een vaste code, volledige metadata en een open prijs."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
-keywords: posters; kunstwerken; particulierkunstenaars; Gent
+keywords: posters; kunstwerken; onafhankelijke kunstenaars; Gent
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
-author: Peapickers
+author: peapickers
 
 ##########
 # COLLECTION SETTINGS
@@ -53,7 +56,7 @@ metadata: peapickers-archief
 #
 # Enter name and link for your organization (replacing the name and links below)
 # These values will be used in attribution and data 
-organization-name: "Peapickers"
+organization-name: "peapickers"
 organization-link: 
 # Add logo image links if you would like them to appear in banner and footer. Delete or leave blank to remove logos.
 organization-logo-banner: 
