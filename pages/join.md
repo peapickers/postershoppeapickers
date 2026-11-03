@@ -73,6 +73,6 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 
 1. Stuur een e-mail naar [postershoppeapickers@proton.me](mailto:postershoppeapickers@proton.me) met ten hoogste 5 beelden in lage resolutie. Stuur nog geen originele bestanden.
 2. We maken een afspraak. Je tekent nooit tijdens het eerste gesprek. Gratis advies vind je bij Cultuurloket.
-3. Lees vooraf de [licentieovereenkomst]({{ '/assets/docs/2026-11-02_Licentieovereenkomst-concept-4.pdf' | relative_url }}) en, als er een herkenbare persoon op je werk staat, de [modelovereenkomst voor geportretteerden]({{ '/assets/docs/2026-11-02_Modelovereenkomst-geportretteerden-concept-2.pdf' | relative_url }}). Beide zijn een concept, nog na te lezen door een jurist.
+3. Lees vooraf de [licentieovereenkomst]({{ '/assets/docs/2026-11-03_Licentieovereenkomst-concept-5.pdf' | relative_url }}) en, als er een herkenbare persoon op je werk staat, de [modelovereenkomst voor geportretteerden]({{ '/assets/docs/2026-11-03_Modelovereenkomst-geportretteerden-concept-3.pdf' | relative_url }}). Beide zijn een concept, nog na te lezen door een jurist.
 
 Er wordt nog niets verkocht zolang vzw peapickers niet is opgericht.
