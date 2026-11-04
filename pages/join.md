@@ -57,8 +57,7 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 - [ ] Een reproductie blijft een reproductie: kleur en contrast kunnen afwijken van het origineel en van het scherm.
 - [ ] Je beeld wordt nooit bijgesneden of bewerkt.
 - [ ] Je werk en al je rechten blijven van jou. Je geeft per werk een niet-exclusieve licentie.
-- [ ] Fine-art: van elke verkochte print krijg je 3 van de 7 delen van de prijs zonder btw, als bruto auteursrecht.
-- [ ] Poster: van elke verkochte poster gaan eerst papier en inkt (€ 1,25) af van de prijs zonder btw. Wat overblijft, wordt eerlijk gedeeld: de helft voor jou, de helft voor peapickers. Bij een losse poster van € 6 is dat € 1,85 bruto voor jou, in een bundel van drie € 1,44 per poster.
+- [ ] Fine art en poster: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs zonder btw, als bruto auteursrecht. De prijs zonder btw is altijd 7 × de materiaalkost (papier en inkt).
 - [ ] peapickers houdt 15% roerende voorheffing in op je bruto bedrag en betaalt je netto per kwartaal. Zie [Hoe laat is het?]({{ '/about.html' | relative_url }}).
 - [ ] Er is geen verkoopgarantie.
 - [ ] Je kunt altijd stoppen, zonder reden. Binnen 7 dagen staat je werk niet meer in de webshop.
@@ -67,10 +66,10 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 
 ### 6. Fine-art, poster en oplage
 
-Per werk kies je samen met peapickers voor fine-art, poster of allebei.
+Elk werk is als poster verkrijgbaar. Per werk beslis je samen met peapickers of er ook een fine-art-editie komt.
 
-- [ ] **Fine-art.** Zeer kwalitatief papier, een passe-partout naar keuze van de klant, om in te kaderen. De eerste oplage telt 1 tot 3 afdrukken per werk, genummerd en gesigneerd door jou. Het bestuur beslist dat samen met jou.
-- [ ] **Poster.** Budgetpapier, een vast formaat met een vaste witte rand, om aan de muur te hangen. Print on demand: elke poster wordt pas gedrukt als hij besteld is, tijdens een vaste verkooptermijn. Binnen die termijn is het aantal niet beperkt. Posters worden niet genummerd. Een poster kost € 6, of € 15 voor drie naar keuze.
+- [ ] **Fine-art.** Een unieke afdruk op duur papier of op een unieke manier gereproduceerd, gecureerd, in een beperkte oplage, genummerd en gesigneerd door jou. Formaat, papier en passe-partout liggen vast; de klant kiest niets en betaalt een vaste prijs. De eerste oplage telt 1 tot 3 afdrukken per werk. Het bestuur beslist dat samen met jou.
+- [ ] **Poster.** De klant kiest het papier (drie Epson-papieren), de maat van het vel (tot 40 × 60 cm, niet kleiner dan A4) en de maat van de afbeelding met de witte rand, zodat een eigen of oud kader past. Je beeld wordt nooit bijgesneden. Print on demand: elke poster wordt pas gedrukt als hij besteld is, tijdens een vaste verkooptermijn. Binnen die termijn is het aantal niet beperkt. Posters worden niet genummerd.
 - [ ] Van elke kunstenaar staan er ten hoogste 3 tot 5 werken tegelijk in de webshop. Zo is het fair voor wie één werk heeft tegenover wie een archief van dertig jaar heeft.
 - [ ] Waarom zo weinig fine-art? Om de kwaliteit hoog te houden, en omdat peapickers niet genoeg geld heeft om groter te beginnen. Is een oplage verkocht, dan kan er een tweede komen, met een nieuwe overeenkomst. Grotere oplages volgen pas als de vzw genoeg geld heeft opgebouwd om meer papier te riskeren.
 

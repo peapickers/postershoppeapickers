@@ -9,7 +9,7 @@ Overeenkomst voor verkoop per archiefstuk (concept voor jurist): https://claude.
 
 | Bestand | Wat |
 |---|---|
-| `postershop-bron.zip` | Broncode (Jekyll). Metadata en materiaalkost: `_data/peapickers-archief.csv` (kolommen `m_a4`, `m_a3`, `m_a2`). |
+| `postershop-bron.zip` | Broncode (Jekyll). Metadata: `_data/peapickers-archief.csv` (fine art: kolommen `fineart_m`, `fineart_oplage`). Papier- en inktprijzen: `_data/config-prijzen.csv`. |
 | `postershop-site.zip` | Gebouwde site met relatieve paden, klaar voor een statische host (Cloudflare Pages: voorwaarden nog niet nagekeken). |
 
 ## Wat er veranderd is tegenover de archiefsite

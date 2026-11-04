@@ -24,9 +24,9 @@ printshop-url: https://peapickers.github.io/printshoppeapickers/
 # tagline, a short phrase that will appear throughout the site in the top banner
 tagline: uit de archieven van onafhankelijke kunstenaars
 header-title: peapickers postershop
-# prijs per poster (vragenlijst 2, 02-11-2026): M = enkel papiervel en inkt; prijs excl. btw = 7 × M; met 21% btw afgerond, het verschil draagt de vzw
-prijs-m: 5.00
-prijs-incl-btw: 42.00
+# Winkelmand: publieke API-sleutel van Snipcart (testsleutel tot de vzw is opgericht).
+# Leeg = voorbeeldmand in de browser, er wordt niets verkocht. Prijzen: _data/config-prijzen.csv
+snipcart-api-key: ""
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
 description: "Posters van onafhankelijke kunstenaars: makers zonder professioneel statuut of kunstenaarsattest. Elke poster is een kunstwerk met een vaste code, volledige metadata en een open prijs."

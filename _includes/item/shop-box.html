@@ -1,60 +1,142 @@
-{% comment %} Bestelvak per kunstwerk: één prijs per poster (vragenlijst 2, 02-11-2026). M = papiervel + inkt (site.prijs-m), prijs excl. btw = 7 × M, met 21% btw afgerond naar site.prijs-incl-btw; het verschil gaat af van het deel van de vzw. {% endcomment %}
-{% if page.identiteitscode and site.prijs-m %}
+{% comment %}
+Bestelvak per kunstwerk (Jonas, 2026-11-04).
+- Fine art (enkel als de CSV-kolom fineart_m gevuld is): vaste prijs 7 × M, geen keuzes, genummerde en gesigneerde oplage (fineart_oplage).
+- Poster (elk kunstwerk): de klant kiest papier en vel, dan de afbeelding op het vel (passe-partout), dan het aantal.
+  M = papier (volgens velmaat) + inkt (volgens afbeeldingsmaat), prijzen in _data/config-prijzen.csv.
+  Prijs = 7 × M + 21% btw. Verdeling 1M materiaal, 3M bruto auteursrecht, 3M vzw.
+- Winkelmand: Snipcart zodra site.snipcart-api-key gevuld is, anders de voorbeeldmand in de browser.
+{% endcomment %}
+{% if page.identiteitscode %}
+{%- assign papieren = site.data.config-prijzen | where: "soort", "papier" -%}
+{%- assign inkt = site.data.config-prijzen | where: "soort", "inkt" | first -%}
+{%- assign snip = site.snipcart-api-key | default: "" -%}
+{%- capture beeld -%}{{ page.image_small | default: page.object_location | relative_url }}{%- endcapture -%}
 <div class="card my-4 text-start" id="shop-box">
-  <div class="card-header">Als poster bestellen</div>
+  <div class="card-header">Bestellen</div>
   <div class="card-body">
-    <p class="mb-2"><strong>{{ page.identiteitscode }}</strong> · {{ page.title }}{% if page.creator %} · {{ page.creator }}{% endif %}</p>
-    <p class="small mb-3">Kleine oplage, genummerd en gesigneerd door de kunstenaar. Gedrukt door vzw peapickers op zeer kwalitatief papier. peapickers is een beginnende fine-art printer: fouten in de afdruk worden tot een minimum beperkt, maar zijn mogelijk.</p>
-    <fieldset class="mb-3">
-      <legend class="h6">Maat van het vel</legend>
-      <p class="small mb-2">Het beeld blijft ten hoogste A3+ en wordt enkel verkleind, nooit bijgesneden. Je kiest de maat van het vel met de witte rand, tot 42 × 60 cm; vierkant kan ook. De prijs blijft dezelfde.</p>
-      <label class="form-label small mb-0" for="vel-b">Breedte: <span id="vel-b-txt">42</span> cm</label>
-      <input type="range" class="form-range" id="vel-b" min="30" max="42" step="1" value="42">
-      <label class="form-label small mb-0" for="vel-h">Hoogte: <span id="vel-h-txt">60</span> cm</label>
-      <input type="range" class="form-range" id="vel-h" min="30" max="60" step="1" value="60">
-      <button type="button" class="btn btn-sm btn-outline-dark" id="vel-vierkant">Vierkant</button>
-    </fieldset>
-    <p class="h4 mb-1" id="prijs" style="font-variant-numeric: tabular-nums"></p>
-    <p class="small mb-3">Inclusief 21% btw. Verzending komt erbij in de mand.</p>
-    <div class="table-responsive">
-    <table class="table table-sm small mb-3" style="font-variant-numeric: tabular-nums">
-      <caption class="small">Waar je geld naartoe gaat</caption>
-      <thead><tr><th scope="col">Delen</th><th scope="col">Naar</th><th scope="col" class="text-end">Bedrag</th></tr></thead>
-      <tbody id="opbouw"></tbody>
-    </table>
-    </div>
-    <div class="d-flex flex-wrap gap-2 align-items-center">
-      <button type="button" class="btn btn-dark" id="in-mand">In de mand</button>
-      <a class="btn btn-outline-dark" href="{{ '/mand.html' | relative_url }}">Naar de mand</a>
-      <span class="small" id="mand-melding" role="status" aria-live="polite"></span>
-    </div>
+    <p class="mb-3"><strong>{{ page.identiteitscode }}</strong> · {{ page.title }}{% if page.creator %} · {{ page.creator }}{% endif %}</p>
+
+{% if page.fineart_m and page.fineart_m != "" %}
+    {%- assign fa_m = page.fineart_m | plus: 0 -%}
+    {%- assign fa_excl = fa_m | times: 7 -%}
+    <section class="pp-fineart mb-4 pb-4" aria-labelledby="fa-kop">
+      <h3 class="h5" id="fa-kop">Fine art</h3>
+      <p class="small mb-2">Een unieke afdruk op duur papier, gecureerd en in een beperkte oplage{% if page.fineart_oplage and page.fineart_oplage != "" %} van {{ page.fineart_oplage }}{% endif %}, genummerd en gesigneerd door de kunstenaar. Formaat, papier en passe-partout liggen vast: je kiest niets, de prijs is vast.</p>
+      <div class="pp-reken small mb-2" id="fa-reken" data-m="{{ fa_m }}"></div>
+      <div class="d-flex flex-wrap gap-2 align-items-center">
+        <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="fa-mand"
+          data-item-id="{{ page.identiteitscode }}-FINEART"
+          data-item-name="{{ page.title | escape }} · fine art"
+          data-item-price="{{ fa_excl | round: 2 }}"
+          data-item-url="{{ page.url | relative_url }}"
+          data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"
+          data-item-description="{{ page.identiteitscode }} · {{ page.creator | escape }} · genummerd en gesigneerd"
+          {% if page.fineart_oplage and page.fineart_oplage != "" %}data-item-max-quantity="{{ page.fineart_oplage }}"{% endif %}
+          data-item-taxable="true">Fine art in de mand</button>
+        <span class="small" id="fa-melding" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+{% endif %}
+
+    <section class="pp-poster" aria-labelledby="po-kop">
+      <h3 class="h5" id="po-kop">Poster</h3>
+      <p class="small mb-3">Elk kunstwerk is als poster verkrijgbaar. Je stelt hem zelf samen in drie stappen. peapickers is een beginnende fine-art printer: fouten in de afdruk worden tot een minimum beperkt, maar zijn mogelijk. Het beeld wordt nooit bijgesneden.</p>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-5" style="min-width:0">
+          <div class="btn-group mb-2 w-100" role="group" aria-label="Wat pas je aan?">
+            <button type="button" class="btn btn-sm btn-dark" id="modus-poster" aria-pressed="true">Poster</button>
+            <button type="button" class="btn btn-sm btn-outline-dark" id="modus-afbeelding" aria-pressed="false">Afbeelding</button>
+          </div>
+          <div class="pp-voorbeeld" id="pp-voorbeeld">
+            <div class="pp-vel" id="pp-vel">
+              <img src="{{ beeld }}" alt="Voorbeeld van de poster: {{ page.title | escape }} op het gekozen vel" id="pp-afb" draggable="false">
+              <span class="pp-greep" id="pp-greep" title="Sleep om de afbeelding groter of kleiner te maken" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="small text-center mt-2 mb-0" id="pp-maten" style="font-variant-numeric: tabular-nums"></p>
+        </div>
+
+        <div class="col-12 col-md-7" style="min-width:0">
+          <fieldset class="mb-3" id="stap-poster">
+            <legend class="h6">Stap 1 · Papier en grootte van je poster</legend>
+            <div class="mb-2">
+              {% for p in papieren %}
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="papier" id="papier-{{ p.id }}" value="{{ p.id }}"{% if forloop.first %} checked{% endif %}>
+                <label class="form-check-label small" for="papier-{{ p.id }}">{{ p.naam }}</label>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="mb-2"><div class="btn-group btn-group-sm" role="group" aria-label="Richting van het vel">
+              <button type="button" class="btn btn-outline-dark" id="richting-staand" aria-pressed="true">Staand</button>
+              <button type="button" class="btn btn-outline-dark" id="richting-liggend" aria-pressed="false">Liggend</button>
+            </div></div>
+            <label class="form-label small mb-0" for="vel-b">Breedte vel: <span id="vel-b-txt"></span> cm</label>
+            <input type="range" class="form-range" id="vel-b" step="1">
+            <label class="form-label small mb-0" for="vel-h">Hoogte vel: <span id="vel-h-txt"></span> cm</label>
+            <input type="range" class="form-range" id="vel-h" step="1">
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <button type="button" class="btn btn-sm btn-outline-dark" id="vel-max">Grootst (40 × 60)</button>
+              <button type="button" class="btn btn-sm btn-outline-dark" id="vel-vierkant">Vierkant</button>
+            </div>
+            <p class="small mb-0">Tip: meet de buitenmaat van je kader, of de plek op de muur, en neem die als maat van het vel. Van 21 cm tot 40 × 60 cm, per centimeter, tussen 4:6 en vierkant. Kleiner dan A4 drukken we niet.</p>
+          </fieldset>
+
+          <fieldset class="mb-3" id="stap-afbeelding" hidden>
+            <legend class="h6">Stap 2 · Grootte van de afbeelding op het vel</legend>
+            <label class="form-label small mb-0" for="pp-marge">Passe-partout (witte rand), rondom in cm</label>
+            <input type="number" class="form-control form-control-sm mb-2" id="pp-marge" min="0" step="1" inputmode="numeric" style="max-width:8rem">
+            <label class="form-label small mb-0" for="afb-b">Breedte afbeelding: <span id="afb-b-txt"></span> cm</label>
+            <input type="range" class="form-range" id="afb-b" step="1">
+            <p class="small mb-0">Of sleep de hoek van de afbeelding in het voorbeeld. De verhouding van het kunstwerk blijft altijd dezelfde. De inktprijs hangt enkel af van de grootte van de afbeelding.</p>
+          </fieldset>
+
+          <fieldset class="mb-3">
+            <legend class="h6">Stap 3 · Hoeveel stuks?</legend>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <input type="number" class="form-control form-control-sm" id="pp-aantal-stuks" min="1" max="99" value="1" inputmode="numeric" style="max-width:5rem" aria-label="Aantal posters">
+              <button type="button" class="btn btn-sm btn-outline-dark" id="pp-kopieer">Kopieer deze instellingen</button>
+              <button type="button" class="btn btn-sm btn-outline-dark" id="pp-plak" hidden>Gebruik gekopieerde instellingen</button>
+            </div>
+            <p class="small mb-0 mt-1" id="pp-kopie-melding" role="status" aria-live="polite"></p>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="pp-reken small mb-3" id="po-reken" aria-live="polite"></div>
+
+      <div class="d-flex flex-wrap gap-2 align-items-center">
+        <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="po-mand"
+          data-item-id="{{ page.identiteitscode }}-POSTER"
+          data-item-name="{{ page.title | escape }} · poster"
+          data-item-price="{{ inkt.a4 | times: 7 | round: 2 }}"
+          data-item-url="{{ page.url | relative_url }}"
+          data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"
+          data-item-description="{{ page.identiteitscode }} · {{ page.creator | escape }}"
+          data-item-taxable="true"
+          data-item-quantity="1"
+          data-item-custom1-name="Papier en vel"
+          data-item-custom1-type="dropdown"
+          data-item-custom1-options="{% for p in papieren %}{% assign pa4 = p.a4 | times: 7 | round: 2 %}{% assign pa3 = p.a3 | times: 7 | round: 2 %}{% assign pa2 = p.a2 | times: 7 | round: 2 %}{{ p.naam }} · A4-vel[+{{ pa4 }}]|{{ p.naam }} · A3-vel[+{{ pa3 }}]|{{ p.naam }} · A2-vel[+{{ pa2 }}]{% unless forloop.last %}|{% endunless %}{% endfor %}"
+          data-item-custom2-name="Inkt"
+          data-item-custom2-type="dropdown"
+          {%- assign i3 = inkt.a3 | minus: inkt.a4 | times: 7 | round: 2 -%}
+          {%- assign i2 = inkt.a2 | minus: inkt.a4 | times: 7 | round: 2 %}
+          data-item-custom2-options="Afbeelding A4 of kleiner|Afbeelding A3[+{{ i3 }}]|Afbeelding A2[+{{ i2 }}]"
+          data-item-custom3-name="Vel (cm)" data-item-custom3-type="readonly"
+          data-item-custom4-name="Afbeelding (cm)" data-item-custom4-type="readonly"
+          data-item-custom5-name="Passe-partout" data-item-custom5-type="readonly">Poster in de mand</button>
+        {% if snip == '' %}<a class="btn btn-outline-dark" href="{{ '/mand.html' | relative_url }}">Naar de mand</a>{% else %}<button type="button" class="btn btn-outline-dark snipcart-checkout">Naar de mand</button>{% endif %}
+        <span class="small" id="po-melding" role="status" aria-live="polite"></span>
+      </div>
+    </section>
   </div>
 </div>
 
 <script>
-(function () {
-  var m = {{ site.prijs-m }}, incl = {{ site.prijs-incl-btw }};
-  var excl = Math.round(incl / 1.21 * 100) / 100, btw = Math.round((incl - excl) * 100) / 100;
-  var vzw = Math.round((excl - 4 * m) * 100) / 100, afronding = Math.round((7 * m - excl) * 100) / 100;
-  var e = ppMand.euro;
-  var rijen = [
-    ['1', 'Materiaal: papiervel en inkt', e(m)],
-    ['3', 'Kunstenaar: bruto auteursrecht (waarvan 15% roerende voorheffing)', e(3 * m)],
-    ['3', 'vzw peapickers' + (afronding > 0 ? ' (min ' + e(afronding) + ' afronding)' : ''), e(vzw)],
-    ['', 'Btw 21%', e(btw)]
-  ];
-  document.getElementById('prijs').textContent = e(incl);
-  document.getElementById('opbouw').innerHTML = rijen.map(function (r) {
-    return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td class="text-end">' + r[2] + '</td></tr>';
-  }).join('') + '<tr><th></th><th>Prijs incl. btw</th><th class="text-end">' + e(incl) + '</th></tr>';
-  var vb = document.getElementById('vel-b'), vh = document.getElementById('vel-h');
-  function vel() { document.getElementById('vel-b-txt').textContent = vb.value; document.getElementById('vel-h-txt').textContent = vh.value; return 'vel ' + vb.value + ' × ' + vh.value + ' cm'; }
-  vb.addEventListener('input', vel); vh.addEventListener('input', vel);
-  document.getElementById('vel-vierkant').addEventListener('click', function () { vh.value = vb.value; vel(); });
-  document.getElementById('in-mand').addEventListener('click', function () {
-    ppMand.voegToe({ code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, formaat: vel(), prijs: incl });
-    document.getElementById('mand-melding').textContent = 'De poster ligt in de mand.';
-  });
-})();
+window.ppPrijzen = {{ site.data.config-prijzen | jsonify }};
+window.ppWerk = { code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, snipcart: {% if snip != '' %}true{% else %}false{% endif %} };
 </script>
+<script src="{{ '/assets/js/poster-config.js' | relative_url }}"></script>
 {% endif %}
