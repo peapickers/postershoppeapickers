@@ -1,0 +1,48 @@
+{% comment %} Verzendpagina (2026-11-04): alles uit _data/config-verzending.csv en _data/config-postcodes.csv. VOORBEELDTARIEVEN, nog niet vastgelegd. {% endcomment %}
+{%- assign fiets = site.data.config-verzending | where: "id", "fiets" | first -%}
+{%- assign basis = fiets.basis | plus: 0 -%}
+{%- assign perkm = fiets.per_km | plus: 0 -%}
+<p class="small">Voorbeeldtarieven: er wordt nog niets verkocht. Alle bedragen zijn incl. 21% btw. De verzending zit niet in de prijs van de poster en komt erbij in de mand.</p>
+
+<h2 class="h4 mt-4">Verzendwijzen</h2>
+<div class="table-responsive">
+<table class="table table-sm align-top" style="font-variant-numeric: tabular-nums">
+  <thead><tr><th scope="col">Wijze</th><th scope="col">Berekening (excl. btw)</th><th scope="col">Uitleg</th></tr></thead>
+  <tbody>
+  {%- for m in site.data.config-verzending %}
+    <tr>
+      <th scope="row">{{ m.naam }}</th>
+      <td class="text-nowrap">{% if m.basis == nil or m.basis == "" %}nog te bepalen{% elsif m.per_km != "0" and m.per_km != nil %}{% include helpers/euro.html bedrag=m.basis %} + {% include helpers/euro.html bedrag=m.per_km %} per km{% else %}{% include helpers/euro.html bedrag=m.basis %}{% endif %}{% if m.per_extra_poster != "0" and m.per_extra_poster != nil and m.per_extra_poster != "" %} + {% include helpers/euro.html bedrag=m.per_extra_poster %} per extra poster{% endif %}</td>
+      <td>{{ m.uitleg }}</td>
+    </tr>
+  {%- endfor %}
+  </tbody>
+</table>
+</div>
+
+<h2 class="h4 mt-4">Fietslevering per postcode</h2>
+<p>De fietskost stijgt lineair met de afstand: {% include helpers/euro.html bedrag=fiets.basis %} + {% include helpers/euro.html bedrag=fiets.per_km %} per km, plus 21% btw. De afstand is een schatting van de fietsafstand vanaf Gent-centrum. Verder dan {{ fiets.max_km }} km leveren we met bpost.</p>
+<div class="table-responsive">
+<table class="table table-sm" style="font-variant-numeric: tabular-nums">
+  <thead><tr><th scope="col">Postcode</th><th scope="col">Gemeente</th><th scope="col" class="text-end">km</th><th scope="col" class="text-end">Apart</th><th scope="col" class="text-end">Fietsronde met 2</th><th scope="col" class="text-end">met 3</th></tr></thead>
+  <tbody>
+  {%- for p in site.data.config-postcodes %}
+    {%- assign km = p.km | plus: 0 -%}
+    {%- assign excl = perkm | times: km | plus: basis -%}
+    {%- assign incl = excl | times: 1.21 | round: 2 -%}
+    {%- assign d2 = incl | divided_by: 2.0 | round: 2 -%}
+    {%- assign d3 = incl | divided_by: 3.0 | round: 2 -%}
+    <tr><td>{{ p.postcode }}</td><td>{{ p.gemeente }}</td><td class="text-end">{{ p.km }}</td><td class="text-end">{% include helpers/euro.html bedrag=incl %}</td><td class="text-end">{% include helpers/euro.html bedrag=d2 %}</td><td class="text-end">{% include helpers/euro.html bedrag=d3 %}</td></tr>
+  {%- endfor %}
+  </tbody>
+</table>
+</div>
+
+<h2 class="h4 mt-4">Hoe werkt de gebundelde fietsronde?</h2>
+<ol>
+  <li>Je kiest <strong>Fietsronde gebundeld</strong> in de mand en betaalt de volle fietskost, net als bij een aparte levering.</li>
+  <li>Op de vaste rondedag (nog te bepalen) brengt peapickers alle bestellingen van die ronde in één tocht.</li>
+  <li>Na de ronde delen we jouw fietskost door het aantal klanten van die ronde en storten we het verschil terug op je rekening.</li>
+  <li>Elke terugstorting staat in de <a href="{{ '/register.html' | relative_url }}">Public Ledger</a>.</li>
+</ol>
+<p class="small">Geen enkele webshopdienst verdeelt een gedeelde levering vanzelf. Daarom betaal je eerst de volle kost en krijg je achteraf terug, zodat je nooit bijbetaalt.</p>

@@ -1,0 +1,5 @@
+id,naam,basis,per_km,per_extra_poster,max_km,uitleg
+afhalen,Afhalen in Gent,0,0,0,,"Op afspraak, plaats nog te bepalen. Geen verzendkost."
+fiets,Fietslevering apart,1.00,0.25,0,16,"peapickers brengt je bestelling apart met de fiets, op een dag die we samen afspreken. Basisbedrag plus een vast bedrag per km fietsafstand vanaf Gent-centrum."
+fietsronde,Fietsronde gebundeld,1.00,0.25,0,16,"Je bestelling gaat mee met de vaste fietsronde, samen met andere klanten. Je betaalt nu de volle fietskost. Na de ronde delen we jouw fietskost door het aantal klanten van die ronde en storten we je het verschil terug. Dat staat ook in de Public Ledger."
+bpost,bpost,,,,,"In een stevige koker. Het tarief ligt nog niet vast en zit nog niet in het totaal."

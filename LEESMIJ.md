@@ -27,7 +27,7 @@ Overeenkomst voor verkoop per archiefstuk (concept voor jurist): https://claude.
 ## Onzeker (O)
 
 - Of Belgische bankapps de gestructureerde mededeling herkennen in het vrije veld van de EPC-QR, of ze in het gestructureerde veld moet. Te testen met een echte rekening na de oprichting.
-- Het bpost-tarief is nog niet bepaald en zit niet in het totaal.
+- Verzending (`/verzending.html`): tarieven in `_data/config-verzending.csv` (excl. btw: basis, per km, per extra poster), fietsafstanden per postcode in `_data/config-postcodes.csv` (schatting vanaf Gent-centrum, na te meten). Afhalen, fietslevering apart, gebundelde fietsronde (volle kost vooraf, verschil terug na de ronde, in de Public Ledger) en bpost. Het bpost-tarief is nog niet bepaald en zit niet in het totaal.
 - De M-waarden zijn het rekenvoorbeeld uit plan v4 (A2 € 6,00, gehalveerd per maat), geen metingen.
 - Algemene voorwaarden, herroeping en privacyverklaring zijn nog niet opgesteld.
 
