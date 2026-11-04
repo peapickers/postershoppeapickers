@@ -67,7 +67,7 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 - [ ] Je werk en al je rechten blijven van jou. Je geeft per werk een niet-exclusieve licentie.
 - [ ] Fine-art en poster: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs, als bruto auteursrecht. De prijs is altijd 7 × M, de materiaalkost (papier en inkt, met de btw die de vzw erop betaalt), afgerond op € 0,10. De vzw is btw-vrijgesteld, dus er gaat niets naar btw op de verkoop.
 - [ ] Bij fine-art krijg je je auteursrecht meteen bij het drukken, nog voor de verkoop.
-- [ ] peapickers houdt 15 % roerende voorheffing in op je bruto bedrag, stort die door en betaalt je netto per kwartaal. Je krijgt elk jaar een fiche 281.45. Een tweede bestuurder ziet elke kwartaaluitbetaling. Zie [Hoe laat is het?]({{ '/about.html' | relative_url }}).
+- [ ] peapickers houdt 15 % roerende voorheffing in op je bruto bedrag, stort die door en betaalt je netto per kwartaal. Je krijgt elk jaar een fiche 281.45. Een tweede bestuurder ziet elke kwartaaluitbetaling. Zie [Prijsopbouw]({{ '/about.html' | relative_url }}).
 - [ ] Elke verkoop staat met de werkcode in de [Public Ledger]({{ '/register.html' | relative_url }}). Uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.
 - [ ] Er is geen verkoopgarantie.
 - [ ] Je kunt altijd stoppen, zonder reden. Binnen 7 dagen staat je werk niet meer in de webshop.
