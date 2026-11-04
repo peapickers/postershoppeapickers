@@ -82,7 +82,7 @@ Elk werk is als poster verkrijgbaar. Per werk beslis je samen met peapickers of 
 - [ ] **Fine-art.** Een unieke print, op duur papier of op een bijzondere manier gereproduceerd, in een selectieve, gecureerde oplage, genummerd en gesigneerd door jou. De klant kiest geen formaat en betaalt een vaste prijs van 7 × M; M verschilt per werk. Fine-art wordt alleen door peapickers voorgesteld, gecureerd met het grotere team en eventueel uitbesteed aan de beste reproductievorm.
 - [ ] **Poster.** De klant kiest het papier (drie Epson-papieren), de maat van het vel (van 21 × 29,7 tot 40 × 60 cm) en de maat van de afbeelding met de witruimte errond. Je beeld wordt nooit bijgesneden. Elke poster wordt pas gedrukt als hij besteld en betaald is. De posterlicentie loopt 1 jaar en is telkens verlengbaar; zolang ze loopt, is het aantal niet beperkt. Posters worden niet genummerd.
 - [ ] Er zijn geen kaders, latten of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
-- [ ] Van elke kunstenaar staan er ten hoogste 3 tot 5 werken tegelijk in de webshop. Zo is het fair voor wie één werk heeft tegenover wie een archief van dertig jaar heeft.
+- [ ] We starten met 3 auteurs en 15 tot 30 werken in de shop. Doel: 40 werken in 2028 en 60 in 2029, van 6 tot 10 auteurs.
 - [ ] Waarom zo weinig fine-art? Om de kwaliteit hoog te houden, en omdat peapickers niet genoeg geld heeft om groter te beginnen. Is een oplage verkocht, dan kan er een tweede komen, met een nieuwe overeenkomst. Grotere oplages volgen pas als de vzw genoeg geld heeft opgebouwd om meer papier te riskeren.
 
 ### 7. Aanmelden
