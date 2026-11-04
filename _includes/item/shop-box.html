@@ -1,15 +1,18 @@
 {% comment %}
-Bestelvak per kunstwerk (Jonas, 2026-11-04).
-- Fine art (enkel als de CSV-kolom fineart_m gevuld is): vaste prijs 7 × M, geen keuzes, genummerde en gesigneerde oplage (fineart_oplage).
-- Poster (elk kunstwerk): de klant kiest papier en vel, dan de afbeelding op het vel (passe-partout), dan het aantal.
-  M = papier (volgens velmaat) + inkt (volgens afbeeldingsmaat), prijzen in _data/config-prijzen.csv.
-  Prijs = 7 × M + 21% btw. Verdeling 1M materiaal, 3M bruto auteursrecht, 3M vzw.
+Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
+- Fine-art (enkel als de CSV-kolom fineart_m gevuld is): M per werk, incl. btw op materiaal. Vaste prijs 7 × M, afgerond op € 0,10. Genummerde en gesigneerde oplage (fineart_oplage).
+- Poster (elk kunstwerk): papier en vel, dan de afbeelding op het vel (passe-partout = witruimte), dan het aantal.
+  M = (papier volgens het vel + inkt volgens de afbeelding) × (1 + site.btw-materiaal). Inkoopprijzen in _data/config-prijzen.csv.
+  Prijs = 7 × M, afgerond op site.prijs-afronding. Geen btw op de verkoop. 1M materiaal, 3M auteur, rest vzw.
 - Winkelmand: Snipcart zodra site.snipcart-api-key gevuld is, anders de voorbeeldmand in de browser.
+  Snipcart controleert de prijs via de keuzelijst "Uitvoering": elke combinatie papier × vel × afbeelding met haar eigen prijs.
 {% endcomment %}
 {% if page.identiteitscode %}
 {%- assign papieren = site.data.config-prijzen | where: "soort", "papier" -%}
 {%- assign inkt = site.data.config-prijzen | where: "soort", "inkt" | first -%}
 {%- assign snip = site.snipcart-api-key | default: "" -%}
+{%- assign btwf = site.btw-materiaal | plus: 1 -%}
+{%- assign klassen = "klein,middel,groot" | split: "," -%}
 {%- capture beeld -%}{{ page.image_small | default: page.object_location | relative_url }}{%- endcapture -%}
 <div class="card my-4 text-start" id="shop-box">
   <div class="card-header">Bestellen</div>
@@ -18,21 +21,21 @@ Bestelvak per kunstwerk (Jonas, 2026-11-04).
 
 {% if page.fineart_m and page.fineart_m != "" %}
     {%- assign fa_m = page.fineart_m | plus: 0 -%}
-    {%- assign fa_excl = fa_m | times: 7 -%}
+    {%- assign fa_prijs = fa_m | times: 70 | plus: 0.000001 | round | divided_by: 10.0 -%}
     <section class="pp-fineart mb-4 pb-4" aria-labelledby="fa-kop">
-      <h3 class="h5" id="fa-kop">Fine art</h3>
-      <p class="small mb-2">Een unieke afdruk op duur papier, gecureerd en in een beperkte oplage{% if page.fineart_oplage and page.fineart_oplage != "" %} van {{ page.fineart_oplage }}{% endif %}, genummerd en gesigneerd door de kunstenaar. Formaat, papier en passe-partout liggen vast: je kiest niets, de prijs is vast.</p>
+      <h3 class="h5" id="fa-kop">Fine-art</h3>
+      <p class="small mb-2">Een unieke print, op duur papier of op een bijzondere manier gereproduceerd, in een gecureerde oplage{% if page.fineart_oplage and page.fineart_oplage != "" %} van {{ page.fineart_oplage }}{% endif %}, genummerd en gesigneerd door de auteur. Je kiest geen formaat: het is een vaste print met een vaste prijs van 7 × M. De auteur kreeg het auteursrecht al bij het drukken.</p>
       <div class="pp-reken small mb-2" id="fa-reken" data-m="{{ fa_m }}"></div>
       <div class="d-flex flex-wrap gap-2 align-items-center">
         <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="fa-mand"
           data-item-id="{{ page.identiteitscode }}-FINEART"
-          data-item-name="{{ page.title | escape }} · fine art"
-          data-item-price="{{ fa_excl | round: 2 }}"
+          data-item-name="{{ page.title | escape }} · fine-art"
+          data-item-price="{{ fa_prijs }}"
           data-item-url="{{ page.url | relative_url }}"
           data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"
           data-item-description="{{ page.identiteitscode }} · {{ page.creator | escape }} · genummerd en gesigneerd"
           {% if page.fineart_oplage and page.fineart_oplage != "" %}data-item-max-quantity="{{ page.fineart_oplage }}"{% endif %}
-          data-item-taxable="true">Fine art in de mand</button>
+          data-item-taxable="false">Fine-art in de mand</button>
         <span class="small" id="fa-melding" role="status" aria-live="polite"></span>
       </div>
     </section>
@@ -40,7 +43,7 @@ Bestelvak per kunstwerk (Jonas, 2026-11-04).
 
     <section class="pp-poster" aria-labelledby="po-kop">
       <h3 class="h5" id="po-kop">Poster</h3>
-      <p class="small mb-3">Elk kunstwerk is als poster verkrijgbaar. Je stelt hem zelf samen in drie stappen. peapickers is een beginnende fine-art printer: fouten in de afdruk worden tot een minimum beperkt, maar zijn mogelijk. Het beeld wordt nooit bijgesneden.</p>
+      <p class="small mb-3">Elk werk in de shop is als poster verkrijgbaar, gedrukt na je bestelling. Je stelt hem samen in drie stappen en ziet altijd de berekening van M, de prijs en hoeveel naar de auteur gaat. Het beeld wordt nooit bijgesneden. Met de knoppen Poster en Afbeelding wissel je tussen het vel en de afbeelding.</p>
 
       <div class="row g-4">
         <div class="col-12 col-md-5" style="min-width:0">
@@ -80,16 +83,16 @@ Bestelvak per kunstwerk (Jonas, 2026-11-04).
               <button type="button" class="btn btn-sm btn-outline-dark" id="vel-max">Grootst (40 × 60)</button>
               <button type="button" class="btn btn-sm btn-outline-dark" id="vel-vierkant">Vierkant</button>
             </div>
-            <p class="small mb-0">Tip: meet de buitenmaat van je kader, of de plek op de muur, en neem die als maat van het vel. Van 21 cm tot 40 × 60 cm, per centimeter, tussen 4:6 en vierkant. Kleiner dan A4 drukken we niet.</p>
+            <p class="small mb-0">Van 21 × 29,7 tot 40 × 60 cm, per centimeter, in een verhouding van 4:6 tot vierkant. Het papier komt van een rol van 40 cm breed, dus 40 × 60 cm is het maximum. Tip: meet je kader of de plek op de muur.</p>
           </fieldset>
 
           <fieldset class="mb-3" id="stap-afbeelding" hidden>
             <legend class="h6">Stap 2 · Grootte van de afbeelding op het vel</legend>
-            <label class="form-label small mb-0" for="pp-marge">Passe-partout (witte rand), rondom in cm</label>
+            <label class="form-label small mb-0" for="pp-marge">Passe-partout: de witruimte op het vel rond de afbeelding, rondom in cm</label>
             <input type="number" class="form-control form-control-sm mb-2" id="pp-marge" min="0" step="1" inputmode="numeric" style="max-width:8rem">
             <label class="form-label small mb-0" for="afb-b">Breedte afbeelding: <span id="afb-b-txt"></span> cm</label>
             <input type="range" class="form-range" id="afb-b" step="1">
-            <p class="small mb-0">Of sleep de hoek van de afbeelding in het voorbeeld. De verhouding van het kunstwerk blijft altijd dezelfde. De inktprijs hangt enkel af van de grootte van de afbeelding.</p>
+            <p class="small mb-0">Of sleep de hoek van de afbeelding in het voorbeeld. De verhouding van het kunstwerk blijft altijd dezelfde. De inktkost hangt enkel af van de grootte van de afbeelding: een kleinere afbeelding is iets goedkoper.</p>
           </fieldset>
 
           <fieldset class="mb-3">
@@ -110,23 +113,22 @@ Bestelvak per kunstwerk (Jonas, 2026-11-04).
         <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="po-mand"
           data-item-id="{{ page.identiteitscode }}-POSTER"
           data-item-name="{{ page.title | escape }} · poster"
-          data-item-price="{{ inkt.a4 | times: 7 | round: 2 }}"
+          {%- comment -%} Basisprijs = goedkoopste uitvoering; elke optie draagt het verschil. {%- endcomment -%}
+          {%- assign p0 = papieren | first -%}
+          {%- assign basis = p0.klein | plus: inkt.klein | times: btwf | times: 70 | plus: 0.000001 | round | divided_by: 10.0 -%}
+          {%- capture opties -%}{% for p in papieren %}{% for kv in klassen %}{% for ka in klassen %}{% assign iv = forloop.parentloop.index0 %}{% if forloop.index0 <= iv %}{% assign pv = p[kv] | plus: 0 %}{% assign pa = inkt[ka] | plus: 0 %}{% assign pr = pv | plus: pa | times: btwf | times: 70 | plus: 0.000001 | round | divided_by: 10.0 %}{% assign dif = pr | minus: basis | round: 2 %}{{ p.naam }} · vel {{ kv }} · afbeelding {{ ka }}{% if dif > 0 %}[+{{ dif }}]{% endif %}|{% endif %}{% endfor %}{% endfor %}{% endfor %}{%- endcapture -%}
+          data-item-price="{{ basis }}"
           data-item-url="{{ page.url | relative_url }}"
           data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"
           data-item-description="{{ page.identiteitscode }} · {{ page.creator | escape }}"
-          data-item-taxable="true"
+          data-item-taxable="false"
           data-item-quantity="1"
-          data-item-custom1-name="Papier en vel"
+          data-item-custom1-name="Uitvoering"
           data-item-custom1-type="dropdown"
-          data-item-custom1-options="{% for p in papieren %}{% assign pa4 = p.a4 | times: 7 | round: 2 %}{% assign pa3 = p.a3 | times: 7 | round: 2 %}{% assign pa2 = p.a2 | times: 7 | round: 2 %}{{ p.naam }} · A4-vel[+{{ pa4 }}]|{{ p.naam }} · A3-vel[+{{ pa3 }}]|{{ p.naam }} · A2-vel[+{{ pa2 }}]{% unless forloop.last %}|{% endunless %}{% endfor %}"
-          data-item-custom2-name="Inkt"
-          data-item-custom2-type="dropdown"
-          {%- assign i3 = inkt.a3 | minus: inkt.a4 | times: 7 | round: 2 -%}
-          {%- assign i2 = inkt.a2 | minus: inkt.a4 | times: 7 | round: 2 %}
-          data-item-custom2-options="Afbeelding A4 of kleiner|Afbeelding A3[+{{ i3 }}]|Afbeelding A2[+{{ i2 }}]"
-          data-item-custom3-name="Vel (cm)" data-item-custom3-type="readonly"
-          data-item-custom4-name="Afbeelding (cm)" data-item-custom4-type="readonly"
-          data-item-custom5-name="Passe-partout" data-item-custom5-type="readonly">Poster in de mand</button>
+          data-item-custom1-options="{{ opties | split: '|' | join: '|' }}"
+          data-item-custom2-name="Vel (cm)" data-item-custom2-type="readonly"
+          data-item-custom3-name="Afbeelding (cm)" data-item-custom3-type="readonly"
+          data-item-custom4-name="Passe-partout" data-item-custom4-type="readonly">Poster in de mand</button>
         {% if snip == '' %}<a class="btn btn-outline-dark" href="{{ '/mand.html' | relative_url }}">Naar de mand</a>{% else %}<button type="button" class="btn btn-outline-dark snipcart-checkout">Naar de mand</button>{% endif %}
         <span class="small" id="po-melding" role="status" aria-live="polite"></span>
       </div>
@@ -136,6 +138,7 @@ Bestelvak per kunstwerk (Jonas, 2026-11-04).
 
 <script>
 window.ppPrijzen = {{ site.data.config-prijzen | jsonify }};
+window.ppRegels = { btwMateriaal: {{ site.btw-materiaal | default: 0.21 }}, afronding: {{ site.prijs-afronding | default: 0.1 }}, voorheffing: {{ site.roerende-voorheffing | default: 0.15 }}, btwTekst: {{ site.btw-vermelding | jsonify }} };
 window.ppWerk = { code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, snipcart: {% if snip != '' %}true{% else %}false{% endif %} };
 </script>
 <script src="{{ '/assets/js/poster-config.js' | relative_url }}"></script>

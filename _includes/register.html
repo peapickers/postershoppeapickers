@@ -1,4 +1,10 @@
 {% comment %} Publiek register: rijen uit _data/register.csv. Bovenaan de totalen over alle rijen, daaronder een filterbare tabel. {% endcomment %}
+<section aria-labelledby="teller-kop" class="my-3 pp-teller">
+  <h2 class="h6 mb-1" id="teller-kop">Laatste kwartaaluitbetaling aan auteurs</h2>
+  <p class="h3 mb-0" id="teller-bedrag" style="font-variant-numeric: tabular-nums"></p>
+  <p class="small mb-0" id="teller-uitleg"></p>
+</section>
+
 <section aria-labelledby="stand" class="my-3">
   <h2 class="h4" id="stand">Stand van de postershop</h2>
   <div class="row g-2" id="register-kaarten" style="font-variant-numeric: tabular-nums"></div>
@@ -20,7 +26,7 @@
 </form>
 <p class="small" id="register-telling" role="status" aria-live="polite"></p>
 
-<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen: 1 materiaal, 3 maker, 2 financier, 1 peapickers. Auteursrechten worden per kwartaal uitbetaald; de roerende voorheffing van 15% wordt ingehouden en aangegeven.</p>
+<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen van 7 × M: 1 materiaal, 3 auteur, 3 vzw (± afronding). Auteursrechten op posters worden per kwartaal uitbetaald, samengeteld over alle auteurs; bij fine-art bij de druk. De roerende voorheffing van 15 % wordt ingehouden en doorgestort. Alle bedragen hier zijn fictief.</p>
 <script>
 (function () {
   var rijen = {{ site.data.register | jsonify }};
@@ -33,18 +39,26 @@
   // Kaarten: totalen over het hele register
   var auteurNetto = som(rijen, 'betaald', ['uitbetaling']), voorheffing = som(rijen, 'betaald', ['voorheffing']), auteurBetaald = auteurNetto + voorheffing;
   var auteurVerdiend = som(rijen, 'maker');
-  var materiaal = som(rijen, 'betaald', ['investering', 'materiaalkost']);
-  var pp = som(rijen, 'peapickers'), vast = som(rijen, 'betaald', ['vaste kosten']);
+  var materiaal = som(rijen, 'betaald', ['materiaalkost', 'investering']);
+  var pp = som(rijen, 'peapickers'), vast = som(rijen, 'betaald', ['vaste kosten', 'betaalkosten', 'oprichting']);
   var schuld = som(rijen, 'schuld'), terug = som(rijen, 'betaald', ['terugbetaling']);
   var verkocht = rijen.reduce(function (t, r) { return t + (r.soort === 'bestelling' ? +r.aantal : r.soort === 'herroeping' ? -r.aantal : 0); }, 0);
   var kaarten = [
-    ['Op de rekening', e(saldo), 'Saldo na de laatste handeling'],
-    ['Uitgekeerd aan makers', e(auteurNetto), 'Netto auteursrecht. <a href="#alle-handelingen" data-filter="voorheffing">Roerende voorheffing: ' + e(voorheffing) + '</a>, ingehouden en aangegeven. Nog uit te keren: ' + e(auteurVerdiend - auteurBetaald)],
-    ['Materiaal en investeringen', e(materiaal), 'Papier, inkt en verpakking'],
-    ['Naar peapickers', e(pp), 'Eén deel van elke verkoop. Vaste kosten betaald: ' + e(vast)],
-    ['Schulden', e(schuld), 'Open lening. Al terugbetaald: ' + e(terug)],
-    ['Posters verkocht', String(verkocht), 'Na herroepingen']
+    ['Op de rekening', e(saldo), 'Saldo na de laatste handeling. Geen reserve: de oprichter stort elke maand het tekort.'],
+    ['Uitbetaald aan auteurs', e(auteurNetto), 'Netto auteursrecht. <a href="#alle-handelingen" data-filter="voorheffing">Roerende voorheffing: ' + e(voorheffing) + '</a>, ingehouden en doorgestort. Nog uit te betalen: ' + e(Math.max(0, Math.round((auteurVerdiend - auteurBetaald) * 100) / 100))],
+    ['Materiaal en verpakking', e(materiaal), 'Papier, inkt, verpakking en kaartjes'],
+    ['Deel van de vzw', e(pp), '3 van de 7 delen van elke verkoop (± afronding). Vaste kosten en betaalkosten betaald: ' + e(vast)],
+    ['Lening van de oprichter', e(schuld - terug), 'Renteloos en achtergesteld. Al terugbetaald: ' + e(terug)],
+    ['Verkocht', String(verkocht), 'Posters en fine-art, na herroepingen']
   ];
+  // Teller: wat in het laatste kwartaal met een uitbetaling naar de auteurs ging (bruto = netto + voorheffing)
+  var uit = rijen.filter(function (r) { return r.soort === 'uitbetaling' || r.soort === 'voorheffing'; });
+  if (uit.length) {
+    var laatste = uit[uit.length - 1].datum, inKw = uit.filter(function (r) { return r.datum === laatste; });
+    var bruto = som(inKw, 'betaald'), netto = som(inKw, 'betaald', ['uitbetaling']);
+    document.getElementById('teller-bedrag').textContent = e(bruto) + ' bruto';
+    document.getElementById('teller-uitleg').textContent = 'Op ' + laatste + ': ' + e(netto) + ' netto naar de auteurs en ' + e(bruto - netto) + ' roerende voorheffing. Samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.';
+  }
   document.getElementById('register-kaarten').innerHTML = kaarten.map(function (k) {
     return '<div class="col-6 col-lg-4"><div class="card h-100"><div class="card-body p-2"><div class="small">' + k[0] + '</div><div class="h4 mb-1">' + k[1] + '</div><div class="small">' + k[2] + '</div></div></div></div>';
   }).join('');

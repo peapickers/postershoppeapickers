@@ -25,11 +25,25 @@ printshop-url: https://peapickers.github.io/printshoppeapickers/
 tagline: uit de archieven van onafhankelijke kunstenaars
 header-title: peapickers postershop
 # Winkelmand: publieke API-sleutel van Snipcart (testsleutel tot de vzw is opgericht).
-# Leeg = voorbeeldmand in de browser, er wordt niets verkocht. Prijzen: _data/config-prijzen.csv
+# Leeg = voorbeeldmand in de browser, er wordt niets verkocht.
 snipcart-api-key: ""
+# Prijsregels (ondernemingsplan v3, 4-11-2026). Inkoopprijzen excl. btw: _data/config-prijzen.csv
+# M = (papier + inkt) x (1 + btw-materiaal); prijs = 7 x M, afgerond op prijs-afronding. Geen btw op de verkoop.
+btw-materiaal: 0.21
+prijs-afronding: 0.10
+roerende-voorheffing: 0.15
+btw-vermelding: "btw-vrijgesteld (bijzondere vrijstellingsregeling kleine ondernemingen)"
+# Kosten die de vzw uit haar deel betaalt (aannames A2 en A11 van het ondernemingsplan v3)
+verpakking-poster: 0.50
+verpakking-fineart: 1.50
+betaalkost-schatting: 0.60
+# Bestelminimum in de mand, zonder leverkost (niet bij de gedeelde leverronde). Leverregels: _data/config-verzending.csv
+bestelminimum: 20
+# Strook bovenaan elke pagina zolang er niets verkocht wordt
+voorbeeld-strook: "Voorbeeldsite. vzw peapickers is in oprichting (rond januari 2027) en verkoopt pas vanaf het voorjaar van 2027. Alle kunstwerken zijn fictieve placeholders."
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "Posters van onafhankelijke kunstenaars: makers zonder professioneel statuut of kunstenaarsattest. Elke poster is een kunstwerk met een vaste code, volledige metadata en een open prijs."
+description: "Webshop van vzw peapickers in Gent: posters op maat en fine-art prints van onafhankelijke kunstenaars, met een prijs die tot op de cent ontleed is."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
 keywords: posters; kunstwerken; onafhankelijke kunstenaars; Gent
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name

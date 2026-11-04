@@ -1,0 +1,4 @@
+id,naam,kost,gebied,minimum,uitleg
+leverronde,Gedeelde leverronde in Gent,0,gent,nee,"Gratis voor Gent en deelgemeenten. De ronde vertrekt bij 5 aanmeldingen of na hoogstens 14 dagen. Hiermee mag je onder het bestelminimum bestellen."
+gent,Levering in Gent,3.50,gent,ja,"Vaste leverkost voor Gent en deelgemeenten, zonder op de ronde te wachten. Geen gratis verzending."
+bpost,bpost buiten Gent,,buiten,ja,"Aan kostprijs. Het tarief ligt nog niet vast en zit nog niet in het totaal."

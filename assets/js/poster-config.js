@@ -1,59 +1,70 @@
-/* peapickers postershop: posterconfigurator en transparante prijsberekening (2026-11-04).
-   M = papier (volgens de maat van het vel) + inkt (volgens de maat van de afbeelding).
-   Prijs = 7 × M + 21% btw; 1M materiaal, 3M bruto auteursrecht, 3M vzw peapickers.
-   Prijsklassen: A4 = tot 21 × 30 cm, A3 = tot 30 × 42 cm, A2 = tot 42 × 60 cm (staand of liggend). */
+/* peapickers postershop: posterconfigurator en transparante prijs (ondernemingsplan v3, 4-11-2026).
+   M = (papier volgens het vel + inkt volgens de afbeelding) × 1,21: de btw die de vzw zelf op het materiaal betaalt.
+   Prijs = 7 × M, afgerond op € 0,10. Geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen).
+   Verdeling: 1M materiaal, 3M auteur (bruto), de rest naar de vzw (3M ± afronding).
+   Groottes: klein tot 21 × 29,7 cm, middel tot 29,7 × 42 cm, groot tot 40 × 60 cm (staand of liggend). */
 (function () {
   'use strict';
-  var P = window.ppPrijzen || [], W = window.ppWerk || {};
-  var BTW = 0.21, RV = 0.15;
+  var P = window.ppPrijzen || [], W = window.ppWerk || {}, R = window.ppRegels || {};
+  var BTW_MAT = R.btwMateriaal != null ? R.btwMateriaal : 0.21, AFR = R.afronding || 0.10, RV = R.voorheffing != null ? R.voorheffing : 0.15;
   var VEL_KORT_MIN = 21, VEL_KORT_MAX = 40, VEL_LANG_MAX = 60, VERHOUDING_MAX = 1.5, AFB_MIN = 5;
-  var KLASSEN = [['A4', 21, 30], ['A3', 30, 42], ['A2', 42, 60]];
+  var KLASSEN = [['klein', 21, 29.7], ['middel', 29.7, 42], ['groot', 40, 60]];
   var KOPIE = 'pp-poster-instellingen-v1';
 
   function $(id) { return document.getElementById(id); }
   function r2(x) { return Math.round(x * 100 + 1e-9) / 100; }
+  function afrond(x) { return Math.round(x / AFR + 1e-6) * AFR; }
   function euro(x) { return '€ ' + r2(x).toFixed(2).replace('.', ','); }
   function getal(x) { return r2(x).toFixed(2).replace('.', ','); }
+  function dec(x, n) { return (Math.round(x * Math.pow(10, n)) / Math.pow(10, n)).toString().replace('.', ','); }
   function cm(x) { return (Math.round(x * 10) / 10).toString().replace('.', ','); }
   function klasse(b, h) {
     var k = Math.min(b, h), l = Math.max(b, h);
     for (var i = 0; i < KLASSEN.length; i++) if (k <= KLASSEN[i][1] + 1e-6 && l <= KLASSEN[i][2] + 1e-6) return KLASSEN[i][0];
-    return 'A2';
+    return 'groot';
   }
+  function klasseNaam(k) { return k === 'klein' ? 'klein (tot 21 × 29,7 cm)' : k === 'middel' ? 'middel (tot 29,7 × 42 cm)' : 'groot (tot 40 × 60 cm)'; }
   function rij(soort, id) { return P.filter(function (p) { return p.soort === soort && (!id || p.id === id); })[0]; }
-  function prijs(r, k) { return parseFloat(r[k.toLowerCase()]); }
+  function prijs(r, k) { return parseFloat(r[k]); }
 
-  // Verdeling van een prijs excl. btw (7 × M) in de 7 delen, met btw erbovenop.
-  function verdeling(m, aantal) {
-    var excl = r2(7 * m), btw = r2(excl * BTW), auteur = r2(3 * m), rv = r2(auteur * RV);
-    return { m: m, excl: excl, btw: btw, incl: r2(excl + btw), auteur: auteur, rv: rv, netto: r2(auteur - rv), vzw: r2(3 * m), aantal: aantal || 1 };
+  // Verdeling van één stuk. mRuw = M onafgerond (incl. btw op materiaal).
+  function verdeling(mRuw, aantal) {
+    var totaal = r2(afrond(7 * mRuw)), mat = r2(mRuw), auteur = r2(3 * mat), rv = r2(auteur * RV);
+    return { mRuw: mRuw, m: mat, totaal: totaal, auteur: auteur, rv: rv, netto: r2(auteur - rv), vzw: r2(totaal - mat - auteur), aantal: aantal || 1 };
+  }
+  function strook(v) {
+    var d = function (b) { return (b / v.totaal * 100).toFixed(2) + '%'; };
+    return '<div class="pp-prijsstrook" role="img" aria-label="Van ' + euro(v.totaal) + ' gaat ' + euro(v.auteur) + ' naar de auteur">' +
+      '<span class="pp-ps-mat" style="width:' + d(v.m) + '">materiaal</span>' +
+      '<span class="pp-ps-aut" style="width:' + d(v.auteur) + '">auteur ' + euro(v.auteur) + '</span>' +
+      '<span class="pp-ps-vzw" style="width:' + d(v.vzw) + '">vzw</span></div>' +
+      '<p class="mb-2"><strong>Van deze ' + euro(v.totaal) + ' gaat ' + euro(v.auteur) + ' naar de auteur.</strong></p>';
   }
   function tabel(v, formule) {
     var n = v.aantal, x = function (b) { return euro(b * n); };
     var kop = n > 1 ? '<th class="text-end">Per stuk</th><th class="text-end">× ' + n + '</th>' : '<th class="text-end">Bedrag</th>';
     var cel = function (b) { return '<td class="text-end">' + euro(b) + '</td>' + (n > 1 ? '<td class="text-end">' + x(b) + '</td>' : ''); };
-    return formule +
+    return formule + strook(v) +
       '<div class="table-responsive"><table class="table table-sm small mb-0" style="font-variant-numeric: tabular-nums">' +
-      '<caption class="small">Waar je geld naartoe gaat</caption>' +
+      '<caption class="small">Waar je geld naartoe gaat. ' + (R.btwTekst || 'btw-vrijgesteld') + ': er komt geen btw bovenop.</caption>' +
       '<thead><tr><th>Delen</th><th>Naar</th>' + kop + '</tr></thead><tbody>' +
-      '<tr><td>1M</td><td>Materiaal: papier en inkt</td>' + cel(v.m) + '</tr>' +
-      '<tr><td>3M</td><td>Kunstenaar, bruto auteursrecht (netto ' + euro(v.netto) + ' + 15% roerende voorheffing ' + euro(v.rv) + ')</td>' + cel(v.auteur) + '</tr>' +
-      '<tr><td>3M</td><td>vzw peapickers</td>' + cel(v.vzw) + '</tr>' +
-      '<tr><td></td><td>Btw 21%</td>' + cel(v.btw) + '</tr>' +
-      '<tr><th></th><th>Prijs incl. btw</th>' + '<th class="text-end">' + euro(v.incl) + '</th>' + (n > 1 ? '<th class="text-end">' + x(v.incl) + '</th>' : '') + '</tr>' +
+      '<tr><td>1M</td><td>Materiaal: papier en inkt, met de btw die de vzw erop betaalt</td>' + cel(v.m) + '</tr>' +
+      '<tr><td>3M</td><td>Auteur, bruto auteursrecht (netto ' + euro(v.netto) + ' + 15% roerende voorheffing ' + euro(v.rv) + ')</td>' + cel(v.auteur) + '</tr>' +
+      '<tr><td>3M</td><td>vzw peapickers: verpakking, betaalkosten en vaste kosten (± afronding)</td>' + cel(v.vzw) + '</tr>' +
+      '<tr><th></th><th>Prijs</th>' + '<th class="text-end">' + euro(v.totaal) + '</th>' + (n > 1 ? '<th class="text-end">' + x(v.totaal) + '</th>' : '') + '</tr>' +
       '</tbody></table></div>';
   }
 
-  /* ---------- Fine art: vaste prijs ---------- */
+  /* ---------- Fine-art: vaste prijs ---------- */
   var fa = $('fa-reken');
   if (fa) {
     var fm = parseFloat(fa.getAttribute('data-m')), fv = verdeling(fm, 1);
-    fa.innerHTML = tabel(fv, '<p class="mb-2"><span class="h5" style="font-variant-numeric: tabular-nums">' + euro(fv.incl) + '</span> incl. btw<br>' +
-      '[7 × ' + getal(fm) + '] × 1,21 = ' + euro(fv.incl) + ' · M = ' + euro(fm) + ' (materiaal van deze editie)</p>');
+    fa.innerHTML = tabel(fv, '<p class="mb-2"><span class="h5" style="font-variant-numeric: tabular-nums">' + euro(fv.totaal) + '</span><br>' +
+      '7 × ' + getal(fm) + ' = ' + dec(7 * fm, 4) + ', afgerond op € 0,10 = ' + euro(fv.totaal) + ' · M = ' + euro(fm) + ' (materiaal van deze oplage, incl. btw)</p>');
     $('fa-mand').addEventListener('click', function () {
       if (W.snipcart) return;
-      window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: 'fine art, genummerd en gesigneerd', prijs: fv.incl });
-      $('fa-melding').textContent = 'De fine-art-afdruk ligt in de mand.';
+      window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: 'fine-art, genummerd en gesigneerd', prijs: fv.totaal, soort: 'fine-art' });
+      $('fa-melding').textContent = 'De fine-art print ligt in de mand.';
     });
   }
 
@@ -176,29 +187,28 @@
 
     // prijs
     var pr = rij('papier', s.papier), ink = rij('inkt'), kv = klasse(B, H), ka = klasse(a.b, a.h);
-    var pp = prijs(pr, kv), pi = prijs(ink, ka), m = r2(pp + pi), v = verdeling(m, n);
-    var formule = '<p class="mb-1"><strong>Papier</strong>: ' + pr.naam + ', vel ' + B + ' × ' + H + ' cm = ' + kv + '-vel: ' + euro(pp) + '<br>' +
-      '<strong>Inkt</strong>: afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm = ' + (ka === 'A4' ? 'A4 of kleiner' : ka) + ': ' + euro(pi) + '<br>' +
-      '<strong>M</strong> = ' + getal(pp) + ' + ' + getal(pi) + ' = ' + euro(m) + '</p>' +
-      '<p class="mb-2"><span class="h5" style="font-variant-numeric: tabular-nums">' + euro(v.incl) + '</span> incl. btw per poster' + (n > 1 ? ', ' + euro(v.incl * n) + ' voor ' + n : '') + '<br>' +
-      '[7 × (' + getal(pp) + ' + ' + getal(pi) + ')] × 1,21 = ' + euro(v.incl) + ' · verzending komt erbij in de mand</p>';
+    var pp = prijs(pr, kv), pi = prijs(ink, ka), mRuw = (pp + pi) * (1 + BTW_MAT), v = verdeling(mRuw, n);
+    var formule = '<p class="mb-1"><strong>Papier</strong>: ' + pr.naam + ', vel ' + B + ' × ' + H + ' cm = ' + klasseNaam(kv) + ': ' + euro(pp) + '<br>' +
+      '<strong>Inkt</strong>: afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm = ' + klasseNaam(ka) + ': ' + euro(pi) + '<br>' +
+      '<strong>M</strong> = (' + getal(pp) + ' + ' + getal(pi) + ') × ' + dec(1 + BTW_MAT, 2) + ' (btw op materiaal) = ' + euro(v.m) + '</p>' +
+      '<p class="mb-2"><span class="h5" style="font-variant-numeric: tabular-nums">' + euro(v.totaal) + '</span> per poster' + (n > 1 ? ', ' + euro(v.totaal * n) + ' voor ' + n : '') + '<br>' +
+      '7 × M = 7 × ' + dec(mRuw, 4) + ' = ' + dec(7 * mRuw, 4) + ', afgerond op € 0,10 = ' + euro(v.totaal) + ' · leverkost komt erbij in de mand</p>';
     $('po-reken').innerHTML = tabel(v, formule);
 
     // Snipcart-knop (en voorbeeldmand)
     var knop = $('po-mand'), randTekst = s.marge > 0 ? 'rondom min. ' + cm(s.marge) + ' cm' : 'geen';
-    var papierOptie = pr.naam + ' · ' + kv + '-vel', inktOptie = ka === 'A4' ? 'Afbeelding A4 of kleiner' : 'Afbeelding ' + ka;
-    knop.setAttribute('data-item-custom1-value', papierOptie);
-    knop.setAttribute('data-item-custom2-value', inktOptie);
-    knop.setAttribute('data-item-custom3-value', B + ' × ' + H);
-    knop.setAttribute('data-item-custom4-value', cm(a.b) + ' × ' + cm(a.h));
-    knop.setAttribute('data-item-custom5-value', randTekst);
+    var uitvoering = pr.naam + ' · vel ' + kv + ' · afbeelding ' + ka;
+    knop.setAttribute('data-item-custom1-value', uitvoering);
+    knop.setAttribute('data-item-custom2-value', B + ' × ' + H);
+    knop.setAttribute('data-item-custom3-value', cm(a.b) + ' × ' + cm(a.h));
+    knop.setAttribute('data-item-custom4-value', randTekst);
     knop.setAttribute('data-item-quantity', n);
-    huidig = { formaat: papierOptie + ', vel ' + B + ' × ' + H + ' cm, afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm, passe-partout ' + randTekst, prijs: v.incl, aantal: n };
+    huidig = { formaat: pr.naam + ', vel ' + B + ' × ' + H + ' cm, afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm, passe-partout ' + randTekst, prijs: v.totaal, aantal: n };
   }
 
   $('po-mand').addEventListener('click', function () {
     if (W.snipcart || !huidig) return;
-    for (var i = 0; i < huidig.aantal; i++) window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: huidig.formaat, prijs: huidig.prijs });
+    for (var i = 0; i < huidig.aantal; i++) window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: huidig.formaat, prijs: huidig.prijs, soort: 'poster' });
     $('po-melding').textContent = huidig.aantal > 1 ? 'De ' + huidig.aantal + ' posters liggen in de mand.' : 'De poster ligt in de mand.';
   });
 

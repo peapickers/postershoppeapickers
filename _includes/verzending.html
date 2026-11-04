@@ -1,0 +1,43 @@
+{% comment %} Bestellen, betalen en leveren (ondernemingsplan v3, hoofdstuk 5.1). Regels uit _data/config-verzending.csv, _data/config-postcodes.csv, _data/leverronde.yml en _config.yml. {% endcomment %}
+{%- assign r = site.data.leverronde -%}
+<p>Elke poster wordt in Gent gedrukt door peapickers, pas nadat je betaald hebt. Er is geen voorraad en geen overproductie, behalve de kleine oplages fine-art.</p>
+
+<div class="table-responsive">
+<table class="table table-sm align-top">
+  <thead><tr><th scope="col">Regel</th><th scope="col">Wat</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Betalen</th><td>Bancontact via Mollie, in een mand van Snipcart. Overschrijving met QR-code blijft als plan B. Nooit cash. We drukken na je betaling.</td></tr>
+    <tr><th scope="row">Bestelminimum</th><td>{% include helpers/euro.html bedrag=site.bestelminimum %} in de mand, zonder leverkost. Wie de gedeelde leverronde in Gent kiest, mag onder {% include helpers/euro.html bedrag=site.bestelminimum %} bestellen. De mand toont hoeveel je nog tekortkomt.</td></tr>
+    {%- for m in site.data.config-verzending %}
+    <tr><th scope="row">{{ m.naam }}</th><td>{% if m.kost == nil or m.kost == "" %}Aan kostprijs.{% elsif m.kost == "0" %}Gratis.{% else %}{% include helpers/euro.html bedrag=m.kost %}, vast.{% endif %} {{ m.uitleg }}</td></tr>
+    {%- endfor %}
+    <tr><th scope="row">Herroeping</th><td>Je mag elke bestelling binnen 14 dagen herroepen, ook een poster op maat. Dat doen we vrijwillig.</td></tr>
+    <tr><th scope="row">Btw</th><td>vzw peapickers is {{ site.btw-vermelding }}. Er komt geen btw bovenop de prijs.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="h4 mt-4">De gedeelde leverronde</h2>
+<p>De leverronde is een gratis dienst voor Gent en deelgemeenten. Ze vertrekt zodra {{ r['vertrek-bij'] }} mensen zich aangemeld hebben, of na hoogstens 14 dagen. De site toont elk uur hoeveel mensen wachten en wanneer de ronde sluit, nooit wie.</p>
+<div class="card mb-3"><div class="card-body" style="font-variant-numeric: tabular-nums">
+  <p class="h5 mb-1">{{ r.wachtenden }} van de {{ r['vertrek-bij'] }} aanmeldingen</p>
+  <p class="mb-0 small">De ronde sluit uiterlijk op {{ r['sluit-uiterlijk'] | date: "%-d-%-m-%Y" }}. Voorbeeld, bijgewerkt {{ r.bijgewerkt }}.</p>
+</div></div>
+<p class="small">Postcodes van Gent en deelgemeenten: {% for p in site.data.config-postcodes %}{{ p.postcode }} {{ p.gemeente }}{% unless forloop.last %}; {% endunless %}{% endfor %}.</p>
+
+<h2 class="h4 mt-4">De weg van een bestelling</h2>
+<p>Onder elke stap staat welke gegevens daar bewaard worden.</p>
+<ol class="pp-weg">
+  <li><strong>QR-code of link</strong><span>Je komt op de webshop. Geen tracking. Bewaard: niets.</span></li>
+  <li><strong>Webshop</strong><span>Je kiest een werk en een formaat. Bewaard: niets.</span></li>
+  <li><strong>Mand (Snipcart)</strong><span>Bewaard: naam, adres en e-mail.</span></li>
+  <li><strong>Betaling (Bancontact via Mollie)</strong><span>Bewaard: betaalgegevens, bij Mollie.</span></li>
+  <li><strong>Druk</strong><span>Na de betaling. Bewaard: het bestelnummer.</span></li>
+  <li><strong>Levering</strong><span>In Gent of met bpost. Bewaard: je adres, tot de levering.</span></li>
+  <li><strong>Kaartje in de verpakking</strong><span>Een kaartje in de vorm van een kassabon, met de prijsverdeling, de werkcode en de verwijzing naar de Public Ledger. Bewaard: niets.</span></li>
+  <li><strong><a href="{{ '/register.html' | relative_url }}">Public Ledger</a></strong><span>De verkoop met werkcode en bedrag. Bewaard: geen persoonsgegevens.</span></li>
+</ol>
+
+<h2 class="h4 mt-4">Privacy</h2>
+<p>peapickers heeft geen eigen klantendatabase en gebruikt geen tracking. De mand (Snipcart) en de betaling (Mollie) zijn externe diensten met een verwerkersovereenkomst. Je gegevens worden alleen bewaard zolang de levering en de wet het vragen. Na de oprichting is vzw peapickers verwerkingsverantwoordelijke. De privacyverklaring en de algemene voorwaarden worden nog opgesteld met de jurist.</p>
+<p class="small">Het inpakken wordt gefilmd, als bewijs bij transportschade.</p>

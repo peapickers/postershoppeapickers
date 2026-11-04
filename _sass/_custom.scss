@@ -85,6 +85,7 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .ps-details { margin-top: .5rem; font-size: .8rem; }
 .ps-detail { border-top: 2px solid $line-strong; padding-top: .5rem; }
 .ps-detail p { margin: 0; }
+.ps-mobiel { display: none; }
 .ps-mini { display: flex; height: 1.4rem; margin-bottom: .4rem; font-size: .7rem; }
 .ps-mini span { display: flex; align-items: center; padding: 0 .3rem; overflow: hidden; }
 .ps-mini span:first-child { background: $ink; color: $eggshell; }
@@ -103,10 +104,10 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
   .ps-balk { display: none; }
   .ps-details { gap: 1rem; }
   .ps-detail { border-top: 0; padding-top: 0; }
-  .ps-detail::before { display: block; padding: .4rem .5rem; margin-bottom: .4rem; font-weight: 600; border: 1px solid $line-strong; }
-  .ps-d-materiaal::before { content: "1M · Materiaal · € 2,70"; background: #d9d9d6; }
-  .ps-d-maker::before { content: "3M · Auteur, bruto auteursrecht · € 8,10"; background: $ink; color: $eggshell; }
-  .ps-d-onderneming::before { content: "3M · Onderneming, bruto · € 8,10"; background: #fff; }
+  .ps-mobiel { display: block !important; padding: .4rem .5rem; margin-bottom: .4rem !important; font-weight: 600; border: 1px solid $line-strong; }
+  .ps-d-materiaal .ps-mobiel { background: #d9d9d6; }
+  .ps-d-maker .ps-mobiel { background: $ink; color: $eggshell; }
+  .ps-d-onderneming .ps-mobiel { background: #fff; }
 }
 
 // Minimalistische footer en paginakoppen
@@ -167,3 +168,19 @@ body.pp-verborgen main img { filter: blur(28px); }
 .pp-voorbeeld.pp-modus-afbeelding .pp-vel img { outline: 2px solid $ink; outline-offset: 1px; }
 .pp-fineart { border-bottom: 1px solid $line; }
 .pp-reken { background: #f6f6f4; border: 1px solid $line; padding: .75rem; }
+
+
+// Prijsstrook in de configurator (ondernemingsplan v3): hoeveel gaat naar de auteur
+.pp-prijsstrook { display: flex; height: 1.6rem; margin: .5rem 0 .35rem; font-size: .72rem; border: 1px solid $line-strong; }
+.pp-prijsstrook span { display: flex; align-items: center; padding: 0 .35rem; overflow: hidden; white-space: nowrap; }
+.pp-ps-mat { background: #d9d9d6; }
+.pp-ps-aut { background: $ink; color: $eggshell; font-weight: 700; }
+.pp-ps-vzw { background: #fff; }
+
+// De weg van een bestelling
+.pp-weg { padding-left: 1.25rem; }
+.pp-weg li { margin-bottom: .5rem; }
+.pp-weg li span { display: block; font-size: .875rem; color: $muted; }
+
+// Teller auteurs in de Public Ledger
+.pp-teller { border: 1px solid $ink; padding: .75rem 1rem; }

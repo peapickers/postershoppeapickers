@@ -1,0 +1,21 @@
+{% comment %} Leverkost (ondernemingsplan v3): regels in _data/config-verzending.csv, Gentse postcodes in _data/config-postcodes.csv, bestelminimum in _config.yml. {% endcomment %}
+<script>
+window.ppVerzending = (function () {
+  var M = {{ site.data.config-verzending | jsonify }};
+  var PC = {{ site.data.config-postcodes | jsonify }};
+  var MIN = {{ site.bestelminimum | default: 0 }};
+  function methode(id) { return M.filter(function (m) { return m.id === id; })[0]; }
+  function inGent(pc) { pc = String(pc || '').trim(); return PC.some(function (p) { return p.postcode === pc; }); }
+  // Geeft { kost, onbekend, fout, tekort } terug. subtotaal = bedrag van de mand zonder leverkost.
+  function kost(id, pc, subtotaal) {
+    var m = methode(id); if (!m) return { fout: 'Kies een leverwijze.' };
+    var r = { methode: m, kost: 0 };
+    if (m.gebied === 'gent' && !inGent(pc)) r.fout = 'Deze leverwijze is alleen voor Gent en deelgemeenten. Vul een Gentse postcode in, of kies bpost.';
+    if (m.gebied === 'buiten' && pc && inGent(pc)) r.fout = 'Voor een Gentse postcode kies je de leverronde of de levering in Gent.';
+    if (m.kost === null || m.kost === undefined || m.kost === '') r.onbekend = true; else r.kost = parseFloat(m.kost) || 0;
+    if (m.minimum === 'ja' && subtotaal < MIN) r.tekort = Math.round((MIN - subtotaal) * 100) / 100;
+    return r;
+  }
+  return { methodes: M, postcodes: PC, minimum: MIN, kost: kost, inGent: inGent };
+})();
+</script>
