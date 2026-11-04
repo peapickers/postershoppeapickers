@@ -14,7 +14,7 @@ De naam verwijst naar Dorothea Langes foto *Destitute peapickers*.
 
 vzw peapickers is de paraplunaam waaronder alle merken van peapickers vallen. Elk merk heeft hetzelfde sociaal-culturele doel: onafhankelijke kunstenaars als particulier, binnen hun statuut, zichtbaar maken. Kort gezegd gebruiken we vooral het internet om beeldende kunstenaars zichtbaar te maken.
 
-Voorlopig is de webshop peapickers postershop de enige activiteit. Die kan uitbreiden naar een digitaal [archief](https://peapickers.github.io/peapickersarchief/), een culturele agenda en later een nonprofit [printshop]({{ site.printshop-url }}). Later komen er hopelijk tentoonstellingen en samenwerkingen met andere organisaties bij.
+Voorlopig is de webshop peapickers postershop de enige activiteit. Die kan uitbreiden naar een digitaal [archief](https://peapickers.github.io/peapickersarchief/), een culturele agenda en later een nonprofit printshop. Later komen er hopelijk tentoonstellingen en samenwerkingen met andere organisaties bij.
 
 De vzw wordt rond januari 2027 opgericht door de oprichter en minstens één medebestuurder. Een vzw keert geen winst uit. De postershop verkoopt vanaf het voorjaar van 2027 reproducties van bestaande kunstwerken, gedrukt door peapickers en verzonden vanuit Gent.
 
