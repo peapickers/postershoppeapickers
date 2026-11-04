@@ -10,7 +10,14 @@ sub-heading:
 
 ## De prijs
 
-De materiaalkost **M** van één poster is het papiervel en de inkt. De prijs excl. btw is altijd 7 × M, met een vaste verdeling: 1 deel materiaal, 3 delen bruto auteursrecht voor de kunstenaar en 3 delen voor vzw peapickers. De btw van 21% komt erbovenop; de prijs wordt afgerond en het verschil draagt de vzw. Verzending zit niet in de prijs.
+De materiaalkost **M** is het papier plus de inkt. Bij een poster hangt het papier af van de papiersoort en de maat van het vel, en de inkt van de maat van de afbeelding; bij fine art ligt M vast per editie. De prijs excl. btw is altijd 7 × M, met een vaste verdeling: 1 deel materiaal, 3 delen bruto auteursrecht voor de kunstenaar en 3 delen voor vzw peapickers. De btw van 21% komt erbovenop. Verzending zit niet in de prijs.
+
+| Papier | A4-vel | A3-vel | A2-vel |
+|---|---:|---:|---:|
+{% for p in site.data.config-prijzen %}{% if p.soort == 'papier' %}| {{ p.naam }} | € {{ p.a4 | replace: '.', ',' }} | € {{ p.a3 | replace: '.', ',' }} | € {{ p.a2 | replace: '.', ',' }} |
+{% endif %}{% endfor %}{% assign i = site.data.config-prijzen | where: 'soort', 'inkt' | first %}| **Inkt**, volgens de afbeelding | € {{ i.a4 | replace: '.', ',' }} (A4 of kleiner) | € {{ i.a3 | replace: '.', ',' }} | € {{ i.a2 | replace: '.', ',' }} |
+
+A4 = tot 21 × 30 cm, A3 = tot 30 × 42 cm, A2 = tot 42 × 60 cm, staand of liggend.
 
 {% include prijs-schema.html %}
 

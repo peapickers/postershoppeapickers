@@ -157,3 +157,13 @@ footer.pp-footer a { color: $muted; }
 
 // Filter naaktheid: beelden op een posterpagina met filter blijven wazig tot de bezoeker ze toont
 body.pp-verborgen main img { filter: blur(28px); }
+
+// Posterconfigurator (2026-11-04): voorbeeld van vel en afbeelding op schaal
+.pp-voorbeeld { display: flex; justify-content: center; align-items: center; min-height: 360px; background: #f0f0ee; border: 1px solid $line; padding: 10px; touch-action: none; }
+.pp-vel { position: relative; flex: none; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+.pp-vel img { position: absolute; display: block; max-width: none; cursor: nwse-resize; user-select: none; }
+.pp-greep { position: absolute; width: 14px; height: 14px; background: #fff; border: 2px solid $ink; border-radius: 50%; cursor: nwse-resize; touch-action: none; }
+.pp-voorbeeld:not(.pp-modus-afbeelding) .pp-vel { outline: 2px solid $ink; outline-offset: 2px; }
+.pp-voorbeeld.pp-modus-afbeelding .pp-vel img { outline: 2px solid $ink; outline-offset: 1px; }
+.pp-fineart { border-bottom: 1px solid $line; }
+.pp-reken { background: #f6f6f4; border: 1px solid $line; padding: .75rem; }

@@ -1,0 +1,15 @@
+{% comment %} Snipcart-winkelmand (2026-11-04). Laadt enkel als site.snipcart-api-key gevuld is. Betalen via Mollie (Bancontact), verzendmethodes en btw (21%, niet inbegrepen in de itemprijs) stel je in het Snipcart-dashboard in. {% endcomment %}
+{% if site.snipcart-api-key and site.snipcart-api-key != "" %}
+<link rel="preconnect" href="https://app.snipcart.com">
+<link rel="preconnect" href="https://cdn.snipcart.com">
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css">
+<div hidden id="snipcart" data-api-key="{{ site.snipcart-api-key }}" data-config-modal-style="side" data-currency="eur"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
+<script>
+document.addEventListener('snipcart.ready', function () {
+  try { Snipcart.api.session.setLanguage('nl'); } catch (e) {}
+  // menu-item Mand opent de Snipcart-mand
+  document.querySelectorAll('a[href$="mand.html"]').forEach(function (a) { a.classList.add('snipcart-checkout'); a.addEventListener('click', function (e) { e.preventDefault(); }); });
+});
+</script>
+{% endif %}
