@@ -72,7 +72,7 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 @media (min-width: 576px) { .pp-strook-item { flex-basis: 45%; } }
 @media (min-width: 992px) { .pp-strook-item { flex-basis: calc((100% - 2rem) / 3); } }
 
-// Prijsschema 7M op de Hoe laat is het?-pagina
+// Prijsschema 7M op de pagina Prijsopbouw
 .prijs-schema { margin: 1.5rem 0; }
 .ps-balk, .ps-details { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
 .ps-deel, .ps-detail { grid-column: span var(--n); min-width: 0; }

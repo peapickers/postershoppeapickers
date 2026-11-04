@@ -1,5 +1,5 @@
 ---
-title: Hoe laat is het?
+title: Prijsopbouw
 layout: about
 permalink: /about.html
 credits: false
