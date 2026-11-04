@@ -1,0 +1,6 @@
+# Stand van de gedeelde leverronde in Gent. VOORBEELD.
+# Later werkt een script dit elk uur bij. De site toont alleen hoeveel mensen wachten en wanneer de ronde sluit, nooit wie.
+wachtenden: 2
+vertrek-bij: 5
+sluit-uiterlijk: 2027-04-20
+bijgewerkt: 2027-04-08 14:00

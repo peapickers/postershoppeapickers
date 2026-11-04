@@ -1,12 +1,20 @@
 ---
-title: Join peapickers
+title: Meepikken?
 layout: page
 permalink: /join.html
 ---
 
-## Join peapickers
+## Meepikken?
 
-vzw peapickers cureert, digitaliseert en reproduceert kunstwerken van onafhankelijke kunstenaars: makers zonder professioneel statuut of kunstenaarsattest, die desondanks mooi werk maken. Hieronder staan alle checkpunten. Ze vormen samen de curatielijn.
+vzw peapickers maakt werk van onafhankelijke beeldende kunstenaars zichtbaar en geeft hen met de postershop een economische kans, zonder dat hun statuut moet veranderen. Auteurs zijn makers zonder professioneel statuut en zonder kunstenaarsattest, 18 jaar of ouder, wonend in België. Je wordt per kwartaal betaald in auteursrechten, als particulier. Het jaarbedrag dat een particulier in auteursrechten mag ontvangen, wordt met reproducties niet bereikt.
+
+Hieronder staan alle checkpunten. Ze vormen samen de curatielijn.
+
+### Zo verloopt de curatie
+
+1. Je maakt zelf een voorselectie. Een groter archief mag je gerust doorsturen.
+2. peapickers selecteert op de harde criteria hieronder.
+3. Daarna selecteren we samen met jou. De gekozen werken worden gelicentieerd en als poster te koop aangeboden.
 
 ### 1. Toelatingsvoorwaarden
 
@@ -37,7 +45,7 @@ Nooit eerder verkocht of tentoongesteld? Dan ben je extra welkom.
 ### 3. Kwaliteitslat
 
 - [ ] **Technisch.** Van elk werk drukt peapickers een staal. Lukt het staal niet door het bestand, dan wordt het werk niet toegelaten, tenzij die fout een bewuste artistieke keuze is. peapickers geeft geen tips om het werk te verbeteren.
-- [ ] **Artistiek.** Een selectiecomité beslist. Het is breder dan het bestuur en per kunstenaar anders samengesteld. Elk lid beslist individueel en publiceert een duidelijke redenering waarom het werk artistiek binnen de curatie valt.
+- [ ] **Artistiek.** Een selectiecomité beslist. Het is breder dan het bestuur en per auteur anders samengesteld. De redenering van het comité blijft privé, ook bij afgewezen werk. Publiek komen alleen de werken en, als die er is, jouw geschreven context.
 
 Afgewezen? Je mag meteen ander werk aanbieden.
 
@@ -57,19 +65,23 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 - [ ] Een reproductie blijft een reproductie: kleur en contrast kunnen afwijken van het origineel en van het scherm.
 - [ ] Je beeld wordt nooit bijgesneden of bewerkt.
 - [ ] Je werk en al je rechten blijven van jou. Je geeft per werk een niet-exclusieve licentie.
-- [ ] Fine art en poster: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs zonder btw, als bruto auteursrecht. De prijs zonder btw is altijd 7 × de materiaalkost (papier en inkt).
-- [ ] peapickers houdt 15% roerende voorheffing in op je bruto bedrag en betaalt je netto per kwartaal. Zie [Hoe laat is het?]({{ '/about.html' | relative_url }}).
+- [ ] Fine-art en poster: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs, als bruto auteursrecht. De prijs is altijd 7 × M, de materiaalkost (papier en inkt, met de btw die de vzw erop betaalt), afgerond op € 0,10. De vzw is btw-vrijgesteld, dus er gaat niets naar btw op de verkoop.
+- [ ] Bij fine-art krijg je je auteursrecht meteen bij het drukken, nog voor de verkoop.
+- [ ] peapickers houdt 15 % roerende voorheffing in op je bruto bedrag, stort die door en betaalt je netto per kwartaal. Je krijgt elk jaar een fiche 281.45. Een tweede bestuurder ziet elke kwartaaluitbetaling. Zie [Hoe laat is het?]({{ '/about.html' | relative_url }}).
+- [ ] Elke verkoop staat met de werkcode in de [Public Ledger]({{ '/register.html' | relative_url }}). Uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.
 - [ ] Er is geen verkoopgarantie.
 - [ ] Je kunt altijd stoppen, zonder reden. Binnen 7 dagen staat je werk niet meer in de webshop.
-- [ ] Je bestanden staan versleuteld op drie schijven, nooit in een cloud. Online staat enkel een klein beeld met watermerk.
+- [ ] Het originele bestand wordt nooit bewerkt en komt nooit online. Het staat versleuteld op drie schijven, nooit in een cloud, en daarvan worden de afdrukken gemaakt.
+- [ ] Online staat alleen een weergave van 1200 px en een thumbnail, met watermerk en Glaze. Zoekmachines en AI-crawlers worden gevraagd weg te blijven. Dat is een poging, geen garantie.
 - [ ] Je werk wordt nooit gebruikt om AI te trainen.
 
 ### 6. Fine-art, poster en oplage
 
 Elk werk is als poster verkrijgbaar. Per werk beslis je samen met peapickers of er ook een fine-art-editie komt.
 
-- [ ] **Fine-art.** Een unieke afdruk op duur papier of op een unieke manier gereproduceerd, gecureerd, in een beperkte oplage, genummerd en gesigneerd door jou. Formaat, papier en passe-partout liggen vast; de klant kiest niets en betaalt een vaste prijs. De eerste oplage telt 1 tot 3 afdrukken per werk. Het bestuur beslist dat samen met jou.
-- [ ] **Poster.** De klant kiest het papier (drie Epson-papieren), de maat van het vel (tot 40 × 60 cm, niet kleiner dan A4) en de maat van de afbeelding met de witte rand, zodat een eigen of oud kader past. Je beeld wordt nooit bijgesneden. Print on demand: elke poster wordt pas gedrukt als hij besteld is, tijdens een vaste verkooptermijn. Binnen die termijn is het aantal niet beperkt. Posters worden niet genummerd.
+- [ ] **Fine-art.** Een unieke print, op duur papier of op een bijzondere manier gereproduceerd, in een selectieve, gecureerde oplage, genummerd en gesigneerd door jou. De klant kiest geen formaat en betaalt een vaste prijs van 7 × M; M verschilt per werk. Fine-art wordt alleen door peapickers voorgesteld, gecureerd met het grotere team en eventueel uitbesteed aan de beste reproductievorm.
+- [ ] **Poster.** De klant kiest het papier (drie Epson-papieren), de maat van het vel (van 21 × 29,7 tot 40 × 60 cm) en de maat van de afbeelding met de witruimte errond. Je beeld wordt nooit bijgesneden. Elke poster wordt pas gedrukt als hij besteld en betaald is. De posterlicentie loopt 1 jaar en is telkens verlengbaar; zolang ze loopt, is het aantal niet beperkt. Posters worden niet genummerd.
+- [ ] Er zijn geen kaders, latten of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
 - [ ] Van elke kunstenaar staan er ten hoogste 3 tot 5 werken tegelijk in de webshop. Zo is het fair voor wie één werk heeft tegenover wie een archief van dertig jaar heeft.
 - [ ] Waarom zo weinig fine-art? Om de kwaliteit hoog te houden, en omdat peapickers niet genoeg geld heeft om groter te beginnen. Is een oplage verkocht, dan kan er een tweede komen, met een nieuwe overeenkomst. Grotere oplages volgen pas als de vzw genoeg geld heeft opgebouwd om meer papier te riskeren.
 
@@ -77,6 +89,7 @@ Elk werk is als poster verkrijgbaar. Per werk beslis je samen met peapickers of 
 
 1. Stuur een e-mail naar [postershoppeapickers@proton.me](mailto:postershoppeapickers@proton.me) met ten hoogste 5 beelden in lage resolutie. Stuur nog geen originele bestanden.
 2. We maken een afspraak. Je tekent nooit tijdens het eerste gesprek. Gratis advies vind je bij Cultuurloket.
-3. Lees vooraf de [licentieovereenkomst]({{ '/assets/docs/2026-11-03_Licentieovereenkomst-concept-5.pdf' | relative_url }}) en, als er een herkenbare persoon op je werk staat, de [modelovereenkomst voor geportretteerden]({{ '/assets/docs/2026-11-03_Modelovereenkomst-geportretteerden-concept-3.pdf' | relative_url }}). Beide zijn een concept, nog na te lezen door een jurist.
+3. Je tekent per werk een niet-exclusieve licentie, voor poster en/of fine-art. Ze bevestigt dat het werk zonder invloed van peapickers gemaakt is en alleen als reproductie verkocht wordt, niet in opdracht. Ze vraagt je rijksregisternummer en adres voor de fiche 281.45 (die staan nooit in de Public Ledger) en je toestemming voor watermerk en Glaze op de online beelden.
+4. Lees vooraf de [licentieovereenkomst]({{ '/assets/docs/2026-11-03_Licentieovereenkomst-concept-5.pdf' | relative_url }}) en, als er een herkenbare persoon op je werk staat, de [modelovereenkomst voor geportretteerden]({{ '/assets/docs/2026-11-03_Modelovereenkomst-geportretteerden-concept-3.pdf' | relative_url }}). Beide zijn een concept. Concept 6 van de licentie, met de nieuwe prijzen, is in voorbereiding en wordt nagelezen door de jurist.
 
-Er wordt nog niets verkocht zolang vzw peapickers niet is opgericht.
+vzw peapickers wordt rond januari 2027 opgericht. We starten met 3 auteurs en 15 tot 30 werken, testen de webshop met proefbestellingen en verkopen vanaf het voorjaar van 2027. Tot dan wordt niets verkocht.

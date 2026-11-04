@@ -1,25 +1,37 @@
-datum,soort,omschrijving,identiteitscode,formaat,aantal,ontvangen,betaald,materiaal,maker,financierder,peapickers,schuld
-2027-01-04,lening,"Startlening van Jonas voor papier, inkt en de eerste vaste kosten",,,,250.00,,,,,,250.00
-2027-01-05,investering,Rol papier (fictief bedrag),,,,,60.00,,,,,
-2027-01-05,investering,Inktset (fictief bedrag),,,,,80.00,,,,,
-2027-01-08,bestelling,"Bestelling KUNSTWERK2026-001-01, A3 × 1",KUNSTWERK2026-001-01,A3,1,21.00,,3.00,9.00,6.00,3.00,
-2027-01-12,bestelling,"Bestelling KUNSTWERK2026-002-01, A2 × 1",KUNSTWERK2026-002-01,A2,1,42.00,,6.00,18.00,12.00,6.00,
-2027-01-15,bestelling,"Bestelling KUNSTWERK2026-001-01, A4 × 2",KUNSTWERK2026-001-01,A4,2,21.00,,3.00,9.00,6.00,3.00,
-2027-01-20,bestelling,"Bestelling KUNSTWERK2026-003-01, A3 × 1",KUNSTWERK2026-003-01,A3,1,21.00,,3.00,9.00,6.00,3.00,
-2027-01-20,verzending,"Verzendkost ontvangen, levering tot 16 km",,,,3.00,,,,,,
-2027-01-31,vaste kosten,Vaste kosten januari (minimale vzw),,,,,30.00,,,,,
-2027-02-03,bestelling,"Bestelling KUNSTWERK2026-002-01, A3 × 1",KUNSTWERK2026-002-01,A3,1,21.00,,3.00,9.00,6.00,3.00,
-2027-02-10,bestelling,"Bestelling KUNSTWERK2026-004-01, A4 × 1",KUNSTWERK2026-004-01,A4,1,10.50,,1.50,4.50,3.00,1.50,
-2027-02-14,bestelling,"Bestelling KUNSTWERK2026-005-01, A2 × 1",KUNSTWERK2026-005-01,A2,1,42.00,,6.00,18.00,12.00,6.00,
-2027-02-14,verzending,Verzending met bpost betaald (fictief bedrag),,,,,5.00,,,,,
-2027-02-20,herroeping,"Herroeping KUNSTWERK2026-004-01, A4 × 1, terugbetaald",KUNSTWERK2026-004-01,A4,1,,10.50,-1.50,-4.50,-3.00,-1.50,
-2027-02-22,materiaalkost,Verzendkokers (fictief bedrag),,,,,15.00,,,,,
-2027-02-28,vaste kosten,Vaste kosten februari,,,,,30.00,,,,,
-2027-03-05,bestelling,"Bestelling KUNSTWERK2026-001-02, A3 × 1",KUNSTWERK2026-001-02,A3,1,21.00,,3.00,9.00,6.00,3.00,
-2027-03-09,bestelling,"Bestelling KUNSTWERK2026-002-01, A4 × 3",KUNSTWERK2026-002-01,A4,3,31.50,,4.50,13.50,9.00,4.50,
-2027-03-18,investering,Nieuwe inktcartridges (fictief bedrag),,,,,45.00,,,,,
-2027-03-20,bestelling,"Bestelling KUNSTWERK2026-005-01, A3 × 2",KUNSTWERK2026-005-01,A3,2,42.00,,6.00,18.00,12.00,6.00,
-2027-03-31,vaste kosten,Vaste kosten maart,,,,,30.00,,,,,
-2027-04-05,terugbetaling,Terugbetaling lening Jonas uit de financiersdelen van Q1,,,,,75.00,,,,,-75.00
-2027-04-05,uitbetaling,"Auteursrechten Q1 aan 5 makers, netto (85%)",,,,,95.62,,,,,
-2027-04-05,voorheffing,"Roerende voorheffing 15% op auteursrechten Q1, aangegeven",,,,,16.88,,,,,
+datum,soort,omschrijving,identiteitscode,formaat,aantal,ontvangen,betaald,materiaal,maker,peapickers,schuld
+2027-01-10,gift,"Printer, inkt en papier geschonken door de oprichter met een giftakte (marktwaarde fictief: € 900). Geen geldstroom.",,,,,,,,,
+2027-01-20,lening,"Storting oprichter, renteloze achtergestelde lening: publicatie en vaste kosten januari",,,,440.83,,,,,440.83
+2027-01-20,oprichting,Publicatie van de oprichting in het Belgisch Staatsblad (fictief bedrag),,,,,170.00,,,,
+2027-01-31,vaste kosten,"Vaste kosten januari: 1/12 van € 3.250 (boekhouder, verzekering, webshop, marketing)",,,,,270.83,,,,
+2027-02-01,lening,Storting oprichter: vaste kosten februari,,,,270.83,,,,,270.83
+2027-02-28,vaste kosten,Vaste kosten februari,,,,,270.83,,,,
+2027-03-01,lening,Storting oprichter: vaste kosten maart,,,,270.83,,,,,270.83
+2027-03-31,vaste kosten,Vaste kosten maart,,,,,270.83,,,,
+2027-04-03,lening,Storting oprichter: druk en auteursrechten van de eerste fine-art,,,,72.60,,,,,72.60
+2027-04-03,materiaalkost,"Druk fine-art KUNSTWERK2026-001-01, oplage 3, materiaal 3 × € 6,05",KUNSTWERK2026-001-01,fine-art,,,18.15,,,,
+2027-04-03,uitbetaling,"Auteursrecht fine-art bij de druk, 3 × € 18,15 bruto, netto (85 %)",KUNSTWERK2026-001-01,,,,46.28,,54.45,,
+2027-04-03,voorheffing,"Roerende voorheffing 15 % op het auteursrecht fine-art, ingehouden",,,,,8.17,,,,
+2027-04-08,bestelling,"Bestelling KUNSTWERK2026-001-01, poster Semimatte middel × 1",KUNSTWERK2026-001-01,poster Semimatte middel,1,15.70,,2.24,6.72,6.74,
+2027-04-08,levering,Leverkost Gent ontvangen (vast),,,,3.50,,,,,
+2027-04-12,bestelling,"Bestelling KUNSTWERK2026-002-01, poster Enhanced Matte middel × 2, gedeelde leverronde",KUNSTWERK2026-002-01,poster Enhanced Matte middel,2,28.00,,4.00,12.00,12.00,
+2027-04-15,bestelling,"Bestelling KUNSTWERK2026-003-01, poster Luster groot × 1, bpost",KUNSTWERK2026-003-01,poster Luster groot,1,36.40,,5.20,15.60,15.60,
+2027-04-15,levering,bpost aan kostprijs: ontvangen en betaald (fictief bedrag),,,,7.00,7.00,,,,
+2027-04-22,bestelling,"Bestelling KUNSTWERK2026-001-01, fine-art 1/3, gedeelde leverronde (auteursrecht al betaald bij de druk)",KUNSTWERK2026-001-01,fine-art,1,42.40,,,,18.20,
+2027-04-25,herroeping,"Herroeping KUNSTWERK2026-002-01, poster Enhanced Matte middel × 1, terugbetaald",KUNSTWERK2026-002-01,poster Enhanced Matte middel,1,,14.00,-2.00,-6.00,-6.00,
+2027-04-30,materiaalkost,Verpakking en kassabonkaartjes (fictief bedrag),,,,,12.00,,,,
+2027-04-30,betaalkosten,"Betaalkosten april, Mollie (fictief bedrag)",,,,,3.00,,,,
+2027-04-30,vaste kosten,Vaste kosten april,,,,,270.83,,,,
+2027-05-02,lening,Storting oprichter: tekort april,,,,180.00,,,,,180.00
+2027-05-09,bestelling,"Bestelling KUNSTWERK2026-005-01, poster Semimatte middel × 3, levering Gent",KUNSTWERK2026-005-01,poster Semimatte middel,3,47.10,,6.72,20.16,20.22,
+2027-05-09,levering,Leverkost Gent ontvangen (vast),,,,3.50,,,,,
+2027-05-17,bestelling,"Bestelling KUNSTWERK2026-004-01, poster Semimatte klein × 1, gedeelde leverronde (onder het minimum)",KUNSTWERK2026-004-01,poster Semimatte klein,1,9.30,,1.33,3.99,3.98,
+2027-05-31,betaalkosten,"Betaalkosten mei, Mollie (fictief bedrag)",,,,,1.20,,,,
+2027-05-31,vaste kosten,Vaste kosten mei,,,,,270.83,,,,
+2027-06-01,lening,Storting oprichter: tekort mei,,,,230.00,,,,,230.00
+2027-06-12,bestelling,"Bestelling KUNSTWERK2026-001-02, poster Luster middel × 1, levering Gent",KUNSTWERK2026-001-02,poster Luster middel,1,18.20,,2.60,7.80,7.80,
+2027-06-12,levering,Leverkost Gent ontvangen (vast),,,,3.50,,,,,
+2027-06-30,betaalkosten,"Betaalkosten juni, Mollie (fictief bedrag)",,,,,0.60,,,,
+2027-06-30,vaste kosten,Vaste kosten juni,,,,,270.83,,,,
+2027-07-01,lening,Storting oprichter: tekort juni,,,,285.96,,,,,285.96
+2027-07-05,uitbetaling,"Auteursrechten posters Q2, samengeteld over alle auteurs: € 60,27 bruto, netto (85 %)",,,,,51.23,,,,
+2027-07-05,voorheffing,"Roerende voorheffing 15 % op de auteursrechten Q2, ingehouden en doorgestort",,,,,9.04,,,,

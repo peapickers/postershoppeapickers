@@ -1,33 +1,21 @@
-{% comment %} Verzendkost (2026-11-04). Tarieven: _data/config-verzending.csv (excl. btw), fietsafstanden: _data/config-postcodes.csv (schatting). VOORBEELD: de bedragen zijn nog niet vastgelegd. {% endcomment %}
+{% comment %} Leverkost (ondernemingsplan v3): regels in _data/config-verzending.csv, Gentse postcodes in _data/config-postcodes.csv, bestelminimum in _config.yml. {% endcomment %}
 <script>
 window.ppVerzending = (function () {
   var M = {{ site.data.config-verzending | jsonify }};
   var PC = {{ site.data.config-postcodes | jsonify }};
-  var BTW = 1.21;
-  function r2(x) { return Math.round(x * 100 + 1e-9) / 100; }
+  var MIN = {{ site.bestelminimum | default: 0 }};
   function methode(id) { return M.filter(function (m) { return m.id === id; })[0]; }
-  function postcode(pc) { pc = String(pc || '').trim(); return PC.filter(function (p) { return p.postcode === pc; })[0]; }
-  function getal(x) { return r2(x).toFixed(2).replace('.', ','); }
-  // Geeft { excl, incl, formule } of { fout } terug. aantal = aantal posters in de bestelling.
-  function kost(id, pc, aantal) {
-    var m = methode(id); if (!m) return { fout: 'Kies een verzendwijze.' };
-    if (m.basis === null || m.basis === undefined || m.basis === '') return { onbekend: true, formule: m.naam + ': tarief nog te bepalen' };
-    var basis = parseFloat(m.basis) || 0, perKm = parseFloat(m.per_km) || 0, perPoster = parseFloat(m.per_extra_poster) || 0;
-    var extra = Math.max(0, (aantal || 1) - 1), km = 0, waar = '';
-    if (perKm > 0) {
-      var p = postcode(pc);
-      if (!p) return { fout: 'Fietslevering kan enkel binnen ' + (m.max_km || 16) + ' km van Gent. Kies een postcode uit de lijst, of kies bpost of afhalen.' };
-      km = parseFloat(p.km); waar = ' (' + p.postcode + ' ' + p.gemeente + ', ' + p.km + ' km)';
-    }
-    var excl = r2(basis + perKm * km + perPoster * extra), incl = r2(excl * BTW);
-    var delen = [getal(basis)];
-    if (perKm > 0) delen.push(getal(perKm) + ' × ' + km + ' km');
-    if (perPoster > 0 && extra > 0) delen.push(getal(perPoster) + ' × ' + extra + ' extra poster' + (extra > 1 ? 's' : ''));
-    var formule = excl === 0 ? m.naam + ': gratis' : m.naam + waar + ': (' + delen.join(' + ') + ') × 1,21 = € ' + getal(incl);
-    return { excl: excl, incl: incl, km: km, formule: formule, gebundeld: id === 'fietsronde' };
+  function inGent(pc) { pc = String(pc || '').trim(); return PC.some(function (p) { return p.postcode === pc; }); }
+  // Geeft { kost, onbekend, fout, tekort } terug. subtotaal = bedrag van de mand zonder leverkost.
+  function kost(id, pc, subtotaal) {
+    var m = methode(id); if (!m) return { fout: 'Kies een leverwijze.' };
+    var r = { methode: m, kost: 0 };
+    if (m.gebied === 'gent' && !inGent(pc)) r.fout = 'Deze leverwijze is alleen voor Gent en deelgemeenten. Vul een Gentse postcode in, of kies bpost.';
+    if (m.gebied === 'buiten' && pc && inGent(pc)) r.fout = 'Voor een Gentse postcode kies je de leverronde of de levering in Gent.';
+    if (m.kost === null || m.kost === undefined || m.kost === '') r.onbekend = true; else r.kost = parseFloat(m.kost) || 0;
+    if (m.minimum === 'ja' && subtotaal < MIN) r.tekort = Math.round((MIN - subtotaal) * 100) / 100;
+    return r;
   }
-  // Wat je terugkrijgt als de fietsronde met n klanten gedeeld wordt (elk betaalde zijn volle fietskost).
-  function terug(incl, n) { var deel = r2(incl / n); return { deel: deel, terug: r2(incl - deel) }; }
-  return { methodes: M, postcodes: PC, kost: kost, terug: terug, getal: getal };
+  return { methodes: M, postcodes: PC, minimum: MIN, kost: kost, inGent: inGent };
 })();
 </script>

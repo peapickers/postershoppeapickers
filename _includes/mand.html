@@ -1,48 +1,51 @@
-{% comment %} Mand en bestelformulier. VOORBEELD zonder verkoop: niets wordt verstuurd, de rekening in de QR-code is ongeldig. {% endcomment %}
+{% comment %} Voorbeeldmand en bestelformulier (ondernemingsplan v3, 4-11-2026). Er wordt niets verstuurd en de rekening in de QR-code is ongeldig.
+Echte verkoop: Snipcart-mand met Bancontact via Mollie, zodra site.snipcart-api-key gevuld is. Overschrijving met QR-code blijft plan B. {% endcomment %}
 <div class="row g-4">
   <div class="col-12 col-lg-7" style="min-width:0">
     <h2 class="h4">In je mand</h2>
-    <div id="mand-leeg" class="small">Je mand is leeg. Kies een product bij <a href="{{ '/index.html' | relative_url }}">Producten</a>.</div>
+    <div id="mand-leeg" class="small">Je mand is leeg. Kies een werk bij <a href="{{ '/index.html' | relative_url }}">Producten</a>.</div>
     <div class="table-responsive">
       <table class="table table-sm align-middle" id="mand-tabel" hidden style="font-variant-numeric: tabular-nums">
-        <thead><tr><th scope="col">Poster</th><th scope="col">Aantal</th><th scope="col" class="text-end">Bedrag</th></tr></thead>
+        <thead><tr><th scope="col">Werk</th><th scope="col">Aantal</th><th scope="col" class="text-end">Bedrag</th></tr></thead>
         <tbody id="mand-rijen"></tbody>
       </table>
     </div>
+    <p class="small" id="mand-minimum" role="status" aria-live="polite"></p>
+    <p class="small">Posters worden pas gedrukt na je betaling. Je mag elke bestelling binnen 14 dagen herroepen, ook een poster op maat. Meer bij <a href="{{ '/verzending.html' | relative_url }}">Bestellen en leveren</a>.</p>
   </div>
   <div class="col-12 col-lg-5" style="min-width:0">
     <form id="bestelformulier" novalidate>
       <h2 class="h4">Levering</h2>
       <fieldset class="mb-2">
-        <legend class="h6">Verzendwijze</legend>
+        <legend class="h6">Leverwijze</legend>
         {%- for m in site.data.config-verzending %}
-        <div class="form-check"><input class="form-check-input" type="radio" name="zone" id="zone-{{ m.id }}" value="{{ m.id }}"{% if forloop.first %} checked{% endif %}><label class="form-check-label" for="zone-{{ m.id }}">{{ m.naam }}</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="zone" id="zone-{{ m.id }}" value="{{ m.id }}"{% if forloop.first %} checked{% endif %}><label class="form-check-label" for="zone-{{ m.id }}">{{ m.naam }}: {% if m.kost == nil or m.kost == "" %}aan kostprijs{% elsif m.kost == "0" %}gratis{% else %}{% include helpers/euro.html bedrag=m.kost %}{% endif %}</label></div>
         {%- endfor %}
       </fieldset>
-      <div class="mb-2" id="postcode-blok" hidden>
-        <label class="form-label" for="postcode">Postcode (fietslevering tot 16 km van Gent)</label>
-        <select class="form-select" id="postcode">
-          {%- for p in site.data.config-postcodes %}<option value="{{ p.postcode }}">{{ p.postcode }} {{ p.gemeente }} ({{ p.km }} km)</option>{% endfor %}
-        </select>
-      </div>
-      <p class="small mb-3" id="verz-uitleg"></p>
+      <p class="small mb-2" id="verz-uitleg"></p>
+      {%- if site.data.leverronde %}
+      <p class="small mb-3" id="ronde-stand">Leverronde: nu wachten {{ site.data.leverronde.wachtenden }} van de {{ site.data.leverronde['vertrek-bij'] }} aanmeldingen. De ronde sluit uiterlijk op {{ site.data.leverronde['sluit-uiterlijk'] | date: "%-d-%-m-%Y" }}. (Voorbeeld, bijgewerkt {{ site.data.leverronde.bijgewerkt }}.)</p>
+      {%- endif %}
+      <div class="mb-2"><label class="form-label" for="postcode">Postcode</label><input class="form-control" id="postcode" required inputmode="numeric" autocomplete="postal-code" maxlength="4" style="max-width:8rem"></div>
       <div class="mb-2"><label class="form-label" for="naam">Naam</label><input class="form-control" id="naam" required autocomplete="name"></div>
       <div class="mb-2"><label class="form-label" for="email">E-mail</label><input class="form-control" id="email" type="email" required autocomplete="email"></div>
-      <div class="mb-3"><label class="form-label" for="adres">Adres</label><textarea class="form-control" id="adres" rows="2" required autocomplete="street-address"></textarea></div>
-      <table class="table table-sm mb-3" style="font-variant-numeric: tabular-nums">
-        <tr><td>Posters</td><td class="text-end" id="sub">€ 0,00</td></tr>
-        <tr><td>Verzending</td><td class="text-end" id="verz">€ 0,00</td></tr>
+      <div class="mb-3"><label class="form-label" for="adres">Straat, nummer en gemeente</label><textarea class="form-control" id="adres" rows="2" required autocomplete="street-address"></textarea></div>
+      <table class="table table-sm mb-1" style="font-variant-numeric: tabular-nums">
+        <tr><td>Werken</td><td class="text-end" id="sub">€ 0,00</td></tr>
+        <tr><td>Leverkost</td><td class="text-end" id="verz">€ 0,00</td></tr>
         <tr><th>Totaal</th><th class="text-end" id="tot">€ 0,00</th></tr>
       </table>
-      <div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="voorwaarden" required><label class="form-check-label small" for="voorwaarden">Ik heb de algemene voorwaarden, het herroepingsrecht en de privacyverklaring gelezen (nog op te stellen).</label></div>
+      <p class="small mb-3">{{ site.btw-vermelding | capitalize }}: er komt geen btw bovenop.</p>
+      <div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="voorwaarden" required><label class="form-check-label small" for="voorwaarden">Ik heb de algemene voorwaarden, het herroepingsrecht van 14 dagen en de privacyverklaring gelezen (nog op te stellen met de jurist).</label></div>
       <p class="small text-danger" id="fout" role="alert"></p>
       <button class="btn btn-dark w-100" type="submit" id="bestel-knop">Bestellen met betalingsverplichting</button>
+      <p class="small mt-2 mb-0">Betalen gebeurt met Bancontact via Mollie, in de mand van Snipcart. Die zijn nog niet actief. Hieronder zie je plan B: overschrijving met QR-code. Nooit cash.</p>
     </form>
   </div>
 </div>
 
 <section id="betaling" class="card my-4" hidden aria-live="polite">
-  <div class="card-header">Betalen met overschrijving</div>
+  <div class="card-header">Plan B: betalen met overschrijving</div>
   <div class="card-body row g-4 align-items-center">
     <div class="col-12 col-md-5 text-center"><div id="qr" class="d-inline-block p-2" style="background:#fff;max-width:100%"></div></div>
     <div class="col-12 col-md-7" style="min-width:0">
@@ -53,7 +56,7 @@
         <dt class="col-5">Rekening</dt><dd class="col-7">BE00 0000 0000 0000 (ongeldig voorbeeld)</dd>
         <dt class="col-5">Mededeling</dt><dd class="col-7" id="b-ogm"></dd>
       </dl>
-      <p class="small mb-0">Scan de code met je bankapp. Later stuurt peapickers je een bevestiging zodra de betaling binnen is, en drukt dan je posters.</p>
+      <p class="small mb-0">Scan de code met je bankapp. peapickers drukt je bestelling pas als de betaling binnen is, en zet de verkoop met de werkcode in de Public Ledger, zonder je naam.</p>
     </div>
   </div>
 </section>
@@ -62,23 +65,14 @@
 <script src="{{ '/assets/lib/qrcode-generator-1.4.4.js' | relative_url }}"></script>
 <script>
 (function () {
+  function $(id) { return document.getElementById(id); }
   function zone() { return document.querySelector('input[name="zone"]:checked').value; }
   function subtotaal() { return ppMand.lees().reduce(function (s, r) { return s + r.prijs * r.aantal; }, 0); }
-  function aantalPosters() { return ppMand.lees().reduce(function (s, r) { return s + r.aantal; }, 0); }
-  function verzKost() { return ppVerzending.kost(zone(), document.getElementById('postcode').value, aantalPosters()); }
-  function verzending() { var k = verzKost(); return k.incl || 0; }
-  function verzTekst() {
-    var z = zone(), m = ppVerzending.methodes.filter(function (x) { return x.id === z; })[0], k = verzKost();
-    document.getElementById('postcode-blok').hidden = !(parseFloat(m.per_km) > 0);
-    var t = m.uitleg + (k.formule ? ' ' + k.formule + '.' : '') + (k.fout ? ' ' + k.fout : '');
-    if (k.gebundeld && k.incl) t += ' Met 2 klanten in de ronde krijg je € ' + ppVerzending.getal(ppVerzending.terug(k.incl, 2).terug) + ' terug, met 3 klanten € ' + ppVerzending.getal(ppVerzending.terug(k.incl, 3).terug) + '.';
-    document.getElementById('verz-uitleg').textContent = t;
-    return k;
-  }
+  function lever() { return ppVerzending.kost(zone(), $('postcode').value, subtotaal()); }
   function teken() {
-    var m = ppMand.lees(), rij = document.getElementById('mand-rijen');
-    document.getElementById('mand-leeg').hidden = m.length > 0;
-    document.getElementById('mand-tabel').hidden = m.length === 0;
+    var m = ppMand.lees(), rij = $('mand-rijen');
+    $('mand-leeg').hidden = m.length > 0;
+    $('mand-tabel').hidden = m.length === 0;
     rij.innerHTML = '';
     m.forEach(function (r, i) {
       var tr = document.createElement('tr');
@@ -95,10 +89,12 @@
       k[1].onclick = function () { m[i].aantal += 1; ppMand.bewaar(m); teken(); };
       rij.appendChild(tr);
     });
-    document.getElementById('sub').textContent = ppMand.euro(subtotaal());
-    var k = verzTekst();
-    document.getElementById('verz').textContent = k.onbekend ? 'nog te bepalen' : k.fout ? '–' : ppMand.euro(verzending());
-    document.getElementById('tot').textContent = ppMand.euro(subtotaal() + verzending());
+    var l = lever(), sub = subtotaal();
+    $('verz-uitleg').textContent = l.methode ? l.methode.uitleg : '';
+    $('mand-minimum').textContent = !m.length ? '' : l.tekort ? 'Nog ' + ppMand.euro(l.tekort) + ' tot het minimum van ' + ppMand.euro(ppVerzending.minimum) + ' (zonder leverkost). Met de gedeelde leverronde in Gent mag je onder het minimum bestellen.' : '';
+    $('sub').textContent = ppMand.euro(sub);
+    $('verz').textContent = l.onbekend ? 'aan kostprijs, nog te bepalen' : l.kost ? ppMand.euro(l.kost) : 'gratis';
+    $('tot').textContent = ppMand.euro(sub + (l.kost || 0)) + (l.onbekend ? ' + bpost' : '');
   }
   // Belgische gestructureerde mededeling: 10 cijfers + controlegetal (rest van deling door 97, 0 wordt 97)
   function ogm() {
@@ -107,24 +103,25 @@
     return { nr: 'PP-' + basis, tekst: '+++' + s.slice(0, 3) + '/' + s.slice(3, 7) + '/' + s.slice(7) + '+++' };
   }
   document.querySelectorAll('input[name="zone"]').forEach(function (i) { i.addEventListener('change', teken); });
-  document.getElementById('postcode').addEventListener('change', teken);
-  document.getElementById('bestelformulier').addEventListener('submit', function (e) {
+  $('postcode').addEventListener('input', teken);
+  $('bestelformulier').addEventListener('submit', function (e) {
     e.preventDefault();
-    var fout = document.getElementById('fout');
-    if (!ppMand.lees().length) { fout.textContent = 'Je mand is leeg. Leg eerst een poster in de mand.'; return; }
-    if (verzKost().fout) { fout.textContent = verzKost().fout; return; }
-    if (!this.checkValidity()) { fout.textContent = 'Vul je naam, e-mail en adres in en vink de voorwaarden aan.'; return; }
+    var fout = $('fout'), l = lever();
+    if (!ppMand.lees().length) { fout.textContent = 'Je mand is leeg. Leg eerst een werk in de mand.'; return; }
+    if (!this.checkValidity()) { fout.textContent = 'Vul je postcode, naam, e-mail en adres in en vink de voorwaarden aan.'; return; }
+    if (l.fout) { fout.textContent = l.fout; return; }
+    if (l.tekort) { fout.textContent = 'Nog ' + ppMand.euro(l.tekort) + ' tot het minimum. Kies de gedeelde leverronde of voeg iets toe.'; return; }
     fout.textContent = '';
-    var bedrag = subtotaal() + verzending(), o = ogm();
+    var bedrag = subtotaal() + (l.kost || 0), o = ogm();
     // EPC-QR (versie 002). De mededeling staat in het vrije veld; of Belgische banken ze daar als gestructureerd herkennen, is nog na te kijken.
     var epc = ['BCD', '002', '1', 'SCT', '', 'VOORBEELD NIET BETALEN', 'BE00000000000000', 'EUR' + bedrag.toFixed(2), '', '', o.tekst].join('\n');
     var qr = qrcode(0, 'M'); qr.addData(epc); qr.make();
-    document.getElementById('qr').innerHTML = qr.createSvgTag({ cellSize: 5, margin: 2, scalable: true });
+    $('qr').innerHTML = qr.createSvgTag({ cellSize: 5, margin: 2, scalable: true });
     document.querySelector('#qr svg').setAttribute('style', 'width:220px;max-width:100%;height:auto');
-    document.getElementById('b-nr').textContent = o.nr;
-    document.getElementById('b-bedrag').textContent = ppMand.euro(bedrag) + (verzKost().onbekend ? ' + bpost' : '');
-    document.getElementById('b-ogm').textContent = o.tekst;
-    var b = document.getElementById('betaling'); b.hidden = false; b.scrollIntoView({ behavior: 'smooth' });
+    $('b-nr').textContent = o.nr;
+    $('b-bedrag').textContent = ppMand.euro(bedrag) + (l.onbekend ? ' + bpost aan kostprijs' : '');
+    $('b-ogm').textContent = o.tekst;
+    var b = $('betaling'); b.hidden = false; b.scrollIntoView({ behavior: 'smooth' });
   });
   teken();
 })();

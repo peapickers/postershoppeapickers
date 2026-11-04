@@ -16,7 +16,7 @@ Overeenkomst voor verkoop per archiefstuk (concept voor jurist): https://claude.
 
 - Naam en tagline: peapickers postershop, "Licensed reproductions" (27-10, opmerking Jonas).
 - Achtergrond #F7F7F6 (neutraal, lichter dan eggshell #F0EAD6); Courier Prime blijft. Kleur aanpassen in `_sass/_custom.scss`.
-- Bestelvak per archiefstuk (`_includes/item/shop-box.html`): formaat A4/A3/A2, prijs 7 × M en de zeven delen.
+- Bestelvak per werk (`_includes/item/shop-box.html`, `assets/js/poster-config.js`): poster op maat (papier, vel 21 × 29,7 tot 40 × 60 cm, afbeelding met passe-partout, aantal) en fine-art met vaste prijs. Prijsregels volgens het ondernemingsplan v3 (4-11-2026): M = (papier + inkt) × 1,21 (btw op materiaal), prijs = 7 × M afgerond op € 0,10, geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen). Inkoopprijzen klein/middel/groot in `_data/config-prijzen.csv`, regels in `_config.yml`.
 - Mand (`/mand.html`, `_includes/mand.html`, `_includes/js/mand-js.html`): bewaard in de browser, leverzones uit Beslissingen 26-10, gestructureerde mededeling met controlegetal (mod 97), EPC-QR.
 - Geen startpagina: de site opent op het posteroverzicht (index.html), op vraag van Jonas 27-10.
 - Overzicht: tegels met enkel het beeld; bij hover wordt het beeld donkerder en verschijnen titel, maker, jaar en code. Metadata en prijs pas op de posterpagina. Placeholders tonen enkel de code, geen titel (27-10).
@@ -27,7 +27,7 @@ Overeenkomst voor verkoop per archiefstuk (concept voor jurist): https://claude.
 ## Onzeker (O)
 
 - Of Belgische bankapps de gestructureerde mededeling herkennen in het vrije veld van de EPC-QR, of ze in het gestructureerde veld moet. Te testen met een echte rekening na de oprichting.
-- Verzending (`/verzending.html`): tarieven in `_data/config-verzending.csv` (excl. btw: basis, per km, per extra poster), fietsafstanden per postcode in `_data/config-postcodes.csv` (schatting vanaf Gent-centrum, na te meten). Afhalen, fietslevering apart, gebundelde fietsronde (volle kost vooraf, verschil terug na de ronde, in de Public Ledger) en bpost. Het bpost-tarief is nog niet bepaald en zit niet in het totaal.
+- Bestellen en leveren (`/verzending.html`): leverregels in `_data/config-verzending.csv` (gedeelde leverronde Gent gratis, levering in Gent € 3,50, bpost aan kostprijs), Gentse postcodes in `_data/config-postcodes.csv`, stand van de leverronde in `_data/leverronde.yml`, bestelminimum € 20 in `_config.yml`. Het bpost-tarief is nog niet bepaald.
 - De M-waarden zijn het rekenvoorbeeld uit plan v4 (A2 € 6,00, gehalveerd per maat), geen metingen.
 - Algemene voorwaarden, herroeping en privacyverklaring zijn nog niet opgesteld.
 

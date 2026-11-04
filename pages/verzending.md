@@ -1,9 +1,9 @@
 ---
-title: Verzending
+title: Bestellen en leveren
 layout: page
 permalink: /verzending.html
 ---
 
-## Verzending
+## Bestellen en leveren
 
 {% include verzending.html %}

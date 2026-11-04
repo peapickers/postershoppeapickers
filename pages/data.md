@@ -6,6 +6,6 @@ permalink: /data.html
 # a table visualization will be added below the content in this file
 ---
 
-## Collection Metadata
+## Gegevens
 
-Deze tabel toont alle kunstwerken. Met de knop CSV download je wat je ziet; met Download rechtsboven de volledige metadata.
+Deze tabel toont alle werken in de shop. Met de knop CSV download je wat je ziet; met Download rechtsboven de volledige metadata.
