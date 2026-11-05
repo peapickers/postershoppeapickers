@@ -2,13 +2,13 @@
    M = papier volgens het vel + inkt volgens de afbeelding, zoals betaald (btwMateriaal = 0 sinds 5-11-2026).
    Prijs = 7 × M, afgerond op € 0,10. Geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen).
    Verdeling: 1M materiaal, 3M auteur (bruto), de rest naar de vzw (3M ± afronding).
-   Groottes: klein tot 21 × 29,7 cm, middel tot 29,7 × 42 cm, groot tot 40 × 60 cm (staand of liggend). */
+   Groottes (Jonas, 5-11-2026: overzichtelijke maten, geen A-formaten): Klein tot 20 × 30 cm, Medium tot 30 × 45 cm, Groot tot 40 × 60 cm (staand of liggend). */
 (function () {
   'use strict';
   var P = window.ppPrijzen || [], W = window.ppWerk || {}, R = window.ppRegels || {};
   var BTW_MAT = R.btwMateriaal != null ? R.btwMateriaal : 0.21, AFR = R.afronding || 0.10, RV = R.voorheffing != null ? R.voorheffing : 0.15;
-  var VEL_KORT_MIN = 21, VEL_KORT_MAX = 40, VEL_LANG_MAX = 60, VERHOUDING_MAX = 1.5, AFB_MIN = 5;
-  var KLASSEN = [['klein', 21, 29.7], ['middel', 29.7, 42], ['groot', 40, 60]];
+  var VEL_KORT_MIN = 20, VEL_KORT_MAX = 40, VEL_LANG_MAX = 60, VERHOUDING_MAX = 1.5, AFB_MIN = 5;
+  var KLASSEN = [['klein', 20, 30], ['middel', 30, 45], ['groot', 40, 60]];
 
   function $(id) { return document.getElementById(id); }
   function r2(x) { return Math.round(x * 100 + 1e-9) / 100; }
@@ -22,7 +22,7 @@
     for (var i = 0; i < KLASSEN.length; i++) if (k <= KLASSEN[i][1] + 1e-6 && l <= KLASSEN[i][2] + 1e-6) return KLASSEN[i][0];
     return 'groot';
   }
-  function klasseNaam(k) { return k === 'klein' ? 'klein (tot 21 × 29,7 cm)' : k === 'middel' ? 'medium (tot 29,7 × 42 cm)' : 'groot (tot 40 × 60 cm)'; }
+  function klasseNaam(k) { return k === 'klein' ? 'klein (tot 20 × 30 cm)' : k === 'middel' ? 'medium (tot 30 × 45 cm)' : 'groot (tot 40 × 60 cm)'; }
   function rij(soort, id) { return P.filter(function (p) { return p.soort === soort && (!id || p.id === id); })[0]; }
   function prijs(r, k) { return parseFloat(r[k]); }
 
@@ -113,8 +113,8 @@
   $('vel-h-in').addEventListener('change', function () { var x = getalIn(this); if (x !== null) { s.liggend ? zetKort(x) : zetLang(x); } teken(); });
   // Snelknoppen voor de drie groottes (Jonas, 5-11-2026); de richting staand/liggend blijft behouden
   $('vel-groot').addEventListener('click', function () { s.kort = 40; s.lang = 60; teken(); });
-  $('vel-medium').addEventListener('click', function () { s.kort = 29.7; s.lang = 42; teken(); });
-  $('vel-klein').addEventListener('click', function () { s.kort = 21; s.lang = 29.7; teken(); });
+  $('vel-medium').addEventListener('click', function () { s.kort = 30; s.lang = 45; teken(); });
+  $('vel-klein').addEventListener('click', function () { s.kort = 20; s.lang = 30; teken(); });
   $('richting-staand').addEventListener('click', function () { s.liggend = false; teken(); });
   $('richting-liggend').addEventListener('click', function () { s.liggend = true; teken(); });
   document.querySelectorAll('input[name="papier"]').forEach(function (i) { i.addEventListener('change', function () { s.papier = i.value; teken(); }); });

@@ -25,12 +25,12 @@ toc: false
 
 ## Wat kost een poster?
 
-| Papier | Klein<br><span class="small fw-normal">21 × 29,7 cm</span> | Medium<br><span class="small fw-normal">29,7 × 42 cm</span> | Groot<br><span class="small fw-normal">40 × 60 cm</span> |
+| Papier | Klein<br><span class="small fw-normal">20 × 30 cm</span> | Medium<br><span class="small fw-normal">30 × 45 cm</span> | Groot<br><span class="small fw-normal">40 × 60 cm</span> |
 |---|---:|---:|---:|
 {% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} **{% include helpers/euro.html bedrag=pb_prijs %}** |{% endfor %}
 {% endfor %}{: .pp-tabel}
 
-Dit zijn de prijzen als vel en afbeelding even groot zijn. Maak je de afbeelding kleiner met Image Size, dan is de poster iets goedkoper. Elke maat tussen 21 × 29,7 en 40 × 60 cm kan: de prijs volgt de kleinste van de drie groottes waarin je vel past.
+Dit zijn de prijzen als vel en afbeelding even groot zijn. Maak je de afbeelding kleiner met Image Size, dan is de poster iets goedkoper. Elke maat tussen 20 × 30 en 40 × 60 cm kan: de prijs volgt de kleinste van de drie groottes waarin je vel past.
 
 <details class="pp-uitklap" markdown="1">
 <summary>Hoe wordt {{ M }} berekend?</summary>
