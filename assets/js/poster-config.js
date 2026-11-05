@@ -1,5 +1,5 @@
 /* peapickers postershop: posterconfigurator en transparante prijs (ondernemingsplan v3, 4-11-2026).
-   M = papier volgens het vel + inkt volgens de afbeelding, inkoopprijzen incl. btw (btwMateriaal = 0 sinds 5-11-2026).
+   M = papier volgens het vel + inkt volgens de afbeelding, zoals betaald (btwMateriaal = 0 sinds 5-11-2026).
    Prijs = 7 × M, afgerond op € 0,10. Geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen).
    Verdeling: 1M materiaal, 3M auteur (bruto), de rest naar de vzw (3M ± afronding).
    Groottes: klein tot 21 × 29,7 cm, middel tot 29,7 × 42 cm, groot tot 40 × 60 cm (staand of liggend). */

@@ -26,8 +26,8 @@ header-title: peapickers postershop
 # Winkelmand: publieke API-sleutel van Snipcart (testsleutel tot de vzw is opgericht).
 # Leeg = voorbeeldmand in de browser, er wordt niets verkocht.
 snipcart-api-key: ""
-# Prijsregels (ondernemingsplan v3, 4-11-2026). Inkoopprijzen incl. btw (Jonas, 5-11-2026): _data/config-prijzen.csv
-# M = papier + inkt (btw zit al in de inkoopprijs, dus btw-materiaal = 0); prijs = 7 x M, afgerond op prijs-afronding. Geen btw op de verkoop.
+# Prijsregels (ondernemingsplan v3, 4-11-2026). Prijs per vel (rol / aantal vellen) en richtprijs inkt per afdruk, zoals betaald (Jonas, 5-11-2026): _data/config-prijzen.csv
+# M = papier + inkt (geen opslag, dus btw-materiaal = 0); prijs = 7 x M, afgerond op prijs-afronding. Geen btw op de verkoop.
 btw-materiaal: 0
 prijs-afronding: 0.10
 roerende-voorheffing: 0.15

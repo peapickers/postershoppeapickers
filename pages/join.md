@@ -65,7 +65,7 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 - [ ] Een reproductie blijft een reproductie: kleur en contrast kunnen afwijken van het origineel en van het scherm.
 - [ ] Je beeld wordt nooit bijgesneden of bewerkt.
 - [ ] Je werk en al je rechten blijven van jou. Je geeft per werk een niet-exclusieve licentie.
-- [ ] Poster en Limited: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs, als bruto auteursrecht. De prijs is altijd 7 × M, de materiaalkost (papier en inkt, met de btw die de vzw erop betaalt), afgerond op € 0,10. De vzw is btw-vrijgesteld, dus er gaat niets naar btw op de verkoop.
+- [ ] Poster en Limited: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs, als bruto auteursrecht. De prijs is altijd 7 × M, de materiaalkost (papier en inkt), afgerond op € 0,10. De vzw is btw-vrijgesteld, dus er gaat niets naar btw op de verkoop.
 - [ ] Bij een Limited krijg je je auteursrecht meteen bij het drukken, nog voor de verkoop.
 - [ ] peapickers houdt 15 % roerende voorheffing in op je bruto bedrag, stort die door en betaalt je netto per kwartaal. Je krijgt elk jaar een fiche 281.45. Een tweede bestuurder ziet elke kwartaaluitbetaling. Zie [Prijsopbouw]({{ '/about.html' | relative_url }}).
 - [ ] Elke verkoop staat met de werkcode in de [Public Ledger]({{ '/register.html' | relative_url }}). Uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.

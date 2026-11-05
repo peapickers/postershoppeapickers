@@ -9,7 +9,7 @@ toc: false
 {%- assign papieren = site.data.config-prijzen | where: 'soort', 'papier' -%}
 {%- assign inkt = site.data.config-prijzen | where: 'soort', 'inkt' | first -%}
 {%- assign klassen = "klein,middel,groot" | split: "," -%}
-{%- capture M -%}<abbr title="M = materiaalkost: papier en inkt, met de btw die de vzw erop betaalt">M</abbr>{%- endcapture -%}
+{%- capture M -%}<abbr title="M = materiaalkost: de prijs van het vel plus de inkt van de afdruk">M</abbr>{%- endcapture -%}
 
 ## Prijsopbouw
 
@@ -37,20 +37,16 @@ Dit zijn de prijzen als vel en afbeelding even groot zijn. Maak je de afbeelding
 <details class="pp-uitklap" markdown="1">
 <summary>Hoe wordt {{ M }} berekend?</summary>
 
-{{ M }} = papier + inkt, zoals de vzw ze betaalt, btw inbegrepen. De velkost volgt de grootte van het vel, de inktkost de grootte van de afbeelding.
+{{ M }} = de prijs van het vel + de inktkost.
 
-| Inkoop incl. btw | Klein | Medium | Groot |
-|---|---:|---:|---:|
-{% for p in papieren %}| {{ p.naam }} | {% include helpers/euro.html bedrag=p.klein %} | {% include helpers/euro.html bedrag=p.middel %} | {% include helpers/euro.html bedrag=p.groot %} |
-{% endfor %}| {{ inkt.naam }} | {% include helpers/euro.html bedrag=inkt.klein %} | {% include helpers/euro.html bedrag=inkt.middel %} | {% include helpers/euro.html bedrag=inkt.groot %} |
-{: .pp-tabel}
+- **Papier**: peapickers koopt altijd papierrollen en snijdt er vellen uit, omdat dat per vel het goedkoopst is. De prijs van een rol gedeeld door het aantal vellen dat eruit gesneden wordt, is de prijs per vel. Die volgt de grootte van het vel.
+- **Inkt**: richtprijzen die gemiddeld per afdruk kloppen. Die volgen de grootte van de afbeelding.
 
 | M = papier + inkt | Klein | Medium | Groot |
 |---|---:|---:|---:|
 {% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} {% include helpers/euro.html bedrag=pb_m %} |{% endfor %}
 {% endfor %}{: .pp-tabel}
 
-De prijs rekent met de onafgeronde {{ M }}. Daardoor kan 7 × de getoonde {{ M }} een paar cent afwijken. Dat verschil gaat naar of komt van de vzw.
 </details>
 
 <details class="pp-uitklap" markdown="1">
@@ -95,7 +91,7 @@ Er zijn geen kaders of passe-partouts als apart product. Werken uit het publiek 
 
 Een Limited is voorraad. Onverkochte exemplaren worden op de laatste dag van het boekjaar geteld, gewaardeerd aan materiaalkost plus de betaalde auteursrechten.
 
-Omdat de vzw de btw op papier en inkt niet terugkrijgt, telt die mee in {{ M }}. Gaat de omzet ooit boven € 25.000, dan moet de verdeling opnieuw bekeken worden.
+Gaat de omzet ooit boven € 25.000, dan moet de verdeling opnieuw bekeken worden.
 </details>
 
 ## Alles staat in de Public Ledger
