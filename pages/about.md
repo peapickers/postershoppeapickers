@@ -21,8 +21,6 @@ toc: false
 
 ## Waar gaat je geld naartoe?
 
-Een voorbeeld: een poster Medium op Epson Semimatte 260 g.
-
 {% include prijs-schema.html %}
 
 ## Wat kost een poster?

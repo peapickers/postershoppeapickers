@@ -1,43 +1,28 @@
-{% comment %} Prijsschema 7 × M (ondernemingsplan v3): voorbeeld poster Epson Semimatte 260 g, middel. Alle bedragen worden berekend uit _data/config-prijzen.csv en _config.yml. {% endcomment %}
-{%- assign _p = site.data.config-prijzen | where: "id", "semimatte" | first -%}
-{%- assign _i = site.data.config-prijzen | where: "soort", "inkt" | first -%}
-{%- assign _inkoop = _p.middel | plus: _i.middel -%}
-{% include helpers/prijsberekening.html inkoop=_inkoop %}
-{%- assign _kost = site.verpakking-poster | plus: site.betaalkost-schatting -%}
-{%- assign _over = pb_vzw | minus: _kost | round: 2 -%}
-<figure class="prijs-schema" aria-label="Prijsopbouw van een poster: 7 delen van M">
+{% comment %} Prijsschema 7 × M, puur als formule zonder voorbeeldbedragen (Jonas, 5-11-2026). {% endcomment %}
+<figure class="prijs-schema" aria-label="Prijsopbouw: 7 delen van M">
   <div class="ps-balk">
-    <div class="ps-deel ps-materiaal" style="--n:1"><span class="ps-m">1M</span><span class="ps-naam">Materiaalkost</span><span class="ps-bedrag">{% include helpers/euro.html bedrag=pb_m %}</span></div>
-    <div class="ps-deel ps-maker" style="--n:3"><span class="ps-m">3M</span><span class="ps-naam">Auteursrechten, bruto</span><span class="ps-bedrag">{% include helpers/euro.html bedrag=pb_auteur %}</span></div>
-    <div class="ps-deel ps-onderneming" style="--n:3"><span class="ps-m">3M</span><span class="ps-naam">vzw peapickers (± afronding)</span><span class="ps-bedrag">{% include helpers/euro.html bedrag=pb_vzw %}</span></div>
+    <div class="ps-deel ps-materiaal" style="--n:1"><span class="ps-m">1M</span><span class="ps-naam">Materiaalkost</span></div>
+    <div class="ps-deel ps-maker" style="--n:3"><span class="ps-m">3M</span><span class="ps-naam">Auteursrechten, bruto</span></div>
+    <div class="ps-deel ps-onderneming" style="--n:3"><span class="ps-m">3M</span><span class="ps-naam">vzw peapickers</span></div>
   </div>
 
   <div class="ps-details">
     <div class="ps-detail ps-d-materiaal" style="--n:1">
-      <p class="ps-mobiel">1M · Materiaalkost · {% include helpers/euro.html bedrag=pb_m %}</p>
-      <p>Het vel ({% include helpers/euro.html bedrag=_p.middel %}) en de inkt ({% include helpers/euro.html bedrag=_i.middel %}).</p>
+      <p class="ps-mobiel">1M · Materiaalkost</p>
+      <p>M = papier + inkt</p>
     </div>
     <div class="ps-detail ps-d-maker" style="--n:3">
-      <p class="ps-mobiel">3M · Auteursrechten, bruto · {% include helpers/euro.html bedrag=pb_auteur %}</p>
-      <div class="ps-mini" aria-hidden="true"><span style="flex:85">netto</span><span style="flex:15">RV</span></div>
-      <dl>
-        <div><dt>Netto auteursrecht, per kwartaal naar de auteur</dt><dd>{% include helpers/euro.html bedrag=pb_netto %}</dd></div>
-        <div><dt>Roerende voorheffing (15%), ingehouden en doorgestort door de vzw</dt><dd>{% include helpers/euro.html bedrag=pb_rv %}</dd></div>
-      </dl>
+      <p class="ps-mobiel">3M · Auteursrechten, bruto</p>
+      <div class="ps-mini" aria-hidden="true"><span style="flex:85">netto 85 %</span><span style="flex:15">15 %</span></div>
+      <p>3M − 15 % roerende voorheffing = 2,55M netto</p>
     </div>
     <div class="ps-detail ps-d-onderneming" style="--n:3">
-      <p class="ps-mobiel">3M · vzw peapickers · {% include helpers/euro.html bedrag=pb_vzw %}</p>
-      <dl>
-        <div><dt>Verpakking en kaartje</dt><dd>{% include helpers/euro.html bedrag=site.verpakking-poster %}</dd></div>
-        <div><dt>Betaalkosten (schatting)</dt><dd>{% include helpers/euro.html bedrag=site.betaalkost-schatting %}</dd></div>
-        <div><dt>Vaste kosten: boekhouder, verzekering, webshop, marketing</dt><dd>{% include helpers/euro.html bedrag=_over %}</dd></div>
-      </dl>
+      <p class="ps-mobiel">3M · vzw peapickers</p>
+      <p>7M − 1M − 3M, ± de afronding</p>
     </div>
   </div>
 
   <figcaption class="ps-totaal">
-    <span><strong>7 × M</strong>, afgerond op € 0,10</span><strong>{% include helpers/euro.html bedrag=pb_prijs %}</strong>
-    <span>M = papier {% include helpers/euro.html bedrag=_p.middel %} + inkt {% include helpers/euro.html bedrag=_i.middel %} = {% include helpers/euro.html bedrag=pb_m %} · {{ site.btw-vermelding }}</span>
-    <span class="small">Voorbeeld: poster op Epson Semimatte 260 g, vel en afbeelding medium (tot 29,7 × 42 cm). Van deze {% include helpers/euro.html bedrag=pb_prijs %} gaat {% include helpers/euro.html bedrag=pb_auteur %} naar de auteur.</span>
+    <span><strong>Prijs = 7 × M</strong>, afgerond op € 0,10</span>
   </figcaption>
 </figure>
