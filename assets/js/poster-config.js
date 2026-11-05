@@ -9,7 +9,6 @@
   var BTW_MAT = R.btwMateriaal != null ? R.btwMateriaal : 0.21, AFR = R.afronding || 0.10, RV = R.voorheffing != null ? R.voorheffing : 0.15;
   var VEL_KORT_MIN = 21, VEL_KORT_MAX = 40, VEL_LANG_MAX = 60, VERHOUDING_MAX = 1.5, AFB_MIN = 5;
   var KLASSEN = [['klein', 21, 29.7], ['middel', 29.7, 42], ['groot', 40, 60]];
-  var KOPIE = 'pp-poster-instellingen-v1';
 
   function $(id) { return document.getElementById(id); }
   function r2(x) { return Math.round(x * 100 + 1e-9) / 100; }
@@ -110,7 +109,7 @@
     if (s.lang > s.kort * VERHOUDING_MAX) s.lang = Math.floor(s.kort * VERHOUDING_MAX);
   }
 
-  var vb = $('vel-b'), vh = $('vel-h'), ab = $('afb-b'), mg = $('pp-marge'), aantal = $('pp-aantal-stuks');
+  var vb = $('vel-b'), vh = $('vel-h'), ab = $('afb-b'), mg = $('pp-marge'), aantal = $('pp-aantal-stuks') || { value: 1 }; // Stap 3 (aantal) is weg (Jonas, 5-11-2026): altijd 1 stuk per klik
   vb.addEventListener('input', function () { s.liggend ? zetLang(+vb.value) : zetKort(+vb.value); teken(); });
   vh.addEventListener('input', function () { s.liggend ? zetKort(+vh.value) : zetLang(+vh.value); teken(); });
   // Maten van het vel intikken (Jonas, 5-11-2026); toegepast bij Enter of bij het verlaten van het veld
@@ -126,7 +125,7 @@
   document.querySelectorAll('input[name="papier"]').forEach(function (i) { i.addEventListener('change', function () { s.papier = i.value; teken(); }); });
   mg.addEventListener('input', function () { var v = parseFloat(mg.value); if (!isNaN(v)) { s.marge = Math.max(0, Math.min(v, maxMarge())); teken(true); } });
   ab.addEventListener('input', function () { s.marge = margeVoorBreedte(+ab.value); teken(); });
-  aantal.addEventListener('input', teken);
+  if (aantal.addEventListener) aantal.addEventListener('input', teken);
 
   function modus(welke) {
     var p = welke === 'poster';
@@ -156,23 +155,6 @@
     el.addEventListener('pointerup', function () { sleept = false; });
     el.addEventListener('pointercancel', function () { sleept = false; });
   });
-
-  // Instellingen kopiëren naar de volgende poster
-  function leesKopie() { try { return JSON.parse(localStorage.getItem(KOPIE)); } catch (e) { return null; } }
-  $('pp-kopieer').addEventListener('click', function () {
-    try { localStorage.setItem(KOPIE, JSON.stringify({ papier: s.papier, liggend: s.liggend, kort: s.kort, lang: s.lang, marge: s.marge, aantal: +aantal.value || 1 })); } catch (e) {}
-    $('pp-kopie-melding').textContent = 'Gekopieerd. Op de volgende poster kies je "Gebruik gekopieerde instellingen".';
-  });
-  var kopie = leesKopie();
-  if (kopie) {
-    $('pp-plak').hidden = false;
-    $('pp-plak').addEventListener('click', function () {
-      s.papier = kopie.papier || s.papier; s.liggend = !!kopie.liggend; s.kort = kopie.kort; s.lang = kopie.lang; s.marge = kopie.marge; aantal.value = kopie.aantal || 1;
-      var radio = $('papier-' + s.papier); if (radio) radio.checked = true;
-      teken();
-      $('pp-kopie-melding').textContent = 'De gekopieerde instellingen zijn toegepast. De verhouding van dit kunstwerk blijft behouden.';
-    });
-  }
 
   var huidig = null;
   function teken(margeTyping) {
