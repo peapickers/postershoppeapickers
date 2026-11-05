@@ -163,6 +163,7 @@ footer.pp-footer a { color: $muted; }
 
 // Filter naaktheid: beelden op een posterpagina met filter blijven wazig tot de bezoeker ze toont
 body.pp-verborgen main img { filter: blur(28px); }
+body.pp-verborgen .pp-volledig { display: none; }
 
 // Posterconfigurator (2026-11-04): voorbeeld van vel en afbeelding op schaal
 .pp-voorbeeld { display: flex; justify-content: center; align-items: center; min-height: 360px; background: #f0f0ee; border: 1px solid $line; padding: 10px; touch-action: none; }
