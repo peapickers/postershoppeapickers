@@ -262,3 +262,14 @@ table.pp-ledger { margin: .25rem 0 .5rem; font-size: .9rem; }
 .pp-pijl::before { content: ""; position: absolute; left: -1px; top: -5px; border-style: solid; border-width: 6px 9px 6px 0; border-color: transparent $ink transparent transparent; }
 @media (max-width: 575.98px) { .pp-schema-rooster { grid-template-columns: 3.5rem 1fr; } .pp-pijl { flex-basis: 1.25rem; } .pp-schema-uitleg { font-size: .85rem; } }
 .pp-tekst-melding { background: #fff8db; border: 1px solid #e8d48a; padding: .4rem .75rem; }
+
+/* Twee kernkaders naast elkaar (leverronde op Bestellen en leveren) */
+.pp-kern.pp-kern-twee { grid-template-columns: repeat(2, 1fr); margin-bottom: .5rem; }
+@media (max-width: 575.98px) { .pp-kern.pp-kern-twee { grid-template-columns: 1fr; } }
+/* Checklijst in uitklapblokken op Deelnemen? */
+.pp-uitklap ul.pp-check { list-style: none; padding-left: 0; margin-bottom: 0; }
+.pp-uitklap ul.pp-check li { padding: .3rem 0 .3rem 1.6rem; border-bottom: 1px solid rgba(0,0,0,.08); position: relative; }
+.pp-uitklap ul.pp-check li:last-child { border-bottom: 0; }
+.pp-uitklap ul.pp-check li::before { content: "☐"; position: absolute; left: 0; }
+.pp-stappen { padding-left: 1.4rem; }
+.pp-stappen li { margin-bottom: .4rem; }
