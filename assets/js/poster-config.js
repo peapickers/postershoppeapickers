@@ -31,13 +31,14 @@
     var totaal = r2(afrond(7 * mRuw)), mat = r2(mRuw), auteur = r2(3 * mat), rv = r2(auteur * RV);
     return { mRuw: mRuw, m: mat, totaal: totaal, auteur: auteur, rv: rv, netto: r2(auteur - rv), vzw: r2(totaal - mat - auteur), aantal: aantal || 1 };
   }
-  function eenvoudig(v, wat) {
-    var d = function (b) { return (b / v.totaal * 100).toFixed(2) + '%'; };
-    return '<div class="pp-prijsstrook" aria-hidden="true">' +
-      '<span class="pp-ps-mat" style="width:' + d(v.m) + '"></span>' +
-      '<span class="pp-ps-aut" style="width:' + d(v.auteur) + '"></span>' +
-      '<span class="pp-ps-vzw" style="width:' + d(v.vzw) + '"></span></div>' +
-      '<p class="mb-1" style="font-variant-numeric: tabular-nums">' + (wat || 'Per poster') + ': materiaal ' + euro(v.m) + ' · <strong>auteur ' + euro(v.auteur) + '</strong> · vzw peapickers ' + euro(v.vzw) + '</p>' +
+  // Eenvoudige prijsopbouw: drie lijnen, zonder balk (Jonas, 5-11-2026)
+  function eenvoudig(v) {
+    var rij = function (naam, bedrag, extra) { return '<tr><th scope="row" class="fw-normal ps-0">' + naam + '</th><td class="text-end pe-0">' + bedrag + (extra || '') + '</td></tr>'; };
+    return '<table class="table table-sm table-borderless small mb-1 pp-opbouw" style="font-variant-numeric: tabular-nums"><tbody>' +
+      rij('Materiaalkost', euro(v.m)) +
+      rij('Auteursrechten', '<strong>' + euro(v.auteur) + '</strong> bruto', ' <span class="text-muted">(' + euro(v.netto) + ' netto)</span>') +
+      rij('vzw peapickers', euro(v.vzw)) +
+      '</tbody></table>' +
       '<p class="mb-0"><a href="' + (R.prijsUrl || '../about.html') + '">Zo komt de prijs tot stand</a></p>';
   }
   /* ---------- Keuze Poster / Limited (Jonas, 5-11-2026) ---------- */
@@ -58,7 +59,7 @@
   var fa = $('fa-reken');
   if (fa) {
     var fm = parseFloat(fa.getAttribute('data-m')), fv = verdeling(fm, 1);
-    fa.innerHTML = eenvoudig(fv, 'Per exemplaar');
+    fa.innerHTML = eenvoudig(fv);
     $('fa-mand').addEventListener('click', function () {
       if (W.snipcart) return;
       window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: 'limited, genummerd en gesigneerd', prijs: fv.totaal, soort: 'fine-art' });

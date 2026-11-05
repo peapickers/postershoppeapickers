@@ -163,6 +163,8 @@ footer.pp-footer a { color: $muted; }
 body.pp-verborgen main img { filter: blur(28px); }
 body.pp-verborgen .pp-volledig { display: none; }
 .pp-maat { max-width: 6rem; }
+.table.pp-opbouw { max-width: 26rem; --bs-table-bg: transparent; background-color: transparent !important; }
+.pp-opbouw th, .pp-opbouw td { background: transparent; box-shadow: none; padding-top: .15rem; padding-bottom: .15rem; }
 
 // Posterconfigurator (2026-11-04): voorbeeld van vel en afbeelding op schaal
 .pp-voorbeeld { display: flex; justify-content: center; align-items: center; min-height: 360px; background: #f0f0ee; border: 1px solid $line; padding: 10px; touch-action: none; }
