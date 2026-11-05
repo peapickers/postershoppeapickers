@@ -35,14 +35,13 @@ Stand van 5-11-2026, na alle commentaar van Jonas op de werkende kopie van de si
 
 Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") · Klein / Medium / Groot (niet "middel") · Materiaalkost / Auteursrechten / vzw peapickers · Sheet Size / Image Size · Full Screen · NSFW (18+) · Metadata · Public Ledger · Deelnemen?
 
-Open vraag: moet de filter "Unique reproductions" op Producten ook "Limited" heten?
 
 ## Site
 
 - Menu: Producten, Prijsopbouw, Public Ledger, Over, Bestellen en leveren, Deelnemen?, mandje-icoon, zoekbalk.
 - Productpagina: geen grote afbeelding en geen titel bovenaan; het bestelvak is het hoofdgedeelte. Kop met code, titel, maker en de keuze Poster/Limited. Links Sheet Size/Image Size, Full Screen en het voorbeeld; rechts Papier, Formaat (Groot/Medium/Klein, staand/liggend, breedte en hoogte intikbaar), prijs groot met "In de winkelmand" en drie lijnen eronder: Materiaalkost, Auteursrechten (bruto en netto), vzw peapickers. Geen "Geen btw" of "Leverkost komt erbij" in het bestelvak. Geen aantalstap: het aantal wijzig je in de mand. De laatst gekozen instellingen blijven klaarstaan op het volgende werk (enkel in de browser).
 - Metadata in een inklapbaar blok "Metadata", standaard dicht.
-- Filter op Producten: groep Product (Posters, Unique reproductions) en de schakelaar NSFW (18+).
+- Filter op Producten: groep Product (Posters, Limited) en de schakelaar NSFW (18+).
 - Prijsopbouw: kernkaders, schema met 7 delen en pijlen naar drie regels (geen voorbeeldprijs), prijstabel, uitklapblokken. Zie `pages/about.md`.
 - Public Ledger: filter bovenaan, kaarten met de stand, per kwartaal inklapbaar, "Nog uit te betalen" met de volgende 4 kwartaalstortingen. Uitbetalingen aan auteurs per kwartaal samengeteld.
 - Melding op elke pagina: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven." (`tekst-melding` in `_config.yml`, leeg = weg).
