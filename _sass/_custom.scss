@@ -140,6 +140,8 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .pp-menu a:hover, .pp-menu a:focus-visible, .pp-menu a.active { color: $ink; text-decoration-color: $ink; }
 .pp-menu #nav-search-box { border: 0 !important; border-bottom: 1px solid $line-strong !important; background: transparent; padding: .1rem .25rem; font-size: .9rem; width: 8rem; min-height: 0; box-shadow: none; }
 .pp-menu #nav-search-box:focus { border-bottom-color: $ink !important; }
+// Deelnemen? staat als laatste in het menu, voorbij de zoekbalk (Jonas, 5-11-2026)
+.pp-menu li:has(> a[href$="join.html"]) { order: 1; }
 
 // ── Inhoud gecentreerd, met lucht; tekstpagina's in een smalle kolom zoals de oude site
 .pp-container { max-width: 1140px; padding-top: 2rem; padding-bottom: 3rem; }

@@ -1,10 +1,10 @@
 ---
-title: Meepikken?
+title: Deelnemen?
 layout: page
 permalink: /join.html
 ---
 
-## Meepikken?
+## Deelnemen?
 
 vzw peapickers maakt werk van onafhankelijke beeldende kunstenaars zichtbaar en geeft hen met de postershop een economische kans, zonder dat hun statuut moet veranderen. Auteurs zijn makers zonder professioneel statuut en zonder kunstenaarsattest, 18 jaar of ouder, wonend in België. Je wordt per kwartaal betaald in auteursrechten, als particulier. Het jaarbedrag dat een particulier in auteursrechten mag ontvangen, wordt met reproducties niet bereikt.
 
