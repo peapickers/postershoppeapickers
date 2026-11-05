@@ -40,10 +40,14 @@ Dit zijn de prijzen als vel en afbeelding even groot zijn. Maak je de afbeelding
 - **Papier**: peapickers koopt altijd papierrollen en snijdt er vellen uit, omdat dat per vel het goedkoopst is.
 - **Inkt**: richtprijzen die gemiddeld per afdruk kloppen. Die volgen de grootte van de afbeelding.
 
-| M = papier + inkt | Klein | Medium | Groot |
+| | Klein | Medium | Groot |
 |---|---:|---:|---:|
-{% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} {% include helpers/euro.html bedrag=pb_m %} |{% endfor %}
-{% endfor %}{: .pp-tabel}
+| **Papier per vel** | | | |
+{% for p in papieren %}| {{ p.naam }} | {% include helpers/euro.html bedrag=p.klein %} | {% include helpers/euro.html bedrag=p.middel %} | {% include helpers/euro.html bedrag=p.groot %} |
+{% endfor %}| **Inkt per afdruk** | {% include helpers/euro.html bedrag=inkt.klein %} | {% include helpers/euro.html bedrag=inkt.middel %} | {% include helpers/euro.html bedrag=inkt.groot %} |
+| **M = papier + inkt** | | | |
+{% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} **{% include helpers/euro.html bedrag=pb_m %}** |{% endfor %}
+{% endfor %}{: .pp-tabel .pp-opsplitsing}
 
 </details>
 
