@@ -31,48 +31,38 @@
     var totaal = r2(afrond(7 * mRuw)), mat = r2(mRuw), auteur = r2(3 * mat), rv = r2(auteur * RV);
     return { mRuw: mRuw, m: mat, totaal: totaal, auteur: auteur, rv: rv, netto: r2(auteur - rv), vzw: r2(totaal - mat - auteur), aantal: aantal || 1 };
   }
-  function strook(v) {
-    var d = function (b) { return (b / v.totaal * 100).toFixed(2) + '%'; };
-    return '<div class="pp-prijsstrook" role="img" aria-label="Van ' + euro(v.totaal) + ' gaat ' + euro(v.auteur) + ' naar de auteur">' +
-      '<span class="pp-ps-mat" style="width:' + d(v.m) + '">materiaal</span>' +
-      '<span class="pp-ps-aut" style="width:' + d(v.auteur) + '">auteur ' + euro(v.auteur) + '</span>' +
-      '<span class="pp-ps-vzw" style="width:' + d(v.vzw) + '">vzw</span></div>' +
-      '<p class="mb-2"><strong>Van deze ' + euro(v.totaal) + ' gaat ' + euro(v.auteur) + ' naar de auteur.</strong></p>';
-  }
-  function eenvoudig(v) {
+  function eenvoudig(v, wat) {
     var d = function (b) { return (b / v.totaal * 100).toFixed(2) + '%'; };
     return '<div class="pp-prijsstrook" aria-hidden="true">' +
       '<span class="pp-ps-mat" style="width:' + d(v.m) + '"></span>' +
       '<span class="pp-ps-aut" style="width:' + d(v.auteur) + '"></span>' +
       '<span class="pp-ps-vzw" style="width:' + d(v.vzw) + '"></span></div>' +
-      '<p class="mb-1" style="font-variant-numeric: tabular-nums">Per poster: materiaal ' + euro(v.m) + ' · <strong>auteur ' + euro(v.auteur) + '</strong> · vzw peapickers ' + euro(v.vzw) + '</p>' +
+      '<p class="mb-1" style="font-variant-numeric: tabular-nums">' + (wat || 'Per poster') + ': materiaal ' + euro(v.m) + ' · <strong>auteur ' + euro(v.auteur) + '</strong> · vzw peapickers ' + euro(v.vzw) + '</p>' +
       '<p class="mb-0"><a href="' + (R.prijsUrl || '../about.html') + '">Zo komt de prijs tot stand</a></p>';
   }
-  function tabel(v, formule) {
-    var n = v.aantal, x = function (b) { return euro(b * n); };
-    var kop = n > 1 ? '<th class="text-end">Per stuk</th><th class="text-end">× ' + n + '</th>' : '<th class="text-end">Bedrag</th>';
-    var cel = function (b) { return '<td class="text-end">' + euro(b) + '</td>' + (n > 1 ? '<td class="text-end">' + x(b) + '</td>' : ''); };
-    return formule + strook(v) +
-      '<div class="table-responsive"><table class="table table-sm small mb-0" style="font-variant-numeric: tabular-nums">' +
-      '<caption class="small">Waar je geld naartoe gaat. ' + (R.btwTekst || 'btw-vrijgesteld') + ': er komt geen btw bovenop.</caption>' +
-      '<thead><tr><th>Delen</th><th>Naar</th>' + kop + '</tr></thead><tbody>' +
-      '<tr><td>1M</td><td>Materiaal: papier en inkt, met de btw die de vzw erop betaalt</td>' + cel(v.m) + '</tr>' +
-      '<tr><td>3M</td><td>Auteur, bruto auteursrecht (netto ' + euro(v.netto) + ' + 15% roerende voorheffing ' + euro(v.rv) + ')</td>' + cel(v.auteur) + '</tr>' +
-      '<tr><td>3M</td><td>vzw peapickers: verpakking, betaalkosten en vaste kosten (± afronding)</td>' + cel(v.vzw) + '</tr>' +
-      '<tr><th></th><th>Prijs</th>' + '<th class="text-end">' + euro(v.totaal) + '</th>' + (n > 1 ? '<th class="text-end">' + x(v.totaal) + '</th>' : '') + '</tr>' +
-      '</tbody></table></div>';
+  /* ---------- Keuze Poster / Limited (Jonas, 5-11-2026) ---------- */
+  if ($('product-limited')) {
+    var kies = function (welke) {
+      var lim = welke === 'limited';
+      $('sectie-limited').hidden = !lim; $('sectie-poster').hidden = lim;
+      $('product-limited').className = 'btn ' + (lim ? 'btn-dark' : 'btn-outline-dark');
+      $('product-poster').className = 'btn ' + (lim ? 'btn-outline-dark' : 'btn-dark');
+      $('product-limited').setAttribute('aria-pressed', lim); $('product-poster').setAttribute('aria-pressed', !lim);
+      if (!lim) window.dispatchEvent(new Event('resize')); // postervoorbeeld opnieuw schalen
+    };
+    $('product-poster').addEventListener('click', function () { kies('poster'); });
+    $('product-limited').addEventListener('click', function () { kies('limited'); });
   }
 
-  /* ---------- Fine-art: vaste prijs ---------- */
+  /* ---------- Limited (vroeger fine-art): vaste prijs ---------- */
   var fa = $('fa-reken');
   if (fa) {
     var fm = parseFloat(fa.getAttribute('data-m')), fv = verdeling(fm, 1);
-    fa.innerHTML = tabel(fv, '<p class="mb-2"><span class="h5" style="font-variant-numeric: tabular-nums">' + euro(fv.totaal) + '</span><br>' +
-      '7 × ' + getal(fm) + ' = ' + dec(7 * fm, 4) + ', afgerond op € 0,10 = ' + euro(fv.totaal) + ' · M = ' + euro(fm) + ' (materiaal van deze oplage, incl. btw)</p>');
+    fa.innerHTML = eenvoudig(fv, 'Per exemplaar');
     $('fa-mand').addEventListener('click', function () {
       if (W.snipcart) return;
-      window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: 'fine-art, genummerd en gesigneerd', prijs: fv.totaal, soort: 'fine-art' });
-      $('fa-melding').textContent = 'De fine-art print ligt in de mand.';
+      window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: 'limited, genummerd en gesigneerd', prijs: fv.totaal, soort: 'fine-art' });
+      $('fa-melding').textContent = 'De Limited ligt in de mand.';
     });
   }
 

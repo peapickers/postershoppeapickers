@@ -171,7 +171,7 @@ body.pp-verborgen .pp-volledig { display: none; }
 .pp-greep { position: absolute; width: 14px; height: 14px; background: #fff; border: 2px solid $ink; border-radius: 50%; cursor: nwse-resize; touch-action: none; }
 .pp-voorbeeld:not(.pp-modus-afbeelding) .pp-vel { outline: 2px solid $ink; outline-offset: 2px; }
 .pp-voorbeeld.pp-modus-afbeelding .pp-vel img { outline: 2px solid $ink; outline-offset: 1px; }
-.pp-fineart { border-bottom: 1px solid $line; }
+.pp-limited-beeld { max-height: 340px; width: auto; }
 .pp-reken { background: #f6f6f4; border: 1px solid $line; padding: .75rem; }
 
 

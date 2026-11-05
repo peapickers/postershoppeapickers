@@ -19,29 +19,45 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
   <div class="card-body">
     <p class="mb-3"><strong>{{ page.identiteitscode }}</strong> · {{ page.title }}{% if page.creator %} · {{ page.creator }}{% endif %}</p>
 
-{% if page.fineart_m and page.fineart_m != "" %}
+{%- assign heeft_limited = false -%}{% if page.fineart_m and page.fineart_m != "" %}{% assign heeft_limited = true %}{% endif %}
+{% if heeft_limited %}
+    {%- comment -%} Keuze Poster of Limited (Jonas, 5-11-2026). Limited = de vroegere fine-art: vaste print, gelimiteerde oplage, geen keuze in papier of grootte. {%- endcomment %}
+    <div class="btn-group mb-4" role="group" aria-label="Kies een product" id="pp-product">
+      <button type="button" class="btn btn-dark" id="product-poster" aria-pressed="true">Poster</button>
+      <button type="button" class="btn btn-outline-dark" id="product-limited" aria-pressed="false">Limited</button>
+    </div>
     {%- assign fa_m = page.fineart_m | plus: 0 -%}
     {%- assign fa_prijs = fa_m | times: 70 | plus: 0.000001 | round | divided_by: 10.0 -%}
-    <section class="pp-fineart mb-4 pb-4" aria-labelledby="fa-kop">
-      <h3 class="h5" id="fa-kop">Fine-art</h3>
-      <p class="small mb-2">Een unieke print, op duur papier of op een bijzondere manier gereproduceerd, in een gecureerde oplage{% if page.fineart_oplage and page.fineart_oplage != "" %} van {{ page.fineart_oplage }}{% endif %}, genummerd en gesigneerd door de auteur. Je kiest geen formaat: het is een vaste print met een vaste prijs van 7 × M. De auteur kreeg het auteursrecht al bij het drukken.</p>
-      <div class="pp-reken small mb-2" id="fa-reken" data-m="{{ fa_m }}"></div>
-      <div class="d-flex flex-wrap gap-2 align-items-center">
+    <section class="pp-limited" aria-labelledby="fa-kop" id="sectie-limited" hidden>
+      <h3 class="h5" id="fa-kop">Limited</h3>
+      <div class="row g-4">
+        <div class="col-12 col-md-5" style="min-width:0">
+          <div class="pp-voorbeeld text-center"><img src="{{ beeld }}" alt="Limited: {{ page.title | escape }}" class="img-fluid pp-limited-beeld" draggable="false"></div>
+          <p class="text-center mt-2 mb-0 pp-volledig"><a class="spotlight btn btn-sm btn-outline-dark" title="{{ page.title | escape }}" href="{{ page.object_location | default: page.image_small | relative_url }}">Bekijk het kunstwerk op volledig scherm</a></p>
+        </div>
+        <div class="col-12 col-md-7" style="min-width:0">
+          <p class="mb-2"><strong>Oplage van {{ page.fineart_oplage | default: "?" }}</strong>, genummerd en gesigneerd door de auteur.</p>
+          <p class="small mb-0">Een vaste print op duur papier of in een bijzondere reproductievorm. Het ontwerp ligt vast: je kiest geen papier en geen grootte. Is de oplage op, dan is het werk niet meer als Limited te koop.</p>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap gap-3 align-items-center mt-4 pp-totaal">
+        <span class="h3 mb-0" style="font-variant-numeric: tabular-nums">{% include helpers/euro.html bedrag=fa_prijs %}</span>
         <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="fa-mand"
-          data-item-id="{{ page.identiteitscode }}-FINEART"
-          data-item-name="{{ page.title | escape }} · fine-art"
+          data-item-id="{{ page.identiteitscode }}-LIMITED"
+          data-item-name="{{ page.title | escape }} · limited"
           data-item-price="{{ fa_prijs }}"
           data-item-url="{{ page.url | relative_url }}"
           data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"
           data-item-description="{{ page.identiteitscode }} · {{ page.creator | escape }} · genummerd en gesigneerd"
           {% if page.fineart_oplage and page.fineart_oplage != "" %}data-item-max-quantity="{{ page.fineart_oplage }}"{% endif %}
-          data-item-taxable="false">Fine-art in de mand</button>
+          data-item-taxable="false">In de winkelmand</button>
         <span class="small" id="fa-melding" role="status" aria-live="polite"></span>
       </div>
+      <div class="pp-reken small mt-2 mb-0" id="fa-reken" data-m="{{ fa_m }}"></div>
     </section>
 {% endif %}
 
-    <section class="pp-poster" aria-labelledby="po-kop">
+    <section class="pp-poster" aria-labelledby="po-kop" id="sectie-poster">
       <h3 class="h5" id="po-kop">Poster</h3>
 
       <div class="row g-4">
