@@ -43,7 +43,7 @@ Deze kenmerken zijn niet onderhandelbaar en gelden voor elk merk.
 | Nov.–dec. 2026 | Medebestuurder en boekhouder kiezen; statuten, licentie en klantteksten in concept |
 | Jan. 2027 | Oprichting: akte, ondernemingsnummer, btw-vrijstelling, bankrekening, verzekering |
 | Jan.–mrt. 2027 | Webshop af, 3 auteurs met licentie, proefbestellingen |
-| Q2 2027 | Eerste bestelling, eerste fine-art, eerste leverronde |
+| Q2 2027 | Eerste bestelling, eerste Limited, eerste leverronde |
 | Q3–Q4 2027 | Flyers, stickers en QR-codes in de stad; eerste kwartaaluitbetaling aan auteurs in juli |
 | 2028 | Meer auteurs (6 tot 10), nonprofitpartners op de site |
 | Jan. 2029 | Drie jaar cijfers: evaluatie |

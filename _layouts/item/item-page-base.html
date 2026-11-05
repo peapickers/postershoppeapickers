@@ -8,7 +8,7 @@ item-meta: true
 <div class="container py-3">
 {% if page.filter and page.filter != "" %}
     <div class="alert alert-dark d-flex flex-wrap align-items-center gap-2" id="pp-naakt-melding" role="alert">
-        <span>Dit werk toont naaktheid (18+). Het beeld is verborgen.</span>
+        <span>Dit werk is NSFW (18+). Het beeld is verborgen.</span>
         <button type="button" class="btn btn-sm btn-light" id="pp-naakt-toon">Toon het beeld</button>
     </div>
     <script>
@@ -28,13 +28,8 @@ item-meta: true
     </script>
 {% endif %}
 
-    <h2 class="mb-3">{{ page.title }} 
-        {% unless page.display_template == 'record' %}<a href="#metadata" class="ms-5 btn btn-sm btn-outline-dark small">Metadata 
-            <svg class="bi icon-sprite" role="img" aria-label="Jump to Item Info">
-                <use href="{{ '/assets/css/cb-icons.svg' | relative_url }}#arrow-down"/>
-            </svg>
-        </a>{% endunless %}
-    </h2>
+    {%- comment -%} Zichtbare titel en Metadata-knop weggelaten (Jonas, 5-11-2026): het bestelvak toont code · titel · maker. De titel blijft voor schermlezers. {%- endcomment %}
+    <h2 class="visually-hidden">{{ page.title }}</h2>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-10">
@@ -51,7 +46,10 @@ item-meta: true
 
         <div class="col-12 col-md-10" id="metadata">
 
-            {% include item/metadata.html %}
+            <details class="pp-metadata">
+                <summary class="h5">Metadata</summary>
+                {% include item/metadata.html %}
+            </details>
 
         </div>
 

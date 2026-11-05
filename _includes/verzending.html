@@ -1,6 +1,6 @@
 {% comment %} Bestellen, betalen en leveren (ondernemingsplan v3, hoofdstuk 5.1). Regels uit _data/config-verzending.csv, _data/config-postcodes.csv, _data/leverronde.yml en _config.yml. {% endcomment %}
 {%- assign r = site.data.leverronde -%}
-<p>Elke poster wordt in Gent gedrukt door peapickers, pas nadat je betaald hebt. Er is geen voorraad en geen overproductie, behalve de kleine oplages fine-art.</p>
+<p>Elke poster wordt in Gent gedrukt door peapickers, pas nadat je betaald hebt. Er is geen voorraad en geen overproductie, behalve de kleine oplages van Limited.</p>
 
 <div class="table-responsive">
 <table class="table table-sm align-top">
@@ -34,7 +34,7 @@
   <li><strong>Betaling (Bancontact via Mollie)</strong><span>Bewaard: betaalgegevens, bij Mollie.</span></li>
   <li><strong>Druk</strong><span>Na de betaling. Bewaard: het bestelnummer.</span></li>
   <li><strong>Levering</strong><span>In Gent of met bpost. Bewaard: je adres, tot de levering.</span></li>
-  <li><strong>Kaartje in de verpakking</strong><span>Een kaartje in de vorm van een kassabon, met de prijsverdeling, de werkcode en de verwijzing naar de Public Ledger. Bewaard: niets.</span></li>
+  <li><strong>Kaartje in de verpakking</strong><span>Een kaartje in de vorm van een kassabon, met de prijsopbouw, de werkcode en de verwijzing naar de Public Ledger. Bewaard: niets.</span></li>
   <li><strong><a href="{{ '/register.html' | relative_url }}">Public Ledger</a></strong><span>De verkoop met werkcode en bedrag. Bewaard: geen persoonsgegevens.</span></li>
 </ol>
 

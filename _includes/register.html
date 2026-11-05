@@ -1,32 +1,39 @@
-{% comment %} Publiek register: rijen uit _data/register.csv. Bovenaan de totalen over alle rijen, daaronder een filterbare tabel. {% endcomment %}
-<section aria-labelledby="teller-kop" class="my-3 pp-teller">
-  <h2 class="h6 mb-1" id="teller-kop">Laatste kwartaaluitbetaling aan auteurs</h2>
-  <p class="h3 mb-0" id="teller-bedrag" style="font-variant-numeric: tabular-nums"></p>
-  <p class="small mb-0" id="teller-uitleg"></p>
-</section>
-
-<section aria-labelledby="stand" class="my-3">
+{% comment %} Publiek register (herwerkt voor de klant, Jonas 5-11-2026): eerst de stand in kaarten, dan de filter, dan alle handelingen per kwartaal in uitklapbare blokken. Rijen uit _data/register.csv. {% endcomment %}
+<section aria-labelledby="stand" class="my-4">
   <h2 class="h4" id="stand">Stand van de postershop</h2>
+  <div class="pp-teller mb-3">
+    <p class="pp-label mb-1" id="teller-kop">Laatste kwartaaluitbetaling aan auteurs</p>
+    <p class="h3 mb-1" id="teller-bedrag" style="font-variant-numeric: tabular-nums"></p>
+    <p class="small mb-0" id="teller-uitleg"></p>
+  </div>
   <div class="row g-2" id="register-kaarten" style="font-variant-numeric: tabular-nums"></div>
 </section>
 
-<h2 class="h4 mt-4" id="alle-handelingen">Alle handelingen</h2>
+<details class="pp-uitklap">
+  <summary>Hoe lees je de Public Ledger?</summary>
+  <ul class="mb-0 mt-2">
+    <li><strong>+</strong> is geld dat op de rekening komt, <strong>−</strong> geld dat eraf gaat. Het saldo is wat er daarna op de rekening staat.</li>
+    <li>Elke verkoop wordt verdeeld volgens de <a href="{{ '/about.html' | relative_url }}">Prijsopbouw</a>: 1 deel materiaalkost, 3 delen auteursrechten, 3 delen vzw peapickers (± afronding).</li>
+    <li>Auteursrechten op posters worden per kwartaal uitbetaald, samengeteld over alle auteurs. Bij een Limited gebeurt dat bij de druk.</li>
+    <li>De roerende voorheffing van 15 % wordt ingehouden en doorgestort.</li>
+    <li>Ga met de muis over een soort om te zien wat die betekent. Elke regel wordt vóór publicatie nagekeken. Alle bedragen hier zijn fictief.</li>
+  </ul>
+</details>
 
-<ul class="list-unstyled register-lijst" id="register-rijen" style="font-variant-numeric: tabular-nums"></ul>
-<p class="small" id="register-totaal"></p>
-<h3 class="h6 mt-3">Filter de lijst</h3>
-<form class="row g-2 align-items-end mb-2" id="register-filter" role="search" onsubmit="return false">
-  <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small" for="f-soort">Soort</label>
-    <select class="form-select" id="f-soort"><option value="">Alle soorten</option>{% assign soorten = site.data.register | map: "soort" | uniq %}{% for s in soorten %}<option>{{ s }}</option>{% endfor %}</select></div>
-  <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small" for="f-code">Kunstwerk</label>
-    <input class="form-control" id="f-code" list="codes" placeholder="bv. 2026-001-01"><datalist id="codes">{% assign codes = site.data.register | map: "identiteitscode" | uniq %}{% for c in codes %}{% if c %}<option value="{{ c }}">{% endif %}{% endfor %}</datalist></div>
-  <div class="col-6 col-lg-2"><label class="form-label small" for="f-van">Van</label><input class="form-control" type="date" id="f-van"></div>
-  <div class="col-6 col-lg-2"><label class="form-label small" for="f-tot">Tot</label><input class="form-control" type="date" id="f-tot"></div>
-  <div class="col-12 col-lg-2"><button type="button" class="btn btn-outline-dark w-100" id="f-reset">Wis filters</button></div>
-</form>
-<p class="small" id="register-telling" role="status" aria-live="polite"></p>
-
-<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen van 7 × M: 1 materiaal, 3 auteur, 3 vzw (± afronding). Auteursrechten op posters worden per kwartaal uitbetaald, samengeteld over alle auteurs; bij fine-art bij de druk. De roerende voorheffing van 15 % wordt ingehouden en doorgestort. Alle bedragen hier zijn fictief.</p>
+<section aria-labelledby="alle-handelingen" class="mt-4">
+  <h2 class="h4" id="alle-handelingen">Alle handelingen</h2>
+  <form class="row g-2 align-items-end mb-2 pp-filterbalk" id="register-filter" role="search" onsubmit="return false">
+    <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small mb-1" for="f-soort">Soort</label>
+      <select class="form-select form-select-sm" id="f-soort"><option value="">Alle soorten</option>{% assign soorten = site.data.register | map: "soort" | uniq | sort %}{% for s in soorten %}<option>{{ s }}</option>{% endfor %}</select></div>
+    <div class="col-12 col-sm-6 col-lg-3"><label class="form-label small mb-1" for="f-code">Kunstwerk</label>
+      <input class="form-control form-control-sm" id="f-code" list="codes" placeholder="bv. 2026-001-01"><datalist id="codes">{% assign codes = site.data.register | map: "identiteitscode" | uniq %}{% for c in codes %}{% if c %}<option value="{{ c }}"></option>{% endif %}{% endfor %}</datalist></div>
+    <div class="col-6 col-lg-2"><label class="form-label small mb-1" for="f-van">Van</label><input class="form-control form-control-sm" type="date" id="f-van"></div>
+    <div class="col-6 col-lg-2"><label class="form-label small mb-1" for="f-tot">Tot</label><input class="form-control form-control-sm" type="date" id="f-tot"></div>
+    <div class="col-12 col-lg-2"><button type="button" class="btn btn-sm btn-outline-dark w-100" id="f-reset">Wis filters</button></div>
+  </form>
+  <p class="small d-flex flex-wrap justify-content-between gap-2 mb-2" role="status" aria-live="polite"><span id="register-telling"></span><span id="register-totaal"></span></p>
+  <div id="register-rijen"></div>
+</section>
 <script>
 (function () {
   var rijen = {{ site.data.register | jsonify }};
@@ -49,7 +56,7 @@
     ['Materiaal en verpakking', e(materiaal), 'Papier, inkt, verpakking en kaartjes'],
     ['Deel van de vzw', e(pp), '3 van de 7 delen van elke verkoop (± afronding). Vaste kosten en betaalkosten betaald: ' + e(vast)],
     ['Lening van de oprichter', e(schuld - terug), 'Renteloos en achtergesteld. Al terugbetaald: ' + e(terug)],
-    ['Verkocht', String(verkocht), 'Posters en fine-art, na herroepingen']
+    ['Verkocht', String(verkocht), 'Posters en Limited, na herroepingen']
   ];
   // Teller: wat in het laatste kwartaal met een uitbetaling naar de auteurs ging (bruto = netto + voorheffing)
   var uit = rijen.filter(function (r) { return r.soort === 'uitbetaling' || r.soort === 'voorheffing'; });
@@ -60,23 +67,52 @@
     document.getElementById('teller-uitleg').textContent = 'Op ' + laatste + ': ' + e(netto) + ' netto naar de auteurs en ' + e(bruto - netto) + ' roerende voorheffing. Samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.';
   }
   document.getElementById('register-kaarten').innerHTML = kaarten.map(function (k) {
-    return '<div class="col-6 col-lg-4"><div class="card h-100"><div class="card-body p-2"><div class="small">' + k[0] + '</div><div class="h4 mb-1">' + k[1] + '</div><div class="small">' + k[2] + '</div></div></div></div>';
+    return '<div class="col-12 col-sm-6 col-lg-4"><div class="pp-kaart h-100"><p class="pp-label mb-1">' + k[0] + '</p><p class="pp-kaart-getal mb-1">' + k[1] + '</p><p class="small mb-0">' + k[2] + '</p></div></div>';
   }).join('');
 
+  var UITLEG = {
+    'bestelling': 'Een verkoop: de klant betaalt de prijs van de poster of Limited.',
+    'herroeping': 'Een klant ziet af van de koop en krijgt het geld terug.',
+    'levering': 'Leverkost van een leverronde.',
+    'materiaalkost': 'Papier, inkt, verpakking of kaartjes.',
+    'uitbetaling': 'Netto auteursrechten naar de auteurs, samengeteld.',
+    'voorheffing': 'Roerende voorheffing van 15 % op de auteursrechten, doorgestort.',
+    'vaste kosten': 'Boekhouder, verzekering, webshop en marketing.',
+    'betaalkosten': 'Kosten van de betaaldienst.',
+    'lening': 'Storting van de oprichter: renteloos en achtergesteld.',
+    'terugbetaling': 'Terugbetaling van de lening aan de oprichter.',
+    'gift': 'Een schenking in natura, zonder geldstroom.',
+    'oprichting': 'Kosten om de vzw op te richten.',
+    'investering': 'Aankoop van materiaal dat lang meegaat.'
+  };
+  function kwartaal(d) { return d.slice(0, 4) + ' · Q' + (Math.floor((+d.slice(5, 7) - 1) / 3) + 1); }
+  function bedrag(x) { return (x > 0 ? '+ ' : x < 0 ? '− ' : '') + ppMand.euro(Math.abs(x)); }
+  function esc(t) { return String(t || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function teken() {
     var s = document.getElementById('f-soort').value, c = document.getElementById('f-code').value.trim().toUpperCase(),
         van = document.getElementById('f-van').value, tot = document.getElementById('f-tot').value;
+    var gefilterd = !!(s || c || van || tot);
     var sel = rijen.filter(function (r) {
       return (!s || r.soort === s) && (!c || (r.identiteitscode || '').toUpperCase().indexOf(c) > -1) && (!van || r.datum >= van) && (!tot || r.datum <= tot);
     });
-    var ul = document.getElementById('register-rijen'); ul.innerHTML = '';
-    sel.slice().reverse().forEach(function (r) {
-      var netto = g(r, 'ontvangen') - g(r, 'betaald'), li = document.createElement('li');
-      li.textContent = r.datum + ': ' + (netto >= 0 ? '+ ' : '− ') + ppMand.euro(Math.abs(netto)) + '; ' + r.omschrijving;
-      ul.appendChild(li);
-    });
+    // Per kwartaal, nieuwste eerst; het nieuwste kwartaal staat open (bij een filter alle kwartalen)
+    var groepen = [], per = {};
+    sel.slice().reverse().forEach(function (r) { var k = kwartaal(r.datum); if (!per[k]) { per[k] = []; groepen.push(k); } per[k].push(r); });
+    document.getElementById('register-rijen').innerHTML = groepen.map(function (k, gi) {
+      var lijst = per[k], inn = som(lijst, 'ontvangen'), uit = som(lijst, 'betaald');
+      return '<details class="pp-kwartaal"' + (gefilterd || gi === 0 ? ' open' : '') + '><summary><span class="pp-kw-naam">' + k + '</span>' +
+        '<span class="pp-kw-som"><span>' + lijst.length + (lijst.length === 1 ? ' handeling' : ' handelingen') + '</span><span class="pp-plus">in ' + ppMand.euro(inn) + '</span><span class="pp-min">uit ' + ppMand.euro(uit) + '</span></span></summary>' +
+        '<div class="pp-tabel-wrap"><table class="pp-tabel pp-ledger"><thead><tr><th scope="col">Datum</th><th scope="col">Soort</th><th scope="col">Omschrijving</th><th scope="col" class="text-end">Bedrag</th><th scope="col" class="text-end">Saldo</th></tr></thead><tbody>' +
+        lijst.map(function (r) {
+          var n = Math.round((g(r, 'ontvangen') - g(r, 'betaald')) * 100) / 100;
+          return '<tr><td class="text-nowrap">' + r.datum + '</td><td><span class="pp-soort" title="' + esc(UITLEG[r.soort] || '') + '">' + esc(r.soort) + '</span></td>' +
+            '<td>' + esc(r.omschrijving) + (r.identiteitscode ? ' <span class="text-muted small text-nowrap">' + esc(r.identiteitscode) + '</span>' : '') + '</td>' +
+            '<td class="text-end text-nowrap ' + (n > 0 ? 'pp-plus' : n < 0 ? 'pp-min' : 'text-muted') + '">' + (n === 0 ? 'geen geld' : bedrag(n)) + '</td>' +
+            '<td class="text-end text-nowrap text-muted">' + ppMand.euro(r._saldo) + '</td></tr>';
+        }).join('') + '</tbody></table></div></details>';
+    }).join('') || '<p>Geen handelingen voor deze filters.</p>';
     var t = som(sel, 'ontvangen') - som(sel, 'betaald');
-    document.getElementById('register-totaal').textContent = 'Netto voor deze selectie: ' + (t >= 0 ? '+ ' : '− ') + ppMand.euro(Math.abs(t));
+    document.getElementById('register-totaal').textContent = 'Netto voor deze selectie: ' + bedrag(Math.round(t * 100) / 100);
     document.getElementById('register-telling').textContent = sel.length + ' van ' + rijen.length + ' handelingen';
   }
   ['f-soort', 'f-code', 'f-van', 'f-tot'].forEach(function (id) { document.getElementById(id).addEventListener('input', teken); });

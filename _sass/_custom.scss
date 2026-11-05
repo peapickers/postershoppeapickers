@@ -140,6 +140,9 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .pp-menu a:hover, .pp-menu a:focus-visible, .pp-menu a.active { color: $ink; text-decoration-color: $ink; }
 .pp-menu #nav-search-box { border: 0 !important; border-bottom: 1px solid $line-strong !important; background: transparent; padding: .1rem .25rem; font-size: .9rem; width: 8rem; min-height: 0; box-shadow: none; }
 .pp-menu #nav-search-box:focus { border-bottom-color: $ink !important; }
+// Mand als winkelmandje-icoon, zonder onderlijning (Jonas, 5-11-2026)
+.pp-menu a.pp-menu-mand { text-decoration: none; display: inline-flex; align-items: center; gap: .15rem; }
+.pp-menu a.pp-menu-mand svg { display: block; }
 
 // ── Inhoud gecentreerd, met lucht; tekstpagina's in een smalle kolom zoals de oude site
 .pp-container { max-width: 1140px; padding-top: 2rem; padding-bottom: 3rem; }
@@ -158,6 +161,10 @@ footer.pp-footer a { color: $muted; }
 
 // Filter naaktheid: beelden op een posterpagina met filter blijven wazig tot de bezoeker ze toont
 body.pp-verborgen main img { filter: blur(28px); }
+body.pp-verborgen .pp-volledig { display: none; }
+.pp-maat { max-width: 6rem; }
+.table.pp-opbouw { max-width: 26rem; --bs-table-bg: transparent; background-color: transparent !important; }
+.pp-opbouw th, .pp-opbouw td { background: transparent; box-shadow: none; padding-top: .15rem; padding-bottom: .15rem; }
 
 // Posterconfigurator (2026-11-04): voorbeeld van vel en afbeelding op schaal
 .pp-voorbeeld { display: flex; justify-content: center; align-items: center; min-height: 360px; background: #f0f0ee; border: 1px solid $line; padding: 10px; touch-action: none; }
@@ -166,7 +173,7 @@ body.pp-verborgen main img { filter: blur(28px); }
 .pp-greep { position: absolute; width: 14px; height: 14px; background: #fff; border: 2px solid $ink; border-radius: 50%; cursor: nwse-resize; touch-action: none; }
 .pp-voorbeeld:not(.pp-modus-afbeelding) .pp-vel { outline: 2px solid $ink; outline-offset: 2px; }
 .pp-voorbeeld.pp-modus-afbeelding .pp-vel img { outline: 2px solid $ink; outline-offset: 1px; }
-.pp-fineart { border-bottom: 1px solid $line; }
+.pp-limited-beeld { max-height: 340px; width: auto; }
 .pp-reken { background: #f6f6f4; border: 1px solid $line; padding: .75rem; }
 
 
@@ -184,3 +191,59 @@ body.pp-verborgen main img { filter: blur(28px); }
 
 // Teller auteurs in de Public Ledger
 .pp-teller { border: 1px solid $ink; padding: .75rem 1rem; }
+
+// Metadata inklapbaar op de itempagina (Jonas, 5-11-2026)
+.pp-metadata { border-top: 1px solid $line; padding-top: .75rem; margin-top: .5rem; }
+.pp-metadata > summary { cursor: pointer; margin-bottom: 0; }
+.pp-metadata[open] > summary { margin-bottom: .75rem; }
+
+// Bestelvak herwerkt (Jonas, 5-11-2026): één typografische schaal, beeld links, kiezen en bestellen rechts
+.pp-bestel .pp-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: rgba($ink, .6); margin-bottom: .5rem; }
+.pp-bestel .pp-titel { font-size: 1.6rem; line-height: 1.2; font-weight: 600; }
+.pp-bestel .pp-voorbeeld { min-height: 440px; }
+.pp-bestel .pp-limited-beeld { max-height: 420px; }
+.pp-bestel .pp-maat { max-width: 100%; }
+.pp-bestel .pp-afrekenen { border-top: 1px solid $line; padding-top: 1rem; margin-top: 1.5rem; }
+.pp-bestel .pp-prijs { font-size: 2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.pp-bestel .pp-mandknop { padding: .55rem 1.25rem; }
+.pp-bestel .pp-reken { background: transparent; border: 0; padding: 0; }
+.pp-bestel .pp-bestel-kop { border-bottom: 1px solid $line; padding-bottom: 1rem; }
+@media (max-width: 767.98px) { .pp-bestel .pp-voorbeeld { min-height: 320px; } }
+
+// Prijsopbouw leesbaar voor de klant (Jonas, 5-11-2026)
+.pp-kern { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0 2rem; }
+.pp-kern-vak { border: 1px solid $line-strong; background: #fff; padding: 1rem; }
+.pp-kern-vak p { margin: 0; font-size: .9rem; }
+.pp-kern-vak .pp-kern-groot { font-size: 1.6rem; font-weight: 700; line-height: 1.1; margin-bottom: .4rem; }
+@media (max-width: 575.98px) { .pp-kern { grid-template-columns: 1fr; } }
+abbr[title] { text-decoration: underline dotted; cursor: help; }
+table.pp-tabel { width: 100%; margin: 1rem 0 1.25rem; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .95rem; }
+table.pp-tabel th, table.pp-tabel td { padding: .45rem .6rem; border-bottom: 1px solid $line; vertical-align: top; }
+table.pp-tabel thead th { border-bottom: 2px solid $ink; vertical-align: bottom; }
+table.pp-tabel td[style*="right"], table.pp-tabel th[style*="right"] { white-space: nowrap; }
+table.pp-tabel tbody tr:hover { background: rgba($ink, .03); }
+table.pp-vergelijk td:first-child { font-weight: 600; white-space: nowrap; }
+table.pp-vergelijk td { width: 40%; }
+table.pp-vergelijk td:first-child { width: 20%; }
+.pp-uitklap { border: 1px solid $line; background: #fff; padding: .6rem 1rem; margin: .75rem 0; }
+.pp-uitklap > summary { cursor: pointer; font-weight: 600; }
+.pp-uitklap[open] > summary { margin-bottom: .75rem; }
+@media (max-width: 575.98px) { table.pp-tabel { display: block; overflow-x: auto; font-size: .85rem; } table.pp-tabel th, table.pp-tabel td { padding: .4rem .35rem; } }
+
+// Public Ledger leesbaar voor de klant (Jonas, 5-11-2026)
+.pp-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: rgba($ink, .6); }
+.pp-kaart { border: 1px solid $line-strong; background: #fff; padding: .85rem 1rem; }
+.pp-kaart-getal { font-size: 1.5rem; font-weight: 700; line-height: 1.1; }
+.pp-kaart a { color: inherit; }
+.pp-filterbalk { background: #fff; border: 1px solid $line; padding: .5rem .75rem .75rem; margin: 0; }
+.pp-kwartaal { border: 1px solid $line-strong; background: #fff; margin-bottom: .5rem; }
+.pp-kwartaal > summary { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; padding: .6rem 1rem; cursor: pointer; }
+.pp-kwartaal[open] > summary { border-bottom: 1px solid $line; }
+.pp-kw-naam { font-weight: 700; }
+.pp-kw-som { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.pp-plus { color: #1f6b3a; }
+.pp-min { color: #9a2a1d; }
+.pp-tabel-wrap { overflow-x: auto; padding: 0 .5rem; }
+table.pp-ledger { margin: .25rem 0 .5rem; font-size: .9rem; }
+.pp-soort { display: inline-block; white-space: nowrap; border: 1px solid $line-strong; padding: 0 .4rem; font-size: .8rem; cursor: help; }
+@media (max-width: 575.98px) { table.pp-ledger td:nth-child(5), table.pp-ledger th:nth-child(5) { display: none; } }

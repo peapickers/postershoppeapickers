@@ -14,103 +14,129 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
 {%- assign btwf = site.btw-materiaal | plus: 1 -%}
 {%- assign klassen = "klein,middel,groot" | split: "," -%}
 {%- capture beeld -%}{{ page.image_small | default: page.object_location | relative_url }}{%- endcapture -%}
-<div class="card my-4 text-start" id="shop-box">
-  <div class="card-header">Bestellen</div>
-  <div class="card-body">
-    <p class="mb-3"><strong>{{ page.identiteitscode }}</strong> · {{ page.title }}{% if page.creator %} · {{ page.creator }}{% endif %}</p>
-
-{% if page.fineart_m and page.fineart_m != "" %}
+{%- comment -%} Opbouw herwerkt (Jonas, 5-11-2026): links het beeld, rechts alles om te kiezen en te bestellen, de prijs onderaan rechts. {%- endcomment %}
+<div class="card my-4 text-start pp-bestel" id="shop-box">
+  <div class="card-body p-3 p-md-4">
+    <div class="pp-bestel-kop d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <div>
+        <p class="pp-label mb-1">{{ page.identiteitscode }}</p>
+        <p class="pp-titel mb-0">{{ page.title }}</p>
+        {% if page.creator %}<p class="mb-0 text-muted">{{ page.creator }}</p>{% endif %}
+      </div>
+{%- assign heeft_limited = false -%}{% if page.fineart_m and page.fineart_m != "" %}{% assign heeft_limited = true %}{% endif %}
+{% if heeft_limited %}
+      {%- comment -%} Keuze Poster of Limited (Jonas, 5-11-2026). Limited = de vroegere fine-art: vaste print, gelimiteerde oplage, geen keuze in papier of grootte. {%- endcomment %}
+      <div class="btn-group" role="group" aria-label="Kies een product" id="pp-product">
+        <button type="button" class="btn btn-dark" id="product-poster" aria-pressed="true">Poster</button>
+        <button type="button" class="btn btn-outline-dark" id="product-limited" aria-pressed="false">Limited</button>
+      </div>
+{% endif %}
+    </div>
+{% if heeft_limited %}
     {%- assign fa_m = page.fineart_m | plus: 0 -%}
     {%- assign fa_prijs = fa_m | times: 70 | plus: 0.000001 | round | divided_by: 10.0 -%}
-    <section class="pp-fineart mb-4 pb-4" aria-labelledby="fa-kop">
-      <h3 class="h5" id="fa-kop">Fine-art</h3>
-      <p class="small mb-2">Een unieke print, op duur papier of op een bijzondere manier gereproduceerd, in een gecureerde oplage{% if page.fineart_oplage and page.fineart_oplage != "" %} van {{ page.fineart_oplage }}{% endif %}, genummerd en gesigneerd door de auteur. Je kiest geen formaat: het is een vaste print met een vaste prijs van 7 × M. De auteur kreeg het auteursrecht al bij het drukken.</p>
-      <div class="pp-reken small mb-2" id="fa-reken" data-m="{{ fa_m }}"></div>
-      <div class="d-flex flex-wrap gap-2 align-items-center">
-        <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="fa-mand"
-          data-item-id="{{ page.identiteitscode }}-FINEART"
-          data-item-name="{{ page.title | escape }} · fine-art"
+    <section class="pp-limited" aria-labelledby="fa-kop" id="sectie-limited" hidden>
+      <h3 class="visually-hidden" id="fa-kop">Limited</h3>
+      <div class="row g-4 g-lg-5">
+        <div class="col-12 col-md-6" style="min-width:0">
+          <a class="spotlight btn btn-sm btn-outline-dark w-100 pp-volledig mb-2" title="{{ page.title | escape }}" href="{{ page.object_location | default: page.image_small | relative_url }}">Full Screen</a>
+          <div class="pp-voorbeeld text-center"><img src="{{ beeld }}" alt="Limited: {{ page.title | escape }}" class="img-fluid pp-limited-beeld" draggable="false"></div>
+        </div>
+        <div class="col-12 col-md-6 d-flex flex-column" style="min-width:0">
+          <p class="pp-label">Limited</p>
+          <p class="mb-2"><strong>Oplage van {{ page.fineart_oplage | default: "?" }}</strong>, genummerd en gesigneerd door de auteur.</p>
+          <p class="text-muted mb-4">Een vaste print op duur papier of in een bijzondere reproductievorm. Het ontwerp ligt vast: je kiest geen papier en geen grootte. Is de oplage op, dan is het werk niet meer als Limited te koop.</p>
+          <div class="pp-afrekenen mt-auto">
+            <div class="d-flex flex-wrap gap-3 align-items-center pp-totaal">
+              <span class="pp-prijs">{% include helpers/euro.html bedrag=fa_prijs %}</span>
+              <button type="button" class="btn btn-dark pp-mandknop{% if snip != '' %} snipcart-add-item{% endif %}" id="fa-mand"
+          data-item-id="{{ page.identiteitscode }}-LIMITED"
+          data-item-name="{{ page.title | escape }} · limited"
           data-item-price="{{ fa_prijs }}"
           data-item-url="{{ page.url | relative_url }}"
           data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"
           data-item-description="{{ page.identiteitscode }} · {{ page.creator | escape }} · genummerd en gesigneerd"
           {% if page.fineart_oplage and page.fineart_oplage != "" %}data-item-max-quantity="{{ page.fineart_oplage }}"{% endif %}
-          data-item-taxable="false">Fine-art in de mand</button>
-        <span class="small" id="fa-melding" role="status" aria-live="polite"></span>
+          data-item-taxable="false">In de winkelmand</button>
+            </div>
+            <p class="small mb-0 mt-1" id="fa-melding" role="status" aria-live="polite"></p>
+            <div class="pp-reken small mt-2" id="fa-reken" data-m="{{ fa_m }}"></div>
+          </div>
+        </div>
       </div>
     </section>
 {% endif %}
 
-    <section class="pp-poster" aria-labelledby="po-kop">
-      <h3 class="h5" id="po-kop">Poster</h3>
-      <p class="small mb-3">Elk werk in de shop is als poster verkrijgbaar, gedrukt na je bestelling. Je stelt hem samen in drie stappen en ziet altijd de berekening van M, de prijs en hoeveel naar de auteur gaat. Het beeld wordt nooit bijgesneden. Met de knoppen Poster en Afbeelding wissel je tussen het vel en de afbeelding.</p>
-
-      <div class="row g-4">
-        <div class="col-12 col-md-5" style="min-width:0">
+    <section class="pp-poster" aria-labelledby="po-kop" id="sectie-poster">
+      <h3 class="visually-hidden" id="po-kop">Poster</h3>
+      <div class="row g-4 g-lg-5">
+        <div class="col-12 col-md-6" style="min-width:0">
           <div class="btn-group mb-2 w-100" role="group" aria-label="Wat pas je aan?">
-            <button type="button" class="btn btn-sm btn-dark" id="modus-poster" aria-pressed="true">Poster</button>
-            <button type="button" class="btn btn-sm btn-outline-dark" id="modus-afbeelding" aria-pressed="false">Afbeelding</button>
+            <button type="button" class="btn btn-sm btn-dark" id="modus-poster" aria-pressed="true" title="Tip: meet je kader of de plek op de muur.">Sheet Size</button>
+            <button type="button" class="btn btn-sm btn-outline-dark" id="modus-afbeelding" aria-pressed="false">Image Size</button>
           </div>
+          <a id="{{ page.objectid }}" class="spotlight btn btn-sm btn-outline-dark w-100 pp-volledig mb-2" title="{{ page.title | escape }}" href="{{ page.object_location | default: page.image_small | relative_url }}">Full Screen</a>
           <div class="pp-voorbeeld" id="pp-voorbeeld">
             <div class="pp-vel" id="pp-vel">
               <img src="{{ beeld }}" alt="Voorbeeld van de poster: {{ page.title | escape }} op het gekozen vel" id="pp-afb" draggable="false">
               <span class="pp-greep" id="pp-greep" title="Sleep om de afbeelding groter of kleiner te maken" aria-hidden="true"></span>
             </div>
           </div>
-          <p class="small text-center mt-2 mb-0" id="pp-maten" style="font-variant-numeric: tabular-nums"></p>
+          <p class="small text-center text-muted mt-2 mb-0" id="pp-maten" style="font-variant-numeric: tabular-nums"></p>
         </div>
 
-        <div class="col-12 col-md-7" style="min-width:0">
-          <fieldset class="mb-3" id="stap-poster">
-            <legend class="h6">Stap 1 · Papier en grootte van je poster</legend>
-            <div class="mb-2">
+        <div class="col-12 col-md-6 d-flex flex-column" style="min-width:0">
+          <fieldset id="stap-poster">
+            <legend class="visually-hidden">Papier en grootte van je poster</legend>
+            <p class="pp-label">Papier</p>
+            <div class="mb-4">
               {% for p in papieren %}
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="papier" id="papier-{{ p.id }}" value="{{ p.id }}"{% if forloop.first %} checked{% endif %}>
-                <label class="form-check-label small" for="papier-{{ p.id }}">{{ p.naam }}</label>
+                <label class="form-check-label" for="papier-{{ p.id }}">{{ p.naam }}</label>
               </div>
               {% endfor %}
             </div>
-            <div class="mb-2"><div class="btn-group btn-group-sm" role="group" aria-label="Richting van het vel">
+            <p class="pp-label">Formaat van het vel</p>
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <button type="button" class="btn btn-sm btn-outline-dark flex-fill" id="vel-groot">Groot (40 × 60)</button>
+              <button type="button" class="btn btn-sm btn-outline-dark flex-fill" id="vel-medium">Medium (29,7 × 42)</button>
+              <button type="button" class="btn btn-sm btn-outline-dark flex-fill" id="vel-klein">Klein (21 × 29,7)</button>
+            </div>
+            <div class="btn-group btn-group-sm w-100 mb-3" role="group" aria-label="Richting van het vel">
               <button type="button" class="btn btn-outline-dark" id="richting-staand" aria-pressed="true">Staand</button>
               <button type="button" class="btn btn-outline-dark" id="richting-liggend" aria-pressed="false">Liggend</button>
-            </div></div>
-            <label class="form-label small mb-0" for="vel-b">Breedte vel: <span id="vel-b-txt"></span> cm</label>
-            <input type="range" class="form-range" id="vel-b" step="1">
-            <label class="form-label small mb-0" for="vel-h">Hoogte vel: <span id="vel-h-txt"></span> cm</label>
-            <input type="range" class="form-range" id="vel-h" step="1">
-            <div class="d-flex flex-wrap gap-2 mb-2">
-              <button type="button" class="btn btn-sm btn-outline-dark" id="vel-max">Grootst (40 × 60)</button>
-              <button type="button" class="btn btn-sm btn-outline-dark" id="vel-vierkant">Vierkant</button>
             </div>
-            <p class="small mb-0">Van 21 × 29,7 tot 40 × 60 cm, per centimeter, in een verhouding van 4:6 tot vierkant. Het papier komt van een rol van 40 cm breed, dus 40 × 60 cm is het maximum. Tip: meet je kader of de plek op de muur.</p>
+            <div class="row g-3 mb-2">
+              <div class="col-6">
+                <label class="form-label small mb-1" for="vel-b-in">Breedte (cm)</label>
+                <input type="text" class="form-control form-control-sm pp-maat" id="vel-b-in" inputmode="decimal" autocomplete="off">
+                <input type="range" class="form-range" id="vel-b" step="1" aria-label="Breedte vel">
+              </div>
+              <div class="col-6">
+                <label class="form-label small mb-1" for="vel-h-in">Hoogte (cm)</label>
+                <input type="text" class="form-control form-control-sm pp-maat" id="vel-h-in" inputmode="decimal" autocomplete="off">
+                <input type="range" class="form-range" id="vel-h" step="1" aria-label="Hoogte vel">
+              </div>
+            </div>
           </fieldset>
 
-          <fieldset class="mb-3" id="stap-afbeelding" hidden>
-            <legend class="h6">Stap 2 · Grootte van de afbeelding op het vel</legend>
-            <label class="form-label small mb-0" for="pp-marge">Passe-partout: de witruimte op het vel rond de afbeelding, rondom in cm</label>
-            <input type="number" class="form-control form-control-sm mb-2" id="pp-marge" min="0" step="1" inputmode="numeric" style="max-width:8rem">
-            <label class="form-label small mb-0" for="afb-b">Breedte afbeelding: <span id="afb-b-txt"></span> cm</label>
+          <fieldset id="stap-afbeelding" hidden>
+            <legend class="visually-hidden">Grootte van de afbeelding op het vel</legend>
+            <p class="pp-label">Passe-partout</p>
+            <label class="form-label small mb-1" for="pp-marge">Witruimte rond de afbeelding, in cm (minstens 5 % van de korte zijde)</label>
+            <input type="number" class="form-control form-control-sm pp-maat mb-4" id="pp-marge" min="0" step="0.1" inputmode="decimal">
+            <p class="pp-label">Afbeelding</p>
+            <label class="form-label small mb-1" for="afb-b">Breedte: <span id="afb-b-txt"></span> cm</label>
             <input type="range" class="form-range" id="afb-b" step="1">
-            <p class="small mb-0">Of sleep de hoek van de afbeelding in het voorbeeld. De verhouding van het kunstwerk blijft altijd dezelfde. De inktkost hangt enkel af van de grootte van de afbeelding: een kleinere afbeelding is iets goedkoper.</p>
+            <p class="small text-muted mb-3">Of sleep de hoek van de afbeelding in het voorbeeld. De verhouding van het kunstwerk blijft altijd dezelfde. De inktkost hangt enkel af van de grootte van de afbeelding: een kleinere afbeelding is iets goedkoper.</p>
           </fieldset>
 
-          <fieldset class="mb-3">
-            <legend class="h6">Stap 3 · Hoeveel stuks?</legend>
-            <div class="d-flex flex-wrap gap-2 align-items-center">
-              <input type="number" class="form-control form-control-sm" id="pp-aantal-stuks" min="1" max="99" value="1" inputmode="numeric" style="max-width:5rem" aria-label="Aantal posters">
-              <button type="button" class="btn btn-sm btn-outline-dark" id="pp-kopieer">Kopieer deze instellingen</button>
-              <button type="button" class="btn btn-sm btn-outline-dark" id="pp-plak" hidden>Gebruik gekopieerde instellingen</button>
-            </div>
-            <p class="small mb-0 mt-1" id="pp-kopie-melding" role="status" aria-live="polite"></p>
-          </fieldset>
-        </div>
-      </div>
-
-      <div class="pp-reken small mb-3" id="po-reken" aria-live="polite"></div>
-
-      <div class="d-flex flex-wrap gap-2 align-items-center">
-        <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="po-mand"
+          {%- comment -%} Totaalprijs met de mandknop ernaast, daaronder een eenvoudige prijsopbouw (Jonas, 5-11-2026). {%- endcomment %}
+          <div class="pp-afrekenen mt-auto">
+            <div class="d-flex flex-wrap gap-3 align-items-center pp-totaal">
+              <span class="pp-prijs" id="po-totaal" aria-live="polite"></span>
+              <button type="button" class="btn btn-dark pp-mandknop{% if snip != '' %} snipcart-add-item{% endif %}" id="po-mand"
           data-item-id="{{ page.identiteitscode }}-POSTER"
           data-item-name="{{ page.title | escape }} · poster"
           {%- comment -%} Basisprijs = goedkoopste uitvoering; elke optie draagt het verschil. {%- endcomment -%}
@@ -128,9 +154,12 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
           data-item-custom1-options="{{ opties | split: '|' | join: '|' }}"
           data-item-custom2-name="Vel (cm)" data-item-custom2-type="readonly"
           data-item-custom3-name="Afbeelding (cm)" data-item-custom3-type="readonly"
-          data-item-custom4-name="Passe-partout" data-item-custom4-type="readonly">Poster in de mand</button>
-        {% if snip == '' %}<a class="btn btn-outline-dark" href="{{ '/mand.html' | relative_url }}">Naar de mand</a>{% else %}<button type="button" class="btn btn-outline-dark snipcart-checkout">Naar de mand</button>{% endif %}
-        <span class="small" id="po-melding" role="status" aria-live="polite"></span>
+          data-item-custom4-name="Passe-partout" data-item-custom4-type="readonly">In de winkelmand</button>
+            </div>
+            <p class="small mb-0 mt-1" id="po-melding" role="status" aria-live="polite"></p>
+            <div class="pp-reken small mt-2" id="po-reken"></div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -138,7 +167,7 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
 
 <script>
 window.ppPrijzen = {{ site.data.config-prijzen | jsonify }};
-window.ppRegels = { btwMateriaal: {{ site.btw-materiaal | default: 0.21 }}, afronding: {{ site.prijs-afronding | default: 0.1 }}, voorheffing: {{ site.roerende-voorheffing | default: 0.15 }}, btwTekst: {{ site.btw-vermelding | jsonify }} };
+window.ppRegels = { btwMateriaal: {{ site.btw-materiaal | default: 0.21 }}, afronding: {{ site.prijs-afronding | default: 0.1 }}, voorheffing: {{ site.roerende-voorheffing | default: 0.15 }}, btwTekst: {{ site.btw-vermelding | jsonify }}, prijsUrl: {{ '/about.html' | relative_url | jsonify }} };
 window.ppWerk = { code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, snipcart: {% if snip != '' %}true{% else %}false{% endif %} };
 </script>
 <script src="{{ '/assets/js/poster-config.js' | relative_url }}"></script>

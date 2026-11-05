@@ -4,74 +4,100 @@ layout: about
 permalink: /about.html
 credits: false
 toc: false
-heading: De prijs
-sub-heading: tot op de cent ontleed
 ---
+{%- comment -%} Herwerkt voor de klant (Jonas, 5-11-2026): eerst de kern, dan het schema, dan de prijzen; de berekening zit in uitklapbare blokken. {%- endcomment -%}
 {%- assign papieren = site.data.config-prijzen | where: 'soort', 'papier' -%}
 {%- assign inkt = site.data.config-prijzen | where: 'soort', 'inkt' | first -%}
 {%- assign klassen = "klein,middel,groot" | split: "," -%}
+{%- capture M -%}<abbr title="M = materiaalkost: papier en inkt, met de btw die de vzw erop betaalt">M</abbr>{%- endcapture -%}
 
-## Altijd 7 × M
+## Prijsopbouw
 
-Er zijn twee producten met dezelfde formule: posters op maat, gedrukt na je bestelling, en gecureerde fine-art prints in kleine oplage.
+<div class="pp-kern">
+  <div class="pp-kern-vak"><p class="pp-kern-groot">7 × {{ M }}</p><p>De prijs is altijd zeven keer de materiaalkost {{ M }}, afgerond op € 0,10.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">1 · 3 · 3</p><p>1 deel materiaalkost, 3 delen auteursrechten, 3 delen vzw peapickers.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">€ 0 btw</p><p>vzw peapickers is btw-vrijgesteld. Er komt niets bovenop.</p></div>
+</div>
 
-**Prijs = 7 × M, afgerond op € 0,10.** M is de materiaalkost: de velkost plus de inktkost, inclusief de btw die de vzw zelf op het materiaal betaalt. Van de prijs gaat 1 M naar het materiaal, 3 M naar de auteur (bruto) en 3 M naar vzw peapickers, met het verschil van de afronding.
+## Waar gaat je geld naartoe?
 
-vzw peapickers is {{ site.btw-vermelding }}. Er komt dus geen btw bovenop. Omdat de vzw de btw op papier en inkt niet terugkrijgt, telt die mee in M. Gaat de omzet ooit boven € 25.000, dan moet de verdeling opnieuw bekeken worden.
+Een voorbeeld: een poster Medium op Epson Semimatte 260 g.
 
 {% include prijs-schema.html %}
 
-## Posters op maat
+## Wat kost een poster?
 
-Elk werk in de shop is als poster verkrijgbaar. Je kiest in drie stappen en ziet altijd de berekening van M en de prijs, met een strook die toont hoeveel naar de auteur gaat.
+| Papier | Klein<br><span class="small fw-normal">21 × 29,7 cm</span> | Medium<br><span class="small fw-normal">29,7 × 42 cm</span> | Groot<br><span class="small fw-normal">40 × 60 cm</span> |
+|---|---:|---:|---:|
+{% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} **{% include helpers/euro.html bedrag=pb_prijs %}** |{% endfor %}
+{% endfor %}{: .pp-tabel}
 
-1. **Velgrootte**: van 21 × 29,7 tot 40 × 60 cm, met schuivers per centimeter, in een verhouding van 4:6 tot vierkant. Het papier komt van een rol van 40 cm breed, dus 40 × 60 cm is het maximum. Tip: meet je kader of de plek op de muur.
-2. **Afbeeldingsgrootte**: de passe-partout is de witruimte op het vel rond de afbeelding, per centimeter in te stellen.
-3. **Aantal**, en de instellingen kopiëren naar de volgende poster.
+Dit zijn de prijzen als vel en afbeelding even groot zijn. Maak je de afbeelding kleiner met Image Size, dan is de poster iets goedkoper. Elke maat tussen 21 × 29,7 en 40 × 60 cm kan: de prijs volgt de kleinste van de drie groottes waarin je vel past.
 
-De velkost volgt de kleinste van drie groottes waarin het vel past, de inktkost de kleinste waarin de afbeelding past: **klein** (tot 21 × 29,7 cm), **middel** (tot 29,7 × 42 cm) en **groot** (tot 40 × 60 cm).
+<details class="pp-uitklap" markdown="1">
+<summary>Hoe wordt {{ M }} berekend?</summary>
 
-| Inkoop excl. btw | Klein | Middel | Groot |
+{{ M }} = (papier + inkt) × 1,21. De 21 % is de btw die de vzw zelf op het materiaal betaalt en niet terugkrijgt. De velkost volgt de grootte van het vel, de inktkost de grootte van de afbeelding.
+
+| Inkoop excl. btw | Klein | Medium | Groot |
 |---|---:|---:|---:|
 {% for p in papieren %}| {{ p.naam }} | {% include helpers/euro.html bedrag=p.klein %} | {% include helpers/euro.html bedrag=p.middel %} | {% include helpers/euro.html bedrag=p.groot %} |
 {% endfor %}| {{ inkt.naam }} | {% include helpers/euro.html bedrag=inkt.klein %} | {% include helpers/euro.html bedrag=inkt.middel %} | {% include helpers/euro.html bedrag=inkt.groot %} |
+{: .pp-tabel}
 
-| M incl. btw op materiaal | Klein | Middel | Groot |
+| M (materiaalkost incl. btw) | Klein | Medium | Groot |
 |---|---:|---:|---:|
 {% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} {% include helpers/euro.html bedrag=pb_m %} |{% endfor %}
-{% endfor %}
+{% endfor %}{: .pp-tabel}
 
-| Prijs voor de klant | Klein | Middel | Groot |
-|---|---:|---:|---:|
-{% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} **{% include helpers/euro.html bedrag=pb_prijs %}** |{% endfor %}
-{% endfor %}
+De prijs rekent met de onafgeronde {{ M }}. Daardoor kan 7 × de getoonde {{ M }} een paar cent afwijken. Dat verschil gaat naar of komt van de vzw.
+</details>
 
-Dit zijn de prijzen als vel en afbeelding in dezelfde grootte vallen. Een kleinere afbeelding is iets goedkoper. De prijs rekent met de onafgeronde M; daardoor kan 7 × de getoonde M een paar cent afwijken. Dat verschil gaat naar of komt van de vzw.
+<details class="pp-uitklap" markdown="1">
+<summary>Prijsopbouw per stuk, voor elk voorbeeld</summary>
 
-### Prijsopbouw per stuk
-
-| Product | Materiaal 1M | Auteur 3M | vzw 3M ± afronding | Prijs |
+| Product | Materiaalkost | Auteursrechten | vzw peapickers | Prijs |
 |---|---:|---:|---:|---:|
-{% assign _voorbeelden = "semimatte:klein,enhanced-matte:middel,semimatte:middel,luster:middel,semimatte:groot" | split: "," %}{% for v in _voorbeelden %}{% assign _d = v | split: ":" %}{% assign _p = papieren | where: "id", _d[0] | first %}{% assign _k = _d[1] %}{% assign _in = _p[_k] | plus: inkt[_k] %}{% include helpers/prijsberekening.html inkoop=_in %}| Poster {{ _p.naam }}, {{ _k }} | {% include helpers/euro.html bedrag=pb_m %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_vzw %} | {% include helpers/euro.html bedrag=pb_prijs %} |
-{% endfor %}{% include helpers/prijsberekening.html inkoop=5 %}| Fine-art, voorbeeld met een inkoop van € 5 | {% include helpers/euro.html bedrag=pb_m %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_vzw %} | {% include helpers/euro.html bedrag=pb_prijs %} |
+{% assign _voorbeelden = "semimatte:klein,enhanced-matte:middel,semimatte:middel,luster:middel,semimatte:groot" | split: "," %}{% for v in _voorbeelden %}{% assign _d = v | split: ":" %}{% assign _p = papieren | where: "id", _d[0] | first %}{% assign _k = _d[1] %}{% assign _in = _p[_k] | plus: inkt[_k] %}{% include helpers/prijsberekening.html inkoop=_in %}| Poster {{ _p.naam }}, {% if _k == "middel" %}Medium{% else %}{{ _k | capitalize }}{% endif %} | {% include helpers/euro.html bedrag=pb_m %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_vzw %} | **{% include helpers/euro.html bedrag=pb_prijs %}** |
+{% endfor %}{% include helpers/prijsberekening.html inkoop=5 %}| Limited, voorbeeld met een inkoop van € 5 | {% include helpers/euro.html bedrag=pb_m %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_vzw %} | **{% include helpers/euro.html bedrag=pb_prijs %}** |
+{: .pp-tabel}
 
-## Fine-art
+Materiaalkost = 1 × {{ M }}, auteursrechten = 3 × {{ M }} bruto, vzw peapickers = de rest (3 × {{ M }} ± afronding).
+</details>
 
-Unieke prints, op duur papier of op een bijzondere manier gereproduceerd, in een selectieve, gecureerde oplage, genummerd en gesigneerd door de auteur. Je kiest geen formaat: het is een vaste print met een vaste prijs van 7 × M, en M verschilt per werk.
+## Poster of Limited?
 
-Fine-art is voorraad. De auteur krijgt het auteursrecht meteen bij het drukken, nog voor de verkoop. Onverkochte exemplaren worden op de laatste dag van het boekjaar geteld, gewaardeerd aan materiaal plus betaalde auteursrechten.
+| | Poster | Limited |
+|---|---|---|
+| Wat | Elk werk, gedrukt na je bestelling | Een gecureerde print, op duur papier of in een bijzondere reproductievorm |
+| Formaat | Jij kiest papier en grootte | Vast, je kiest niets |
+| Oplage | Onbeperkt | Klein, genummerd en gesigneerd door de auteur |
+| Prijs | 7 × {{ M }}, volgens papier en grootte | 7 × {{ M }}, vaste prijs per werk |
+| Auteursrechten | Per kwartaal, na de verkoop | Meteen bij het drukken, nog voor de verkoop |
+{: .pp-tabel .pp-vergelijk}
 
-Er zijn geen kaders, latten of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
+Er zijn geen kaders of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
 
-## De auteur wordt betaald in auteursrechten
+## Hoe wordt de auteur betaald?
 
-De auteur tekent per werk een niet-exclusieve licentie en krijgt 3 van de 7 delen. vzw peapickers houdt 15 % roerende voorheffing in op het brutobedrag, stort die door en betaalt de auteur netto, per kwartaal. Een tweede bestuurder ziet elke kwartaaluitbetaling en de boekhouder controleert.
+- **3 van de 7 delen** gaan naar de auteur, als bruto auteursrecht.
+- **15 % roerende voorheffing** houdt de vzw in en stort ze door. De auteur krijgt het netto bedrag, per kwartaal.
+- **Een licentie per werk**, niet-exclusief. Een tweede bestuurder ziet elke uitbetaling en de boekhouder controleert.
 
-| Per verkocht stuk | Prijs | Auteur bruto | Voorheffing 15 % | Auteur netto |
+| Per verkocht stuk | Prijs | Bruto | Voorheffing 15 % | Netto naar de auteur |
 |---|---:|---:|---:|---:|
-{% assign _p = papieren | where: "id", "semimatte" | first %}{% assign _in = _p.middel | plus: inkt.middel %}{% include helpers/prijsberekening.html inkoop=_in %}| Poster {{ _p.naam }}, middel | {% include helpers/euro.html bedrag=pb_prijs %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_rv %} | {% include helpers/euro.html bedrag=pb_netto %} |
-{% include helpers/prijsberekening.html inkoop=5 %}| Fine-art, inkoop € 5 | {% include helpers/euro.html bedrag=pb_prijs %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_rv %} | {% include helpers/euro.html bedrag=pb_netto %} |
+{% assign _p = papieren | where: "id", "semimatte" | first %}{% assign _in = _p.middel | plus: inkt.middel %}{% include helpers/prijsberekening.html inkoop=_in %}| Poster {{ _p.naam }}, Medium | {% include helpers/euro.html bedrag=pb_prijs %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_rv %} | **{% include helpers/euro.html bedrag=pb_netto %}** |
+{% include helpers/prijsberekening.html inkoop=5 %}| Limited, inkoop € 5 | {% include helpers/euro.html bedrag=pb_prijs %} | {% include helpers/euro.html bedrag=pb_auteur %} | {% include helpers/euro.html bedrag=pb_rv %} | **{% include helpers/euro.html bedrag=pb_netto %}** |
+{: .pp-tabel}
 
-## Public Ledger
+<details class="pp-uitklap" markdown="1">
+<summary>Wat met onverkochte Limited-exemplaren en een grotere omzet?</summary>
+
+Een Limited is voorraad. Onverkochte exemplaren worden op de laatste dag van het boekjaar geteld, gewaardeerd aan materiaalkost plus de betaalde auteursrechten.
+
+Omdat de vzw de btw op papier en inkt niet terugkrijgt, telt die mee in {{ M }}. Gaat de omzet ooit boven € 25.000, dan moet de verdeling opnieuw bekeken worden.
+</details>
+
+## Alles staat in de Public Ledger
 
 Elke ontvangst, uitgave, lening en gift staat in de [Public Ledger]({{ "/register.html" | relative_url }}), ook de inbreng van de oprichter. Verkopen staan er per werkcode, zonder persoonsgegevens. Uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.
