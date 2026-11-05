@@ -37,15 +37,15 @@ Dit zijn de prijzen als vel en afbeelding even groot zijn. Maak je de afbeelding
 <details class="pp-uitklap" markdown="1">
 <summary>Hoe wordt {{ M }} berekend?</summary>
 
-{{ M }} = (papier + inkt) × 1,21. De 21 % is de btw die de vzw zelf op het materiaal betaalt en niet terugkrijgt. De velkost volgt de grootte van het vel, de inktkost de grootte van de afbeelding.
+{{ M }} = papier + inkt, zoals de vzw ze betaalt, btw inbegrepen. De velkost volgt de grootte van het vel, de inktkost de grootte van de afbeelding.
 
-| Inkoop excl. btw | Klein | Medium | Groot |
+| Inkoop incl. btw | Klein | Medium | Groot |
 |---|---:|---:|---:|
 {% for p in papieren %}| {{ p.naam }} | {% include helpers/euro.html bedrag=p.klein %} | {% include helpers/euro.html bedrag=p.middel %} | {% include helpers/euro.html bedrag=p.groot %} |
 {% endfor %}| {{ inkt.naam }} | {% include helpers/euro.html bedrag=inkt.klein %} | {% include helpers/euro.html bedrag=inkt.middel %} | {% include helpers/euro.html bedrag=inkt.groot %} |
 {: .pp-tabel}
 
-| M (materiaalkost incl. btw) | Klein | Medium | Groot |
+| M = papier + inkt | Klein | Medium | Groot |
 |---|---:|---:|---:|
 {% for p in papieren %}| {{ p.naam }} |{% for k in klassen %}{% assign _in = p[k] | plus: inkt[k] %}{% include helpers/prijsberekening.html inkoop=_in %} {% include helpers/euro.html bedrag=pb_m %} |{% endfor %}
 {% endfor %}{: .pp-tabel}

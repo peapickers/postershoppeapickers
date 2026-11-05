@@ -37,7 +37,7 @@
 
   <figcaption class="ps-totaal">
     <span><strong>7 × M</strong>, afgerond op € 0,10</span><strong>{% include helpers/euro.html bedrag=pb_prijs %}</strong>
-    <span>M = ({{ _p.middel | replace: ".", "," }} + {{ _i.middel | replace: ".", "," }}) × 1,21 = {% include helpers/euro.html bedrag=pb_m %} · {{ site.btw-vermelding }}</span>
+    <span>M = papier {% include helpers/euro.html bedrag=_p.middel %} + inkt {% include helpers/euro.html bedrag=_i.middel %} = {% include helpers/euro.html bedrag=pb_m %} · {{ site.btw-vermelding }}</span>
     <span class="small">Voorbeeld: poster op Epson Semimatte 260 g, vel en afbeelding medium (tot 29,7 × 42 cm). Van deze {% include helpers/euro.html bedrag=pb_prijs %} gaat {% include helpers/euro.html bedrag=pb_auteur %} naar de auteur.</span>
   </figcaption>
 </figure>
