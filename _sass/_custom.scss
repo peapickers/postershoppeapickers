@@ -229,3 +229,21 @@ table.pp-vergelijk td:first-child { width: 20%; }
 .pp-uitklap > summary { cursor: pointer; font-weight: 600; }
 .pp-uitklap[open] > summary { margin-bottom: .75rem; }
 @media (max-width: 575.98px) { table.pp-tabel { display: block; overflow-x: auto; font-size: .85rem; } table.pp-tabel th, table.pp-tabel td { padding: .4rem .35rem; } }
+
+// Public Ledger leesbaar voor de klant (Jonas, 5-11-2026)
+.pp-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: rgba($ink, .6); }
+.pp-kaart { border: 1px solid $line-strong; background: #fff; padding: .85rem 1rem; }
+.pp-kaart-getal { font-size: 1.5rem; font-weight: 700; line-height: 1.1; }
+.pp-kaart a { color: inherit; }
+.pp-filterbalk { background: #fff; border: 1px solid $line; padding: .5rem .75rem .75rem; margin: 0; }
+.pp-kwartaal { border: 1px solid $line-strong; background: #fff; margin-bottom: .5rem; }
+.pp-kwartaal > summary { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; padding: .6rem 1rem; cursor: pointer; }
+.pp-kwartaal[open] > summary { border-bottom: 1px solid $line; }
+.pp-kw-naam { font-weight: 700; }
+.pp-kw-som { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.pp-plus { color: #1f6b3a; }
+.pp-min { color: #9a2a1d; }
+.pp-tabel-wrap { overflow-x: auto; padding: 0 .5rem; }
+table.pp-ledger { margin: .25rem 0 .5rem; font-size: .9rem; }
+.pp-soort { display: inline-block; white-space: nowrap; border: 1px solid $line-strong; padding: 0 .4rem; font-size: .8rem; cursor: help; }
+@media (max-width: 575.98px) { table.pp-ledger td:nth-child(5), table.pp-ledger th:nth-child(5) { display: none; } }
