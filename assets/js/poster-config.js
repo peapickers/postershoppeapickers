@@ -104,8 +104,10 @@
   var vb = $('vel-b'), vh = $('vel-h'), ab = $('afb-b'), mg = $('pp-marge'), aantal = $('pp-aantal-stuks');
   vb.addEventListener('input', function () { s.liggend ? zetLang(+vb.value) : zetKort(+vb.value); teken(); });
   vh.addEventListener('input', function () { s.liggend ? zetKort(+vh.value) : zetLang(+vh.value); teken(); });
-  $('vel-max').addEventListener('click', function () { s.kort = 40; s.lang = 60; teken(); });
-  $('vel-vierkant').addEventListener('click', function () { s.lang = s.kort; teken(); });
+  // Snelknoppen voor de drie groottes (Jonas, 5-11-2026); de richting staand/liggend blijft behouden
+  $('vel-groot').addEventListener('click', function () { s.kort = 40; s.lang = 60; teken(); });
+  $('vel-medium').addEventListener('click', function () { s.kort = 29.7; s.lang = 42; teken(); });
+  $('vel-klein').addEventListener('click', function () { s.kort = 21; s.lang = 29.7; teken(); });
   $('richting-staand').addEventListener('click', function () { s.liggend = false; teken(); });
   $('richting-liggend').addEventListener('click', function () { s.liggend = true; teken(); });
   document.querySelectorAll('input[name="papier"]').forEach(function (i) { i.addEventListener('change', function () { s.papier = i.value; teken(); }); });
@@ -166,7 +168,7 @@
     // schuivers
     vb.min = s.liggend ? VEL_KORT_MIN : VEL_KORT_MIN; vb.max = s.liggend ? VEL_LANG_MAX : VEL_KORT_MAX; vb.value = B;
     vh.min = VEL_KORT_MIN; vh.max = s.liggend ? VEL_KORT_MAX : VEL_LANG_MAX; vh.value = H;
-    $('vel-b-txt').textContent = B; $('vel-h-txt').textContent = H;
+    $('vel-b-txt').textContent = cm(B); $('vel-h-txt').textContent = cm(H);
     var maxA = past(B, H), minB = s.r >= 1 ? AFB_MIN * s.r : AFB_MIN;
     ab.min = Math.ceil(minB); ab.max = Math.floor(maxA.b); ab.value = Math.round(a.b);
     $('afb-b-txt').textContent = cm(a.b);
@@ -183,12 +185,12 @@
     img.style.left = ((B - a.b) / 2 * schaal) + 'px'; img.style.top = ((H - a.h) / 2 * schaal) + 'px';
     var g = $('pp-greep'); g.style.left = ((B + a.b) / 2 * schaal - 7) + 'px'; g.style.top = ((H + a.h) / 2 * schaal - 7) + 'px';
     var rand = { lr: (B - a.b) / 2, bo: (H - a.h) / 2 };
-    $('pp-maten').textContent = 'Vel ' + B + ' × ' + H + ' cm · afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm · rand ' + cm(rand.lr) + ' cm links/rechts, ' + cm(rand.bo) + ' cm boven/onder';
+    $('pp-maten').textContent = 'Vel ' + cm(B) + ' × ' + cm(H) + ' cm · afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm · rand ' + cm(rand.lr) + ' cm links/rechts, ' + cm(rand.bo) + ' cm boven/onder';
 
     // prijs
     var pr = rij('papier', s.papier), ink = rij('inkt'), kv = klasse(B, H), ka = klasse(a.b, a.h);
     var pp = prijs(pr, kv), pi = prijs(ink, ka), mRuw = (pp + pi) * (1 + BTW_MAT), v = verdeling(mRuw, n);
-    var formule = '<p class="mb-1"><strong>Papier</strong>: ' + pr.naam + ', vel ' + B + ' × ' + H + ' cm = ' + klasseNaam(kv) + ': ' + euro(pp) + '<br>' +
+    var formule = '<p class="mb-1"><strong>Papier</strong>: ' + pr.naam + ', vel ' + cm(B) + ' × ' + cm(H) + ' cm = ' + klasseNaam(kv) + ': ' + euro(pp) + '<br>' +
       '<strong>Inkt</strong>: afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm = ' + klasseNaam(ka) + ': ' + euro(pi) + '<br>' +
       '<strong>M</strong> = (' + getal(pp) + ' + ' + getal(pi) + ') × ' + dec(1 + BTW_MAT, 2) + ' (btw op materiaal) = ' + euro(v.m) + '</p>' +
       '<p class="mb-2"><span class="h5" style="font-variant-numeric: tabular-nums">' + euro(v.totaal) + '</span> per poster' + (n > 1 ? ', ' + euro(v.totaal * n) + ' voor ' + n : '') + '<br>' +
@@ -199,11 +201,11 @@
     var knop = $('po-mand'), randTekst = s.marge > 0 ? 'rondom min. ' + cm(s.marge) + ' cm' : 'geen';
     var uitvoering = pr.naam + ' · vel ' + kv + ' · afbeelding ' + ka;
     knop.setAttribute('data-item-custom1-value', uitvoering);
-    knop.setAttribute('data-item-custom2-value', B + ' × ' + H);
+    knop.setAttribute('data-item-custom2-value', cm(B) + ' × ' + cm(H));
     knop.setAttribute('data-item-custom3-value', cm(a.b) + ' × ' + cm(a.h));
     knop.setAttribute('data-item-custom4-value', randTekst);
     knop.setAttribute('data-item-quantity', n);
-    huidig = { formaat: pr.naam + ', vel ' + B + ' × ' + H + ' cm, afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm, passe-partout ' + randTekst, prijs: v.totaal, aantal: n };
+    huidig = { formaat: pr.naam + ', vel ' + cm(B) + ' × ' + cm(H) + ' cm, afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm, passe-partout ' + randTekst, prijs: v.totaal, aantal: n };
   }
 
   $('po-mand').addEventListener('click', function () {
