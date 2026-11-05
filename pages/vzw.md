@@ -3,7 +3,7 @@ title: Over peapickers
 layout: page
 permalink: /vzw.html
 ---
-{%- comment -%} Herwerkt voor de klant (Jonas, 5-11-2026) in de structuur van Prijsopbouw: kern, tabellen, uitklapblokken. {%- endcomment -%}
+{%- comment -%} Herwerkt voor de klant (Jonas, 5-11-2026) in de structuur van Prijsopbouw: kern, tabellen, uitklapblokken. Ideologische kenmerken letterlijk uit ondernemingsplan v4 (Jonas, 5-11-2026). {%- endcomment -%}
 
 ## Over peapickers
 
@@ -24,16 +24,15 @@ vzw peapickers is de paraplunaam voor alle merken van peapickers, met één soci
 
 ## Wat peapickers anders maakt
 
-Deze zes punten zijn niet onderhandelbaar en gelden voor elk merk.
+Deze kenmerken onderscheiden peapickers van de traditionele kunst- en postermarkt. Ze zijn niet onderhandelbaar en gelden voor elk merk.
 
-| | Belofte | Wat het betekent |
+| | Kenmerk | Wat het betekent |
 |---|---|---|
-| 1 | **Financiële transparantie** | Elke prijs ontleed tot op de cent. Elke ontvangst, uitgave, lening en gift staat in de Public Ledger, ook de inbreng van de oprichter. Verkopen per werkcode, zonder persoonsgegevens. Uitbetalingen aan auteurs per kwartaal samengeteld. |
-| 2 | **Solidariteit met wie maakt** | De auteur blijft eigenaar van werk en rechten, krijgt een vaste verdeling per verkoop en kan altijd stoppen. |
-| 3 | **Geen winst, geen schuld** | Geen winstuitkering en geen krediet, alleen een renteloze lening van de oprichter. Het deel van de vzw betaalt de overheadkosten. |
-| 4 | **Privacy** | Geen tracking en geen eigen klantendatabase. Mand (Snipcart) en betaling (Mollie, Bancontact) zijn externe diensten met een verwerkersovereenkomst. Nooit cash. |
-| 5 | **Duurzaamheid** | Drukken pas na een bestelling, zonder overproductie. Leveren in gedeelde leverrondes. |
-| 6 | **Veiligheid van het werk** | Het originele bestand wordt nooit bewerkt en komt nooit online. Online staat alleen een weergave van 1200 px en een thumbnail, met watermerk en Glaze. |
+| 1 | **Absolute financiële transparantie** | Elke prijs is ontleed tot op de cent. Elke ontvangst, uitgave en lening staat in de Public Ledger, ook de inbreng van de oprichter. Verkopen staan er per werkcode, zonder persoonsgegevens; uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is. |
+| 2 | **Kunstenaars uitbetalen zonder professioneel statuut** | Elke auteur wordt per verkocht werk uitbetaald als particulier. |
+| 3 | **Sterke licentieovereenkomst** | Peapickers huurt de reproductierechten onder een niet-exclusieve overeenkomst, met een vaste termijn. De auteur krijgt 50% van de winst per verkocht werk en behoudt het recht op ieder moment de overeenkomst stop te zetten. |
+| 4 | **Geen winst, geen schuld** | De vzw keert geen winst uit. Geen krediet, geen leverage. Alleen renteloze leningen van de oprichter. De geworven commissies betaalt de overheadkosten van de onderneming. |
+| 5 | **Veiligheid van het werk** | Het originele bestand wordt nooit bewerkt en komt nooit online. Wat wel online staat (1200 px en thumbnail), wordt destructief gewatermerkt en Glaze, zoals in de licentie staat. Zoekmachines en AI-crawlers worden geweerd van de website. Voor iets online komt is de vzw transparant in haar limitaties: eens iets online staat, is diefstal of misbruik door derden een onvermijdelijk risico |
 {: .pp-tabel}
 
 <details class="pp-uitklap" markdown="1">
