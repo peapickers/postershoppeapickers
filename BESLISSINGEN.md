@@ -29,7 +29,7 @@ Stand van 5-11-2026, na alle commentaar van Jonas op de werkende kopie van de si
 
 - **Poster**: elk werk, gedrukt na bestelling, klant kiest papier en maat.
 - **Limited**: gecureerde, unieke afdrukken; vast formaat, kleine genummerde en gesigneerde oplage, vaste M per werk (`fineart_m`, `fineart_oplage`). Auteursrechten meteen bij het drukken. Voorbeeld bij 25 % van de werken (001-01, 003-01, 005-02). Geen kaders of passe-partouts als apart product.
-- Werken uit het publiek domein worden niet verkocht.
+- **Publiek domein** (beslissing Jonas, 5-11-2026, vervangt "Werken uit het publiek domein worden niet verkocht"): aparte pagina bij Posters, prijs = 4 × M afgerond op € 0,10. Verdeling Materiaalkost 1M, vzw peapickers 3M, geen Auteursrechten. Voorbeeld Medium op Semimatte: € 7,40, waarvan € 5,55 voor vzw peapickers. Elk werk eerst nagaan: zeker vrij in België.
 
 ## Jargon (overal gelijk houden)
 
