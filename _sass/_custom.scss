@@ -209,3 +209,23 @@ body.pp-verborgen .pp-volledig { display: none; }
 .pp-bestel .pp-reken { background: transparent; border: 0; padding: 0; }
 .pp-bestel .pp-bestel-kop { border-bottom: 1px solid $line; padding-bottom: 1rem; }
 @media (max-width: 767.98px) { .pp-bestel .pp-voorbeeld { min-height: 320px; } }
+
+// Prijsopbouw leesbaar voor de klant (Jonas, 5-11-2026)
+.pp-kern { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0 2rem; }
+.pp-kern-vak { border: 1px solid $line-strong; background: #fff; padding: 1rem; }
+.pp-kern-vak p { margin: 0; font-size: .9rem; }
+.pp-kern-vak .pp-kern-groot { font-size: 1.6rem; font-weight: 700; line-height: 1.1; margin-bottom: .4rem; }
+@media (max-width: 575.98px) { .pp-kern { grid-template-columns: 1fr; } }
+abbr[title] { text-decoration: underline dotted; cursor: help; }
+table.pp-tabel { width: 100%; margin: 1rem 0 1.25rem; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .95rem; }
+table.pp-tabel th, table.pp-tabel td { padding: .45rem .6rem; border-bottom: 1px solid $line; vertical-align: top; }
+table.pp-tabel thead th { border-bottom: 2px solid $ink; vertical-align: bottom; }
+table.pp-tabel td[style*="right"], table.pp-tabel th[style*="right"] { white-space: nowrap; }
+table.pp-tabel tbody tr:hover { background: rgba($ink, .03); }
+table.pp-vergelijk td:first-child { font-weight: 600; white-space: nowrap; }
+table.pp-vergelijk td { width: 40%; }
+table.pp-vergelijk td:first-child { width: 20%; }
+.pp-uitklap { border: 1px solid $line; background: #fff; padding: .6rem 1rem; margin: .75rem 0; }
+.pp-uitklap > summary { cursor: pointer; font-weight: 600; }
+.pp-uitklap[open] > summary { margin-bottom: .75rem; }
+@media (max-width: 575.98px) { table.pp-tabel { display: block; overflow-x: auto; font-size: .85rem; } table.pp-tabel th, table.pp-tabel td { padding: .4rem .35rem; } }
