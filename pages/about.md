@@ -37,7 +37,7 @@ Dit zijn de prijzen als vel en afbeelding even groot zijn. Maak je de afbeelding
 
 {{ M }} = de prijs van het vel + de inktkost.
 
-- **Papier**: peapickers koopt altijd papierrollen en snijdt er vellen uit, omdat dat per vel het goedkoopst is. De prijs van een rol gedeeld door het aantal vellen dat eruit gesneden wordt, is de prijs per vel. Die volgt de grootte van het vel.
+- **Papier**: peapickers koopt altijd papierrollen en snijdt er vellen uit, omdat dat per vel het goedkoopst is.
 - **Inkt**: richtprijzen die gemiddeld per afdruk kloppen. Die volgen de grootte van de afbeelding.
 
 | M = papier + inkt | Klein | Medium | Groot |
