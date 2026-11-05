@@ -172,7 +172,7 @@
     $('richting-staand').setAttribute('aria-pressed', !s.liggend); $('richting-liggend').setAttribute('aria-pressed', s.liggend);
 
     // voorbeeld op schaal
-    var box = $('pp-voorbeeld'), cs = getComputedStyle(box), maxW = (box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) || 280, maxH = 340, schaal = Math.min(maxW / B, maxH / H);
+    var box = $('pp-voorbeeld'), cs = getComputedStyle(box), maxW = (box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) || 280, maxH = 420, schaal = Math.min(maxW / B, maxH / H);
     vel.style.width = (B * schaal) + 'px'; vel.style.height = (H * schaal) + 'px';
     img.style.width = (a.b * schaal) + 'px'; img.style.height = (a.h * schaal) + 'px';
     img.style.left = ((B - a.b) / 2 * schaal) + 'px'; img.style.top = ((H - a.h) / 2 * schaal) + 'px';

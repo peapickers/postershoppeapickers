@@ -196,3 +196,16 @@ body.pp-verborgen .pp-volledig { display: none; }
 .pp-metadata { border-top: 1px solid $line; padding-top: .75rem; margin-top: .5rem; }
 .pp-metadata > summary { cursor: pointer; margin-bottom: 0; }
 .pp-metadata[open] > summary { margin-bottom: .75rem; }
+
+// Bestelvak herwerkt (Jonas, 5-11-2026): één typografische schaal, beeld links, kiezen en bestellen rechts
+.pp-bestel .pp-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: rgba($ink, .6); margin-bottom: .5rem; }
+.pp-bestel .pp-titel { font-size: 1.6rem; line-height: 1.2; font-weight: 600; }
+.pp-bestel .pp-voorbeeld { min-height: 440px; }
+.pp-bestel .pp-limited-beeld { max-height: 420px; }
+.pp-bestel .pp-maat { max-width: 100%; }
+.pp-bestel .pp-afrekenen { border-top: 1px solid $line; padding-top: 1rem; margin-top: 1.5rem; }
+.pp-bestel .pp-prijs { font-size: 2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.pp-bestel .pp-mandknop { padding: .55rem 1.25rem; }
+.pp-bestel .pp-reken { background: transparent; border: 0; padding: 0; }
+.pp-bestel .pp-bestel-kop { border-bottom: 1px solid $line; padding-bottom: 1rem; }
+@media (max-width: 767.98px) { .pp-bestel .pp-voorbeeld { min-height: 320px; } }
