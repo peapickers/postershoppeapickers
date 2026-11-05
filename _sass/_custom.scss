@@ -261,3 +261,4 @@ table.pp-ledger { margin: .25rem 0 .5rem; font-size: .9rem; }
 .pp-pijl { position: relative; flex: 0 0 2.5rem; height: 2px; background: $ink; }
 .pp-pijl::before { content: ""; position: absolute; left: -1px; top: -5px; border-style: solid; border-width: 6px 9px 6px 0; border-color: transparent $ink transparent transparent; }
 @media (max-width: 575.98px) { .pp-schema-rooster { grid-template-columns: 3.5rem 1fr; } .pp-pijl { flex-basis: 1.25rem; } .pp-schema-uitleg { font-size: .85rem; } }
+.pp-tekst-melding { background: #fff8db; border: 1px solid #e8d48a; padding: .4rem .75rem; }

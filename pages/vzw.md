@@ -4,8 +4,6 @@ layout: page
 permalink: /vzw.html
 ---
 
-{% include feature/alert.html text="Claude generated, nog te herschrijven" color="warning" %}
-
 ## Over peapickers
 
 peapickers maakt werk van onafhankelijke beeldende kunstenaars zichtbaar en geeft hen een economische kans, zonder dat hun statuut moet veranderen. Elke prijs is tot op de cent ontleed, elke auteur wordt betaald in auteursrechten en elke euro staat in de [Public Ledger]({{ '/register.html' | relative_url }}).

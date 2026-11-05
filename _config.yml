@@ -38,7 +38,8 @@ verpakking-fineart: 1.50
 betaalkost-schatting: 0.60
 # Bestelminimum in de mand, zonder leverkost (niet bij de gedeelde leverronde). Leverregels: _data/config-verzending.csv
 bestelminimum: 20
-# Strook bovenaan elke pagina zolang er niets verkocht wordt
+# Melding bovenaan de inhoud van elke pagina zolang de teksten niet herschreven zijn (Jonas, 5-11-2026); leeg laten om te verbergen
+tekst-melding: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven."
 voorbeeld-strook: "Voorbeeldsite. vzw peapickers is in oprichting (rond januari 2027) en verkoopt pas vanaf het voorjaar van 2027. Alle kunstwerken zijn fictieve placeholders."
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
