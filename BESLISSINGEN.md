@@ -28,7 +28,7 @@ Stand van 5-11-2026, na alle commentaar van Jonas op de werkende kopie van de si
 ## Producten
 
 - **Poster**: elk werk, gedrukt na bestelling, klant kiest papier en maat.
-- **Limited**: gecureerde print, vast formaat, kleine genummerde en gesigneerde oplage, vaste M per werk (`fineart_m`, `fineart_oplage`). Auteursrechten meteen bij het drukken. Voorbeeld bij 25 % van de werken (001-01, 003-01, 005-02). Geen kaders of passe-partouts als apart product.
+- **Limited**: gecureerde oplage, als genummerde en gesigneerde reproductie te koop; vast formaat, kleine genummerde en gesigneerde oplage, vaste M per werk (`fineart_m`, `fineart_oplage`). Auteursrechten meteen bij het drukken. Voorbeeld bij 25 % van de werken (001-01, 003-01, 005-02). Geen kaders of passe-partouts als apart product.
 - Werken uit het publiek domein worden niet verkocht.
 
 ## Jargon (overal gelijk houden)
