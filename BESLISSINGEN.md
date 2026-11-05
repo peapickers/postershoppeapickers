@@ -21,7 +21,7 @@ Stand van 5-11-2026, na alle commentaar van Jonas op de werkende kopie van de si
 
 ## Maten
 
-- **Klein 20 × 30 cm, Medium 30 × 45 cm, Groot 40 × 60 cm.** Geen A-formaten (A4/A3/A2, 21 × 29,7, 29,7 × 42) meer gebruiken.
+- **Klein 20 × 30 cm, Medium 30 × 40 cm, Groot 40 × 60 cm.** Geen A-formaten (A4/A3/A2, 21 × 29,7, 29,7 × 42) meer gebruiken.
 - Elke maat tussen 20 × 30 en 40 × 60 kan; de prijs volgt de kleinste van de drie klassen waarin het vel past. De rol is 40 cm breed.
 - Passe-partout standaard rondom 5 % van de korte zijde, nooit kleiner.
 
