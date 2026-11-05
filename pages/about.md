@@ -71,7 +71,7 @@ Materiaalkost = 1 × {{ M }}, auteursrechten = 3 × {{ M }} bruto, vzw peapicker
 | Formaat | Jij kiest papier en grootte | Vast |
 | Oplage | Onbeperkt | Klein, genummerd en gesigneerd door de auteur |
 | Prijs | 7 × {{ M }}, volgens papier en grootte | 7 × {{ M }}, vaste prijs per werk |
-| Auteursrechten | Per kwartaal uitbetaald, alleen na verkoop | Meteen bij het drukken, nog voor de verkoop |
+| Auteursrechten | Per kwartaal uitbetaald, alleen na verkoop | Onmiddellijk uitbetaald, losstaand van verkoop |
 {: .pp-tabel .pp-vergelijk}
 
 Er zijn geen kaders of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
