@@ -28,13 +28,8 @@ item-meta: true
     </script>
 {% endif %}
 
-    <h2 class="mb-3">{{ page.title }} 
-        {% unless page.display_template == 'record' %}<a href="#metadata" class="ms-5 btn btn-sm btn-outline-dark small">Metadata 
-            <svg class="bi icon-sprite" role="img" aria-label="Jump to Item Info">
-                <use href="{{ '/assets/css/cb-icons.svg' | relative_url }}#arrow-down"/>
-            </svg>
-        </a>{% endunless %}
-    </h2>
+    {%- comment -%} Zichtbare titel en Metadata-knop weggelaten (Jonas, 5-11-2026): het bestelvak toont code · titel · maker. De titel blijft voor schermlezers. {%- endcomment %}
+    <h2 class="visually-hidden">{{ page.title }}</h2>
 
     <div class="row justify-content-center">
         <div class="col-12 col-md-10">

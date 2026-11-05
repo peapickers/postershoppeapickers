@@ -104,6 +104,10 @@
   var vb = $('vel-b'), vh = $('vel-h'), ab = $('afb-b'), mg = $('pp-marge'), aantal = $('pp-aantal-stuks');
   vb.addEventListener('input', function () { s.liggend ? zetLang(+vb.value) : zetKort(+vb.value); teken(); });
   vh.addEventListener('input', function () { s.liggend ? zetKort(+vh.value) : zetLang(+vh.value); teken(); });
+  // Maten van het vel intikken (Jonas, 5-11-2026); toegepast bij Enter of bij het verlaten van het veld
+  function getalIn(el) { var x = parseFloat(String(el.value).replace(',', '.')); return isNaN(x) ? null : Math.round(x * 10) / 10; }
+  $('vel-b-in').addEventListener('change', function () { var x = getalIn(this); if (x !== null) { s.liggend ? zetLang(x) : zetKort(x); } teken(); });
+  $('vel-h-in').addEventListener('change', function () { var x = getalIn(this); if (x !== null) { s.liggend ? zetKort(x) : zetLang(x); } teken(); });
   // Snelknoppen voor de drie groottes (Jonas, 5-11-2026); de richting staand/liggend blijft behouden
   $('vel-groot').addEventListener('click', function () { s.kort = 40; s.lang = 60; teken(); });
   $('vel-medium').addEventListener('click', function () { s.kort = 29.7; s.lang = 42; teken(); });
@@ -168,7 +172,7 @@
     // schuivers
     vb.min = s.liggend ? VEL_KORT_MIN : VEL_KORT_MIN; vb.max = s.liggend ? VEL_LANG_MAX : VEL_KORT_MAX; vb.value = B;
     vh.min = VEL_KORT_MIN; vh.max = s.liggend ? VEL_KORT_MAX : VEL_LANG_MAX; vh.value = H;
-    $('vel-b-txt').textContent = cm(B); $('vel-h-txt').textContent = cm(H);
+    $('vel-b-in').value = cm(B); $('vel-h-in').value = cm(H);
     var maxA = past(B, H), minB = s.r >= 1 ? AFB_MIN * s.r : AFB_MIN;
     ab.min = Math.ceil(minB); ab.max = Math.floor(maxA.b); ab.value = Math.round(a.b);
     $('afb-b-txt').textContent = cm(a.b);

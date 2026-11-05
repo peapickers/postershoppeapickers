@@ -75,16 +75,15 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
               <button type="button" class="btn btn-outline-dark" id="richting-staand" aria-pressed="true">Staand</button>
               <button type="button" class="btn btn-outline-dark" id="richting-liggend" aria-pressed="false">Liggend</button>
             </div></div>
-            <label class="form-label small mb-0" for="vel-b">Breedte vel: <span id="vel-b-txt"></span> cm</label>
-            <input type="range" class="form-range" id="vel-b" step="1">
-            <label class="form-label small mb-0" for="vel-h">Hoogte vel: <span id="vel-h-txt"></span> cm</label>
-            <input type="range" class="form-range" id="vel-h" step="1">
+            <div class="d-flex align-items-center gap-2 small"><label class="form-label mb-0" for="vel-b-in">Breedte vel</label><input type="text" class="form-control form-control-sm pp-maat" id="vel-b-in" inputmode="decimal" autocomplete="off"><span>cm</span></div>
+            <input type="range" class="form-range" id="vel-b" step="1" aria-label="Breedte vel">
+            <div class="d-flex align-items-center gap-2 small"><label class="form-label mb-0" for="vel-h-in">Hoogte vel</label><input type="text" class="form-control form-control-sm pp-maat" id="vel-h-in" inputmode="decimal" autocomplete="off"><span>cm</span></div>
+            <input type="range" class="form-range" id="vel-h" step="1" aria-label="Hoogte vel">
             <div class="d-flex flex-wrap gap-2 mb-2">
               <button type="button" class="btn btn-sm btn-outline-dark" id="vel-groot">Groot (40 × 60)</button>
               <button type="button" class="btn btn-sm btn-outline-dark" id="vel-medium">Medium (29,7 × 42)</button>
               <button type="button" class="btn btn-sm btn-outline-dark" id="vel-klein">Klein (21 × 29,7)</button>
             </div>
-            <p class="small mb-0">Van 21 × 29,7 tot 40 × 60 cm, per centimeter, in een verhouding van 4:6 tot vierkant. Het papier komt van een rol van 40 cm breed, dus 40 × 60 cm is het maximum. Tip: meet je kader of de plek op de muur.</p>
           </fieldset>
 
           <fieldset class="mb-3" id="stap-afbeelding" hidden>
