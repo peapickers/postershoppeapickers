@@ -32,8 +32,8 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
       <h3 class="h5" id="fa-kop">Limited</h3>
       <div class="row g-4">
         <div class="col-12 col-md-5" style="min-width:0">
+          <p class="text-center mb-2 pp-volledig"><a class="spotlight btn btn-sm btn-outline-dark w-100" title="{{ page.title | escape }}" href="{{ page.object_location | default: page.image_small | relative_url }}">Full Screen</a></p>
           <div class="pp-voorbeeld text-center"><img src="{{ beeld }}" alt="Limited: {{ page.title | escape }}" class="img-fluid pp-limited-beeld" draggable="false"></div>
-          <p class="text-center mt-2 mb-0 pp-volledig"><a class="spotlight btn btn-sm btn-outline-dark" title="{{ page.title | escape }}" href="{{ page.object_location | default: page.image_small | relative_url }}">Bekijk het kunstwerk op volledig scherm</a></p>
         </div>
         <div class="col-12 col-md-7" style="min-width:0">
           <p class="mb-2"><strong>Oplage van {{ page.fineart_oplage | default: "?" }}</strong>, genummerd en gesigneerd door de auteur.</p>
@@ -66,6 +66,7 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
             <button type="button" class="btn btn-sm btn-dark" id="modus-poster" aria-pressed="true" title="Tip: meet je kader of de plek op de muur.">Poster</button>
             <button type="button" class="btn btn-sm btn-outline-dark" id="modus-afbeelding" aria-pressed="false">Afbeelding</button>
           </div>
+          <p class="text-center mb-2 pp-volledig"><a id="{{ page.objectid }}" class="spotlight btn btn-sm btn-outline-dark w-100" title="{{ page.title | escape }}" href="{{ page.object_location | default: page.image_small | relative_url }}">Full Screen</a></p>
           <div class="pp-voorbeeld" id="pp-voorbeeld">
             <div class="pp-vel" id="pp-vel">
               <img src="{{ beeld }}" alt="Voorbeeld van de poster: {{ page.title | escape }} op het gekozen vel" id="pp-afb" draggable="false">
@@ -73,7 +74,6 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
             </div>
           </div>
           <p class="small text-center mt-2 mb-0" id="pp-maten" style="font-variant-numeric: tabular-nums"></p>
-          <p class="text-center mt-2 mb-0 pp-volledig"><a id="{{ page.objectid }}" class="spotlight btn btn-sm btn-outline-dark" title="{{ page.title | escape }}" href="{{ page.object_location | default: page.image_small | relative_url }}">Bekijk het kunstwerk op volledig scherm</a></p>
         </div>
 
         <div class="col-12 col-md-7" style="min-width:0">
@@ -104,8 +104,8 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
 
           <fieldset class="mb-3" id="stap-afbeelding" hidden>
             <legend class="h6">Stap 2 · Grootte van de afbeelding op het vel</legend>
-            <label class="form-label small mb-0" for="pp-marge">Passe-partout: de witruimte op het vel rond de afbeelding, rondom in cm</label>
-            <input type="number" class="form-control form-control-sm mb-2" id="pp-marge" min="0" step="1" inputmode="numeric" style="max-width:8rem">
+            <label class="form-label small mb-0" for="pp-marge">Passe-partout: de witruimte rond de afbeelding, in cm (minstens 5 % van de korte zijde)</label>
+            <input type="number" class="form-control form-control-sm mb-2" id="pp-marge" min="0" step="0.1" inputmode="decimal" style="max-width:8rem">
             <label class="form-label small mb-0" for="afb-b">Breedte afbeelding: <span id="afb-b-txt"></span> cm</label>
             <input type="range" class="form-range" id="afb-b" step="1">
             <p class="small mb-0">Of sleep de hoek van de afbeelding in het voorbeeld. De verhouding van het kunstwerk blijft altijd dezelfde. De inktkost hangt enkel af van de grootte van de afbeelding: een kleinere afbeelding is iets goedkoper.</p>

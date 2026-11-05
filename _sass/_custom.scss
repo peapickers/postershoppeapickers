@@ -191,3 +191,8 @@ body.pp-verborgen .pp-volledig { display: none; }
 
 // Teller auteurs in de Public Ledger
 .pp-teller { border: 1px solid $ink; padding: .75rem 1rem; }
+
+// Metadata inklapbaar op de itempagina (Jonas, 5-11-2026)
+.pp-metadata { border-top: 1px solid $line; padding-top: .75rem; margin-top: .5rem; }
+.pp-metadata > summary { cursor: pointer; margin-bottom: 0; }
+.pp-metadata[open] > summary { margin-bottom: .75rem; }

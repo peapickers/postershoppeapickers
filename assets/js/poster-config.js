@@ -83,6 +83,10 @@
   function margeVoorBreedte(b) { // kleinste rand rondom die bij deze afbeeldingsbreedte hoort
     return Math.max(0, Math.min((velB() - b) / 2, (velH() - b / s.r) / 2));
   }
+  // Passe-partout altijd rondom 5 % van de korte zijde van het vel (Jonas, 5-11-2026):
+  // dat is de standaard bij elk vel en de kleinste rand; in "Afbeelding" kan de afbeelding enkel kleiner.
+  var PP_MIN = 0.05;
+  function minMarge() { return Math.round(Math.min(velB(), velH()) * PP_MIN * 100) / 100; }
   function maxMarge() { // afbeelding minstens AFB_MIN cm op de kortste zijde
     var lo = 0, hi = Math.min(velB(), velH()) / 2;
     for (var i = 0; i < 30; i++) { var mid = (lo + hi) / 2, a = past(velB() - 2 * mid, velH() - 2 * mid); if (Math.min(a.b, a.h) >= AFB_MIN) lo = mid; else hi = mid; }
@@ -114,7 +118,7 @@
   $('richting-staand').addEventListener('click', function () { s.liggend = false; teken(); });
   $('richting-liggend').addEventListener('click', function () { s.liggend = true; teken(); });
   document.querySelectorAll('input[name="papier"]').forEach(function (i) { i.addEventListener('change', function () { s.papier = i.value; teken(); }); });
-  mg.addEventListener('input', function () { var v = parseFloat(mg.value); if (!isNaN(v)) { s.marge = Math.max(0, Math.min(v, maxMarge())); teken(true); } });
+  mg.addEventListener('input', function () { var v = parseFloat(mg.value); if (!isNaN(v)) { s.marge = Math.max(minMarge(), Math.min(v, maxMarge())); teken(true); } });
   ab.addEventListener('input', function () { s.marge = margeVoorBreedte(+ab.value); teken(); });
   if (aantal.addEventListener) aantal.addEventListener('input', teken);
 
@@ -136,7 +140,7 @@
     var box = vel.getBoundingClientRect(), schaal = box.width / velB();
     var dx = Math.abs(e.clientX - (box.left + box.width / 2)) / schaal, dy = Math.abs(e.clientY - (box.top + box.height / 2)) / schaal;
     var b = Math.max(2 * dx, 2 * dy * s.r);
-    var maxA = past(velB(), velH()).b, minB = s.r >= 1 ? AFB_MIN * s.r : AFB_MIN;
+    var m0 = minMarge(), maxA = past(velB() - 2 * m0, velH() - 2 * m0).b, minB = s.r >= 1 ? AFB_MIN * s.r : AFB_MIN;
     s.marge = margeVoorBreedte(Math.max(minB, Math.min(maxA, b)));
     teken(); e.preventDefault();
   }
@@ -147,19 +151,22 @@
     el.addEventListener('pointercancel', function () { sleept = false; });
   });
 
-  var huidig = null;
+  var huidig = null, vorigVel = null;
   function teken(margeTyping) {
-    s.marge = Math.max(0, Math.min(s.marge, maxMarge()));
-    var B = velB(), H = velH(), a = afb(), n = Math.max(1, Math.min(99, parseInt(aantal.value, 10) || 1));
+    var B = velB(), H = velH(), m0 = minMarge();
+    if (vorigVel !== null && vorigVel !== B + 'x' + H) s.marge = m0; // ander vel: terug naar 5 %
+    vorigVel = B + 'x' + H;
+    s.marge = Math.max(m0, Math.min(s.marge, maxMarge()));
+    var a = afb(), n = Math.max(1, Math.min(99, parseInt(aantal.value, 10) || 1));
     // schuivers
     vb.min = s.liggend ? VEL_KORT_MIN : VEL_KORT_MIN; vb.max = s.liggend ? VEL_LANG_MAX : VEL_KORT_MAX; vb.value = B;
     vh.min = VEL_KORT_MIN; vh.max = s.liggend ? VEL_KORT_MAX : VEL_LANG_MAX; vh.value = H;
     $('vel-b-in').value = cm(B); $('vel-h-in').value = cm(H);
-    var maxA = past(B, H), minB = s.r >= 1 ? AFB_MIN * s.r : AFB_MIN;
+    var maxA = past(B - 2 * m0, H - 2 * m0), minB = s.r >= 1 ? AFB_MIN * s.r : AFB_MIN;
     ab.min = Math.ceil(minB); ab.max = Math.floor(maxA.b); ab.value = Math.round(a.b);
     $('afb-b-txt').textContent = cm(a.b);
     if (!margeTyping) mg.value = Math.round(s.marge * 10) / 10;
-    mg.max = maxMarge();
+    mg.max = maxMarge(); mg.min = m0;
     $('richting-staand').className = 'btn ' + (s.liggend ? 'btn-outline-dark' : 'btn-dark');
     $('richting-liggend').className = 'btn ' + (s.liggend ? 'btn-dark' : 'btn-outline-dark');
     $('richting-staand').setAttribute('aria-pressed', !s.liggend); $('richting-liggend').setAttribute('aria-pressed', s.liggend);
@@ -212,7 +219,8 @@
     if (l && $('papier-' + l.papier)) {
       s.papier = l.papier; $('papier-' + l.papier).checked = true;
       s.liggend = !!l.liggend; s.kort = l.kort; s.lang = l.lang; s.marge = l.marge;
-    }
+    } else s.marge = minMarge();
+    vorigVel = null;
     teken();
   }
   if (img.complete && img.naturalWidth) start(); else { img.addEventListener('load', start); teken(); }
