@@ -22,7 +22,7 @@
     for (var i = 0; i < KLASSEN.length; i++) if (k <= KLASSEN[i][1] + 1e-6 && l <= KLASSEN[i][2] + 1e-6) return KLASSEN[i][0];
     return 'groot';
   }
-  function klasseNaam(k) { return k === 'klein' ? 'klein (tot 21 × 29,7 cm)' : k === 'middel' ? 'middel (tot 29,7 × 42 cm)' : 'groot (tot 40 × 60 cm)'; }
+  function klasseNaam(k) { return k === 'klein' ? 'klein (tot 21 × 29,7 cm)' : k === 'middel' ? 'medium (tot 29,7 × 42 cm)' : 'groot (tot 40 × 60 cm)'; }
   function rij(soort, id) { return P.filter(function (p) { return p.soort === soort && (!id || p.id === id); })[0]; }
   function prijs(r, k) { return parseFloat(r[k]); }
 
@@ -39,7 +39,7 @@
       rij('Auteursrechten', '<strong>' + euro(v.auteur) + '</strong> bruto', ' <span class="text-muted">(' + euro(v.netto) + ' netto)</span>') +
       rij('vzw peapickers', euro(v.vzw)) +
       '</tbody></table>' +
-      '<p class="mb-0"><a href="' + (R.prijsUrl || '../about.html') + '">Zo komt de prijs tot stand</a></p>';
+      '<p class="mb-0"><a href="' + (R.prijsUrl || '../about.html') + '">Prijsopbouw</a></p>';
   }
   /* ---------- Keuze Poster / Limited (Jonas, 5-11-2026) ---------- */
   if ($('product-limited')) {
@@ -62,7 +62,7 @@
     fa.innerHTML = eenvoudig(fv);
     $('fa-mand').addEventListener('click', function () {
       if (W.snipcart) return;
-      window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: 'limited, genummerd en gesigneerd', prijs: fv.totaal, soort: 'fine-art' });
+      window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: 'limited, genummerd en gesigneerd', prijs: fv.totaal, soort: 'limited' });
       $('fa-melding').textContent = 'De Limited ligt in de mand.';
     });
   }

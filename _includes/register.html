@@ -26,7 +26,7 @@
 </form>
 <p class="small" id="register-telling" role="status" aria-live="polite"></p>
 
-<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen van 7 × M: 1 materiaal, 3 auteur, 3 vzw (± afronding). Auteursrechten op posters worden per kwartaal uitbetaald, samengeteld over alle auteurs; bij fine-art bij de druk. De roerende voorheffing van 15 % wordt ingehouden en doorgestort. Alle bedragen hier zijn fictief.</p>
+<p class="small">Een plus is geld dat op de rekening komt, een min geld dat eraf gaat. Elke verkoop wordt verdeeld over de zeven delen van 7 × M: 1 materiaalkost, 3 auteursrechten, 3 vzw peapickers (± afronding). Auteursrechten op posters worden per kwartaal uitbetaald, samengeteld over alle auteurs; bij Limited bij de druk. De roerende voorheffing van 15 % wordt ingehouden en doorgestort. Alle bedragen hier zijn fictief.</p>
 <script>
 (function () {
   var rijen = {{ site.data.register | jsonify }};
@@ -49,7 +49,7 @@
     ['Materiaal en verpakking', e(materiaal), 'Papier, inkt, verpakking en kaartjes'],
     ['Deel van de vzw', e(pp), '3 van de 7 delen van elke verkoop (± afronding). Vaste kosten en betaalkosten betaald: ' + e(vast)],
     ['Lening van de oprichter', e(schuld - terug), 'Renteloos en achtergesteld. Al terugbetaald: ' + e(terug)],
-    ['Verkocht', String(verkocht), 'Posters en fine-art, na herroepingen']
+    ['Verkocht', String(verkocht), 'Posters en Limited, na herroepingen']
   ];
   // Teller: wat in het laatste kwartaal met een uitbetaling naar de auteurs ging (bruto = netto + voorheffing)
   var uit = rijen.filter(function (r) { return r.soort === 'uitbetaling' || r.soort === 'voorheffing'; });

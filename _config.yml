@@ -42,7 +42,7 @@ bestelminimum: 20
 voorbeeld-strook: "Voorbeeldsite. vzw peapickers is in oprichting (rond januari 2027) en verkoopt pas vanaf het voorjaar van 2027. Alle kunstwerken zijn fictieve placeholders."
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "Webshop van vzw peapickers in Gent: posters op maat en fine-art prints van onafhankelijke kunstenaars, met een prijs die tot op de cent ontleed is."
+description: "Webshop van vzw peapickers in Gent: posters op maat en Limited-prints van onafhankelijke kunstenaars, met een prijs die tot op de cent ontleed is."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
 keywords: posters; kunstwerken; onafhankelijke kunstenaars; Gent
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
