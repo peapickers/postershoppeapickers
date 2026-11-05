@@ -142,6 +142,9 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .pp-menu #nav-search-box:focus { border-bottom-color: $ink !important; }
 // Deelnemen? staat als laatste in het menu, voorbij de zoekbalk (Jonas, 5-11-2026)
 .pp-menu li:has(> a[href$="join.html"]) { order: 1; }
+// Mand als winkelmandje-icoon, zonder onderlijning (Jonas, 5-11-2026)
+.pp-menu a.pp-menu-mand { text-decoration: none; display: inline-flex; align-items: center; gap: .15rem; }
+.pp-menu a.pp-menu-mand svg { display: block; }
 
 // ── Inhoud gecentreerd, met lucht; tekstpagina's in een smalle kolom zoals de oude site
 .pp-container { max-width: 1140px; padding-top: 2rem; padding-bottom: 3rem; }
