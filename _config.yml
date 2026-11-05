@@ -26,9 +26,9 @@ header-title: peapickers postershop
 # Winkelmand: publieke API-sleutel van Snipcart (testsleutel tot de vzw is opgericht).
 # Leeg = voorbeeldmand in de browser, er wordt niets verkocht.
 snipcart-api-key: ""
-# Prijsregels (ondernemingsplan v3, 4-11-2026). Inkoopprijzen excl. btw: _data/config-prijzen.csv
-# M = (papier + inkt) x (1 + btw-materiaal); prijs = 7 x M, afgerond op prijs-afronding. Geen btw op de verkoop.
-btw-materiaal: 0.21
+# Prijsregels (ondernemingsplan v3, 4-11-2026). Prijs per vel (rol / aantal vellen) en richtprijs inkt per afdruk, zoals betaald (Jonas, 5-11-2026): _data/config-prijzen.csv
+# M = papier + inkt (geen opslag, dus btw-materiaal = 0); prijs = 7 x M, afgerond op prijs-afronding. Geen btw op de verkoop.
+btw-materiaal: 0
 prijs-afronding: 0.10
 roerende-voorheffing: 0.15
 btw-vermelding: "btw-vrijgesteld (bijzondere vrijstellingsregeling kleine ondernemingen)"
@@ -38,7 +38,8 @@ verpakking-fineart: 1.50
 betaalkost-schatting: 0.60
 # Bestelminimum in de mand, zonder leverkost (niet bij de gedeelde leverronde). Leverregels: _data/config-verzending.csv
 bestelminimum: 20
-# Strook bovenaan elke pagina zolang er niets verkocht wordt
+# Melding bovenaan de inhoud van elke pagina zolang de teksten niet herschreven zijn (Jonas, 5-11-2026); leeg laten om te verbergen
+tekst-melding: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven."
 voorbeeld-strook: "Voorbeeldsite. vzw peapickers is in oprichting (rond januari 2027) en verkoopt pas vanaf het voorjaar van 2027. Alle kunstwerken zijn fictieve placeholders."
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
@@ -92,7 +93,7 @@ organization-logo-nav:
 # provide a relative path in this repository or full url 
 lib-assets: /assets/lib
 # ignore stuff
-exclude: [vendor/, docs/, Rakefile, rakelib/, README.md, LICENSE, CITATION.cff, CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md, AGENTS.md, CLAUDE.md, HUMANS.md]
+exclude: [vendor/, docs/, Rakefile, rakelib/, README.md, LICENSE, CITATION.cff, CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md, AGENTS.md, CLAUDE.md, HUMANS.md, BESLISSINGEN.md, LEESMIJ.md]
 # compress CSS output
 sass:
   style: compressed

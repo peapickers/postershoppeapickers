@@ -10,6 +10,7 @@
     {% include collection-banner.html %}
     {% include collection-nav.html %}
     <main id="maincontent" role="main" class="flex-shrink-0">
+      {% if site.tekst-melding and site.tekst-melding != "" %}<div class="container"><p class="pp-tekst-melding small mt-3 mb-0">{{ site.tekst-melding }}</p></div>{% endif %}
       {{ content }}
     </main>
     {% include footer.html %}

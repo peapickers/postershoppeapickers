@@ -6,8 +6,6 @@ permalink: /register.html
 
 ## Public Ledger
 
-<p class="lead">Elke euro die binnenkomt of buitengaat bij vzw peapickers, zichtbaar voor iedereen.</p>
-
 <div class="pp-kern">
   <div class="pp-kern-vak"><p class="pp-kern-groot">Alles</p><p>Elke ontvangst, uitgave, lening en gift, ook de inbreng van de oprichter.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">Anoniem</p><p>Verkopen per werkcode, zonder namen of adressen van klanten.</p></div>

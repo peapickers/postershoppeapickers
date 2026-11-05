@@ -65,7 +65,7 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 - [ ] Een reproductie blijft een reproductie: kleur en contrast kunnen afwijken van het origineel en van het scherm.
 - [ ] Je beeld wordt nooit bijgesneden of bewerkt.
 - [ ] Je werk en al je rechten blijven van jou. Je geeft per werk een niet-exclusieve licentie.
-- [ ] Poster en Limited: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs, als bruto auteursrecht. De prijs is altijd 7 × M, de materiaalkost (papier en inkt, met de btw die de vzw erop betaalt), afgerond op € 0,10. De vzw is btw-vrijgesteld, dus er gaat niets naar btw op de verkoop.
+- [ ] Poster en Limited: van elke verkochte afdruk krijg je 3 van de 7 delen van de prijs, als bruto auteursrecht. De prijs is altijd 7 × M, de materiaalkost (papier en inkt), afgerond op € 0,10. De vzw is btw-vrijgesteld, dus er gaat niets naar btw op de verkoop.
 - [ ] Bij een Limited krijg je je auteursrecht meteen bij het drukken, nog voor de verkoop.
 - [ ] peapickers houdt 15 % roerende voorheffing in op je bruto bedrag, stort die door en betaalt je netto per kwartaal. Je krijgt elk jaar een fiche 281.45. Een tweede bestuurder ziet elke kwartaaluitbetaling. Zie [Prijsopbouw]({{ '/about.html' | relative_url }}).
 - [ ] Elke verkoop staat met de werkcode in de [Public Ledger]({{ '/register.html' | relative_url }}). Uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.
@@ -80,7 +80,7 @@ Ook peapickers moet door deze checkpunten. Klopt een punt voor jou niet, zeg het
 Elk werk is als poster verkrijgbaar. Per werk beslis je samen met peapickers of er ook een Limited komt.
 
 - [ ] **Limited.** Een unieke print, op duur papier of op een bijzondere manier gereproduceerd, in een selectieve, gecureerde oplage, genummerd en gesigneerd door jou. De klant kiest geen formaat en betaalt een vaste prijs van 7 × M; M verschilt per werk. Een Limited wordt alleen door peapickers voorgesteld, gecureerd met het grotere team en eventueel uitbesteed aan de beste reproductievorm.
-- [ ] **Poster.** De klant kiest het papier (drie Epson-papieren), de maat van het vel (van 21 × 29,7 tot 40 × 60 cm) en de maat van de afbeelding met de witruimte errond. Je beeld wordt nooit bijgesneden. Elke poster wordt pas gedrukt als hij besteld en betaald is. De posterlicentie loopt 1 jaar en is telkens verlengbaar; zolang ze loopt, is het aantal niet beperkt. Posters worden niet genummerd.
+- [ ] **Poster.** De klant kiest het papier (drie Epson-papieren), de maat van het vel (van 20 × 30 tot 40 × 60 cm) en de maat van de afbeelding met de witruimte errond. Je beeld wordt nooit bijgesneden. Elke poster wordt pas gedrukt als hij besteld en betaald is. De posterlicentie loopt 1 jaar en is telkens verlengbaar; zolang ze loopt, is het aantal niet beperkt. Posters worden niet genummerd.
 - [ ] Er zijn geen kaders, latten of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
 - [ ] We starten met 3 auteurs en 15 tot 30 werken in de shop. Doel: 40 werken in 2028 en 60 in 2029, van 6 tot 10 auteurs.
 - [ ] Waarom zo weinig Limited? Om de kwaliteit hoog te houden, en omdat peapickers niet genoeg geld heeft om groter te beginnen. Is een oplage verkocht, dan kan er een tweede komen, met een nieuwe overeenkomst. Grotere oplages volgen pas als de vzw genoeg geld heeft opgebouwd om meer papier te riskeren.

@@ -1,5 +1,7 @@
 # 2026-10-27_peapickers postershop (prototype)
 
+**Laatst bruikbare stand: zie [BESLISSINGEN.md](BESLISSINGEN.md).** Waar dit bestand ervan afwijkt, geldt BESLISSINGEN.md.
+
 **Kern.** Prototype van de budget-postershop van peapickers, gebouwd op dezelfde CollectionBuilder-basis als de archiefsite. Elke poster is een archiefstuk met identiteitscode en volledige metadata. **Er wordt niets verkocht**: de vzw is nog niet opgericht. De mand, het bestelformulier en de QR-code zijn een voorbeeld; er wordt niets verstuurd en de QR-code gebruikt het ongeldige voorbeeldrekeningnummer BE00 0000 0000 0000. Alle archiefstukken zijn fictieve placeholders.
 
 Preview: https://claude.ai/artifact/VvCbo1vpHSqTzNJaN3CgLA
@@ -16,7 +18,7 @@ Overeenkomst voor verkoop per archiefstuk (concept voor jurist): https://claude.
 
 - Naam en tagline: peapickers postershop, "Licensed reproductions" (27-10, opmerking Jonas).
 - Achtergrond #F7F7F6 (neutraal, lichter dan eggshell #F0EAD6); Courier Prime blijft. Kleur aanpassen in `_sass/_custom.scss`.
-- Bestelvak per werk (`_includes/item/shop-box.html`, `assets/js/poster-config.js`): poster op maat (papier, vel 21 × 29,7 tot 40 × 60 cm, afbeelding met passe-partout, aantal) en fine-art met vaste prijs. Prijsregels volgens het ondernemingsplan v3 (4-11-2026): M = (papier + inkt) × 1,21 (btw op materiaal), prijs = 7 × M afgerond op € 0,10, geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen). Inkoopprijzen klein/middel/groot in `_data/config-prijzen.csv`, regels in `_config.yml`.
+- Bestelvak per werk (`_includes/item/shop-box.html`, `assets/js/poster-config.js`): poster op maat (papier, vel 20 × 30 tot 40 × 60 cm, afbeelding met passe-partout, aantal) en Limited met vaste prijs. Prijsregels (5-11-2026): M = papier + inkt (prijzen zoals betaald), prijs = 7 × M afgerond op € 0,10, geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen). Prijzen Klein/Medium/Groot (20 × 30 / 30 × 45 / 40 × 60) in `_data/config-prijzen.csv`, regels in `_config.yml`.
 - Mand (`/mand.html`, `_includes/mand.html`, `_includes/js/mand-js.html`): bewaard in de browser, leverzones uit Beslissingen 26-10, gestructureerde mededeling met controlegetal (mod 97), EPC-QR.
 - Geen startpagina: de site opent op het posteroverzicht (index.html), op vraag van Jonas 27-10.
 - Overzicht: tegels met enkel het beeld; bij hover wordt het beeld donkerder en verschijnen titel, maker, jaar en code. Metadata en prijs pas op de posterpagina. Placeholders tonen enkel de code, geen titel (27-10).

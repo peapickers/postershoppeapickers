@@ -50,9 +50,14 @@
   var pp = som(rijen, 'peapickers'), vast = som(rijen, 'betaald', ['vaste kosten', 'betaalkosten', 'oprichting']);
   var schuld = som(rijen, 'schuld'), terug = som(rijen, 'betaald', ['terugbetaling']);
   var verkocht = rijen.reduce(function (t, r) { return t + (r.soort === 'bestelling' ? +r.aantal : r.soort === 'herroeping' ? -r.aantal : 0); }, 0);
+  // Volgende vier kwartaalstortingen: telkens drie maanden na de laatste uitbetaling (Jonas, 5-11-2026)
+  var laatsteUit = rijen.filter(function (r) { return r.soort === 'uitbetaling'; }).map(function (r) { return r.datum; }).pop();
+  var volgende = [];
+  if (laatsteUit) { var jj = +laatsteUit.slice(0, 4), mm = +laatsteUit.slice(5, 7), dd = laatsteUit.slice(8, 10);
+    for (var q = 0; q < 4; q++) { mm += 3; if (mm > 12) { mm -= 12; jj++; } volgende.push(jj + '-' + (mm < 10 ? '0' : '') + mm + '-' + dd); } }
   var kaarten = [
     ['Op de rekening', e(saldo), 'Saldo na de laatste handeling. Geen reserve: de oprichter stort elke maand het tekort.'],
-    ['Uitbetaald aan auteurs', e(auteurNetto), 'Netto auteursrecht. <a href="#alle-handelingen" data-filter="voorheffing">Roerende voorheffing: ' + e(voorheffing) + '</a>, ingehouden en doorgestort. Nog uit te betalen: ' + e(Math.max(0, Math.round((auteurVerdiend - auteurBetaald) * 100) / 100))],
+    ['Uitbetaald aan auteurs', e(auteurNetto), 'Netto auteursrecht. <a href="#alle-handelingen" data-filter="voorheffing">Roerende voorheffing: ' + e(voorheffing) + '</a>, ingehouden en doorgestort. Nog uit te betalen: <strong>' + e(Math.max(0, Math.round((auteurVerdiend - auteurBetaald) * 100) / 100)) + '</strong>. Volgende stortingen: ' + volgende.join(', ') + '.'],
     ['Materiaal en verpakking', e(materiaal), 'Papier, inkt, verpakking en kaartjes'],
     ['Deel van de vzw', e(pp), '3 van de 7 delen van elke verkoop (± afronding). Vaste kosten en betaalkosten betaald: ' + e(vast)],
     ['Lening van de oprichter', e(schuld - terug), 'Renteloos en achtergesteld. Al terugbetaald: ' + e(terug)],
