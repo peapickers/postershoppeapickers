@@ -107,9 +107,9 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
         </div>
       </div>
 
-      <div class="pp-reken small mb-3" id="po-reken" aria-live="polite"></div>
-
-      <div class="d-flex flex-wrap gap-2 align-items-center">
+      {%- comment -%} Totaalprijs met de mandknop ernaast, daaronder een eenvoudige prijsopbouw (Jonas, 5-11-2026). {%- endcomment %}
+      <div class="d-flex flex-wrap gap-3 align-items-center mt-4 pp-totaal">
+        <span class="h3 mb-0" id="po-totaal" aria-live="polite" style="font-variant-numeric: tabular-nums"></span>
         <button type="button" class="btn btn-dark{% if snip != '' %} snipcart-add-item{% endif %}" id="po-mand"
           data-item-id="{{ page.identiteitscode }}-POSTER"
           data-item-name="{{ page.title | escape }} · poster"
@@ -128,17 +128,17 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
           data-item-custom1-options="{{ opties | split: '|' | join: '|' }}"
           data-item-custom2-name="Vel (cm)" data-item-custom2-type="readonly"
           data-item-custom3-name="Afbeelding (cm)" data-item-custom3-type="readonly"
-          data-item-custom4-name="Passe-partout" data-item-custom4-type="readonly">Poster in de mand</button>
-        {% if snip == '' %}<a class="btn btn-outline-dark" href="{{ '/mand.html' | relative_url }}">Naar de mand</a>{% else %}<button type="button" class="btn btn-outline-dark snipcart-checkout">Naar de mand</button>{% endif %}
+          data-item-custom4-name="Passe-partout" data-item-custom4-type="readonly">In de winkelmand</button>
         <span class="small" id="po-melding" role="status" aria-live="polite"></span>
       </div>
+      <div class="pp-reken small mt-2 mb-3" id="po-reken"></div>
     </section>
   </div>
 </div>
 
 <script>
 window.ppPrijzen = {{ site.data.config-prijzen | jsonify }};
-window.ppRegels = { btwMateriaal: {{ site.btw-materiaal | default: 0.21 }}, afronding: {{ site.prijs-afronding | default: 0.1 }}, voorheffing: {{ site.roerende-voorheffing | default: 0.15 }}, btwTekst: {{ site.btw-vermelding | jsonify }} };
+window.ppRegels = { btwMateriaal: {{ site.btw-materiaal | default: 0.21 }}, afronding: {{ site.prijs-afronding | default: 0.1 }}, voorheffing: {{ site.roerende-voorheffing | default: 0.15 }}, btwTekst: {{ site.btw-vermelding | jsonify }}, prijsUrl: {{ '/about.html' | relative_url | jsonify }} };
 window.ppWerk = { code: {{ page.identiteitscode | jsonify }}, titel: {{ page.title | jsonify }}, maker: {{ page.creator | jsonify }}, snipcart: {% if snip != '' %}true{% else %}false{% endif %} };
 </script>
 <script src="{{ '/assets/js/poster-config.js' | relative_url }}"></script>

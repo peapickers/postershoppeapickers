@@ -40,6 +40,15 @@
       '<span class="pp-ps-vzw" style="width:' + d(v.vzw) + '">vzw</span></div>' +
       '<p class="mb-2"><strong>Van deze ' + euro(v.totaal) + ' gaat ' + euro(v.auteur) + ' naar de auteur.</strong></p>';
   }
+  function eenvoudig(v) {
+    var d = function (b) { return (b / v.totaal * 100).toFixed(2) + '%'; };
+    return '<div class="pp-prijsstrook" aria-hidden="true">' +
+      '<span class="pp-ps-mat" style="width:' + d(v.m) + '"></span>' +
+      '<span class="pp-ps-aut" style="width:' + d(v.auteur) + '"></span>' +
+      '<span class="pp-ps-vzw" style="width:' + d(v.vzw) + '"></span></div>' +
+      '<p class="mb-1" style="font-variant-numeric: tabular-nums">Per poster: materiaal ' + euro(v.m) + ' · <strong>auteur ' + euro(v.auteur) + '</strong> · vzw peapickers ' + euro(v.vzw) + '</p>' +
+      '<p class="mb-0 text-muted">Geen btw. Leverkost komt erbij in de mand. <a href="' + (R.prijsUrl || '../about.html') + '">Zo komt de prijs tot stand</a></p>';
+  }
   function tabel(v, formule) {
     var n = v.aantal, x = function (b) { return euro(b * n); };
     var kop = n > 1 ? '<th class="text-end">Per stuk</th><th class="text-end">× ' + n + '</th>' : '<th class="text-end">Bedrag</th>';
@@ -194,12 +203,9 @@
     // prijs
     var pr = rij('papier', s.papier), ink = rij('inkt'), kv = klasse(B, H), ka = klasse(a.b, a.h);
     var pp = prijs(pr, kv), pi = prijs(ink, ka), mRuw = (pp + pi) * (1 + BTW_MAT), v = verdeling(mRuw, n);
-    var formule = '<p class="mb-1"><strong>Papier</strong>: ' + pr.naam + ', vel ' + cm(B) + ' × ' + cm(H) + ' cm = ' + klasseNaam(kv) + ': ' + euro(pp) + '<br>' +
-      '<strong>Inkt</strong>: afbeelding ' + cm(a.b) + ' × ' + cm(a.h) + ' cm = ' + klasseNaam(ka) + ': ' + euro(pi) + '<br>' +
-      '<strong>M</strong> = (' + getal(pp) + ' + ' + getal(pi) + ') × ' + dec(1 + BTW_MAT, 2) + ' (btw op materiaal) = ' + euro(v.m) + '</p>' +
-      '<p class="mb-2"><span class="h5" style="font-variant-numeric: tabular-nums">' + euro(v.totaal) + '</span> per poster' + (n > 1 ? ', ' + euro(v.totaal * n) + ' voor ' + n : '') + '<br>' +
-      '7 × M = 7 × ' + dec(mRuw, 4) + ' = ' + dec(7 * mRuw, 4) + ', afgerond op € 0,10 = ' + euro(v.totaal) + ' · leverkost komt erbij in de mand</p>';
-    $('po-reken').innerHTML = tabel(v, formule);
+    // Totaal bovenaan, eenvoudige prijsopbouw eronder (Jonas, 5-11-2026)
+    $('po-totaal').innerHTML = euro(v.totaal * n) + (n > 1 ? ' <span class="fs-6 fw-normal">(' + n + ' × ' + euro(v.totaal) + ')</span>' : '');
+    $('po-reken').innerHTML = eenvoudig(v);
 
     // Snipcart-knop (en voorbeeldmand)
     var knop = $('po-mand'), randTekst = s.marge > 0 ? 'rondom min. ' + cm(s.marge) + ' cm' : 'geen';
