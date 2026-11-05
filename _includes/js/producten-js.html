@@ -3,6 +3,7 @@
 (function () {
     // Alle velden die de beelden beschrijven; meerdere waarden staan gescheiden door ";".
     var FACETTEN = [
+        { veld: 'soort', naam: 'Product' }, // Posters (elk werk) en Unique reproductions (werken met een Limited) (Jonas, 5-11-2026)
         { veld: 'creator', naam: 'Maker' },
         { veld: 'date', naam: 'Jaar' },
         { veld: 'subject', naam: 'Onderwerp' },
@@ -22,6 +23,7 @@
             alt: {{ item.image_alt_text | default: item.title | jsonify }},
             beschrijving: {{ item.description | jsonify }},
             filter: {{ item.filter | default: '' | jsonify }},
+            soort: {% if item.fineart_m and item.fineart_m != "" %}'Posters;Unique reproductions'{% else %}'Posters'{% endif %},
             {% for f in site.data.config-producten %}{{ f.veld }}: {{ item[f.veld] | jsonify }},{% endfor %}
             href: {{ '/items/' | append: item.objectid | append: '.html' | relative_url | jsonify }}
         }{% unless forloop.last %},{% endunless %}{% endfor %}
