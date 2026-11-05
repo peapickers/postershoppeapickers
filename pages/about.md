@@ -67,7 +67,7 @@ Materiaalkost = 1 × {{ M }}, auteursrechten = 3 × {{ M }} bruto, vzw peapicker
 
 | | Poster | Limited |
 |---|---|---|
-| Wat | Elk werk, gedrukt na je bestelling | Een gecureerde print, op duur papier of in een bijzondere reproductievorm |
+| Wat | Elk werk, gedrukt na je bestelling | Gecureerde oplage, als genummerde en gesigneerde reproductie te koop |
 | Formaat | Jij kiest papier en grootte | Vast |
 | Oplage | Onbeperkt | Klein, genummerd en gesigneerd door de auteur |
 | Prijs | 7 × {{ M }}, volgens papier en grootte | 7 × {{ M }}, vaste prijs per werk |
