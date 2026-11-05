@@ -46,7 +46,7 @@
       '<span class="pp-ps-aut" style="width:' + d(v.auteur) + '"></span>' +
       '<span class="pp-ps-vzw" style="width:' + d(v.vzw) + '"></span></div>' +
       '<p class="mb-1" style="font-variant-numeric: tabular-nums">Per poster: materiaal ' + euro(v.m) + ' · <strong>auteur ' + euro(v.auteur) + '</strong> · vzw peapickers ' + euro(v.vzw) + '</p>' +
-      '<p class="mb-0 text-muted">Geen btw. Leverkost komt erbij in de mand. <a href="' + (R.prijsUrl || '../about.html') + '">Zo komt de prijs tot stand</a></p>';
+      '<p class="mb-0"><a href="' + (R.prijsUrl || '../about.html') + '">Zo komt de prijs tot stand</a></p>';
   }
   function tabel(v, formule) {
     var n = v.aantal, x = function (b) { return euro(b * n); };
@@ -201,14 +201,27 @@
   }
 
   $('po-mand').addEventListener('click', function () {
+    bewaarInstellingen(); // ook met Snipcart
     if (W.snipcart || !huidig) return;
     for (var i = 0; i < huidig.aantal; i++) window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: huidig.formaat, prijs: huidig.prijs, soort: 'poster' });
     $('po-melding').textContent = huidig.aantal > 1 ? 'De ' + huidig.aantal + ' posters liggen in de mand.' : 'De poster ligt in de mand.';
   });
 
+  // De laatst in de mand gelegde instellingen staan klaar op het volgende kunstwerk (Jonas, 5-11-2026)
+  var LAATSTE = 'pp-poster-laatste-v1';
+  function bewaarInstellingen() {
+    try { localStorage.setItem(LAATSTE, JSON.stringify({ papier: s.papier, liggend: s.liggend, kort: s.kort, lang: s.lang, marge: s.marge })); } catch (e) {}
+  }
+  function laatste() { try { return JSON.parse(localStorage.getItem(LAATSTE)); } catch (e) { return null; } }
+
   function start() {
     if (img.naturalWidth && img.naturalHeight) s.r = img.naturalWidth / img.naturalHeight;
     s.liggend = s.r > 1;
+    var l = laatste();
+    if (l && $('papier-' + l.papier)) {
+      s.papier = l.papier; $('papier-' + l.papier).checked = true;
+      s.liggend = !!l.liggend; s.kort = l.kort; s.lang = l.lang; s.marge = l.marge;
+    }
     teken();
   }
   if (img.complete && img.naturalWidth) start(); else { img.addEventListener('load', start); teken(); }
