@@ -1,7 +1,5 @@
 <footer class="pp-footer mt-auto">
     <div class="container d-flex flex-wrap justify-content-between gap-2 py-3 small">
-        {%- comment -%} Herroepingsknop op elke pagina, duidelijk benoemd (BESLISSINGEN.md, richtlijn (EU) 2023/2673; tekst 1 vragenlijst marketing 7-11-2026). Tekst: site.herroeping-link-tekst. {%- endcomment %}
-        {% if site.herroeping-link-tekst and site.herroeping-link-tekst != "" %}<a class="pp-herroep-link" href="{{ '/herroepen.html' | relative_url }}">{{ site.herroeping-link-tekst }}</a>{% endif %}
         <span>© De werken blijven van hun auteurs. Alle reproducties zijn gelicentieerd; kopiëren of hergebruiken zonder toestemming is verboden. Voorbehoud: tekst- en datamining en het trainen van AI met deze beelden en teksten zijn niet toegestaan (art. XI.191/1 WER).</span>
         {% if site.printshop-url %}<a href="{{ site.printshop-url }}">Eigen beelden laten drukken? peapickers printshop ↗</a>{% endif %}
     </div>

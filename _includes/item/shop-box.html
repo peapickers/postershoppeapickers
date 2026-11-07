@@ -1,7 +1,6 @@
 {% comment %}
 Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
-- Tweede kans (7-11-2026): teruggestuurde Posters uit _data/tweede-kans.csv, prijs 80 %, opbrengst 50/50.
-- Fine-art/Limited (enkel als site.limited-actief true is en de CSV-kolom fineart_m gevuld is): M per werk, incl. btw op materiaal. Vaste prijs 7 × M, afgerond op € 0,10. Genummerde en gesigneerde oplage (fineart_oplage).
+- Fine-art (enkel als de CSV-kolom fineart_m gevuld is): M per werk, incl. btw op materiaal. Vaste prijs 7 × M, afgerond op € 0,10. Genummerde en gesigneerde oplage (fineart_oplage).
 - Poster (elk kunstwerk): papier en vel, dan de afbeelding op het vel (passe-partout = witruimte), dan het aantal.
   M = (papier volgens het vel + inkt volgens de afbeelding) × (1 + site.btw-materiaal). Inkoopprijzen in _data/config-prijzen.csv.
   Prijs = 7 × M, afgerond op site.prijs-afronding. Geen btw op de verkoop. 1M materiaal, 3M auteur, rest vzw.
@@ -24,23 +23,19 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
         <p class="pp-titel mb-0">{{ page.title }}</p>
         {% if page.creator %}<p class="mb-0 text-muted">{{ page.creator }}</p>{% endif %}
       </div>
-{%- assign heeft_limited = false -%}{% if site.limited-actief and page.fineart_m and page.fineart_m != "" %}{% assign heeft_limited = true %}{% endif %}
-{%- comment -%} Limited verborgen zolang site.limited-actief false is: de webshop start met 0 Limited (VB7, VM6, Jonas 7-11-2026). {%- endcomment -%}
-{%- assign tk_rijen = site.data.tweede-kans | where: "objectid", page.objectid | where: "status", "te koop" -%}
-{%- assign heeft_tk = false -%}{% if tk_rijen.size > 0 %}{% assign heeft_tk = true %}{% endif %}
-{% if heeft_limited or heeft_tk %}
-      {%- comment -%} Keuze van het product (Jonas, 5-11-2026; Tweede kans 7-11-2026). Limited = de vroegere fine-art: vaste print, gelimiteerde oplage, geen keuze in papier of grootte. Tweede kans = een teruggestuurde Poster (VJ19, VM3). {%- endcomment %}
+{%- assign heeft_limited = false -%}{% if page.fineart_m and page.fineart_m != "" %}{% assign heeft_limited = true %}{% endif %}
+{% if heeft_limited %}
+      {%- comment -%} Keuze Poster of Limited (Jonas, 5-11-2026). Limited = de vroegere fine-art: vaste print, gelimiteerde oplage, geen keuze in papier of grootte. {%- endcomment %}
       <div class="btn-group" role="group" aria-label="Kies een product" id="pp-product">
-        <button type="button" class="btn btn-dark" data-product="poster" id="product-poster" aria-pressed="true">Poster</button>
-        {% if heeft_limited %}<button type="button" class="btn btn-outline-dark" data-product="limited" id="product-limited" aria-pressed="false">Limited</button>{% endif %}
-        {% if heeft_tk %}<button type="button" class="btn btn-outline-dark" data-product="tweede-kans" id="product-tweede-kans" aria-pressed="false">Tweede kans</button>{% endif %}
+        <button type="button" class="btn btn-dark" id="product-poster" aria-pressed="true">Poster</button>
+        <button type="button" class="btn btn-outline-dark" id="product-limited" aria-pressed="false">Limited</button>
       </div>
 {% endif %}
     </div>
 {% if heeft_limited %}
     {%- assign fa_m = page.fineart_m | plus: 0 -%}
     {%- assign fa_prijs = fa_m | times: 70 | plus: 0.000001 | round | divided_by: 10.0 -%}
-    <section class="pp-limited" aria-labelledby="fa-kop" id="sectie-limited" data-product-sectie="limited" hidden>
+    <section class="pp-limited" aria-labelledby="fa-kop" id="sectie-limited" hidden>
       <h3 class="visually-hidden" id="fa-kop">Limited</h3>
       <div class="row g-4 g-lg-5">
         <div class="col-12 col-md-6" style="min-width:0">
@@ -72,52 +67,7 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
     </section>
 {% endif %}
 
-{% if heeft_tk %}
-    <section class="pp-tweede-kans" aria-labelledby="tk-kop" id="sectie-tweede-kans" data-product-sectie="tweede-kans" hidden>
-      <h3 class="visually-hidden" id="tk-kop">Tweede kans</h3>
-      <div class="row g-4 g-lg-5">
-        <div class="col-12 col-md-6" style="min-width:0">
-          <div class="pp-voorbeeld text-center"><img src="{{ beeld }}" alt="Tweede kans: {{ page.title | escape }}" class="img-fluid pp-limited-beeld" draggable="false"></div>
-        </div>
-        <div class="col-12 col-md-6 d-flex flex-column" style="min-width:0">
-          <p class="pp-label">Tweede kans <span class="pp-teruggestuurd">teruggestuurd</span></p>
-          <p class="text-muted mb-3">Deze Poster ging terug na een herroeping en is onbeschadigd. Maat en papier liggen vast, en hij is maar één keer te koop. De helft van wat je betaalt, gaat naar de auteur als Auteursrechten, de andere helft naar vzw peapickers. Er is geen nieuwe Materiaalkost: de poster bestaat al. Ook hier heb je 14 dagen om van gedachten te veranderen.</p>
-          {%- for t in tk_rijen %}
-          {%- assign _p = site.data.config-prijzen | where: "id", t.papier | first -%}
-          {%- include helpers/tweede-kans-prijs.html oud=t.oorspronkelijke_prijs -%}
-          {%- assign _maat = t.maat | capitalize -%}{% if t.maat == "middel" %}{% assign _maat = "Medium" %}{% endif %}
-          <div class="pp-afrekenen mb-3">
-            <p class="mb-1"><strong>{{ _maat }}</strong> · {{ t.vel }} · {{ _p.naam | default: t.papier }}</p>
-            <div class="d-flex flex-wrap gap-3 align-items-center pp-totaal">
-              <span class="pp-prijs">{% include helpers/euro.html bedrag=tk_prijs %}</span>
-              <span class="text-muted small">was {% include helpers/euro.html bedrag=t.oorspronkelijke_prijs %}</span>
-              <button type="button" class="btn btn-dark pp-mandknop pp-tk-mand{% if snip != '' %} snipcart-add-item{% endif %}"
-          data-item-id="{{ page.identiteitscode }}-{{ t.id }}"
-          data-item-name="{{ page.title | escape }} · tweede kans"
-          data-item-price="{{ tk_prijs }}"
-          data-item-url="{{ page.url | relative_url }}"
-          data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"
-          data-item-description="{{ page.identiteitscode }} · {{ t.id }} · teruggestuurd · {{ _maat }} {{ _p.naam | default: t.papier }}"
-          data-item-max-quantity="1"
-          data-item-taxable="false"
-          data-tk-formaat="tweede kans {{ t.id }}, {{ _maat }}, {{ _p.naam | default: t.papier }} (teruggestuurd)"
-          data-tk-prijs="{{ tk_prijs }}">In de winkelmand</button>
-            </div>
-            <table class="table table-sm table-borderless small mb-1 mt-2 pp-opbouw" style="font-variant-numeric: tabular-nums"><tbody>
-              <tr><th scope="row" class="fw-normal ps-0">Materiaalkost</th><td class="text-end pe-0">{% include helpers/euro.html bedrag=0 %} <span class="text-muted">(de poster bestaat al)</span></td></tr>
-              <tr><th scope="row" class="fw-normal ps-0">Auteursrechten</th><td class="text-end pe-0"><strong>{% include helpers/euro.html bedrag=tk_auteur %}</strong> bruto <span class="text-muted">({% include helpers/euro.html bedrag=tk_netto %} netto)</span></td></tr>
-              <tr><th scope="row" class="fw-normal ps-0">vzw peapickers</th><td class="text-end pe-0">{% include helpers/euro.html bedrag=tk_vzw %}</td></tr>
-            </tbody></table>
-            <p class="small mb-0 pp-tk-melding" role="status" aria-live="polite"></p>
-          </div>
-          {%- endfor %}
-          <p class="small mb-0"><a href="{{ '/about.html#tweede-kans' | relative_url }}">Prijsopbouw</a></p>
-        </div>
-      </div>
-    </section>
-{% endif %}
-
-    <section class="pp-poster" aria-labelledby="po-kop" id="sectie-poster" data-product-sectie="poster">
+    <section class="pp-poster" aria-labelledby="po-kop" id="sectie-poster">
       <h3 class="visually-hidden" id="po-kop">Poster</h3>
       <div class="row g-4 g-lg-5">
         <div class="col-12 col-md-6" style="min-width:0">

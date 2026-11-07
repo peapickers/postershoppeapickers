@@ -74,21 +74,12 @@ Materiaalkost = 1 × {{ M }}, auteursrechten = 3 × {{ M }} bruto, vzw peapicker
 | Auteursrechten | Per kwartaal uitbetaald, alleen na verkoop | Onmiddellijk uitbetaald, losstaand van verkoop |
 {: .pp-tabel .pp-vergelijk}
 
-De webshop start in 2027 met Posters. Limited volgt later. Er zijn geen kaders of passe-partouts als apart product. Werken uit het publiek domein krijgen later een eigen pagina bij Posters, aan 4 × {{ M }}, zonder Auteursrechten.
-
-## Tweede kans {#tweede-kans}
-
-Komt een Poster onbeschadigd terug na een herroeping, dan gaat hij opnieuw te koop bij [Tweede kans]({{ '/index.html?product=tweede-kans' | relative_url }}), met het label "teruggestuurd". De prijs is 80 % van de oorspronkelijke prijs, afgerond op € 0,10. Er is geen nieuwe Materiaalkost: de poster bestaat al. De opbrengst gaat voor de helft naar de auteur, als Auteursrechten, en voor de helft naar vzw peapickers. vzw peapickers draagt het verlies.
-
-| Voorbeeld | Was | Prijs | Materiaalkost | Auteursrechten | vzw peapickers |
-|---|---:|---:|---:|---:|---:|
-{% assign _p = papieren | where: "id", "semimatte" | first %}{% assign _in = _p.middel | plus: inkt.middel %}{% include helpers/prijsberekening.html inkoop=_in %}{% include helpers/tweede-kans-prijs.html oud=pb_prijs %}| Poster {{ _p.naam }}, Medium, teruggestuurd | {% include helpers/euro.html bedrag=pb_prijs %} | **{% include helpers/euro.html bedrag=tk_prijs %}** | {% include helpers/euro.html bedrag=0 %} | {% include helpers/euro.html bedrag=tk_auteur %} | {% include helpers/euro.html bedrag=tk_vzw %} |
-{: .pp-tabel}
+Er zijn geen kaders of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
 
 ## Hoe wordt de auteur betaald?
 
 - **3 van de 7 delen** gaan naar de auteur, als bruto auteursrecht.
-- **15 % roerende voorheffing** houdt de vzw in en stort ze door. De auteur krijgt het netto bedrag, per kwartaal: op de 15de van januari, april, juli en oktober, voor het eerst op 15 juli 2027.
+- **15 % roerende voorheffing** houdt de vzw in en stort ze door. De auteur krijgt het netto bedrag, per kwartaal.
 - **Een licentie per werk**, niet-exclusief. Een tweede bestuurder ziet elke uitbetaling en de boekhouder controleert.
 
 | Per verkocht stuk | Prijs | Bruto | Voorheffing 15 % | Netto naar de auteur |

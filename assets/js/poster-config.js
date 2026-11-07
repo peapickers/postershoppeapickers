@@ -41,34 +41,19 @@
       '</tbody></table>' +
       '<p class="mb-0"><a href="' + (R.prijsUrl || '../about.html') + '">Prijsopbouw</a></p>';
   }
-  /* ---------- Keuze Poster / Limited / Tweede kans (Jonas, 5-11-2026 en 7-11-2026) ---------- */
-  var productKnoppen = document.querySelectorAll('#pp-product [data-product]');
-  if (productKnoppen.length) {
+  /* ---------- Keuze Poster / Limited (Jonas, 5-11-2026) ---------- */
+  if ($('product-limited')) {
     var kies = function (welke) {
-      document.querySelectorAll('[data-product-sectie]').forEach(function (sec) { sec.hidden = sec.getAttribute('data-product-sectie') !== welke; });
-      productKnoppen.forEach(function (k) {
-        var aan = k.getAttribute('data-product') === welke;
-        k.className = 'btn ' + (aan ? 'btn-dark' : 'btn-outline-dark');
-        k.setAttribute('aria-pressed', aan);
-      });
-      if (welke === 'poster') window.dispatchEvent(new Event('resize')); // postervoorbeeld opnieuw schalen
+      var lim = welke === 'limited';
+      $('sectie-limited').hidden = !lim; $('sectie-poster').hidden = lim;
+      $('product-limited').className = 'btn ' + (lim ? 'btn-dark' : 'btn-outline-dark');
+      $('product-poster').className = 'btn ' + (lim ? 'btn-outline-dark' : 'btn-dark');
+      $('product-limited').setAttribute('aria-pressed', lim); $('product-poster').setAttribute('aria-pressed', !lim);
+      if (!lim) window.dispatchEvent(new Event('resize')); // postervoorbeeld opnieuw schalen
     };
-    productKnoppen.forEach(function (k) { k.addEventListener('click', function () { kies(k.getAttribute('data-product')); }); });
-    // Link vanuit de filter Tweede kans: items/....html#tweede-kans opent meteen dat product
-    if (location.hash === '#tweede-kans' && $('product-tweede-kans')) kies('tweede-kans');
+    $('product-poster').addEventListener('click', function () { kies('poster'); });
+    $('product-limited').addEventListener('click', function () { kies('limited'); });
   }
-
-  /* ---------- Tweede kans: vaste prijs per teruggestuurde Poster ---------- */
-  document.querySelectorAll('.pp-tk-mand').forEach(function (knop) {
-    knop.addEventListener('click', function () {
-      if (W.snipcart) return;
-      var m = window.ppMand.lees(), formaat = knop.getAttribute('data-tk-formaat');
-      var melding = knop.closest('.pp-afrekenen').querySelector('.pp-tk-melding');
-      if (m.some(function (r) { return r.code === W.code && r.formaat === formaat; })) { melding.textContent = 'Deze poster ligt al in de mand. Hij is maar één keer te koop.'; return; }
-      window.ppMand.voegToe({ code: W.code, titel: W.titel, maker: W.maker, formaat: formaat, prijs: parseFloat(knop.getAttribute('data-tk-prijs')), soort: 'tweede kans' });
-      melding.textContent = 'De poster ligt in de mand.';
-    });
-  });
 
   /* ---------- Limited (vroeger fine-art): vaste prijs ---------- */
   var fa = $('fa-reken');

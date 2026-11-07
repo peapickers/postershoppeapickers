@@ -38,19 +38,6 @@ verpakking-fineart: 1.50
 betaalkost-schatting: 0.60
 # Bestelminimum in de mand, zonder leverkost (niet bij de gedeelde leverronde). Leverregels: _data/config-verzending.csv
 bestelminimum: 20
-# Limited (VM6, Jonas 7-11-2026): de webshop start met 0 Limited (VB7). false = keuze Limited en filtergroep Limited verborgen tot de eerste Limited gepland is.
-limited-actief: false
-# Auteursrechten op Posters: vaste betaaldag de 15de van januari, april, juli en oktober (VB8). Valt die in een weekend, dan de werkdag ervoor. Eerste betaling 15-7-2027.
-auteursrechten-betaalmaanden: "1,4,7,10"
-auteursrechten-betaaldag: 15
-eerste-kwartaalbetaling: 2027-07-15
-# Herroepingsknop (BESLISSINGEN.md, 7-11-2026). Tekst van de link in de footer van elke pagina.
-herroeping-link-tekst: "Hier de overeenkomst herroepen"
-# Adres (https) dat een herroeping ontvangt en meteen de ontvangstbevestiging mailt. Leeg = voorbeeld: er wordt niets verstuurd of bewaard.
-# Welke dienst dit wordt, is nog een keuze (VT1 in projecten/techniek/vragenlijst-2026-11-07.md op peapickers.github.io).
-herroeping-endpoint: ""
-# Tweede kans: teruggestuurde Posters (VJ19, VM3). Prijs = 80 % van de oorspronkelijke prijs, afgerond op prijs-afronding; opbrengst 50/50 Auteursrechten en vzw peapickers. Rijen: _data/tweede-kans.csv
-tweede-kans-factor: 0.8
 # Melding bovenaan de inhoud van elke pagina zolang de teksten niet herschreven zijn (Jonas, 5-11-2026); leeg laten om te verbergen
 tekst-melding: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven."
 voorbeeld-strook: "Voorbeeldsite. vzw peapickers is in oprichting (rond januari 2027) en verkoopt pas vanaf het voorjaar van 2027. Alle kunstwerken zijn fictieve placeholders."
