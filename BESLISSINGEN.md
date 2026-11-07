@@ -46,6 +46,16 @@ Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") 
 - Public Ledger: filter bovenaan, kaarten met de stand, per kwartaal inklapbaar, "Nog uit te betalen" met de volgende 4 kwartaalstortingen. Uitbetalingen aan auteurs per kwartaal samengeteld.
 - Melding op elke pagina: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven." (`tekst-melding` in `_config.yml`, leeg = weg).
 
+## Herroepingsrecht en herroepingsknop
+
+- **Herroepingsknop** (beslissing Jonas, 7-11-2026): de webshop krijgt een online herroepingsfunctie, verplicht volgens richtlijn (EU) 2023/2673 (nieuw art. 11a richtlijn 2011/83/EU), van toepassing sinds 19 juni 2026. Bron: [Legalnews/Andersen](https://legalnews.be/handel-consument/verplichte-herroepingsknop-in-de-eu-wat-online-ondernemers-nu-al-moeten-voorbereiden-andersen/).
+  - Duidelijk benoemd, bv. "Hier de overeenkomst herroepen", zichtbaar en makkelijk vindbaar (op elke pagina, bv. in de footer en bij "Bestellen en leveren"), beschikbaar tijdens de hele herroepingstermijn.
+  - Twee stappen: (1) formulier met naam, gegevens om de bestelling te herkennen (bestelnummer) en e-mailadres; (2) knop "Herroeping bevestigen".
+  - Na bevestiging meteen een ontvangstbevestiging per e-mail (duurzame drager), met de inhoud van het verzoek, datum en tijdstip.
+  - Belgische omzetting in het Wetboek van economisch recht was in juni 2026 nog niet gepubliceerd: het ontwerp laten nakijken door de advocaat consumentenrecht.
+- **Herroepingsrecht zelf** (beslissing Jonas, 7-11-2026): 14 dagen herroepingsrecht voor elke bestelling, zowel Poster als Limited. We proberen het niet te vermijden (geen "gepersonaliseerd"-uitzondering). Open bij de advocaat: retourkosten, terugbetaling inhouden tot het werk terug is, en waardeverlies bij een beschadigd of gesigneerd werk.
+- Herroepingsverzoeken en ontvangstbevestigingen 10 jaar bewaren, samen met de stukken van de terugbetaling (fiscale bewaartermijn art. 315 WIB 92; nog te bevestigen door de boekhouder).
+
 ## Vaste regels
 
 - Alleen fictieve placeholders: nooit beelden of gegevens van echte kunstenaars.
