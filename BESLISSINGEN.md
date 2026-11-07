@@ -46,6 +46,15 @@ Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") 
 - Public Ledger: filter bovenaan, kaarten met de stand, per kwartaal inklapbaar, "Nog uit te betalen" met de volgende 4 kwartaalstortingen. Uitbetalingen aan auteurs per kwartaal samengeteld.
 - Melding op elke pagina: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven." (`tekst-melding` in `_config.yml`, leeg = weg).
 
+## Herroepingsrecht en herroepingsknop
+
+- **Herroepingsknop** (beslissing Jonas, 7-11-2026): de webshop krijgt een online herroepingsfunctie, verplicht volgens richtlijn (EU) 2023/2673 (nieuw art. 11a richtlijn 2011/83/EU), van toepassing sinds 19 juni 2026. Bron: [Legalnews/Andersen](https://legalnews.be/handel-consument/verplichte-herroepingsknop-in-de-eu-wat-online-ondernemers-nu-al-moeten-voorbereiden-andersen/).
+  - Duidelijk benoemd, bv. "Hier de overeenkomst herroepen", zichtbaar en makkelijk vindbaar (op elke pagina, bv. in de footer en bij "Bestellen en leveren"), beschikbaar tijdens de hele herroepingstermijn.
+  - Twee stappen: (1) formulier met naam, gegevens om de bestelling te herkennen (bestelnummer) en e-mailadres; (2) knop "Herroeping bevestigen".
+  - Na bevestiging meteen een ontvangstbevestiging per e-mail (duurzame drager), met de inhoud van het verzoek, datum en tijdstip.
+  - Belgische omzetting in het Wetboek van economisch recht was in juni 2026 nog niet gepubliceerd: de exacte Belgische tekst laten nakijken door de advocaat consumentenrecht.
+- **Herroepingsrecht zelf**: de site geeft nu 14 dagen voor elke bestelling, ook voor een poster op maat en Limited. Of Limited (en een poster met een vrij ingetikt formaat) wettelijk zonder herroepingsrecht kan, is nog open en wordt nagekeken (vragenlijst advocaat consumentenrecht). Tot dan blijft de huidige tekst staan.
+
 ## Vaste regels
 
 - Alleen fictieve placeholders: nooit beelden of gegevens van echte kunstenaars.
