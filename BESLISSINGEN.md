@@ -30,6 +30,7 @@ Stand van 5-11-2026, aangevuld op 7-11-2026 (herroepingsrecht; vzw: boekhouding,
 - **Poster**: elk werk, gedrukt na bestelling, klant kiest papier en maat.
 - **Limited**: gecureerde, unieke afdrukken; vast formaat, kleine genummerde en gesigneerde oplage, vaste M per werk (`fineart_m`, `fineart_oplage`). Auteursrechten meteen bij het drukken. Voorbeeld bij 25 % van de werken (001-01, 003-01, 005-02). Geen kaders of passe-partouts als apart product.
 - **Publiek domein** (beslissing Jonas, 5-11-2026, vervangt "Werken uit het publiek domein worden niet verkocht"): aparte pagina bij Posters, prijs = 4 × M afgerond op € 0,10. Verdeling Materiaalkost 1M, vzw peapickers 3M, geen Auteursrechten. Voorbeeld Medium op Semimatte: € 7,40, waarvan € 5,55 voor vzw peapickers. Elk werk eerst nagaan: zeker vrij in België.
+- **Tweedehands** (beslissing Jonas, 7-11-2026, vraag VJ19 van de jurist): een onbeschadigde, teruggestuurde Poster gaat naar een tweedehandsafdeling op de website, aan 80 % van de oorspronkelijke prijs. De opbrengst gaat 50/50 naar Auteursrechten en vzw peapickers; vzw peapickers draagt het verlies (de Materiaalkost is al gemaakt). Vermelding "teruggestuurd". Nog uit te werken in de licentie (toestemming auteur), herroeping en garantie bij tweedehands: actiepunt J24 op [de vragenlijst jurist](https://peapickers.github.io/projecten/jurist/vragenlijst-2026-11-07.html).
 
 ## Jargon (overal gelijk houden)
 
@@ -54,6 +55,7 @@ Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") 
   - Na bevestiging meteen een ontvangstbevestiging per e-mail (duurzame drager), met de inhoud van het verzoek, datum en tijdstip.
   - Belgische omzetting in het Wetboek van economisch recht was in juni 2026 nog niet gepubliceerd: het ontwerp laten nakijken door de advocaat consumentenrecht.
 - **Herroepingsrecht zelf** (beslissing Jonas, 7-11-2026): 14 dagen herroepingsrecht voor elke bestelling, zowel Poster als Limited. We proberen het niet te vermijden (geen "gepersonaliseerd"-uitzondering). Open bij de advocaat: retourkosten, terugbetaling inhouden tot het werk terug is, en waardeverlies bij een beschadigd of gesigneerd werk.
+- **Uitwerking** (beslissing Jonas, 7-11-2026, VJ3, VJ4, VJ17): de klant betaalt het terugsturen (vooraf duidelijk gemeld); de vzw betaalt terug zodra het werk terug is of de klant een verzendbewijs toont, ten laatste 14 dagen na de herroeping, via dezelfde betaalwijze. De printshop (eigen beelden van de klant) roept de uitzondering voor maatwerk in en meldt dat vóór de bestelling. Nog te bevestigen door de advocaat.
 - Herroepingsverzoeken en ontvangstbevestigingen 10 jaar bewaren, samen met de stukken van de terugbetaling (fiscale bewaartermijn art. 315 WIB 92; nog te bevestigen door de boekhouder).
 
 ## Vzw: boekhouding, productieplek en zetel
