@@ -273,3 +273,14 @@ table.pp-ledger { margin: .25rem 0 .5rem; font-size: .9rem; }
 .pp-uitklap ul.pp-check li::before { content: "☐"; position: absolute; left: 0; }
 .pp-stappen { padding-left: 1.4rem; }
 .pp-stappen li { margin-bottom: .4rem; }
+
+// Tweede kans (VM3, 7-11-2026): label "teruggestuurd" op de kaart en in het bestelvak
+.pp-teruggestuurd { display: inline-block; border: 1px solid $ink; background: $eggshell; color: $ink; font-size: .75rem; padding: 0 .4rem; margin-left: .4rem; letter-spacing: 0; text-transform: none; }
+.poster-tegel .pp-tegel-label { position: absolute; top: .5rem; left: .5rem; margin-left: 0; }
+.pp-tk-intro { border: 1px solid $ink; padding: 1rem; }
+
+// Herroepen (7-11-2026): formulier in twee stappen
+.pp-herroep { border: 1px solid $ink; padding: 1rem; max-width: 40rem; }
+.pp-herroep dl { margin-bottom: 1rem; }
+.pp-mailvoorbeeld { border: 1px dashed $ink; padding: 1rem; white-space: pre-line; font-size: .9rem; }
+.pp-footer .pp-herroep-link { font-weight: 700; color: inherit; }

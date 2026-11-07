@@ -11,7 +11,7 @@ Echte verkoop: Snipcart-mand met Bancontact via Mollie, zodra site.snipcart-api-
       </table>
     </div>
     <p class="small" id="mand-minimum" role="status" aria-live="polite"></p>
-    <p class="small">Posters worden pas gedrukt na je betaling. Je mag elke bestelling binnen 14 dagen herroepen, ook een poster op maat. Meer bij <a href="{{ '/verzending.html' | relative_url }}">Bestellen en leveren</a>.</p>
+    <p class="small">Posters worden pas gedrukt na je betaling. Je hebt 14 dagen om van gedachten te veranderen, ook bij een poster in jouw maat; het terugsturen betaal je zelf. <a href="{{ '/herroepen.html' | relative_url }}">{{ site.herroeping-link-tekst }}</a>. Meer bij <a href="{{ '/verzending.html' | relative_url }}">Bestellen en leveren</a>.</p>
   </div>
   <div class="col-12 col-lg-5" style="min-width:0">
     <form id="bestelformulier" novalidate>
@@ -87,6 +87,7 @@ Echte verkoop: Snipcart-mand met Bancontact via Mollie, zodra site.snipcart-api-
       var k = tr.querySelectorAll('button');
       k[0].onclick = function () { m[i].aantal -= 1; if (m[i].aantal < 1) m.splice(i, 1); ppMand.bewaar(m); teken(); };
       k[1].onclick = function () { m[i].aantal += 1; ppMand.bewaar(m); teken(); };
+      if (r.soort === 'tweede kans') { k[1].disabled = true; k[1].title = 'Een teruggestuurde poster is maar één keer te koop.'; }
       rij.appendChild(tr);
     });
     var l = lever(), sub = subtotaal();

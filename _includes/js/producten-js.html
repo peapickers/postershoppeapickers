@@ -3,7 +3,7 @@
 (function () {
     // Alle velden die de beelden beschrijven; meerdere waarden staan gescheiden door ";".
     var FACETTEN = [
-        { veld: 'soort', naam: 'Product' }, // Posters (elk werk) en Limited (werken met een Limited) (Jonas, 5-11-2026)
+        { veld: 'soort', naam: 'Product', altijd: ['Tweede kans'] }, // Posters (elk werk), Limited (alleen als site.limited-actief), Tweede kans (teruggestuurde Posters, altijd zichtbaar, ook als ze leeg is) (Jonas, 5-11 en 7-11-2026)
         { veld: 'creator', naam: 'Maker' },
         { veld: 'date', naam: 'Jaar' },
         { veld: 'subject', naam: 'Onderwerp' },
@@ -23,10 +23,26 @@
             alt: {{ item.image_alt_text | default: item.title | jsonify }},
             beschrijving: {{ item.description | jsonify }},
             filter: {{ item.filter | default: '' | jsonify }},
-            soort: {% if item.fineart_m and item.fineart_m != "" %}'Posters;Limited'{% else %}'Posters'{% endif %},
+            soort: {% if site.limited-actief and item.fineart_m and item.fineart_m != "" %}'Posters;Limited'{% else %}'Posters'{% endif %},
             {% for f in site.data.config-producten %}{{ f.veld }}: {{ item[f.veld] | jsonify }},{% endfor %}
             href: {{ '/items/' | append: item.objectid | append: '.html' | relative_url | jsonify }}
         }{% unless forloop.last %},{% endunless %}{% endfor %}
+        {%- comment -%} Tweede kans: elke teruggestuurde Poster is een eigen product, met het label "teruggestuurd" (VM3, VJ19). {%- endcomment -%}
+        {%- assign tk_lijst = site.data.tweede-kans | where: "status", "te koop" -%}
+        {% for t in tk_lijst %}{% assign item = items | where: "objectid", t.objectid | first %}{% if item %}{% include helpers/tweede-kans-prijs.html oud=t.oorspronkelijke_prijs %},{
+            id: {{ t.id | jsonify }},
+            title: {{ item.title | strip | jsonify }},
+            code: {{ item.identiteitscode | jsonify }},
+            img: {{ item.image_small | default: item.image_thumb | relative_url | jsonify }},
+            alt: {{ item.image_alt_text | default: item.title | jsonify }},
+            beschrijving: {{ item.description | jsonify }},
+            filter: {{ item.filter | default: '' | jsonify }},
+            soort: 'Tweede kans',
+            teruggestuurd: true,
+            prijs: '{% include helpers/euro.html bedrag=tk_prijs %} (was {% include helpers/euro.html bedrag=t.oorspronkelijke_prijs %})',
+            {% for f in site.data.config-producten %}{{ f.veld }}: {{ item[f.veld] | jsonify }},{% endfor %}
+            href: {{ '/items/' | append: item.objectid | append: '.html#tweede-kans' | relative_url | jsonify }}
+        }{% endif %}{% endfor %}
     ];
 
     // Bij elke pagina-lading een nieuwe willekeurige volgorde (Fisher-Yates),
@@ -56,6 +72,7 @@
     FACETTEN.forEach(function (f) {
         var alle = {};
         items.forEach(function (it) { waarden(it, f.veld).forEach(function (w) { alle[w] = true; }); });
+        (f.altijd || []).forEach(function (w) { alle[w] = true; });
         var lijst = Object.keys(alle).sort(function (a, b) { return a.localeCompare(b, 'nl', { numeric: true }); });
         if (!lijst.length) return;
         var html = '<fieldset class="pp-facet"><legend>' + f.naam + '</legend>';
@@ -93,7 +110,9 @@
             '<img class="lazyload" src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 3 4\'%3E%3C/svg%3E" data-src="' + it.img + '" alt="' + esc(it.alt) + '">' +
             '<span class="poster-overlay"><span class="poster-titel">' + esc(it.title) + '</span>' +
             (it.creator ? '<span class="poster-maker">' + esc(it.creator) + (it.date ? ', ' + esc(it.date) : '') + '</span>' : '') +
-            '<span class="poster-code">' + esc(it.code) + '</span></span></a>';
+            '<span class="poster-code">' + esc(it.code) + '</span>' +
+            (it.teruggestuurd ? '<span class="poster-maker">' + esc(it.prijs) + '</span>' : '') + '</span>' +
+            (it.teruggestuurd ? '<span class="pp-teruggestuurd pp-tegel-label">teruggestuurd</span>' : '') + '</a>';
     }
 
     function teken() {
@@ -111,7 +130,9 @@
             el.closest('.form-check').classList.toggle('pp-leeg', n === 0);
         });
 
-        if (!res.length) { itemsDiv.innerHTML = '<p>Geen producten voor deze filters.</p>'; return; }
+        var tk = gekozen.soort.has('Tweede kans');
+        document.getElementById('pp-tweede-kans-intro').hidden = !tk;
+        if (!res.length) { itemsDiv.innerHTML = tk && gekozen.soort.size === 1 ? '<p>Nu ligt hier niets. Dat is goed nieuws: alle posters hangen.</p>' : '<p>Geen producten voor deze filters.</p>'; return; }
         if (weergave === 'jaar') {
             var perJaar = {};
             res.forEach(function (it) { var j = it.date || 'Zonder jaar'; (perJaar[j] = perJaar[j] || []).push(it); });
@@ -139,6 +160,14 @@
         FACETTEN.forEach(function (f) { gekozen[f.veld].clear(); });
         teken();
     });
+    // Link vanuit Bestellen en leveren: index.html?product=tweede-kans zet de filter Tweede kans aan.
+    try {
+        var vraag = new URLSearchParams(location.search).get('product');
+        if (vraag === 'tweede-kans') {
+            var cb = facDiv.querySelector('input[data-veld="soort"][value="Tweede kans"]');
+            if (cb) { cb.checked = true; gekozen.soort.add('Tweede kans'); document.getElementById('pp-filterpaneel').classList.add('show'); }
+        }
+    } catch (e) {}
     teken();
 })();
 </script>

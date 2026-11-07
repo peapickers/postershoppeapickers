@@ -1,0 +1,10 @@
+{%- comment -%} Tweede kans (VJ19, VM3, Jonas 7-11-2026): prijs = tweede-kans-factor (80 %) × oorspronkelijke prijs, afgerond op prijs-afronding.
+Opbrengst 50/50: Auteursrechten (bruto, min roerende voorheffing) en vzw peapickers. Geen nieuwe Materiaalkost.
+Gebruik: {% include helpers/tweede-kans-prijs.html oud=13.00 %} → tk_prijs, tk_auteur, tk_rv, tk_netto, tk_vzw {%- endcomment -%}
+{%- assign _afr = site.prijs-afronding | default: 0.1 -%}
+{%- assign _f = site.tweede-kans-factor | default: 0.8 -%}
+{%- assign tk_prijs = include.oud | times: _f | divided_by: _afr | plus: 0.000001 | round | times: _afr -%}
+{%- assign tk_auteur = tk_prijs | times: 50 | plus: 0.000001 | round | divided_by: 100.0 -%}
+{%- assign tk_rv = tk_auteur | times: site.roerende-voorheffing | times: 100 | plus: 0.000001 | round | divided_by: 100.0 -%}
+{%- assign tk_netto = tk_auteur | minus: tk_rv -%}
+{%- assign tk_vzw = tk_prijs | minus: tk_auteur -%}
