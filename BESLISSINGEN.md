@@ -55,6 +55,7 @@ Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") 
   - Na bevestiging meteen een ontvangstbevestiging per e-mail (duurzame drager), met de inhoud van het verzoek, datum en tijdstip.
   - Belgische omzetting in het Wetboek van economisch recht was in juni 2026 nog niet gepubliceerd: het ontwerp laten nakijken door de advocaat consumentenrecht.
 - **Herroepingsrecht zelf** (beslissing Jonas, 7-11-2026): 14 dagen herroepingsrecht voor elke bestelling, zowel Poster als Limited. We proberen het niet te vermijden (geen "gepersonaliseerd"-uitzondering). Open bij de advocaat: retourkosten, terugbetaling inhouden tot het werk terug is, en waardeverlies bij een beschadigd of gesigneerd werk.
+- **Uitwerking** (beslissing Jonas, 7-11-2026, VJ3, VJ4, VJ17 van de jurist): de klant betaalt het terugsturen (vooraf duidelijk gemeld); de vzw betaalt terug zodra het werk terug is of de klant een verzendbewijs toont, ten laatste 14 dagen na de herroeping, via dezelfde betaalwijze. De printshop (eigen beelden van de klant) roept de uitzondering voor maatwerk in en meldt dat vóór de bestelling. Nog te bevestigen door de advocaat.
 - Herroepingsverzoeken en ontvangstbevestigingen 10 jaar bewaren, samen met de stukken van de terugbetaling (fiscale bewaartermijn art. 315 WIB 92; nog te bevestigen door de boekhouder).
 
 ## Vzw: boekhouding, productieplek en zetel
