@@ -1,6 +1,6 @@
 # Beslissingen postershop (laatst bruikbare stand)
 
-Stand van 5-11-2026, na alle commentaar van Jonas op de werkende kopie van de site (43 threads, allemaal verwerkt). Dit bestand gaat voor op oudere teksten, ook op het ondernemingsplan v3 (4-11-2026), op LEESMIJ.md en op wat andere repo's of documenten nog zeggen. Wie iets verandert aan prijzen, maten of jargon, past dit bestand mee aan.
+Stand van 5-11-2026, aangevuld op 7-11-2026 (herroepingsrecht; vzw: boekhouding, productieplek en zetel), na alle commentaar van Jonas op de werkende kopie van de site (43 threads, allemaal verwerkt). Dit bestand gaat voor op oudere teksten, ook op het ondernemingsplan v3 (4-11-2026), op LEESMIJ.md en op wat andere repo's of documenten nog zeggen. Wie iets verandert aan prijzen, maten of jargon, past dit bestand mee aan.
 
 ## Prijs
 
@@ -55,6 +55,18 @@ Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") 
   - Belgische omzetting in het Wetboek van economisch recht was in juni 2026 nog niet gepubliceerd: het ontwerp laten nakijken door de advocaat consumentenrecht.
 - **Herroepingsrecht zelf** (beslissing Jonas, 7-11-2026): 14 dagen herroepingsrecht voor elke bestelling, zowel Poster als Limited. We proberen het niet te vermijden (geen "gepersonaliseerd"-uitzondering). Open bij de advocaat: retourkosten, terugbetaling inhouden tot het werk terug is, en waardeverlies bij een beschadigd of gesigneerd werk.
 - Herroepingsverzoeken en ontvangstbevestigingen 10 jaar bewaren, samen met de stukken van de terugbetaling (fiscale bewaartermijn art. 315 WIB 92; nog te bevestigen door de boekhouder).
+
+## Vzw: boekhouding, productieplek en zetel
+
+Beslissingen van de oprichter van 7-11-2026. Details, open vragen en actiepunten: [beslissingen van 7 november 2026](https://peapickers.github.io/projecten/boekhouder/beslissingen-2026-11-07.html) (D1 tot D11, ZB01 tot ZB12).
+
+- **Boekhouding in zelfbeheer**: de oprichter boekt en doet alle aangiftes zelf (273S, Belcotax, klantenlisting, jaarrekening, Biztax). Een ITAA-boekhouder krijgt een maandvergoeding en controleert minstens 1 keer per jaar (vóór 31 december en vóór de neerlegging). Software van de boekhouder; Accountable volstaat nu niet. Vereenvoudigde boekhouding onder de vennootschapsbelasting.
+- **Productieplek**: een paar m² bij een bestaand bedrijf of organisatie dat mag onderverhuren, vaste huur in geld van maximaal € 150 per maand alles inbegrepen. Geen eigen pand, geen onderverhuur door de vzw, geen ruil tegen prints (de gastheer koopt prints aan de gewone prijs).
+- **Zetel**: liefst op het adres van de productieplek, anders bij een familielid met schriftelijke toestemming. In een extern pand gedeeld met andere ondernemers komt de zetel daar.
+- **Lening en materiaal**: de lening van de oprichter aan de vzw en de koop van zijn materiaal zijn niet nodig als de vzw zo'n extern gedeeld pand huurt.
+- **Bestuur**: minstens 2 leden en 2 bestuurders; een medebestuurder blijft nodig. Geen "niet-uitvoerende" bestuurder.
+- **Auteurs**: we starten alleen met auteurs die in België wonen.
+- **Vaste kosten** stijgen met de productieplek (tot € 1.800 per jaar); break-even ruw 1.070 tot 1.180 posters per jaar. Na te rekenen met de offerte van de boekhouder.
 
 ## Vaste regels
 
