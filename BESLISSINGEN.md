@@ -52,8 +52,9 @@ Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") 
   - Duidelijk benoemd, bv. "Hier de overeenkomst herroepen", zichtbaar en makkelijk vindbaar (op elke pagina, bv. in de footer en bij "Bestellen en leveren"), beschikbaar tijdens de hele herroepingstermijn.
   - Twee stappen: (1) formulier met naam, gegevens om de bestelling te herkennen (bestelnummer) en e-mailadres; (2) knop "Herroeping bevestigen".
   - Na bevestiging meteen een ontvangstbevestiging per e-mail (duurzame drager), met de inhoud van het verzoek, datum en tijdstip.
-  - Belgische omzetting in het Wetboek van economisch recht was in juni 2026 nog niet gepubliceerd: de exacte Belgische tekst laten nakijken door de advocaat consumentenrecht.
-- **Herroepingsrecht zelf**: de site geeft nu 14 dagen voor elke bestelling, ook voor een poster op maat en Limited. Of Limited (en een poster met een vrij ingetikt formaat) wettelijk zonder herroepingsrecht kan, is nog open en wordt nagekeken (vragenlijst advocaat consumentenrecht). Tot dan blijft de huidige tekst staan.
+  - Belgische omzetting in het Wetboek van economisch recht was in juni 2026 nog niet gepubliceerd: het ontwerp laten nakijken door de advocaat consumentenrecht.
+- **Herroepingsrecht zelf** (beslissing Jonas, 7-11-2026): 14 dagen herroepingsrecht voor elke bestelling, zowel Poster als Limited. We proberen het niet te vermijden (geen "gepersonaliseerd"-uitzondering). Open bij de advocaat: retourkosten, terugbetaling inhouden tot het werk terug is, en waardeverlies bij een beschadigd of gesigneerd werk.
+- Herroepingsverzoeken en ontvangstbevestigingen 10 jaar bewaren, samen met de stukken van de terugbetaling (fiscale bewaartermijn art. 315 WIB 92; nog te bevestigen door de boekhouder).
 
 ## Vaste regels
 
