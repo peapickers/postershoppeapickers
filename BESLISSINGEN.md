@@ -1,5 +1,7 @@
 # Beslissingen postershop (laatst bruikbare stand)
 
+> **Werkwijze beslissingen (8-11-2026).** Elke beslissing staat als één regel in het [beslissingenregister](https://peapickers.github.io/projecten/beslissingen.html), met code `JJJJ-MM-DD_Project<nr>` en een korte titel. Gebruik nooit kale codes (V1, D5, VJ3 ...), altijd de titel. Dit bestand houdt de uitwerking per onderwerp bij; het register zegt of een beslissing hier al in staat. Momentopnames per dag bestaan niet meer.
+
 Stand van 5-11-2026, aangevuld op 7-11-2026 (herroepingsrecht; vzw: boekhouding, zetel, lening; tweedehands) en bijgewerkt op 8-11-2026 (productie door de oprichter, verdeling 50/50, zetel bij de medebestuurder), na alle commentaar van Jonas op de werkende kopie van de site (43 threads, allemaal verwerkt). Dit bestand gaat voor op oudere teksten, ook op het ondernemingsplan v3 (4-11-2026), op LEESMIJ.md en op wat andere repo's of documenten nog zeggen. Wie iets verandert aan prijzen, maten of jargon, past dit bestand mee aan.
 
 ## Prijs
