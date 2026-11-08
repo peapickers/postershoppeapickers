@@ -16,14 +16,14 @@ Wat hieronder staat, is voorlopig. De checkpunten, de selectie en de afspraken k
 <div class="pp-kern">
   <div class="pp-kern-vak"><p class="pp-kern-groot">50 %</p><p>Van elke verkochte afdruk gaat de helft van de verkoopprijs naar jou, als bruto auteursrecht.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">Niet-exclusief</p><p>Je werk en je rechten blijven van jou. Je kunt altijd stoppen, zonder reden.</p></div>
-  <div class="pp-kern-vak"><p class="pp-kern-groot">Als particulier</p><p>Geen statuut nodig. Je wordt per kwartaal netto betaald in auteursrechten, op de 15de van januari, april, juli en oktober.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">Als particulier</p><p>Geen professioneel statuut nodig. Je wordt per kwartaal netto betaald in auteursrechten, op de 15de van januari, april, juli en oktober.</p></div>
 </div>
 
 ## Voor wie?
 
 | **Wie** | Makers zonder professioneel statuut als kunstenaar en zonder kunstenaarsattest |
 | **Leeftijd en woonplaats** | 18 jaar of ouder, wonend in België |
-| **Welk werk** | Af, minstens 12 maanden oud, gemaakt zonder invloed van peapickers |
+| **Welk werk** | Werken uit je persoonlijk archief: af, minstens 12 maanden oud, gemaakt zonder invloed van peapickers |
 | **Extra welkom** | Werk dat nog nooit verkocht of tentoongesteld is |
 {: .pp-tabel .pp-vergelijk}
 
