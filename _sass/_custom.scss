@@ -273,3 +273,10 @@ table.pp-ledger { margin: .25rem 0 .5rem; font-size: .9rem; }
 .pp-uitklap ul.pp-check li::before { content: "☐"; position: absolute; left: 0; }
 .pp-stappen { padding-left: 1.4rem; }
 .pp-stappen li { margin-bottom: .4rem; }
+
+/* Prijsschema 50/50 en kaders (8-11-2026) */
+.pp-schema-rooster.pp-schema-acht { grid-template-rows: repeat(8, minmax(1.6rem, auto)); }
+.pp-kader { border: 1px solid $line-strong; background: #fff; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+.pp-kader > :last-child { margin-bottom: 0; }
+.pp-kader-titel { font-weight: 700; margin-bottom: .5rem; }
+.pp-label-preview { display: inline-block; font-size: .8rem; border: 1px solid $ink; padding: 0 .4rem; margin-left: .4rem; vertical-align: middle; }

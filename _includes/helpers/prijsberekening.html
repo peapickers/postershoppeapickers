@@ -1,10 +1,10 @@
 {%- comment -%} Prijsberekening (ondernemingsplan v3). Gebruik: {% include helpers/prijsberekening.html inkoop=x %} met x = papier + inkt excl. btw, of m=x voor een M die al incl. btw is (fine-art).
-Zet: pb_mruw (M onafgerond), pb_m (1M), pb_auteur (3M), pb_prijs (7 × M afgerond op € 0,10), pb_vzw (rest), pb_rv (15%), pb_netto. {%- endcomment -%}
+Zet: pb_mruw (M onafgerond), pb_m (1M), pb_auteur (50 % van de prijs, bruto), pb_prijs (7 × M afgerond op € 0,10), pb_vzw (de andere 50 %), pb_rv (15%), pb_netto. {%- endcomment -%}
 {%- assign _btwf = site.btw-materiaal | default: 0.21 | plus: 1 -%}
 {%- if include.m -%}{%- assign pb_mruw = include.m | plus: 0 -%}{%- else -%}{%- assign pb_mruw = include.inkoop | times: _btwf -%}{%- endif -%}
 {%- assign pb_m = pb_mruw | plus: 0.0000001 | round: 2 -%}
-{%- assign pb_auteur = pb_m | times: 3 | round: 2 -%}
 {%- assign pb_prijs = pb_mruw | times: 70 | plus: 0.000001 | round | divided_by: 10.0 -%}
-{%- assign pb_vzw = pb_prijs | minus: pb_m | minus: pb_auteur | round: 2 -%}
+{%- assign pb_auteur = pb_prijs | times: 50 | plus: 0.000001 | round | divided_by: 100.0 -%}
+{%- assign pb_vzw = pb_prijs | minus: pb_auteur | round: 2 -%}
 {%- assign pb_rv = pb_auteur | times: site.roerende-voorheffing | plus: 0.0000001 | round: 2 -%}
 {%- assign pb_netto = pb_auteur | minus: pb_rv | round: 2 -%}

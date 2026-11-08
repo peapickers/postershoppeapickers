@@ -1,7 +1,7 @@
 /* peapickers postershop: posterconfigurator en transparante prijs (ondernemingsplan v3, 4-11-2026).
    M = papier volgens het vel + inkt volgens de afbeelding, zoals betaald (btwMateriaal = 0 sinds 5-11-2026).
    Prijs = 7 × M, afgerond op € 0,10. Geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen).
-   Verdeling: 1M materiaal, 3M auteur (bruto), de rest naar de vzw (3M ± afronding).
+   Verdeling (8-11-2026): 50 % Auteursrechten (bruto, min 15 % roerende voorheffing), 50 % vzw peapickers. Papier en inkt zijn een uitgave van de vzw, alleen getoond op Prijsopbouw.
    Groottes (Jonas, 5-11-2026: overzichtelijke maten, geen A-formaten): Klein tot 20 × 30 cm, Medium tot 30 × 40 cm, Groot tot 40 × 60 cm (staand of liggend). */
 (function () {
   'use strict';
@@ -28,14 +28,13 @@
 
   // Verdeling van één stuk. mRuw = M onafgerond (incl. btw op materiaal).
   function verdeling(mRuw, aantal) {
-    var totaal = r2(afrond(7 * mRuw)), mat = r2(mRuw), auteur = r2(3 * mat), rv = r2(auteur * RV);
-    return { mRuw: mRuw, m: mat, totaal: totaal, auteur: auteur, rv: rv, netto: r2(auteur - rv), vzw: r2(totaal - mat - auteur), aantal: aantal || 1 };
+    var totaal = r2(afrond(7 * mRuw)), mat = r2(mRuw), auteur = r2(totaal / 2), rv = r2(auteur * RV);
+    return { mRuw: mRuw, m: mat, totaal: totaal, auteur: auteur, rv: rv, netto: r2(auteur - rv), vzw: r2(totaal - auteur), aantal: aantal || 1 };
   }
-  // Eenvoudige prijsopbouw: drie lijnen, zonder balk (Jonas, 5-11-2026)
+  // Eenvoudige prijsopbouw: twee lijnen, 50/50 (Jonas, 8-11-2026). Materiaalkost staat alleen op Prijsopbouw.
   function eenvoudig(v) {
     var rij = function (naam, bedrag, extra) { return '<tr><th scope="row" class="fw-normal ps-0">' + naam + '</th><td class="text-end pe-0">' + bedrag + (extra || '') + '</td></tr>'; };
     return '<table class="table table-sm table-borderless small mb-1 pp-opbouw" style="font-variant-numeric: tabular-nums"><tbody>' +
-      rij('Materiaalkost', euro(v.m)) +
       rij('Auteursrechten', '<strong>' + euro(v.auteur) + '</strong> bruto', ' <span class="text-muted">(' + euro(v.netto) + ' netto)</span>') +
       rij('vzw peapickers', euro(v.vzw)) +
       '</tbody></table>' +

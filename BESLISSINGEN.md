@@ -46,10 +46,10 @@ Prijsopbouw · Limited (niet "fine-art", behalve de vakterm "fine-art printer") 
 ## Site
 
 - Menu: Producten, Prijsopbouw, Public Ledger, Over, Bestellen en leveren, Deelnemen?, mandje-icoon, zoekbalk.
-- Productpagina: geen grote afbeelding en geen titel bovenaan; het bestelvak is het hoofdgedeelte. Kop met code, titel, maker en de keuze Poster/Limited. Links Sheet Size/Image Size, Full Screen en het voorbeeld; rechts Papier, Formaat (Groot/Medium/Klein, staand/liggend, breedte en hoogte intikbaar), prijs groot met "In de winkelmand" en drie lijnen eronder: Materiaalkost, Auteursrechten (bruto en netto), vzw peapickers. Geen "Geen btw" of "Leverkost komt erbij" in het bestelvak. Geen aantalstap: het aantal wijzig je in de mand. De laatst gekozen instellingen blijven klaarstaan op het volgende werk (enkel in de browser).
+- Productpagina: geen grote afbeelding en geen titel bovenaan; het bestelvak is het hoofdgedeelte. Kop met code, titel, maker en de keuze Poster/Limited. Links Sheet Size/Image Size, Full Screen en het voorbeeld; rechts Papier, Formaat (Groot/Medium/Klein, staand/liggend, breedte en hoogte intikbaar), prijs groot met "In de winkelmand" en twee lijnen eronder: Auteursrechten (bruto en netto) en vzw peapickers (8-11-2026; Materiaalkost alleen op Prijsopbouw). Geen "Geen btw" of "Leverkost komt erbij" in het bestelvak. Geen aantalstap: het aantal wijzig je in de mand. De laatst gekozen instellingen blijven klaarstaan op het volgende werk (enkel in de browser).
 - Metadata in een inklapbaar blok "Metadata", standaard dicht.
 - Filter op Producten: groep Product (Posters, Limited, vanaf 7-11-2026 ook Tweede kans; Limited verborgen tot de eerste Limited gepland is) en de schakelaar NSFW (18+).
-- Prijsopbouw: kernkaders, schema met 7 delen en pijlen naar drie regels (geen voorbeeldprijs), prijstabel, uitklapblokken. Zie `pages/about.md`.
+- Prijsopbouw: de zin over 7M, kernkaders (7 × M, 50 / 50, € 0 btw), het rekenvoorbeeld Medium op Semimatte, schema 50/50 (de helft Auteursrechten, de helft vzw met papier en inkt, verpakking, betaalkost, overhead en reserve), prijstabel, uitklapblokken, kader over de geldreserves. Zie `pages/about.md`.
 - Public Ledger: filter bovenaan, kaarten met de stand, per kwartaal inklapbaar, "Nog uit te betalen" met de volgende 4 kwartaalstortingen. Uitbetalingen aan auteurs per kwartaal samengeteld.
 - Melding op elke pagina: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven." (`tekst-melding` in `_config.yml`, leeg = weg).
 
@@ -67,6 +67,20 @@ Jonas koos op 7-11-2026 voor elk voorstel van de technieker (vragenlijst VT1 tot
 - **Publiek domein**: voorlopig alleen de zin "krijgen later een eigen pagina bij Posters, aan 4 × M, zonder Auteursrechten"; de pagina komt zodra het eerste werk nagekeken is als zeker vrij in België (VT14).
 - **Over**: zonder zetel, adres of naam (VM4, VM10); er is geen productieplek meer (V1). De oproep voor nieuwe bestuurders (artistieke en curatoriële kant, zonder zetel) pas online na het akkoord van de huidige medebestuurder (VM5).
 - **Prijsopbouw en bestelvak** (V4, 8-11-2026; de code volgt): Auteursrechten 50 % (bruto en netto) en vzw peapickers 50 %, met apart wat papier en inkt de vzw voor de gekozen maat en het gekozen papier kosten. "1 · 3 · 3" en "3 van de 7 delen" verdwijnen; `config-prijzen.csv` en de Public Ledger volgen. Printshop: alleen de wettelijk verplichte melding "Geen herroepingsrecht" (VM14, na J22).
+
+## Site, bijgewerkt op 8-11-2026
+
+Beslissingen van Jonas van 8-11-2026 (register: Pand aankopen vanaf 2029, krediet alleen op de particulier; Gedeelde leverronde voor beide shops; Geen bestelminimum; Printshop als preview in de stijl van de postershop). Ze gaan voor op de lijsten hierboven.
+
+- **Prijsdeconstructie** vervangt overal "Tot op de cent". Het menu blijft Prijsopbouw.
+- **7M, 4M en 3M alleen op Prijsopbouw.** Elders wordt de prijs gewoon in twee gesplitst: Auteursrechten (bruto en netto) en vzw peapickers. Bovenaan Prijsopbouw: "7M is het minimum waarmee we onze kosten en de auteurs betalen. Meer is niet nodig, minder is te weinig." Daaronder het rekenvoorbeeld Medium op Semimatte. Het marktonderzoek komt niet op de site.
+- **Publiek domein**: alleen op Prijsopbouw één zin: geen auteursrechten, alles naar de vzw.
+- **Kader "Wat doet peapickers met de geldreserves?"** op Over en Prijsopbouw (niet op productpagina's), zie "Vanaf 2029" hieronder.
+- **Over**: peapickers is de paraplunaam en het merk, vzw peapickers de rechtspersoon. Alleen "nonprofit printshop" linkt (archief en agenda nog niet). Licentie: "50 % van de verkoopprijs, bruto". Tabel "Hoe de vzw werkt": de oprichter drukt als particulier en kosteloos; de medebestuurder doet administratie, boekhouding, website en logistiek; geen zetel, adres of namen; met de zin "Voorlopig, in afwachting van bevestiging door het Cultuurloket, de boekhouder en de jurist".
+- **Deelnemen?**: kader bovenaan dat de curatielijn volledig herschreven wordt; checkpunten ingeklapt; aanmelden per mail met het label "Preview, nog niet actief".
+- **Levering in Gent en deelgemeenten**, voor postershop én printshop: (1) gedeelde leverronde, € 1,00 per deelnemer, bij het afrekenen betaald; een ronde kost € 10,00 (minstens een uur fietsen); vertrek bij 10 deelnemers of na 14 dagen met wie er dan is, aan dezelfde prijs; één bestelling is één deelnemer, ook uit beide shops; de klant weet dat de levering laat kan komen. (2) Levering op een moment naar keuze, zo snel mogelijk, met kalender: € 3,50 in de postershop (de printshop houdt zijn eigen leverkost). Buiten Gent: bpost, zonder leverronde. Wie rijdt en hoe de bijdrage geboekt wordt: "in afwachting van bevestiging door het Cultuurloket". Tot de vzw bestaat is alles voorbeeld: de stand staat in `_data/leverronde.yml` en wordt gedeeld als `/leverronde.json`; de kalender leest `beschikbaarheid.json` van de printshop.
+- **Geen bestelminimum**, nergens.
+- **Printshop**: gewone HTML in de stijl van de postershop, voorbeeldmand, betaling vooraf (QR-overschrijving als voorbeeld, Snipcart-klare velden), foto uploaden na betaling met het bestelnummer, 3 × M afgerond op € 0,50, alles naar de vzw, link naar Prijsopbouw van de postershop. Geen betaling aan de deur, geen cash, geen Payconiq. "Geen herroepingsrecht" boven de bestelknop en op de bon, zonder vinkje, met tooltip. Persoonlijk geleverd, zonder te zeggen door wie; geen merknamen en geen vergelijkingen, wel meetbare feiten.
 
 ## Herroepingsrecht en herroepingsknop
 
@@ -94,7 +108,7 @@ Beslissingen van de oprichter van 7-11-2026 (avond, V1 tot V9) en 8-11-2026. Bro
 - **Bestuur**: minstens 2 leden en 2 bestuurders; geen "niet-uitvoerende" bestuurder. Nu twee bestuurders voor administratie, boekhouding, website en logistiek. Bij beslissingen over de dienst of de lening beslist de medebestuurder alleen, met notulen. Later zoeken we bestuurders voor de artistieke en curatoriële kant; de oprichter neemt geen artistieke beslissingen.
 - **Auteurs**: we starten alleen met auteurs die in België wonen.
 - **Vaste kosten** € 1.615 tot 3.315 per jaar (boekhouder, webshop en bank, verzekeringen, marketing, domein); break-even 455 tot 934 Posters per jaar. Na te rekenen met de offerte van de boekhouder.
-- **Vanaf 2029** (V8): eigen ruimte voor productie, tentoonstellingen en workshops, ten vroegste januari 2029; uitwerken in 2028.
+- **Vanaf 2029** (V8, aangevuld 8-11-2026): ten vroegste in 2029 een pand aankopen, samen met het bestuur, voor expo's, tentoonstellingen en workshops die passen bij de sociaal-culturele doelen. De vzw werkt nooit met krediet; voor het pand leent de oprichter als particulier (geleend geld, hulp van naasten, waarschijnlijk een banklening, zo klein mogelijk). Bank en subsidies zoveel mogelijk vermijden; de bank niet bij naam noemen. Een gezonde reserve is sowieso nodig.
 - **Open vragen**: fiscale en juridische vragen (voordeel van alle aard, belangenconflict, omzet voor de btw-drempel, zetel, lening, persoonsgegevens) gaan eerst naar het Cultuurloket, dat doorverwijst naar boekhouder of jurist. De licentie (concept 6, 50 %) wordt pas aangepast na toestemming van de oprichter.
 
 ## Vaste regels

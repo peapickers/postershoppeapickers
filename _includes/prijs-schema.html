@@ -1,12 +1,13 @@
-{% comment %} Prijsschema 7 × M: verticale balk van 7 delen, pijlen naar een korte lijst (Jonas, 5-11-2026). {% endcomment %}
-<figure class="pp-schema" aria-label="Prijsopbouw: 7 delen van M">
-  <p class="pp-schema-kop"><strong>Prijs = 7 × M</strong>, afgerond op € 0,10</p>
-  <div class="pp-schema-rooster">
-    <div class="pp-schema-deel pp-schema-mat" style="grid-row: 1 / span 1">1M</div>
-    <div class="pp-schema-deel pp-schema-aut" style="grid-row: 2 / span 3">3M</div>
-    <div class="pp-schema-deel pp-schema-vzw" style="grid-row: 5 / span 3">3M</div>
-    <div class="pp-schema-uitleg" style="grid-row: 1 / span 1"><span class="pp-pijl" aria-hidden="true"></span><span><strong>Materiaalkost</strong>: M = papier + inkt</span></div>
-    <div class="pp-schema-uitleg" style="grid-row: 2 / span 3"><span class="pp-pijl" aria-hidden="true"></span><span><strong>Auteursrechten</strong>: 3M bruto − 15 % roerende voorheffing</span></div>
-    <div class="pp-schema-uitleg" style="grid-row: 5 / span 3"><span class="pp-pijl" aria-hidden="true"></span><span><strong>vzw peapickers</strong>: 3M bruto</span></div>
+{% comment %} Prijsschema 50/50 (Jonas, 8-11-2026; vervangt 1 · 3 · 3): de helft Auteursrechten, de helft vzw peapickers, met wat de vzw uit haar helft betaalt. {% endcomment %}
+<figure class="pp-schema" aria-label="Prijsopbouw: de helft naar de auteur, de helft naar vzw peapickers">
+  <p class="pp-schema-kop"><strong>Prijs = 7 × M</strong>, afgerond op € 0,10, en daarna in twee gelijke helften</p>
+  <div class="pp-schema-rooster pp-schema-acht">
+    <div class="pp-schema-deel pp-schema-aut" style="grid-row: 1 / span 4">50 %</div>
+    <div class="pp-schema-deel pp-schema-vzw" style="grid-row: 5 / span 4">50 %</div>
+    <div class="pp-schema-uitleg" style="grid-row: 1 / span 4"><span class="pp-pijl" aria-hidden="true"></span><span><strong>Auteursrechten</strong>: bruto, min 15 % roerende voorheffing = netto voor de auteur</span></div>
+    <div class="pp-schema-uitleg" style="grid-row: 5"><span class="pp-pijl" aria-hidden="true"></span><span><strong>vzw peapickers</strong> betaalt hiermee: papier en inkt (M)</span></div>
+    <div class="pp-schema-uitleg" style="grid-row: 6"><span class="pp-pijl" aria-hidden="true"></span><span>verpakking</span></div>
+    <div class="pp-schema-uitleg" style="grid-row: 7"><span class="pp-pijl" aria-hidden="true"></span><span>betaalkost</span></div>
+    <div class="pp-schema-uitleg" style="grid-row: 8"><span class="pp-pijl" aria-hidden="true"></span><span>overhead en reserve</span></div>
   </div>
 </figure>
