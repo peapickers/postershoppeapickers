@@ -21,7 +21,7 @@ source-code: https://github.com/CollectionBuilder/collectionbuilder-csv
 title: peapickers postershop
 # printshop-url: zusterproject, gelinkt in menu en footer als het ingevuld is (weggehaald op vraag van Jonas, 4-11-2026)
 # tagline, a short phrase that will appear throughout the site in the top banner
-tagline: uit de archieven van onafhankelijke kunstenaars
+tagline: '<a href="#">curatielijn(en)</a> uit de archieven van <a href="#">onafhankelijke particulierkunstenaars</a> - tijdelijke naam'
 header-title: peapickers postershop
 # Winkelmand: publieke API-sleutel van Snipcart (testsleutel tot de vzw is opgericht).
 # Leeg = voorbeeldmand in de browser, er wordt niets verkocht.
