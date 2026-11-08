@@ -132,6 +132,8 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 .pp-kop h1 { font-size: 2rem; font-weight: 600; margin: 0 0 .35rem; letter-spacing: -0.02em; }
 .pp-kop h1 a { color: $ink; text-decoration: none; }
 .pp-kop .pp-tagline { margin: 0; color: $muted; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
+.pp-kop .pp-tagline a { color: inherit; text-decoration: underline; text-underline-offset: .2em; }
+.pp-kop .pp-tagline a:hover { color: $ink; }
 
 // ── Menu: één gecentreerde regel, elke link eenvoudig onderlijnd, grijs; actief en hover in inkt
 .pp-menu { border-bottom: 1px solid $line; padding: 0 1rem 1.5rem; }
