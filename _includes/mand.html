@@ -18,12 +18,25 @@ Echte verkoop: Snipcart-mand met Bancontact via Mollie, zodra site.snipcart-api-
       <fieldset class="mb-2">
         <legend class="h6">Leverwijze</legend>
         {%- for m in site.data.config-verzending %}
-        <div class="form-check"><input class="form-check-input" type="radio" name="zone" id="zone-{{ m.id }}" value="{{ m.id }}"{% if forloop.first %} checked{% endif %}><label class="form-check-label" for="zone-{{ m.id }}">{{ m.naam }}: {% if m.kost == nil or m.kost == "" %}aan kostprijs{% elsif m.kost == "0" %}gratis{% else %}{% include helpers/euro.html bedrag=m.kost %}{% endif %}{% if m.id == "leverronde" %} per deelnemer{% endif %}</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="zone" id="zone-{{ m.id }}" value="{{ m.id }}"{% if forloop.first %} checked{% endif %}><label class="form-check-label" for="zone-{{ m.id }}">{{ m.naam }}: {% if m.kost == nil or m.kost == "" %}aan kostprijs{% elsif m.kost == "0" %}gratis{% else %}{% include helpers/euro.html bedrag=m.kost %}{% endif %}{% if m.id == "leverronde" %} per deelnemer{% if site.data.leverronde %} (volgende leverronde op: <span class="pp-ronde-datum">{% include helpers/ronde-datum.html %}</span>){% endif %}{% endif %}</label></div>
         {%- endfor %}
       </fieldset>
       <p class="small mb-2" id="verz-uitleg"></p>
       {%- if site.data.leverronde %}
-      <p class="small mb-3" id="ronde-stand">Leverronde: nu {{ site.data.leverronde.wachtenden }} van de {{ site.data.leverronde['vertrek-bij'] }} deelnemers, uit de postershop en de printshop samen. De ronde vertrekt uiterlijk op {{ site.data.leverronde['sluit-uiterlijk'] | date: "%-d-%-m-%Y" }}. (Voorbeeld, bijgewerkt {{ site.data.leverronde.bijgewerkt }}.)</p>
+      <p class="small mb-3" id="ronde-stand">Leverronde: nu {{ site.data.leverronde.wachtenden }} van de {{ site.data.leverronde['vertrek-bij'] }} deelnemers, uit de postershop en de printshop samen. De ronde vertrekt uiterlijk op <span class="pp-ronde-datum">{% include helpers/ronde-datum.html %}</span>, 14 dagen na de eerste bestelling in de ronde. (Voorbeeld, bijgewerkt {{ site.data.leverronde.bijgewerkt }}.)</p>
+      {%- endif %}
+      {%- if site.data.leverronde %}
+      <script>
+      // Volgende leverronde: eerste bestelling + termijn. Wacht er niemand, dan start deze klant de ronde: vandaag + termijn.
+      (function () {
+        var eerste = {{ site.data.leverronde['eerste-bestelling'] | date: "%Y-%m-%d" | jsonify }};
+        var dagen = {{ site.data.leverronde['termijn-dagen'] | default: 14 }};
+        var d = eerste ? new Date(eerste + 'T12:00:00') : new Date();
+        d.setDate(d.getDate() + dagen);
+        var tekst = d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear();
+        document.querySelectorAll('.pp-ronde-datum').forEach(function (el) { el.textContent = tekst; });
+      })();
+      </script>
       {%- endif %}
       <div class="mb-2"><label class="form-label" for="postcode">Postcode</label><input class="form-control" id="postcode" required inputmode="numeric" autocomplete="postal-code" maxlength="4" style="max-width:8rem"></div>
       <div class="mb-3" id="moment" hidden>
