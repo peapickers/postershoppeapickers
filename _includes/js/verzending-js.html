@@ -1,21 +1,44 @@
-{% comment %} Leverkost (ondernemingsplan v3): regels in _data/config-verzending.csv, Gentse postcodes in _data/config-postcodes.csv, bestelminimum in _config.yml. {% endcomment %}
+{% comment %} Leverkost en leverkalender (8-11-2026): regels in _data/config-verzending.csv, Gentse postcodes in _data/config-postcodes.csv, stand van de leverronde en kalenderregels in _data/leverronde.yml. Geen bestelminimum. {% endcomment %}
 <script>
 window.ppVerzending = (function () {
   var M = {{ site.data.config-verzending | jsonify }};
   var PC = {{ site.data.config-postcodes | jsonify }};
-  var MIN = {{ site.bestelminimum | default: 0 }};
+  var K = {{ site.data.leverronde.kalender | jsonify }};
   function methode(id) { return M.filter(function (m) { return m.id === id; })[0]; }
   function inGent(pc) { pc = String(pc || '').trim(); return PC.some(function (p) { return p.postcode === pc; }); }
-  // Geeft { kost, onbekend, fout, tekort } terug. subtotaal = bedrag van de mand zonder leverkost.
-  function kost(id, pc, subtotaal) {
+  // Geeft { methode, kost, onbekend, fout } terug.
+  function kost(id, pc) {
     var m = methode(id); if (!m) return { fout: 'Kies een leverwijze.' };
     var r = { methode: m, kost: 0 };
-    if (m.gebied === 'gent' && !inGent(pc)) r.fout = 'Deze leverwijze is alleen voor Gent en deelgemeenten. Vul een Gentse postcode in, of kies bpost.';
-    if (m.gebied === 'buiten' && pc && inGent(pc)) r.fout = 'Voor een Gentse postcode kies je de leverronde of de levering in Gent.';
+    if (m.gebied === 'gent' && pc && !inGent(pc)) r.fout = 'Deze leverwijze is alleen voor Gent en deelgemeenten. Vul een Gentse postcode in, of kies bpost.';
+    if (m.gebied === 'gent' && !pc) r.fout = 'Vul je postcode in.';
+    if (m.gebied === 'buiten' && pc && inGent(pc)) r.fout = 'Voor een Gentse postcode kies je de leverronde of een moment naar keuze.';
     if (m.kost === null || m.kost === undefined || m.kost === '') r.onbekend = true; else r.kost = parseFloat(m.kost) || 0;
-    if (m.minimum === 'ja' && subtotaal < MIN) r.tekort = Math.round((MIN - subtotaal) * 100) / 100;
     return r;
   }
-  return { methodes: M, postcodes: PC, minimum: MIN, kost: kost, inGent: inGent };
+  // Vrije levermomenten { "JJJJ-MM-DD": ["10:00 – 11:00", ...] }, zonder de bezette momenten uit de agenda (beschikbaarheid.json van de printshop).
+  function twee(n) { return String(n).padStart(2, '0'); }
+  function minuten(t) { var d = t.split(':'); return +d[0] * 60 + +d[1]; }
+  function uur(m) { return twee(Math.floor(m / 60)) + ':' + twee(m % 60); }
+  function slots(bezet) {
+    var uit = {}, nu = new Date(), van = minuten(K.van), tot = minuten(K.tot), stap = K['slot-minuten'];
+    for (var i = K['min-dagen-vooraf']; i <= K['dagen-vooruit']; i++) {
+      var d = new Date(nu.getFullYear(), nu.getMonth(), nu.getDate() + i);
+      var iso = d.getFullYear() + '-' + twee(d.getMonth() + 1) + '-' + twee(d.getDate()), lijst = [];
+      for (var t = van; t + stap <= tot; t += stap) {
+        var b = new Date(iso + 'T' + uur(t)), e = new Date(iso + 'T' + uur(t + stap));
+        var vrij = !(bezet || []).some(function (x) { return new Date(x[0]) < e && new Date(x[1]) > b; });
+        if (vrij) lijst.push(uur(t) + ' – ' + uur(t + stap));
+      }
+      if (lijst.length) uit[iso] = lijst;
+    }
+    return uit;
+  }
+  function laadSlots() {
+    return fetch(K['beschikbaarheid-url'], { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (j) { return slots(j.bezet || []); }, function () { return slots([]); });
+  }
+  return { methodes: M, postcodes: PC, kost: kost, inGent: inGent, laadSlots: laadSlots };
 })();
 </script>

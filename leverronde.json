@@ -1,0 +1,15 @@
+---
+layout: null
+permalink: /leverronde.json
+---
+{%- assign r = site.data.leverronde -%}
+{
+  "voorbeeld": true,
+  "deelnemers": {{ r.wachtenden }},
+  "vertrekBij": {{ r['vertrek-bij'] }},
+  "kostDeelnemer": {{ r['kost-deelnemer'] }},
+  "kostRonde": {{ r['kost-ronde'] }},
+  "sluitUiterlijk": {{ r['sluit-uiterlijk'] | date: "%Y-%m-%d" | jsonify }},
+  "bijgewerkt": {{ r.bijgewerkt | jsonify }},
+  "postcodes": {{ site.data.config-postcodes | map: "postcode" | jsonify }}
+}

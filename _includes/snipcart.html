@@ -1,7 +1,7 @@
 {% comment %} Snipcart-winkelmand (ondernemingsplan v3). Laadt enkel als site.snipcart-api-key gevuld is. Betalen: Bancontact via Mollie.
 Geen btw op de verkoop (vrijstellingsregeling kleine ondernemingen): in het Snipcart-dashboard geen btw instellen; alle artikels hebben data-item-taxable="false".
 Leverwijzen in het dashboard, zoals in _data/config-verzending.csv: gedeelde leverronde Gent (€ 0), levering in Gent (€ 3,50), bpost (aan kostprijs).
-Nog te bouwen zodra er een testsleutel is: Gentse postcodes afdwingen en het bestelminimum van € 20 (behalve bij de leverronde). {% endcomment %}
+Nog te bouwen zodra er een testsleutel is: Gentse postcodes afdwingen, de leverronde (€ 1 per deelnemer) en het gekozen levermoment. Geen bestelminimum. {% endcomment %}
 {% if site.snipcart-api-key and site.snipcart-api-key != "" %}
 <link rel="preconnect" href="https://app.snipcart.com">
 <link rel="preconnect" href="https://cdn.snipcart.com">

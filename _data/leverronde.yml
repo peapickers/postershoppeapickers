@@ -1,6 +1,18 @@
-# Stand van de gedeelde leverronde in Gent. VOORBEELD.
-# Later werkt een script dit elk uur bij. De site toont alleen hoeveel mensen wachten en wanneer de ronde sluit, nooit wie.
-wachtenden: 2
-vertrek-bij: 5
+# Stand van de gedeelde leverronde in Gent, voor postershop én printshop. VOORBEELD.
+# De printshop leest dezelfde stand via /leverronde.json. Later werkt een script dit bij uit de echte bestellingen (Snipcart).
+# De site toont alleen hoeveel deelnemers er zijn en wanneer de ronde sluit, nooit wie.
+wachtenden: 4
+vertrek-bij: 10
+kost-ronde: 10.00
+kost-deelnemer: 1.00
 sluit-uiterlijk: 2027-04-20
 bijgewerkt: 2027-04-08 14:00
+# Kalender voor levering op een moment naar keuze (zelfde regels als de printshop).
+# Bezette momenten komen uit de agenda via beschikbaarheid.json van de printshop.
+kalender:
+  beschikbaarheid-url: "https://peapickers.github.io/printshoppeapickers/beschikbaarheid.json"
+  min-dagen-vooraf: 3
+  dagen-vooruit: 42
+  van: "10:00"
+  tot: "21:00"
+  slot-minuten: 60

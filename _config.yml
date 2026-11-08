@@ -36,14 +36,13 @@ btw-vermelding: "btw-vrijgesteld (bijzondere vrijstellingsregeling kleine ondern
 verpakking-poster: 0.50
 verpakking-fineart: 1.50
 betaalkost-schatting: 0.60
-# Bestelminimum in de mand, zonder leverkost (niet bij de gedeelde leverronde). Leverregels: _data/config-verzending.csv
-bestelminimum: 20
+# Geen bestelminimum (Jonas, 8-11-2026). Leverregels: _data/config-verzending.csv, stand van de leverronde: _data/leverronde.yml (gedeeld met de printshop via /leverronde.json).
 # Melding bovenaan de inhoud van elke pagina zolang de teksten niet herschreven zijn (Jonas, 5-11-2026); leeg laten om te verbergen
 tekst-melding: "Deels Claude-generated teksten, zodat het idee al overgebracht kan worden. Nog te schrijven."
 voorbeeld-strook: "Voorbeeldsite. vzw peapickers is in oprichting (rond januari 2027) en verkoopt pas vanaf het voorjaar van 2027. Alle kunstwerken zijn fictieve placeholders."
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
-description: "Webshop van vzw peapickers in Gent: posters op maat en Limited-prints van onafhankelijke kunstenaars, met een prijs die tot op de cent ontleed is."
+description: "Webshop van vzw peapickers in Gent: posters op maat en Limited-prints van onafhankelijke kunstenaars, met een volledige prijsdeconstructie."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
 keywords: posters; kunstwerken; onafhankelijke kunstenaars; Gent
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name

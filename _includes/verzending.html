@@ -1,10 +1,11 @@
 {% comment %} Bestellen, betalen en leveren. Herwerkt voor de klant (Jonas, 5-11-2026) in de structuur van Prijsopbouw: kern, tabel, uitklapblokken. Regels uit _data/config-verzending.csv, _data/config-postcodes.csv, _data/leverronde.yml en _config.yml. {% endcomment %}
 {%- assign r = site.data.leverronde -%}
+{%- assign r_deel = r['kost-deelnemer'] -%}{%- assign r_ronde = r['kost-ronde'] -%}
 {%- assign gent = site.data.config-verzending | where: "id", "gent" | first -%}
 
 <div class="pp-kern">
   <div class="pp-kern-vak"><p class="pp-kern-groot">Eerst betalen</p><p>Elke poster wordt in Gent gedrukt, pas na je betaling. Geen voorraad, geen overproductie.</p></div>
-  <div class="pp-kern-vak"><p class="pp-kern-groot">€ 0 in Gent</p><p>Met de gedeelde leverronde. Liever meteen? {% include helpers/euro.html bedrag=gent.kost %}, vast.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">{% include helpers/euro.html bedrag=r_deel %} in Gent</p><p>Met de gedeelde leverronde. Kun je niet wachten? {% include helpers/euro.html bedrag=gent.kost %} op een moment naar keuze.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">14 dagen</p><p>Om elke bestelling te herroepen, ook een poster op maat.</p></div>
 </div>
 
@@ -20,10 +21,13 @@
 
 <h2>De gedeelde leverronde</h2>
 <div class="pp-kern pp-kern-twee">
-  <div class="pp-kern-vak"><p class="pp-kern-groot" style="font-variant-numeric: tabular-nums">{{ r.wachtenden }} / {{ r['vertrek-bij'] }}</p><p>aanmeldingen voor de volgende ronde. Bij {{ r['vertrek-bij'] }} vertrekt ze.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot" style="font-variant-numeric: tabular-nums">{{ r.wachtenden }} / {{ r['vertrek-bij'] }}</p><p>deelnemers voor de volgende ronde, uit de postershop en de printshop samen. Bij {{ r['vertrek-bij'] }} vertrekt ze.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">{{ r['sluit-uiterlijk'] | date: "%-d-%-m-%Y" }}</p><p>De ronde vertrekt uiterlijk dan, ook als ze niet vol is (hoogstens 14 dagen).</p></div>
 </div>
 <p class="small">Voorbeeld, bijgewerkt {{ r.bijgewerkt }}. De site toont alleen hoeveel mensen wachten, nooit wie.</p>
+
+<p>Een ronde kost {% include helpers/euro.html bedrag=r_ronde %}: minstens een uur fietsen langs alle adressen. Die kost wordt gedeeld, dus je betaalt {% include helpers/euro.html bedrag=r_deel %} per bestelling, ook als je ook iets bij de printshop bestelt. Is de ronde na 14 dagen niet vol, dan vertrekt ze toch, aan dezelfde prijs. Je levering kan dus laat komen. Woon je buiten Gent en deelgemeenten, dan gaat je bestelling met bpost, zonder leverronde.</p>
+<p class="small">De bijdrage van {% include helpers/euro.html bedrag=r_deel %} gaat naar vzw peapickers, voor de kosten van de levering. Wie de ronde rijdt en hoe die kost geboekt wordt: in afwachting van bevestiging door het Cultuurloket.</p>
 
 <details class="pp-uitklap">
 <summary>Welke postcodes horen bij Gent?</summary>
@@ -34,7 +38,7 @@
 <table class="pp-tabel pp-vergelijk">
   <tbody>
     <tr><td>Hoe</td><td colspan="2">Bancontact via Mollie, in de mand van Snipcart. Overschrijving met QR-code blijft als plan B. Nooit cash.</td></tr>
-    <tr><td>Bestelminimum</td><td colspan="2">{% include helpers/euro.html bedrag=site.bestelminimum %} in de mand, zonder leverkost. Met de gedeelde leverronde mag je eronder blijven. De mand toont hoeveel je nog tekortkomt.</td></tr>
+    <tr><td>Bestelminimum</td><td colspan="2">Geen. Ook één kleine poster mag.</td></tr>
     <tr><td>Btw</td><td colspan="2">vzw peapickers is {{ site.btw-vermelding }}. Er komt geen btw bovenop de prijs.</td></tr>
     <tr><td>Herroeping</td><td colspan="2">Binnen 14 dagen, ook voor een poster op maat. Dat doen we vrijwillig.</td></tr>
   </tbody>

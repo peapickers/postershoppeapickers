@@ -7,8 +7,14 @@ permalink: /join.html
 
 ## Deelnemen?
 
+<div class="pp-kader" role="note" markdown="1">
+<p class="pp-kader-titel">De curatielijn wordt volledig herschreven</p>
+
+Wat hieronder staat, is voorlopig. De checkpunten, de selectie en de afspraken kunnen nog veranderen voor peapickers auteurs aanneemt.
+</div>
+
 <div class="pp-kern">
-  <div class="pp-kern-vak"><p class="pp-kern-groot">3 van 7</p><p>Van elke verkochte afdruk gaan 3 van de 7 delen naar jou, als bruto auteursrecht.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">50 %</p><p>Van elke verkochte afdruk gaat de helft van de verkoopprijs naar jou, als bruto auteursrecht.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">Niet-exclusief</p><p>Je werk en je rechten blijven van jou. Je kunt altijd stoppen, zonder reden.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">Als particulier</p><p>Geen statuut nodig. Je wordt per kwartaal netto betaald in auteursrechten.</p></div>
 </div>
@@ -25,7 +31,7 @@ Het jaarbedrag dat een particulier in auteursrechten mag ontvangen, wordt met re
 
 ## Zo verloopt het
 
-1. **Mail** ten hoogste 5 beelden in lage resolutie naar [postershoppeapickers@proton.me](mailto:postershoppeapickers@proton.me). Je mag zelf een voorselectie maken of een groter archief sturen. Nog geen originele bestanden.
+1. **Mail** <span class="pp-label-preview">Preview, nog niet actief</span> ten hoogste 5 beelden in lage resolutie naar [postershoppeapickers@proton.me](mailto:postershoppeapickers@proton.me). Je mag zelf een voorselectie maken of een groter archief sturen. Nog geen originele bestanden.
 2. **peapickers selecteert** op de checkpunten hieronder.
 3. **We spreken af.** Je tekent nooit tijdens het eerste gesprek. Gratis advies vind je bij Cultuurloket.
 4. **Samen kiezen we** de werken. Van elk werk drukt peapickers een staal.
@@ -40,12 +46,12 @@ Afgewezen? Je mag meteen ander werk aanbieden.
 |---|---|---|
 | Wat | Elk werk, gedrukt na bestelling. De klant kiest papier en maat | Gecureerde, unieke afdrukken, genummerd en gesigneerd door jou |
 | Wie beslist | Elk toegelaten werk | Alleen op voorstel van peapickers, gecureerd met het grotere team |
-| Jouw deel | 3/7 van de prijs, bruto | 3/7 van de prijs, bruto |
+| Jouw deel | 50 % van de verkoopprijs, bruto | 50 % van de verkoopprijs, bruto |
 | Auteursrechten | Per kwartaal uitbetaald, alleen na verkoop | Onmiddellijk uitbetaald, losstaand van verkoop |
 | Licentie | 1 jaar, telkens verlengbaar, onbeperkt aantal, niet genummerd | Per oplage, met een nieuwe overeenkomst voor een tweede oplage |
 {: .pp-tabel .pp-vergelijk}
 
-De prijs is altijd 7 × M, de materiaalkost (papier en inkt), afgerond op € 0,10. peapickers houdt 15 % roerende voorheffing in, stort die door en betaalt je het netto bedrag. Je krijgt elk jaar een fiche 281.45. Zie [Prijsopbouw]({{ '/about.html' | relative_url }}).
+De verkoopprijs wordt in twee gelijke helften verdeeld: de ene helft voor jou, de andere voor vzw peapickers. peapickers houdt 15 % roerende voorheffing in, stort die door en betaalt je het netto bedrag. Je krijgt elk jaar een fiche 281.45. Zie [Prijsopbouw]({{ '/about.html' | relative_url }}).
 
 ## Waar moet je werk aan voldoen?
 
@@ -117,7 +123,7 @@ We starten met 3 auteurs en 15 tot 30 werken. Doel: 40 werken in 2028 en 60 in 2
 
 Weinig Limited houdt de kwaliteit hoog, en peapickers heeft niet genoeg geld om groter te beginnen. Is een oplage verkocht, dan kan er een tweede komen. Grotere oplages volgen pas als de vzw genoeg geld heeft om meer papier te riskeren. Een Limited kan uitbesteed worden aan de beste reproductievorm.
 
-Er zijn geen kaders of passe-partouts als apart product. Werken uit het publiek domein worden niet verkocht.
+Er zijn geen kaders of passe-partouts als apart product.
 </details>
 
 <details class="pp-uitklap" markdown="1">
