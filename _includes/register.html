@@ -13,7 +13,8 @@
   <summary>Hoe lees je de Public Ledger?</summary>
   <ul class="mb-0 mt-2">
     <li><strong>+</strong> is geld dat op de rekening komt, <strong>−</strong> geld dat eraf gaat. Het saldo is wat er daarna op de rekening staat.</li>
-    <li>Elke verkoop wordt verdeeld volgens de <a href="{{ '/about.html' | relative_url }}">Prijsopbouw</a>: 1 deel materiaalkost, 3 delen auteursrechten, 3 delen vzw peapickers (± afronding).</li>
+    <li>Elke verkoop wordt verdeeld volgens de <a href="{{ '/about.html' | relative_url }}">Prijsopbouw</a>: de helft Auteursrechten, de helft vzw peapickers. Papier en inkt staan er als uitgave per aankoop, per rol en per cartridge.</li>
+    <li>De oprichter drukt, verpakt en levert kosteloos, als particulier. Dat staat er als "gratis dienst door de oprichter", zonder naam en zonder bedrag.</li>
     <li>Auteursrechten op posters worden per kwartaal uitbetaald, samengeteld over alle auteurs. Bij een Limited gebeurt dat bij de druk.</li>
     <li>De roerende voorheffing van 15 % wordt ingehouden en doorgestort.</li>
     <li>Ga met de muis over een soort om te zien wat die betekent. Elke regel wordt vóór publicatie nagekeken. Alle bedragen hier zijn fictief.</li>
@@ -56,10 +57,10 @@
   if (laatsteUit) { var jj = +laatsteUit.slice(0, 4), mm = +laatsteUit.slice(5, 7), dd = laatsteUit.slice(8, 10);
     for (var q = 0; q < 4; q++) { mm += 3; if (mm > 12) { mm -= 12; jj++; } volgende.push(jj + '-' + (mm < 10 ? '0' : '') + mm + '-' + dd); } }
   var kaarten = [
-    ['Op de rekening', e(saldo), 'Saldo na de laatste handeling. Geen reserve: de oprichter stort elke maand het tekort.'],
+    ['Op de rekening', e(saldo), 'Saldo na de laatste handeling. De oprichter stort telkens wat nodig is voor een uitgave.'],
     ['Uitbetaald aan auteurs', e(auteurNetto), 'Netto auteursrecht. <a href="#alle-handelingen" data-filter="voorheffing">Roerende voorheffing: ' + e(voorheffing) + '</a>, ingehouden en doorgestort. Nog uit te betalen: <strong>' + e(Math.max(0, Math.round((auteurVerdiend - auteurBetaald) * 100) / 100)) + '</strong>. Volgende stortingen: ' + volgende.join(', ') + '.'],
-    ['Materiaal en verpakking', e(materiaal), 'Papier, inkt, verpakking en kaartjes'],
-    ['Deel van de vzw', e(pp), '3 van de 7 delen van elke verkoop (± afronding). Vaste kosten en betaalkosten betaald: ' + e(vast)],
+    ['Materiaal en verpakking', e(materiaal), 'Papier en inkt per aankoop, verpakking en kaartjes'],
+    ['Deel van de vzw', e(pp), 'De helft van elke verkoop. Vaste kosten en betaalkosten betaald: ' + e(vast)],
     ['Lening van de oprichter', e(schuld - terug), 'Renteloos en achtergesteld. Al terugbetaald: ' + e(terug)],
     ['Verkocht', String(verkocht), 'Posters en Limited, na herroepingen']
   ];
@@ -78,7 +79,10 @@
   var UITLEG = {
     'bestelling': 'Een verkoop: de klant betaalt de prijs van de poster of Limited.',
     'herroeping': 'Een klant ziet af van de koop en krijgt het geld terug.',
-    'levering': 'Leverkost van een leverronde.',
+    'levering': 'Leverkost: levering op een moment naar keuze, de bijdrage aan de gedeelde leverronde of bpost.',
+    'gratis dienst': 'Gratis dienst door de oprichter, zonder naam en zonder bedrag.',
+    'lening oprichter': 'Storting van de oprichter: renteloos, zonder termijn.',
+    'tweedehands': 'Verkoop van een teruggestuurde Poster bij Tweede kans, 50/50.',
     'materiaalkost': 'Papier, inkt, verpakking of kaartjes.',
     'uitbetaling': 'Netto auteursrechten naar de auteurs, samengeteld.',
     'voorheffing': 'Roerende voorheffing van 15 % op de auteursrechten, doorgestort.',

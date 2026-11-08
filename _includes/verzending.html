@@ -6,7 +6,7 @@
 <div class="pp-kern">
   <div class="pp-kern-vak"><p class="pp-kern-groot">Eerst betalen</p><p>Elke poster wordt in Gent gedrukt, pas na je betaling. Geen voorraad, geen overproductie.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">{% include helpers/euro.html bedrag=r_deel %} in Gent</p><p>Met de gedeelde leverronde. Kun je niet wachten? {% include helpers/euro.html bedrag=gent.kost %} op een moment naar keuze.</p></div>
-  <div class="pp-kern-vak"><p class="pp-kern-groot">14 dagen</p><p>Om elke bestelling te herroepen, ook een poster op maat.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">14 dagen</p><p>Om van gedachten te veranderen, ook bij een poster in jouw maat.</p></div>
 </div>
 
 <h2>Hoe krijg je je bestelling?</h2>
@@ -40,7 +40,7 @@
     <tr><td>Hoe</td><td colspan="2">Bancontact via Mollie, in de mand van Snipcart. Overschrijving met QR-code blijft als plan B. Nooit cash.</td></tr>
     <tr><td>Bestelminimum</td><td colspan="2">Geen. Ook één kleine poster mag.</td></tr>
     <tr><td>Btw</td><td colspan="2">vzw peapickers is {{ site.btw-vermelding }}. Er komt geen btw bovenop de prijs.</td></tr>
-    <tr><td>Herroeping</td><td colspan="2">Binnen 14 dagen, ook voor een poster op maat. Dat doen we vrijwillig.</td></tr>
+    <tr><td>Herroeping</td><td colspan="2">Je hebt 14 dagen om van gedachten te veranderen, ook bij een poster in jouw maat. Het terugsturen betaal je zelf. Je geld krijg je terug zodra het werk bij ons is. <a href="{{ '/herroepen.html' | relative_url }}">{{ site.herroeping-link-tekst }}</a>.</td></tr>
   </tbody>
 </table>
 
@@ -59,6 +59,13 @@
 </details>
 
 <details class="pp-uitklap">
-<summary>Privacy</summary>
-<p class="mb-0">peapickers heeft geen eigen klantendatabase en gebruikt geen tracking. De mand (Snipcart) en de betaling (Mollie) zijn externe diensten met een verwerkersovereenkomst. Je gegevens worden alleen bewaard zolang de levering en de wet het vragen. Na de oprichting is vzw peapickers verwerkingsverantwoordelijke. De privacyverklaring en de algemene voorwaarden worden nog opgesteld met de jurist.</p>
+<summary>Van gedachten veranderd?</summary>
+<p class="mb-0">Dat kan, binnen 14 dagen na de levering. Klik op "{{ site.herroeping-link-tekst }}", onderaan elke pagina. Je krijgt meteen een bevestiging per e-mail. Stuur het werk onbeschadigd terug in de koker; dat terugsturen betaal je zelf. Zodra het binnen is, betalen we je terug. Onbeschadigde Posters gaan naar <a href="{{ '/index.html?product=tweede-kans' | relative_url }}">Tweede kans</a>, aan 80 % van de prijs.</p>
 </details>
+
+<details class="pp-uitklap">
+<summary>Privacy</summary>
+<p class="mb-0">peapickers heeft geen eigen klantendatabase en gebruikt geen tracking. De mand (Snipcart) en de betaling (Mollie) zijn externe diensten met een verwerkersovereenkomst. Je gegevens worden alleen bewaard zolang de levering en de wet het vragen. Herroept iemand een bestelling, dan bewaren we het verzoek en de bevestiging 10 jaar, omdat de wet dat vraagt bij elke terugbetaling. Na de oprichting is vzw peapickers verwerkingsverantwoordelijke. De privacyverklaring en de algemene voorwaarden worden nog opgesteld met de jurist.</p>
+</details>
+
+<p class="small mt-4">Een teruggestuurde poster zoeken? Kijk bij <a href="{{ '/index.html?product=tweede-kans' | relative_url }}">Tweede kans</a>, een groep in de filter op Producten. · <a href="{{ '/herroepen.html' | relative_url }}">{{ site.herroeping-link-tekst }}</a></p>

@@ -1,39 +1,42 @@
 datum,soort,omschrijving,identiteitscode,formaat,aantal,ontvangen,betaald,materiaal,maker,peapickers,schuld
-2027-01-10,gift,"Printer, inkt en papier geschonken door de oprichter met een giftakte (marktwaarde fictief: € 900). Geen geldstroom.",,,,,,,,,
-2027-01-20,lening,"Storting oprichter, renteloze achtergestelde lening: publicatie en vaste kosten januari",,,,440.83,,,,,440.83
-2027-01-20,oprichting,Publicatie van de oprichting in het Belgisch Staatsblad (fictief bedrag),,,,,170.00,,,,
-2027-01-31,vaste kosten,"Vaste kosten januari: 1/12 van € 3.250 (boekhouder, verzekering, webshop, marketing)",,,,,270.83,,,,
-2027-02-01,lening,Storting oprichter: vaste kosten februari,,,,270.83,,,,,270.83
-2027-02-28,vaste kosten,Vaste kosten februari,,,,,270.83,,,,
-2027-03-01,lening,Storting oprichter: vaste kosten maart,,,,270.83,,,,,270.83
-2027-03-31,vaste kosten,Vaste kosten maart,,,,,270.83,,,,
-2027-04-03,lening,Storting oprichter: druk en auteursrechten van de eerste Limited,,,,72.60,,,,,72.60
-2027-04-03,materiaalkost,"Druk Limited KUNSTWERK2026-001-01, oplage 3, materiaal 3 × € 6,05",KUNSTWERK2026-001-01,Limited,,,18.15,,,,
-2027-04-03,uitbetaling,"Auteursrecht Limited bij de druk, 3 × € 18,15 bruto, netto (85 %)",KUNSTWERK2026-001-01,,,,46.28,,54.45,,
-2027-04-03,voorheffing,"Roerende voorheffing 15 % op het auteursrecht Limited, ingehouden",,,,,8.17,,,,
-2027-04-08,bestelling,"Bestelling KUNSTWERK2026-001-01, poster Semimatte Medium × 1",KUNSTWERK2026-001-01,poster Semimatte Medium,1,15.70,,2.24,6.72,6.74,
-2027-04-08,levering,Leverkost Gent ontvangen (vast),,,,3.50,,,,,
-2027-04-12,bestelling,"Bestelling KUNSTWERK2026-002-01, poster Enhanced Matte Medium × 2, gedeelde leverronde",KUNSTWERK2026-002-01,poster Enhanced Matte Medium,2,28.00,,4.00,12.00,12.00,
-2027-04-15,bestelling,"Bestelling KUNSTWERK2026-003-01, poster Luster groot × 1, bpost",KUNSTWERK2026-003-01,poster Luster groot,1,36.40,,5.20,15.60,15.60,
+2027-01-15,gratis dienst,"Gratis dienst door de oprichter: drukken, verpakken en leveren als particulier, met de eigen printer. Geen geldstroom, geen vergoeding.",,,,,,,,,
+2027-01-20,lening oprichter,"Lening oprichter januari: publicatie en vaste kosten (renteloos, zonder termijn)",,,,500.00,,,,,500.00
+2027-01-25,oprichting,Publicatie van de oprichting in het Belgisch Staatsblad (fictief bedrag),,,,,180.00,,,,
+2027-01-31,vaste kosten,"Vaste kosten januari (fictief bedrag: boekhouder, verzekering, webshop)",,,,,140.00,,,,
+2027-02-01,lening oprichter,Lening oprichter februari: vaste kosten,,,,140.00,,,,,140.00
+2027-02-28,vaste kosten,Vaste kosten februari (fictief bedrag),,,,,140.00,,,,
+2027-03-01,lening oprichter,Lening oprichter maart: papier en inkt,,,,190.00,,,,,190.00
+2027-03-05,materiaalkost,"Aankoop papier: rol Epson Semimatte 260 g, 40 cm breed (fictief bedrag)",,,,,95.00,95.00,,,
+2027-03-05,materiaalkost,"Aankoop inkt: set cartridges (fictief bedrag)",,,,,95.00,95.00,,,
+2027-03-31,vaste kosten,Vaste kosten maart (fictief bedrag),,,,,140.00,,,,
+2027-04-01,lening oprichter,Lening oprichter april: vaste kosten,,,,140.00,,,,,140.00
+2027-04-08,bestelling,"Bestelling KUNSTWERK2026-001-01, Poster Semimatte Medium × 1, levering Gent op een moment naar keuze",KUNSTWERK2026-001-01,Poster Semimatte Medium,1,13.00,,,6.50,6.50,
+2027-04-08,levering,Leverkost Gent op een moment naar keuze ontvangen,,,,3.50,,,,,
+2027-04-12,bestelling,"Bestelling KUNSTWERK2026-002-01, Poster Semimatte Medium × 1, gedeelde leverronde",KUNSTWERK2026-002-01,Poster Semimatte Medium,1,13.00,,,6.50,6.50,
+2027-04-12,levering,"Bijdrage gedeelde leverronde, 1 deelnemer",,,,1.00,,,,,
+2027-04-15,bestelling,"Bestelling KUNSTWERK2026-003-01, Poster Luster Groot × 1, bpost",KUNSTWERK2026-003-01,Poster Luster Groot,1,30.10,,,15.05,15.05,
 2027-04-15,levering,bpost aan kostprijs: ontvangen en betaald (fictief bedrag),,,,7.00,7.00,,,,
-2027-04-22,bestelling,"Bestelling KUNSTWERK2026-001-01, Limited 1/3, gedeelde leverronde (auteursrecht al betaald bij de druk)",KUNSTWERK2026-001-01,Limited,1,42.40,,,,18.20,
-2027-04-25,herroeping,"Herroeping KUNSTWERK2026-002-01, poster Enhanced Matte Medium × 1, terugbetaald",KUNSTWERK2026-002-01,poster Enhanced Matte Medium,1,,14.00,-2.00,-6.00,-6.00,
-2027-04-30,materiaalkost,Verpakking en kassabonkaartjes (fictief bedrag),,,,,12.00,,,,
-2027-04-30,betaalkosten,"Betaalkosten april, Mollie (fictief bedrag)",,,,,3.00,,,,
-2027-04-30,vaste kosten,Vaste kosten april,,,,,270.83,,,,
-2027-05-02,lening,Storting oprichter: tekort april,,,,180.00,,,,,180.00
-2027-05-09,bestelling,"Bestelling KUNSTWERK2026-005-01, poster Semimatte Medium × 3, levering Gent",KUNSTWERK2026-005-01,poster Semimatte Medium,3,47.10,,6.72,20.16,20.22,
-2027-05-09,levering,Leverkost Gent ontvangen (vast),,,,3.50,,,,,
-2027-05-17,bestelling,"Bestelling KUNSTWERK2026-004-01, poster Semimatte Klein × 1, gedeelde leverronde (onder het minimum)",KUNSTWERK2026-004-01,poster Semimatte Klein,1,9.30,,1.33,3.99,3.98,
-2027-05-31,betaalkosten,"Betaalkosten mei, Mollie (fictief bedrag)",,,,,1.20,,,,
-2027-05-31,vaste kosten,Vaste kosten mei,,,,,270.83,,,,
-2027-06-01,lening,Storting oprichter: tekort mei,,,,230.00,,,,,230.00
-2027-06-12,bestelling,"Bestelling KUNSTWERK2026-001-02, poster Luster Medium × 1, levering Gent",KUNSTWERK2026-001-02,poster Luster Medium,1,18.20,,2.60,7.80,7.80,
-2027-06-12,levering,Leverkost Gent ontvangen (vast),,,,3.50,,,,,
+2027-04-25,herroeping,"Herroeping KUNSTWERK2026-002-01, Poster Semimatte Medium × 1, terugbetaald na ontvangst van het werk. Onbeschadigd: naar Tweede kans (TK-2027-001)",KUNSTWERK2026-002-01,Poster Semimatte Medium,1,,13.00,,-6.50,-6.50,
+2027-04-30,materiaalkost,Verpakking en kassabonkaartjes (fictief bedrag),,,,,12.00,12.00,,,
+2027-04-30,betaalkosten,"Betaalkosten april, Mollie (fictief bedrag)",,,,,1.80,,,,
+2027-04-30,vaste kosten,Vaste kosten april (fictief bedrag),,,,,140.00,,,,
+2027-05-01,lening oprichter,Lening oprichter mei: tekort april,,,,100.00,,,,,100.00
+2027-05-09,bestelling,"Bestelling KUNSTWERK2026-005-01, Poster Semimatte Medium × 3, levering Gent op een moment naar keuze",KUNSTWERK2026-005-01,Poster Semimatte Medium,3,39.00,,,19.50,19.50,
+2027-05-09,levering,Leverkost Gent op een moment naar keuze ontvangen,,,,3.50,,,,,
+2027-05-17,bestelling,"Bestelling KUNSTWERK2026-004-01, Poster Semimatte Klein × 1, gedeelde leverronde",KUNSTWERK2026-004-01,Poster Semimatte Klein,1,7.70,,,3.85,3.85,
+2027-05-17,levering,"Bijdrage gedeelde leverronde, 1 deelnemer",,,,1.00,,,,,
+2027-05-20,tweedehands,"Tweede kans TK-2027-001: KUNSTWERK2026-002-01, Poster Semimatte Medium, teruggestuurd. 80 % van € 13,00, opbrengst 50/50",KUNSTWERK2026-002-01,Poster Semimatte Medium (teruggestuurd),1,10.40,,,5.20,5.20,
+2027-05-31,betaalkosten,"Betaalkosten mei, Mollie (fictief bedrag)",,,,,1.80,,,,
+2027-05-31,vaste kosten,Vaste kosten mei (fictief bedrag),,,,,140.00,,,,
+2027-06-01,lening oprichter,Lening oprichter juni: tekort mei,,,,80.00,,,,,80.00
+2027-06-12,bestelling,"Bestelling KUNSTWERK2026-001-02, Poster Luster Medium × 1, levering Gent op een moment naar keuze",KUNSTWERK2026-001-02,Poster Luster Medium,1,15.10,,,7.55,7.55,
+2027-06-12,levering,Leverkost Gent op een moment naar keuze ontvangen,,,,3.50,,,,,
+2027-06-20,herroeping,"Herroeping KUNSTWERK2026-001-02, Poster Luster Medium × 1, terugbetaald na het verzendbewijs. Onbeschadigd: naar Tweede kans (TK-2027-002)",KUNSTWERK2026-001-02,Poster Luster Medium,1,,15.10,,-7.55,-7.55,
+2027-06-20,levering,"Standaardleverkost terugbetaald bij de herroeping (te bevestigen door de jurist)",,,,,3.50,,,,
 2027-06-30,betaalkosten,"Betaalkosten juni, Mollie (fictief bedrag)",,,,,0.60,,,,
-2027-06-30,vaste kosten,Vaste kosten juni,,,,,270.83,,,,
-2027-07-01,lening,Storting oprichter: tekort juni,,,,285.96,,,,,285.96
-2027-07-05,uitbetaling,"Auteursrechten posters Q2, samengeteld over alle auteurs: € 60,27 bruto, netto (85 %)",,,,,51.23,,,,
-2027-07-05,voorheffing,"Roerende voorheffing 15 % op de auteursrechten Q2, ingehouden en doorgestort",,,,,9.04,,,,
-2027-07-14,bestelling,"Bestelling KUNSTWERK2026-003-02, poster Semimatte Medium × 2, levering Gent",KUNSTWERK2026-003-02,poster Semimatte Medium,2,26.00,,3.70,11.10,11.20,
-2027-07-14,levering,Leverkost Gent ontvangen (vast),,,,3.50,,,,,
+2027-06-30,vaste kosten,Vaste kosten juni (fictief bedrag),,,,,140.00,,,,
+2027-07-01,lening oprichter,Lening oprichter juli: tekort juni,,,,120.00,,,,,120.00
+2027-07-14,bestelling,"Bestelling KUNSTWERK2026-003-02, Poster Semimatte Medium × 2, gedeelde leverronde",KUNSTWERK2026-003-02,Poster Semimatte Medium,2,26.00,,,13.00,13.00,
+2027-07-14,levering,"Bijdrage gedeelde leverronde, 1 deelnemer",,,,1.00,,,,,
+2027-07-15,uitbetaling,"Auteursrechten Q2, samengeteld over alle auteurs: € 50,10 bruto, netto (85 %)",,,,,42.58,,,,
+2027-07-15,voorheffing,"Roerende voorheffing 15 % op de Auteursrechten Q2, ingehouden en doorgestort",,,,,7.52,,,,

@@ -3,7 +3,7 @@ title: Deelnemen?
 layout: page
 permalink: /join.html
 ---
-{%- comment -%} Herwerkt voor de auteur (Jonas, 5-11-2026) in de structuur van Prijsopbouw: kern, stappen, tabellen, uitklapbare checklijsten. {%- endcomment -%}
+{%- comment -%} Bijgewerkt 7-11-2026: Limited volgt later (VM6, VJ14), tekst 7 van de vragenlijst marketing, betaaldag (VB8). Tweede kans voor auteurs staat in de licentie, niet hier (VM13). Oproep medebestuurder nog niet online (VM5). Herwerkt voor de auteur (Jonas, 5-11-2026) in de structuur van Prijsopbouw: kern, stappen, tabellen, uitklapbare checklijsten. {%- endcomment -%}
 
 ## Deelnemen?
 
@@ -16,7 +16,7 @@ Wat hieronder staat, is voorlopig. De checkpunten, de selectie en de afspraken k
 <div class="pp-kern">
   <div class="pp-kern-vak"><p class="pp-kern-groot">50 %</p><p>Van elke verkochte afdruk gaat de helft van de verkoopprijs naar jou, als bruto auteursrecht.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">Niet-exclusief</p><p>Je werk en je rechten blijven van jou. Je kunt altijd stoppen, zonder reden.</p></div>
-  <div class="pp-kern-vak"><p class="pp-kern-groot">Als particulier</p><p>Geen statuut nodig. Je wordt per kwartaal netto betaald in auteursrechten.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">Als particulier</p><p>Geen statuut nodig. Je wordt per kwartaal netto betaald in auteursrechten, op de 15de van januari, april, juli en oktober.</p></div>
 </div>
 
 ## Voor wie?
@@ -35,19 +35,21 @@ Het jaarbedrag dat een particulier in auteursrechten mag ontvangen, wordt met re
 2. **peapickers selecteert** op de checkpunten hieronder.
 3. **We spreken af.** Je tekent nooit tijdens het eerste gesprek. Gratis advies vind je bij Cultuurloket.
 4. **Samen kiezen we** de werken. Van elk werk drukt peapickers een staal.
-5. **Je tekent per werk** een niet-exclusieve licentie, voor Poster en/of Limited. Daarna staat het werk in de shop.
+5. **Je tekent per werk** een niet-exclusieve licentie voor de Poster. Daarna staat het werk in de shop. Limited volgt later, met een aanvulling op de licentie.
 {: .pp-stappen}
 
 Afgewezen? Je mag meteen ander werk aanbieden.
 
 ## Wat krijg je?
 
+De webshop start in 2027 met Posters. Limited volgt later; de tabel toont alvast hoe het zal werken.
+
 | | Poster | Limited |
 |---|---|---|
 | Wat | Elk werk, gedrukt na bestelling. De klant kiest papier en maat | Gecureerde, unieke afdrukken, genummerd en gesigneerd door jou |
 | Wie beslist | Elk toegelaten werk | Alleen op voorstel van peapickers, gecureerd met het grotere team |
 | Jouw deel | 50 % van de verkoopprijs, bruto | 50 % van de verkoopprijs, bruto |
-| Auteursrechten | Per kwartaal uitbetaald, alleen na verkoop | Onmiddellijk uitbetaald, losstaand van verkoop |
+| Auteursrechten | Per kwartaal uitbetaald (15 januari, 15 april, 15 juli, 15 oktober), alleen na verkoop en na de herroepingstermijn van 14 dagen | Onmiddellijk uitbetaald, losstaand van verkoop |
 | Licentie | 1 jaar, telkens verlengbaar, onbeperkt aantal, niet genummerd | Per oplage, met een nieuwe overeenkomst voor een tweede oplage |
 {: .pp-tabel .pp-vergelijk}
 
@@ -123,7 +125,7 @@ We starten met 3 auteurs en 15 tot 30 werken. Doel: 40 werken in 2028 en 60 in 2
 
 Weinig Limited houdt de kwaliteit hoog, en peapickers heeft niet genoeg geld om groter te beginnen. Is een oplage verkocht, dan kan er een tweede komen. Grotere oplages volgen pas als de vzw genoeg geld heeft om meer papier te riskeren. Een Limited kan uitbesteed worden aan de beste reproductievorm.
 
-Er zijn geen kaders of passe-partouts als apart product.
+Er zijn geen kaders of passe-partouts als apart product. De webshop start in 2027 met Posters; Limited volgt later.
 </details>
 
 <details class="pp-uitklap" markdown="1">
