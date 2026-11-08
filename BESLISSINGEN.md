@@ -1,12 +1,13 @@
 # Beslissingen postershop (laatst bruikbare stand)
 
-Stand van 5-11-2026, aangevuld op 7-11-2026 (herroepingsrecht; vzw: boekhouding, productieplek, zetel, lening en bruikleen; tweedehands), na alle commentaar van Jonas op de werkende kopie van de site (43 threads, allemaal verwerkt). Dit bestand gaat voor op oudere teksten, ook op het ondernemingsplan v3 (4-11-2026), op LEESMIJ.md en op wat andere repo's of documenten nog zeggen. Wie iets verandert aan prijzen, maten of jargon, past dit bestand mee aan.
+Stand van 5-11-2026, aangevuld op 7-11-2026 (herroepingsrecht; vzw: boekhouding, zetel, lening; tweedehands) en bijgewerkt op 8-11-2026 (productie door de oprichter, verdeling 50/50, zetel bij de medebestuurder), na alle commentaar van Jonas op de werkende kopie van de site (43 threads, allemaal verwerkt). Dit bestand gaat voor op oudere teksten, ook op het ondernemingsplan v3 (4-11-2026), op LEESMIJ.md en op wat andere repo's of documenten nog zeggen. Wie iets verandert aan prijzen, maten of jargon, past dit bestand mee aan.
 
 ## Prijs
 
 - **M = papier + inkt.** Geen opslag van 21 % meer: de inkoopprijzen zijn prijzen met btw, zoals betaald. `btw-materiaal: 0` in `_config.yml`.
 - **Prijs = 7 × M**, afgerond op € 0,10. Geen btw op de verkoop: vzw peapickers is btw-vrijgesteld (vrijstellingsregeling kleine ondernemingen). Nergens meer spreken van "incl. btw" of "excl. btw".
-- **Verdeling 1 · 3 · 3**: Materiaalkost = 1M, Auteursrechten = 3M bruto (min 15 % roerende voorheffing = netto voor de auteur), vzw peapickers = 3M bruto (de rest, ± afronding).
+- **Verdeling 50/50** (beslissing 7-11-2026 avond, V4, bevestigd 8-11-2026; vervangt 1 · 3 · 3): elke verkoopprijs gaat voor 50 % naar Auteursrechten (bruto, min 15 % roerende voorheffing = netto voor de auteur) en voor 50 % naar vzw peapickers. In de boekhouding heet het deel van de vzw "commissie"; op de site en in de Public Ledger blijft het "vzw peapickers". De vzw betaalt uit haar deel alle kosten: papier, inkt, verpakking, betaalkosten, boekhouder, opstart. Papier en inkt zijn een uitgave van de vzw per aankoop (per rol, per cartridge), niet een deel van elke prijs; de klant ziet wel wat het materiaal de vzw kost.
+- **Prijs voorlopig** (V9): de prijs blijft 7 × M tot een marktonderzoek de definitieve consumentenprijs bepaalt (richting: marktgemiddelde min 30 tot 40 %). Alle aankopen en kosten zijn inclusief btw; op de verkoopprijs komt geen btw.
 - Papier: peapickers koopt altijd rollen en snijdt er vellen uit, omdat dat per vel het goedkoopst is. Inkt: richtprijzen die gemiddeld per afdruk kloppen.
 - Bedragen (bron: `_data/config-prijzen.csv`):
 
@@ -17,7 +18,7 @@ Stand van 5-11-2026, aangevuld op 7-11-2026 (herroepingsrecht; vzw: boekhouding,
 | Epson Semimatte 260 g | € 0,60 | € 1,20 | € 2,40 |
 | Epson Luster 260 g | € 0,75 | € 1,50 | € 3,00 |
 
-  Voorbeeld: Medium op Semimatte, M = € 1,20 + € 0,65 = € 1,85, prijs € 13,00.
+  Voorbeeld: Medium op Semimatte, M = € 1,20 + € 0,65 = € 1,85, prijs € 13,00: Auteursrechten € 6,50 bruto, vzw peapickers € 6,50. Na papier en inkt (€ 1,85), verpakking (€ 0,50) en betaalkost (€ 0,60) blijft € 3,55 voor de overhead.
 
 ## Maten
 
@@ -29,8 +30,11 @@ Stand van 5-11-2026, aangevuld op 7-11-2026 (herroepingsrecht; vzw: boekhouding,
 
 - **Poster**: elk werk, gedrukt na bestelling, klant kiest papier en maat.
 - **Limited**: gecureerde, unieke afdrukken; vast formaat, kleine genummerde en gesigneerde oplage, vaste M per werk (`fineart_m`, `fineart_oplage`). Auteursrechten meteen bij het drukken. Voorbeeld bij 25 % van de werken (001-01, 003-01, 005-02). Geen kaders of passe-partouts als apart product.
-- **Publiek domein** (beslissing Jonas, 5-11-2026, vervangt "Werken uit het publiek domein worden niet verkocht"): aparte pagina bij Posters, prijs = 4 × M afgerond op € 0,10. Verdeling Materiaalkost 1M, vzw peapickers 3M, geen Auteursrechten. Voorbeeld Medium op Semimatte: € 7,40, waarvan € 5,55 voor vzw peapickers. Elk werk eerst nagaan: zeker vrij in België.
+- **Publiek domein** (beslissing Jonas, 5-11-2026, vervangt "Werken uit het publiek domein worden niet verkocht"): aparte pagina bij Posters, prijs = 4 × M afgerond op € 0,10. Geen Auteursrechten: de volledige opbrengst gaat naar vzw peapickers, voor de overhead en de sociaal-culturele doelen (bevestigd 8-11-2026). Voorbeeld Medium op Semimatte: € 7,40, volledig voor vzw peapickers. Elk werk eerst nagaan: zeker vrij in België.
 - **Tweedehands** (beslissing Jonas, 7-11-2026): een teruggestuurde Poster na herroeping komt, als hij onbeschadigd is, in een aparte tweedehandsafdeling op de website, met de vermelding "teruggestuurd". Prijs = 80 % van de oorspronkelijke prijs, afgerond op € 0,10. De opbrengst gaat 50/50 naar Auteursrechten (bruto, min 15 % roerende voorheffing) en vzw peapickers; geen nieuwe Materiaalkost. vzw peapickers draagt het verlies. Voorbeeld Medium op Semimatte: € 13,00 wordt € 10,40, waarvan € 5,20 Auteursrechten bruto en € 5,20 voor vzw peapickers. Ook voor deze verkoop gelden 14 dagen herroepingsrecht. De auteur moet dit toestaan in de licentie (licentie concept 6). Bron: [vragenlijst jurist](https://peapickers.github.io/projecten/jurist/vragenlijst-2026-11-07.html), VJ5 en VJ19.
+
+- **Printshop** (8-11-2026): klanten drukken eigen beelden, er is geen auteur; de volledige opbrengst gaat naar vzw peapickers.
+- **Geen eigen werk van bestuurders** (8-11-2026): bestuurders verkopen nooit eigen werk via de vzw.
 
 ## Jargon (overal gelijk houden)
 
@@ -55,11 +59,12 @@ Jonas koos op 7-11-2026 voor elk voorstel van de technieker (vragenlijst VT1 tot
 - **Bewaren**: elke bevestiging in kopie naar de mailbox van de vzw; maandelijks een export naar Administratie en de versleutelde schijven, met een lijn in het logboek; 10 jaar, nooit in de repo (VT2).
 - **Export voor de boekhouding**: CODA van de bank, de CSV van Mollie en één eigen CSV per maand uit de Public Ledger; kolommen pas vastleggen na de keuze van de software. Auteursrechten per auteur en kwartaal via een lokaal script en een privébestand "werkcode → auteur" op de versleutelde schijven (VT3, VT4). Op de Public Ledger komt een knop "Download (CSV)" (VT13).
 - **Auteursrechten**: vaste betaaldag de 15de van januari, april, juli en oktober (valt die in een weekend: de werkdag ervoor), eerst op 15 juli 2027. Een verkoop telt in het kwartaal waarin de 14 dagen herroepingstermijn na de levering aflopen (VT9). "Nog uit te betalen" toont apart wat na de termijn is en wat er nog in loopt.
-- **Public Ledger**: rubriek "lening oprichter" per maand (gestort, terugbetaald, openstaand), zonder naam; de bruikleen van het materiaal als lijn zonder bedrag. De voorbeeldreeks wordt herschreven met de prijzen van nu, zonder gift van materiaal en zonder Limited (VT10).
+- **Public Ledger**: rubriek "lening oprichter" per maand (gestort, terugbetaald, openstaand), zonder naam; "gratis dienst door de oprichter" als lijn zonder naam en zonder bedrag, en papier en inkt als uitgave per aankoop (8-11-2026, vervangt de lijn over bruikleen). De voorbeeldreeks wordt herschreven met de prijzen van nu, zonder gift van materiaal en zonder Limited (VT10).
 - **Limited**: 0 bij de start. De keuze Limited en de filtergroep Limited zijn verborgen tot de eerste Limited gepland is (schakelaar `limited-actief` in `_config.yml`); de uitleg blijft, met "Limited volgt later" (VT12).
 - **Tweede kans** (de tweedehandsafdeling hierboven): een groep in de filter op Producten, geen menu-item, met het label "teruggestuurd" op elke kaart. Elke teruggestuurde Poster is een eigen kaart met prijs en oorspronkelijke prijs ("€ 12,10, was € 15,10"), een derde keuze naast Poster op de productpagina en maximaal 1 in de mand. De Prijsopbouw toont 50/50 (Auteursrechten bruto, vzw peapickers, geen Materiaalkost), ook in de Public Ledger. Geen gratis teruggave in Gent (VT11, VM2, VM3).
 - **Publiek domein**: voorlopig alleen de zin "krijgen later een eigen pagina bij Posters, aan 4 × M, zonder Auteursrechten"; de pagina komt zodra het eerste werk nagekeken is als zeker vrij in België (VT14).
-- **Over**: zonder zetel, adres of naam van de gastheer van de productieplek (VM4, VM10); de oproep tot medebestuurder pas online na het akkoord van de gekozen medebestuurder (VM5). Printshop: alleen de wettelijk verplichte melding "Geen herroepingsrecht" (VM14, na J22).
+- **Over**: zonder zetel, adres of naam (VM4, VM10); er is geen productieplek meer (V1). De oproep voor nieuwe bestuurders (artistieke en curatoriële kant, zonder zetel) pas online na het akkoord van de huidige medebestuurder (VM5).
+- **Prijsopbouw en bestelvak** (V4, 8-11-2026; de code volgt): Auteursrechten 50 % (bruto en netto) en vzw peapickers 50 %, met apart wat papier en inkt de vzw voor de gekozen maat en het gekozen papier kosten. "1 · 3 · 3" en "3 van de 7 delen" verdwijnen; `config-prijzen.csv` en de Public Ledger volgen. Printshop: alleen de wettelijk verplichte melding "Geen herroepingsrecht" (VM14, na J22).
 
 ## Herroepingsrecht en herroepingsknop
 
@@ -72,19 +77,23 @@ Jonas koos op 7-11-2026 voor elk voorstel van de technieker (vragenlijst VT1 tot
 - **Uitwerking** (beslissing Jonas, 7-11-2026, VJ3, VJ4, VJ17 van de jurist): de klant betaalt het terugsturen (vooraf duidelijk gemeld); de vzw betaalt terug zodra het werk terug is of de klant een verzendbewijs toont, ten laatste 14 dagen na de herroeping, via dezelfde betaalwijze. De printshop (eigen beelden van de klant) roept de uitzondering voor maatwerk in en meldt dat vóór de bestelling. Nog te bevestigen door de advocaat.
 - Herroepingsverzoeken en ontvangstbevestigingen 10 jaar bewaren, samen met de stukken van de terugbetaling (fiscale bewaartermijn art. 315 WIB 92; nog te bevestigen door de boekhouder).
 
-## Vzw: boekhouding, productieplek en zetel
+## Vzw: boekhouding, productie en zetel
 
-Beslissingen van de oprichter van 7-11-2026. Details, open vragen en actiepunten: [beslissingen van 7 november 2026](https://peapickers.github.io/projecten/boekhouder/beslissingen-2026-11-07.html) (D1 tot D11, ZB01 tot ZB12).
+Beslissingen van de oprichter van 7-11-2026 (avond, V1 tot V9) en 8-11-2026. Bron: [beslissingen 7 november 2026, avond](https://peapickers.github.io/projecten/ondernemingsplan/beslissingen-2026-11-07-avond.html). Ze vervangen de productieplek, de bruikleen en de zetel op de productieplek of bij een familielid uit de [beslissingen van 7 november 2026](https://peapickers.github.io/projecten/boekhouder/beslissingen-2026-11-07.html) (D5, D6, ZB04, ZB05, ZB14, J12, J14, M36 vervallen).
 
-- **Boekhouding in zelfbeheer**: de oprichter boekt en doet alle aangiftes zelf (273S, Belcotax, klantenlisting, jaarrekening, Biztax). Een ITAA-boekhouder krijgt een maandvergoeding en controleert minstens 1 keer per jaar (vóór 31 december en vóór de neerlegging). Software van de boekhouder; Accountable volstaat nu niet. Vereenvoudigde boekhouding onder de vennootschapsbelasting.
-- **Productieplek**: een paar m² bij een bestaand bedrijf of organisatie dat mag onderverhuren, vaste huur in geld van maximaal € 150 per maand alles inbegrepen. Geen eigen pand, geen onderverhuur door de vzw, geen ruil tegen prints (de gastheer koopt prints aan de gewone prijs).
-- **Zetel**: liefst op het adres van de productieplek, anders bij een familielid met schriftelijke toestemming. In een extern pand gedeeld met andere ondernemers komt de zetel daar.
-- **Lening en materiaal** (antwoord Jonas, 7-11-2026, vervangt "niet nodig bij een extern gedeeld pand"): de renteloze lening van de oprichter als particulier aan de vzw **blijft**, zonder vaste termijn en zonder rente, met genoteerde stortingen en terugbetalingen. Ze dekt het startgeld, het tekort van het eerste jaar en elk dreigend negatief saldo. Het materiaal van de oprichter gaat in **bruikleen** naar de vzw (schriftelijk, met inventaris), niet in koop. Vanaf 2029 wil de vzw een eigen pand kopen voor zetel en productie.
-- **Start** (antwoord Jonas, 7-11-2026): de webshop start **zonder Limited** (0 bij de start). Kosten van vóór de oprichting worden niet ingebracht: de vzw boekt vanaf de oprichting. Eerste jaar: verlies elke maand, gedekt door de maandelijkse lening van de oprichter (doel: onder € 300 per maand).
-- **Verzekering en kalender** (7-11-2026): één polis op naam van de vzw (ook voor materiaal in bruikleen); huurwaarborg volgens het gebruik (2 maanden); vaste betaaldag voor de Auteursrechten de 15de van januari, april, juli en oktober. Zie de [vragenlijst boekhouder](https://peapickers.github.io/projecten/boekhouder/vragenlijst-2026-11-07.html).
-- **Bestuur**: minstens 2 leden en 2 bestuurders; een medebestuurder blijft nodig. Geen "niet-uitvoerende" bestuurder.
+- **Boekhouding in zelfbeheer**: de oprichter boekt en doet alle aangiftes zelf (273S, Belcotax, klantenlisting, jaarrekening, Biztax). Een ITAA-boekhouder controleert minstens 1 keer per jaar (vóór 31 december en vóór de neerlegging). Software van de boekhouder; Accountable volstaat nu niet. Vereenvoudigde boekhouding onder de vennootschapsbelasting.
+- **Productie** (V1, V2): de oprichter drukt, verpakt en verzendt als particulier, kosteloos, buiten de vzw. Geen productieplek, geen huur. Schriftelijk vastgelegd in een overeenkomst met notulen: de oprichter ontvangt nooit geld of voordeel in welke vorm ook, er komen geen kosten van de oprichter ten laste van de vzw, en de vzw heeft geen post, pakjes of klanten op het adres van de productie. Intern spreekt de vzw de oprichter alleen aan bij opzet of grove fout; tegenover klanten en auteurs is de vzw altijd aansprakelijk.
+- **Printer en materiaal** (V5): de printer is eigendom van de oprichter, geen bruikleen, niet verzekerd door de vzw; gaat hij kapot, dan betaalt de oprichter de herstelling, pauzeren de bestellingen en kiest de klant tussen wachten en terugbetaling. Papier en inkt koopt de vzw op haar naam en stelt ze ter beschikking, uitsluitend voor de vzw.
+- **Zetel** (V3, 8-11-2026): zetel, administratie, post en back-up bij de medebestuurder, kosteloos, niet op het adres van de productie. Eerst mondelinge toestemming, daarna een schriftelijke zetelovereenkomst, nagekeken door een expert.
+- **Lening** (V7, 8-11-2026): de oprichter stort als particulier telkens wat de vzw nodig heeft voor een uitgave, renteloos, zonder vaste termijn, zonder plafond en zonder buffer, met een register per uitgave. Geen clausule over kwijtschelding; een eventuele kwijtschelding alleen achteraf, bij een aparte beslissing van het bestuur met notulen. De reserve bouwt de vzw op uit verkopen, niet met de lening. Kosten van vóór de oprichting worden niet ingebracht.
+- **Public Ledger** (V6): "gratis dienst door de oprichter", zonder naam en zonder bedrag; materiaal als uitgave per aankoop. De Public Ledger is een publieke weergave, niet de wettelijke boekhouding.
+- **Start**: de webshop start **zonder Limited** (0 bij de start). Eerste jaar: verlies elke maand, gedekt door de lening.
+- **Kalender**: vaste betaaldag voor de Auteursrechten de 15de van januari, april, juli en oktober.
+- **Bestuur**: minstens 2 leden en 2 bestuurders; geen "niet-uitvoerende" bestuurder. Nu twee bestuurders voor administratie, boekhouding, website en logistiek. Bij beslissingen over de dienst of de lening beslist de medebestuurder alleen, met notulen. Later zoeken we bestuurders voor de artistieke en curatoriële kant; de oprichter neemt geen artistieke beslissingen.
 - **Auteurs**: we starten alleen met auteurs die in België wonen.
-- **Vaste kosten** stijgen met de productieplek (tot € 1.800 per jaar); break-even ruw 1.070 tot 1.180 posters per jaar. Na te rekenen met de offerte van de boekhouder.
+- **Vaste kosten** € 1.615 tot 3.315 per jaar (boekhouder, webshop en bank, verzekeringen, marketing, domein); break-even 455 tot 934 Posters per jaar. Na te rekenen met de offerte van de boekhouder.
+- **Vanaf 2029** (V8): eigen ruimte voor productie, tentoonstellingen en workshops, ten vroegste januari 2029; uitwerken in 2028.
+- **Open vragen**: fiscale en juridische vragen (voordeel van alle aard, belangenconflict, omzet voor de btw-drempel, zetel, lening, persoonsgegevens) gaan eerst naar het Cultuurloket, dat doorverwijst naar boekhouder of jurist. De licentie (concept 6, 50 %) wordt pas aangepast na toestemming van de oprichter.
 
 ## Vaste regels
 
