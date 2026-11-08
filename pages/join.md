@@ -16,15 +16,14 @@ Wat hieronder staat, is voorlopig. De checkpunten, de selectie en de afspraken k
 <div class="pp-kern">
   <div class="pp-kern-vak"><p class="pp-kern-groot">50 %</p><p>Van elke verkochte afdruk gaat de helft van de verkoopprijs naar jou, als bruto auteursrecht.</p></div>
   <div class="pp-kern-vak"><p class="pp-kern-groot">Niet-exclusief</p><p>Je werk en je rechten blijven van jou. Je kunt altijd stoppen, zonder reden.</p></div>
-  <div class="pp-kern-vak"><p class="pp-kern-groot">Als particulier</p><p>Geen statuut nodig. Je wordt per kwartaal netto betaald in auteursrechten, op de 15de van januari, april, juli en oktober.</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">Als particulier</p><p>Geen professioneel statuut nodig. Je wordt per kwartaal netto betaald in auteursrechten, op de 15de van januari, april, juli en oktober.</p></div>
 </div>
 
 ## Voor wie?
 
 | **Wie** | Makers zonder professioneel statuut als kunstenaar en zonder kunstenaarsattest |
 | **Leeftijd en woonplaats** | 18 jaar of ouder, wonend in België |
-| **Welk werk** | Af, minstens 12 maanden oud, gemaakt zonder invloed van peapickers |
-| **Extra welkom** | Werk dat nog nooit verkocht of tentoongesteld is |
+| **Welk werk** | Werken uit je persoonlijk archief: af, minstens 12 maanden oud, gemaakt zonder invloed van peapickers |
 {: .pp-tabel .pp-vergelijk}
 
 Het jaarbedrag dat een particulier in auteursrechten mag ontvangen, wordt met reproducties niet bereikt.
@@ -57,7 +56,7 @@ De verkoopprijs wordt in twee gelijke helften verdeeld: de ene helft voor jou, d
 
 ## Waar moet je werk aan voldoen?
 
-Klik open om de checkpunten te zien. Samen vormen ze de curatielijn.
+<p class="pp-fluo">Noteer: dit is de curatielijn die volledig wordt herbekeken, het is een suggestie.</p>
 
 <details class="pp-uitklap" markdown="1">
 <summary>1. Toelatingsvoorwaarden: elk punt moet kloppen</summary>

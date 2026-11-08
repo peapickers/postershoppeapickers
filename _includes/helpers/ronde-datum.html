@@ -1,0 +1,11 @@
+{%- comment -%}
+Datum waarop de gedeelde leverronde uiterlijk vertrekt: eerste bestelling in de ronde + termijn-dagen (_data/leverronde.yml).
+Zonder eerste bestelling: vandaag (bouwdatum) + termijn; de browser zet dat bij met de datum van vandaag (zie mand.html).
+Gebruik: include helpers/ronde-datum.html formaat="%-d-%-m-%Y"
+{%- endcomment -%}
+{%- assign _r = site.data.leverronde -%}
+{%- assign _dagen = _r['termijn-dagen'] | default: 14 | plus: 0 -%}
+{%- if _r['eerste-bestelling'] and _r['eerste-bestelling'] != "" -%}{%- assign _start = _r['eerste-bestelling'] | date: "%s" | plus: 43200 -%}{%- else -%}{%- assign _start = site.time | date: "%s" | plus: 0 -%}{%- endif -%}
+{%- assign _sec = _dagen | times: 86400 | plus: _start -%}
+{%- assign _fmt = include.formaat | default: "%-d-%-m-%Y" -%}
+{{- _sec | date: _fmt -}}

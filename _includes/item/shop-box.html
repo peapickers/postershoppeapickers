@@ -63,6 +63,7 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
           data-item-description="{{ page.identiteitscode }} · {{ page.creator | escape }} · genummerd en gesigneerd"
           {% if page.fineart_oplage and page.fineart_oplage != "" %}data-item-max-quantity="{{ page.fineart_oplage }}"{% endif %}
           data-item-taxable="false">In de winkelmand</button>
+              <a class="btn btn-outline-dark pp-naar-mand" href="{{ '/mand.html' | relative_url }}">Naar winkelmand</a>
             </div>
             <p class="small mb-0 mt-1" id="fa-melding" role="status" aria-live="polite"></p>
             <div class="pp-reken small mt-2" id="fa-reken" data-m="{{ fa_m }}"></div>
@@ -102,6 +103,7 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
           data-item-taxable="false"
           data-tk-formaat="tweede kans {{ t.id }}, {{ _maat }}, {{ _p.naam | default: t.papier }} (teruggestuurd)"
           data-tk-prijs="{{ tk_prijs }}">In de winkelmand</button>
+              <a class="btn btn-outline-dark pp-naar-mand" href="{{ '/mand.html' | relative_url }}">Naar winkelmand</a>
             </div>
             <table class="table table-sm table-borderless small mb-1 mt-2 pp-opbouw" style="font-variant-numeric: tabular-nums"><tbody>
               <tr><th scope="row" class="fw-normal ps-0">Materiaalkost</th><td class="text-end pe-0">{% include helpers/euro.html bedrag=0 %} <span class="text-muted">(de poster bestaat al)</span></td></tr>
@@ -205,6 +207,7 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
           data-item-custom2-name="Vel (cm)" data-item-custom2-type="readonly"
           data-item-custom3-name="Afbeelding (cm)" data-item-custom3-type="readonly"
           data-item-custom4-name="Passe-partout" data-item-custom4-type="readonly">In de winkelmand</button>
+              <a class="btn btn-outline-dark pp-naar-mand" href="{{ '/mand.html' | relative_url }}">Naar winkelmand</a>
             </div>
             <p class="small mb-0 mt-1" id="po-melding" role="status" aria-live="polite"></p>
             <div class="pp-reken small mt-2" id="po-reken"></div>

@@ -22,7 +22,7 @@
 <h2>De gedeelde leverronde</h2>
 <div class="pp-kern pp-kern-twee">
   <div class="pp-kern-vak"><p class="pp-kern-groot" style="font-variant-numeric: tabular-nums">{{ r.wachtenden }} / {{ r['vertrek-bij'] }}</p><p>deelnemers voor de volgende ronde, uit de postershop en de printshop samen. Bij {{ r['vertrek-bij'] }} vertrekt ze.</p></div>
-  <div class="pp-kern-vak"><p class="pp-kern-groot">{{ r['sluit-uiterlijk'] | date: "%-d-%-m-%Y" }}</p><p>De ronde vertrekt uiterlijk dan, ook als ze niet vol is (hoogstens 14 dagen).</p></div>
+  <div class="pp-kern-vak"><p class="pp-kern-groot">{% include helpers/ronde-datum.html formaat="%-d-%-m-%Y" %}</p><p>De ronde vertrekt uiterlijk dan, ook als ze niet vol is: 14 dagen nadat de eerste klant van de ronde besteld heeft.</p></div>
 </div>
 <p class="small">Voorbeeld, bijgewerkt {{ r.bijgewerkt }}. De site toont alleen hoeveel mensen wachten, nooit wie.</p>
 

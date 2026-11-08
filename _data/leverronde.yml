@@ -5,7 +5,10 @@ wachtenden: 4
 vertrek-bij: 10
 kost-ronde: 10.00
 kost-deelnemer: 1.00
-sluit-uiterlijk: 2027-04-20
+# De ronde vertrekt bij "vertrek-bij" deelnemers, of uiterlijk "termijn-dagen" na de eerste bestelling die erin zit (Jonas, 8-11-2026).
+# Leeg laten als er niemand wacht: dan start de volgende klant de ronde en toont de site vandaag + 14 dagen.
+eerste-bestelling: 2027-04-06
+termijn-dagen: 14
 bijgewerkt: 2027-04-08 14:00
 # Kalender voor levering op een moment naar keuze (zelfde regels als de printshop).
 # Bezette momenten komen uit de agenda via beschikbaarheid.json van de printshop.

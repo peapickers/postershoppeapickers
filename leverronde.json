@@ -9,7 +9,9 @@ permalink: /leverronde.json
   "vertrekBij": {{ r['vertrek-bij'] }},
   "kostDeelnemer": {{ r['kost-deelnemer'] }},
   "kostRonde": {{ r['kost-ronde'] }},
-  "sluitUiterlijk": {{ r['sluit-uiterlijk'] | date: "%Y-%m-%d" | jsonify }},
+  "eersteBestelling": {% if r['eerste-bestelling'] and r['eerste-bestelling'] != "" %}{{ r['eerste-bestelling'] | date: "%Y-%m-%d" | jsonify }}{% else %}null{% endif %},
+  "termijnDagen": {{ r['termijn-dagen'] | default: 14 }},
+  "sluitUiterlijk": "{% include helpers/ronde-datum.html formaat="%Y-%m-%d" %}",
   "bijgewerkt": {{ r.bijgewerkt | jsonify }},
   "postcodes": {{ site.data.config-postcodes | map: "postcode" | jsonify }}
 }
