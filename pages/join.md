@@ -24,7 +24,6 @@ Wat hieronder staat, is voorlopig. De checkpunten, de selectie en de afspraken k
 | **Wie** | Makers zonder professioneel statuut als kunstenaar en zonder kunstenaarsattest |
 | **Leeftijd en woonplaats** | 18 jaar of ouder, wonend in België |
 | **Welk werk** | Werken uit je persoonlijk archief: af, minstens 12 maanden oud, gemaakt zonder invloed van peapickers |
-| **Extra welkom** | Werk dat nog nooit verkocht of tentoongesteld is |
 {: .pp-tabel .pp-vergelijk}
 
 Het jaarbedrag dat een particulier in auteursrechten mag ontvangen, wordt met reproducties niet bereikt.
@@ -57,7 +56,7 @@ De verkoopprijs wordt in twee gelijke helften verdeeld: de ene helft voor jou, d
 
 ## Waar moet je werk aan voldoen?
 
-Klik open om de checkpunten te zien. Samen vormen ze de curatielijn.
+<p class="pp-fluo">Noteer: dit is de curatielijn die volledig wordt herbekeken, het is een suggestie.</p>
 
 <details class="pp-uitklap" markdown="1">
 <summary>1. Toelatingsvoorwaarden: elk punt moet kloppen</summary>
