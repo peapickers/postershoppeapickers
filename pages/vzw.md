@@ -45,15 +45,15 @@ Zoekmachines en AI-crawlers worden gevraagd weg te blijven, met robots.txt en ee
 
 | Wie of wat | Hoe |
 |---|---|
-| **Oprichter** | Drukt, verpakt en levert als particulier, kosteloos, met de eigen printer. Ontvangt nooit geld of voordeel. |
-| **Medebestuurder** | Doet de administratie, de boekhouding, de website en de logistiek. |
+| **Oprichter** | Drukt, verpakt en levert als particulier, kosteloos, met de eigen printer. Ontvangt nooit geld of voordeel. Doet ook het beheer van de vzw: boekhouding, webshop en licenties. |
+| **Medebestuurder** | Doet de artistieke selectie, de curatie en de beschrijvingen, bewaakt kwaliteit en ethiek, en tekent de jaarrekening en de begroting mee. |
 | **Boekhouder** | Buiten de vzw, controleert minstens één keer per jaar. |
 | **Samen beslissen** | Alle bestuurders keuren auteurs, werken en reproductievorm goed. Bestuurders en hun familie verkopen nooit eigen werk via de vzw. |
 | **Materiaal** | Papier en inkt koopt de vzw op haar naam, per rol en per cartridge. Elke aankoop staat in de Public Ledger. |
 | **Financiering** | Alleen eigen middelen. De oprichter stort telkens wat nodig is, als renteloze lening. Nooit krediet op naam van de vzw. Elke storting staat in de Public Ledger. |
 {: .pp-tabel}
 
-<p class="small">Voorlopig, in afwachting van bevestiging door het Cultuurloket, de boekhouder en de jurist.</p>
+<p class="small">Voorlopig, in afwachting van bevestiging door de boekhouder en de jurist.</p>
 
 {% include geldreserves.html %}
 

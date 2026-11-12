@@ -116,4 +116,4 @@ Gaat de omzet ooit boven € 25.000, dan moet de verdeling opnieuw bekeken worde
 
 ## Alles staat in de Public Ledger
 
-Elke ontvangst, uitgave, lening en gift staat in de [Public Ledger]({{ "/register.html" | relative_url }}), ook de inbreng van de oprichter. Verkopen staan er per werkcode, zonder persoonsgegevens. Uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.
+Elke ontvangst, uitgave en lening staat in de [Public Ledger]({{ "/register.html" | relative_url }}), ook de inbreng van de oprichter. Verkopen staan er per werkcode, zonder persoonsgegevens. Uitbetalingen aan auteurs staan er per kwartaal samengeteld over alle auteurs, zodat niemands inkomen af te leiden is.

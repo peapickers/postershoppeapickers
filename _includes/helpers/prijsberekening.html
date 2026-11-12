@@ -1,4 +1,4 @@
-{%- comment -%} Prijsberekening (ondernemingsplan v3). Gebruik: {% include helpers/prijsberekening.html inkoop=x %} met x = papier + inkt excl. btw, of m=x voor een M die al incl. btw is (fine-art).
+{%- comment -%} Prijsberekening (ondernemingsplan v3). Gebruik: {% include helpers/prijsberekening.html inkoop=x %} met x = papier + inkt zoals betaald (site.btw-materiaal is 0, dus geen opslag), of m=x voor een vaste M per werk (Limited).
 Zet: pb_mruw (M onafgerond), pb_m (1M), pb_auteur (50 % van de prijs, bruto), pb_prijs (7 × M afgerond op € 0,10), pb_vzw (de andere 50 %), pb_rv (15%), pb_netto. {%- endcomment -%}
 {%- assign _btwf = site.btw-materiaal | default: 0.21 | plus: 1 -%}
 {%- if include.m -%}{%- assign pb_mruw = include.m | plus: 0 -%}{%- else -%}{%- assign pb_mruw = include.inkoop | times: _btwf -%}{%- endif -%}
