@@ -1,0 +1,41 @@
+laag,term,kolom,meerdere,vast,toelichting
+dublin_core,identifier,identiteitscode,,,Vaste code van het werk
+dublin_core,title,title,,,Titel
+dublin_core,creator,creator,,,Maker
+dublin_core,date,date,,,Jaar van ontstaan
+dublin_core,description,description,,,Beschrijving door de archivaris
+dublin_core,subject,subject,ja,,Onderwerpen (later: trefwoorden uit de thesaurus)
+dublin_core,type,type,ja,,Soort object volgens DCMI Type
+dublin_core,format,format,,,Bestandstype van het presentatiebeeld
+dublin_core,extent,omvang,,,Omvang
+dublin_core,medium,materiaal,,,Materiaal
+dublin_core,isPartOf,curatie,ja,,Curatie of reeks waar het werk bij hoort
+dublin_core,provenance,herkomst,,,Herkomst
+dublin_core,rights,rights,,,Rechten
+vra_core,agent_name,creator,,,Maker
+vra_core,agent_role,rol,,,Rol van de maker
+vra_core,worktype,genre,ja,,Soort werk
+vra_core,technique,techniek,ja,,Techniek
+vra_core,material,materiaal,,,Materiaal
+vra_core,measurements,afmetingen,,,Afmetingen van het origineel
+vra_core,location_creation,plaats,,,Plaats van ontstaan
+vra_core,date_creation,date,,,Jaar van ontstaan
+premis,objectIdentifier,objectid,,,Naam van het object in de site
+premis,formatName,format,,,Bestandstype van het presentatiebeeld
+premis,messageDigestAlgorithm,,,SHA-256,Soort checksum
+premis,messageDigest,,,,Checksum van het origineel: nog geen kolom in de CSV
+premis,dateOfLastFixityCheck,,,,Datum van de laatste controle: nog geen kolom in de CSV
+isad_g,3.1.1_reference_code,identiteitscode,,,Referentie
+isad_g,3.1.2_title,title,,,Titel
+isad_g,3.1.3_dates,date,,,Datering
+isad_g,3.1.4_level_of_description,,,stuk,Beschrijvingsniveau
+isad_g,3.1.5_extent_and_medium,omvang,,,Omvang en drager
+isad_g,3.2.1_name_of_creator,creator,,,Archiefvormer
+isad_g,3.2.3_archival_history,herkomst,,,Geschiedenis van het archief
+isad_g,3.2.4_immediate_source_of_acquisition,verwerving,,,Verwerving
+isad_g,3.3.1_scope_and_content,description,,,Inhoud
+isad_g,3.4.2_conditions_governing_reproduction,rights,,,Voorwaarden voor reproductie
+isad_g,3.6.1_note,opmerking,,,Opmerking
+peapickers,nsfw,filter,,,Gevuld = het beeld is standaard verborgen (18+)
+peapickers,licentie_publicatie,,,,Status van de publicatielicentie: nog geen kolom in de CSV
+peapickers,licentie_reproductie,,,,Status van de reproductielicentie: nog geen kolom in de CSV
