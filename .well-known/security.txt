@@ -1,0 +1,6 @@
+# Meldpunt voor kwetsbaarheden van peapickers (RFC 9116).
+# Vond je een lek of een fout in de beveiliging van deze site? Mail het ons, in het Nederlands of het Engels.
+# Let op: "Expires" moet elk jaar vóór die datum een jaar opgeschoven worden.
+Contact: mailto:peapickers@proton.me
+Expires: 2027-11-01T00:00:00.000Z
+Preferred-Languages: nl, en
