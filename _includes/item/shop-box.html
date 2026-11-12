@@ -1,10 +1,10 @@
 {% comment %}
 Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
 - Tweede kans (7-11-2026): teruggestuurde Posters uit _data/tweede-kans.csv, prijs 80 %, opbrengst 50/50.
-- Fine-art/Limited (enkel als site.limited-actief true is en de CSV-kolom fineart_m gevuld is): M per werk, incl. btw op materiaal. Vaste prijs 7 × M, afgerond op € 0,10. Genummerde en gesigneerde oplage (fineart_oplage).
+- Fine-art/Limited (enkel als site.limited-actief true is en de CSV-kolom fineart_m gevuld is): M per werk, zoals betaald. Vaste prijs 7 × M, afgerond op € 0,10. Genummerde en gesigneerde oplage (fineart_oplage).
 - Poster (elk kunstwerk): papier en vel, dan de afbeelding op het vel (passe-partout = witruimte), dan het aantal.
   M = (papier volgens het vel + inkt volgens de afbeelding) × (1 + site.btw-materiaal). Inkoopprijzen in _data/config-prijzen.csv.
-  Prijs = 7 × M, afgerond op site.prijs-afronding. Geen btw op de verkoop. 1M materiaal, 3M auteur, rest vzw.
+  Prijs = 7 × M, afgerond op site.prijs-afronding. Geen btw op de verkoop. Verdeling 50/50: Auteursrechten (bruto) en vzw peapickers; papier en inkt betaalt de vzw uit haar helft.
 - Winkelmand: Snipcart zodra site.snipcart-api-key gevuld is, anders de voorbeeldmand in de browser.
   Snipcart controleert de prijs via de keuzelijst "Uitvoering": elke combinatie papier × vel × afbeelding met haar eigen prijs.
 {% endcomment %}
@@ -194,7 +194,7 @@ Bestelvak per kunstwerk (ondernemingsplan v3, 4-11-2026).
           {%- comment -%} Basisprijs = goedkoopste uitvoering; elke optie draagt het verschil. {%- endcomment -%}
           {%- assign p0 = papieren | first -%}
           {%- assign basis = p0.klein | plus: inkt.klein | times: btwf | times: 70 | plus: 0.000001 | round | divided_by: 10.0 -%}
-          {%- capture opties -%}{% for p in papieren %}{% for kv in klassen %}{% for ka in klassen %}{% assign iv = forloop.parentloop.index0 %}{% if forloop.index0 <= iv %}{% assign pv = p[kv] | plus: 0 %}{% assign pa = inkt[ka] | plus: 0 %}{% assign pr = pv | plus: pa | times: btwf | times: 70 | plus: 0.000001 | round | divided_by: 10.0 %}{% assign dif = pr | minus: basis | round: 2 %}{{ p.naam }} · vel {{ kv }} · afbeelding {{ ka }}{% if dif > 0 %}[+{{ dif }}]{% endif %}|{% endif %}{% endfor %}{% endfor %}{% endfor %}{%- endcapture -%}
+          {%- capture opties -%}{% for p in papieren %}{% for kv in klassen %}{% for ka in klassen %}{% assign iv = forloop.parentloop.index0 %}{% if forloop.index0 <= iv %}{% assign pv = p[kv] | plus: 0 %}{% assign pa = inkt[ka] | plus: 0 %}{% assign pr = pv | plus: pa | times: btwf | times: 70 | plus: 0.000001 | round | divided_by: 10.0 %}{% assign dif = pr | minus: basis | round: 2 %}{{ p.naam }} · vel {% if kv == 'middel' %}medium{% else %}{{ kv }}{% endif %} · afbeelding {% if ka == 'middel' %}medium{% else %}{{ ka }}{% endif %}{% if dif > 0 %}[+{{ dif }}]{% endif %}|{% endif %}{% endfor %}{% endfor %}{% endfor %}{%- endcapture -%}
           data-item-price="{{ basis }}"
           data-item-url="{{ page.url | relative_url }}"
           data-item-image="{{ page.image_thumb | default: page.image_small | relative_url }}"

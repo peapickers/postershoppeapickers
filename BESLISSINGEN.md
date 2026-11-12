@@ -84,6 +84,17 @@ Beslissingen van Jonas van 8-11-2026 (register: Pand aankopen vanaf 2029, kredie
 - **Geen bestelminimum**, nergens.
 - **Printshop**: gewone HTML in de stijl van de postershop, voorbeeldmand, betaling vooraf (QR-overschrijving als voorbeeld, Snipcart-klare velden), foto uploaden na betaling met het bestelnummer, 3 × M afgerond op € 0,50, alles naar de vzw, link naar Prijsopbouw van de postershop. Geen betaling aan de deur, geen cash, geen Payconiq. "Geen herroepingsrecht" boven de bestelknop en op de bon, zonder vinkje, met tooltip. Persoonlijk geleverd, zonder te zeggen door wie; geen merknamen en geen vergelijkingen, wel meetbare feiten.
 
+## Site, bijgewerkt op 12-11-2026 (controle tegen het register)
+
+De site is nagekeken tegen het [beslissingenregister](https://peapickers.github.io/projecten/beslissingen.html). Waar dit botst met de lijsten hierboven, geldt dit.
+
+- **Tagline vervalt** (register: Tagline en taglinelinks vervallen, 10-11-2026): `tagline` in `_config.yml` is leeg; de links naar de archiefstukken komen er niet. Vervangt het punt "Tagline" hierboven.
+- **Over, tabel "Hoe de vzw werkt"** (register: Rolverdeling oprichter en tweede bestuurder, 9-11-2026): de oprichter drukt en doet het beheer (boekhouding, webshop, licenties); de medebestuurder doet de artistieke selectie, de curatie en de beschrijvingen, bewaakt kwaliteit en ethiek en tekent de jaarrekening en de begroting mee. Vervangt "de medebestuurder doet administratie, boekhouding, website en logistiek".
+- **Jurist in plaats van Cultuurloket** (register: Cultuurloket-vragenlijst vervalt, vragen naar de jurist, 9-11-2026): op Over en bij de leverronde staat "in afwachting van bevestiging door de jurist" (Over: "de boekhouder en de jurist").
+- **Geen giften** (register: Financiële regels, 11-11-2026): "gift" staat niet meer in de zinnen over de Public Ledger.
+- **Jargon**: de keuzelijst "Uitvoering" voor Snipcart toont "medium", niet "middel". De interne sleutel `middel` in `_data/config-prijzen.csv` en `_data/tweede-kans.csv` blijft.
+- **Nog niet op de site** (beslissingen uit het register die een grotere ombouw vragen): vaste formaten op de korte zijde met één prijs op Epson Enhanced Matte; de zetel bij de boekhouder; de vier waarden; het archief als basislaag; de twee licenties (publicatie en reproductie); de volgorde zonder data; lezen zonder JavaScript; het eigen bestelformulier voor de testfase met publiekdomeinposters.
+
 ## Herroepingsrecht en herroepingsknop
 
 - **Herroepingsknop** (beslissing Jonas, 7-11-2026): de webshop krijgt een online herroepingsfunctie, verplicht volgens richtlijn (EU) 2023/2673 (nieuw art. 11a richtlijn 2011/83/EU), van toepassing sinds 19 juni 2026. Bron: [Legalnews/Andersen](https://legalnews.be/handel-consument/verplichte-herroepingsknop-in-de-eu-wat-online-ondernemers-nu-al-moeten-voorbereiden-andersen/).

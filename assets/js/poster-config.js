@@ -26,7 +26,7 @@
   function rij(soort, id) { return P.filter(function (p) { return p.soort === soort && (!id || p.id === id); })[0]; }
   function prijs(r, k) { return parseFloat(r[k]); }
 
-  // Verdeling van één stuk. mRuw = M onafgerond (incl. btw op materiaal).
+  // Verdeling van één stuk. mRuw = M onafgerond (papier + inkt, zoals betaald).
   function verdeling(mRuw, aantal) {
     var totaal = r2(afrond(7 * mRuw)), mat = r2(mRuw), auteur = r2(totaal / 2), rv = r2(auteur * RV);
     return { mRuw: mRuw, m: mat, totaal: totaal, auteur: auteur, rv: rv, netto: r2(auteur - rv), vzw: r2(totaal - auteur), aantal: aantal || 1 };
@@ -203,7 +203,8 @@
 
     // Snipcart-knop (en voorbeeldmand)
     var knop = $('po-mand'), randTekst = s.marge > 0 ? 'rondom min. ' + cm(s.marge) + ' cm' : 'geen';
-    var uitvoering = pr.naam + ' · vel ' + kv + ' · afbeelding ' + ka;
+    var lab = function (k) { return k === 'middel' ? 'medium' : k; }; // jargon: Medium, niet "middel" (moet gelijk zijn aan de keuzelijst in shop-box.html)
+    var uitvoering = pr.naam + ' · vel ' + lab(kv) + ' · afbeelding ' + lab(ka);
     knop.setAttribute('data-item-custom1-value', uitvoering);
     knop.setAttribute('data-item-custom2-value', cm(B) + ' × ' + cm(H));
     knop.setAttribute('data-item-custom3-value', cm(a.b) + ' × ' + cm(a.h));
