@@ -1,0 +1,25 @@
+{%- comment -%}
+  Veiligheid in de browser (register: "Geen cookiebanner", "Veiligheid wint, geen eigen server").
+  Wat: een Content-Security-Policy als meta-tag. De browser laadt enkel bestanden van de eigen site:
+  geen externe scripts, lettertypes, beelden of trackers, ook niet als er later per ongeluk een link naar zo'n dienst in de code komt.
+  Waarom als meta-tag: GitHub Pages laat geen eigen headers toe. Op een host met headers (stap "Hosting kiezen") hoort dezelfde regel
+  in de header, samen met frame-ancestors, HSTS en X-Content-Type-Options. Die kunnen niet in een meta-tag.
+  'unsafe-inline' blijft nodig omdat CollectionBuilder zijn scripts in de pagina zelf schrijft.
+  connect-src: de site haalt enkel twee dingen op buiten de eigen bestanden, en alleen als ze ingesteld zijn:
+  - de bezette levermomenten (beschikbaarheid-url in _data/leverronde.yml), enkel op de pagina Winkelmand;
+  - het adres dat een herroeping ontvangt (herroeping-endpoint in _config.yml), nu leeg.
+  Snipcart staat uit (snipcart-api-key leeg). Wie het aanzet, moet hier de adressen van Snipcart toevoegen, anders blokkeert de browser het.
+{%- endcomment -%}
+{%- assign pp_connect = "'self'" -%}
+{%- assign pp_urls = "" | split: "" -%}
+{%- if site.data.leverronde.kalender.beschikbaarheid-url -%}{%- assign pp_urls = pp_urls | push: site.data.leverronde.kalender.beschikbaarheid-url -%}{%- endif -%}
+{%- if site.herroeping-endpoint and site.herroeping-endpoint != "" -%}{%- assign pp_urls = pp_urls | push: site.herroeping-endpoint -%}{%- endif -%}
+{%- for u in pp_urls -%}
+  {%- assign delen = u | split: "/" -%}
+  {%- if delen[0] == "https:" and delen[2] -%}
+    {%- assign oorsprong = "https://" | append: delen[2] -%}
+    {%- unless pp_connect contains oorsprong -%}{%- assign pp_connect = pp_connect | append: " " | append: oorsprong -%}{%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src {{ pp_connect }}; media-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">

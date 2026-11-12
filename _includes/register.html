@@ -33,7 +33,22 @@
     <div class="col-12 col-lg-2"><button type="button" class="btn btn-sm btn-outline-dark w-100" id="f-reset">Wis filters</button></div>
   </form>
   <p class="small d-flex flex-wrap justify-content-between gap-2 mb-2" role="status" aria-live="polite"><span id="register-telling"></span><span id="register-totaal"></span></p>
-  <div id="register-rijen"></div>
+  {%- comment -%} Zonder JavaScript: alle handelingen als gewone tabel, nieuwste eerst. Met JavaScript vervangt het script hieronder
+  deze tabel door dezelfde rijen per kwartaal, met filters, saldo en totalen. {%- endcomment -%}
+  <div id="register-rijen">
+    <noscript><p class="small">De kaarten met totalen, de filters en het saldo per regel werken met JavaScript. Alle handelingen staan hieronder.</p></noscript>
+    {%- assign pp_rijen = site.data.register | sort: "datum" | reverse -%}
+    <div class="pp-tabel-wrap"><table class="pp-tabel pp-ledger">
+      <thead><tr><th scope="col">Datum</th><th scope="col">Soort</th><th scope="col">Omschrijving</th><th scope="col" class="text-end">Ontvangen</th><th scope="col" class="text-end">Betaald</th></tr></thead>
+      <tbody>
+      {%- for r in pp_rijen %}
+        <tr><td class="text-nowrap">{{ r.datum }}</td><td>{{ r.soort | escape }}</td><td>{{ r.omschrijving | escape }}{% if r.identiteitscode %} <span class="text-muted small text-nowrap">{{ r.identiteitscode | escape }}</span>{% endif %}</td>
+        <td class="text-end text-nowrap">{% assign o = r.ontvangen | plus: 0 %}{% if o != 0 %}{% include helpers/euro.html bedrag=o %}{% endif %}</td>
+        <td class="text-end text-nowrap">{% assign b = r.betaald | plus: 0 %}{% if b != 0 %}{% include helpers/euro.html bedrag=b %}{% endif %}</td></tr>
+      {%- endfor %}
+      </tbody>
+    </table></div>
+  </div>
 </section>
 <script>
 (function () {

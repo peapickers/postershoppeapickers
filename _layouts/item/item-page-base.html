@@ -9,6 +9,7 @@ item-meta: true
 {% if page.filter and page.filter != "" %}
     <div class="alert alert-dark d-flex flex-wrap align-items-center gap-2" id="pp-naakt-melding" role="alert">
         <span>Dit werk is NSFW (18+). Het beeld is verborgen.</span>
+        <noscript><span>Het beeld tonen kan enkel met JavaScript.</span></noscript>
         <button type="button" class="btn btn-sm btn-light" id="pp-naakt-toon">Toon het beeld</button>
     </div>
     <script>
@@ -19,7 +20,7 @@ item-meta: true
             document.body.classList.remove('pp-verborgen');
             var m = document.getElementById('pp-naakt-melding'); if (m) m.remove();
         }
-        if (toon) { document.addEventListener('DOMContentLoaded', zichtbaar); } else { document.body.classList.add('pp-verborgen'); }
+        if (toon) { zichtbaar(); } else { document.body.classList.add('pp-verborgen'); }
         document.getElementById('pp-naakt-toon').addEventListener('click', function () {
             try { localStorage.setItem('pp-naakt', 'ja'); } catch (e) {}
             zichtbaar();
@@ -49,6 +50,7 @@ item-meta: true
             <details class="pp-metadata">
                 <summary class="h5">Metadata</summary>
                 {% include item/metadata.html %}
+                <p class="small mb-0"><a href="{{ '/items/' | append: page.base_filename | append: '.json' | relative_url }}" type="application/json">Deze metadata als JSON</a> (Dublin Core, VRA Core, PREMIS, ISAD(G))</p>
             </details>
 
         </div>

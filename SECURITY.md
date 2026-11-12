@@ -1,11 +1,15 @@
-# Security Policy
+# Beveiliging
 
-## Supported Versions
+## Een kwetsbaarheid melden
 
-CollectionBuilder-CSV is a template repository used to start other projects. 
-External projects are not automatically updated from the central template--security issues relating to existing projects *created with CollectionBuilder* should be reported to the individual repository/project owners.
-Security issues found in the main branch of the current CollectionBuilder-CSV template and its assets should be reported to CollectionBuilder team directly.
+Vond je een lek of een fout in de beveiliging van deze site? Mail naar <peapickers@proton.me>, in het Nederlands of het Engels. Beschrijf wat je zag, op welke pagina, en hoe we het kunnen nadoen. Zet geen details in een openbare issue.
 
-## Reporting a Vulnerability
+Hetzelfde adres staat in [`.well-known/security.txt`](.well-known/security.txt), het bestand waar onderzoekers en scanners het meldpunt zoeken.
 
-To report a security issue, please email <collectionbuilder.team@gmail.com> with a description of the issue, the steps you took to create the issue, affected versions, and, if known, mitigations for the issue. This project follows a 90 day disclosure timeline.
+## Wat deze site doet om veilig te zijn
+
+De volledige controle staat in [`docs/peapickers-statisch-en-veilig.md`](docs/peapickers-statisch-en-veilig.md). In het kort: de site is statisch, laadt niets van externe servers, zet geen cookies en bewaart of verstuurt geen gegevens van bezoekers.
+
+## Fouten in CollectionBuilder zelf
+
+Deze site is gebouwd met CollectionBuilder-CSV. Een fout in dat sjabloon meld je bij het team van CollectionBuilder: <collectionbuilder.team@gmail.com>.

@@ -1,0 +1,13 @@
+# Dependabot kijkt elke week of er veiligheidsupdates zijn en stelt dan een pull request voor.
+# - bundler: de Ruby-pakketten waarmee de site gebouwd wordt (Gemfile en Gemfile.lock)
+# - github-actions: de stappen in .github/workflows/pages.yml
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

@@ -105,6 +105,8 @@ organization-logo-nav:
 # Library directory location. This allows you to customize where the standard assets are found.
 # provide a relative path in this repository or full url 
 lib-assets: /assets/lib
+# Mappen die met een punt beginnen slaat Jekyll over. Deze moet wel mee: .well-known/security.txt is het meldpunt voor kwetsbaarheden.
+include: [.well-known]
 # ignore stuff
 exclude: [vendor/, docs/, Rakefile, rakelib/, README.md, LICENSE, CITATION.cff, CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md, AGENTS.md, CLAUDE.md, HUMANS.md, BESLISSINGEN.md, LEESMIJ.md]
 # compress CSS output

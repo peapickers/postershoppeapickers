@@ -45,7 +45,29 @@ custom-foot: js/producten-js.html
 </div>
 
 <section class="pp-resultaat" aria-label="Producten">
-    <div id="pp-items"></div>
+    {%- comment -%} Zonder JavaScript (register: "leesbaar zonder JavaScript"): alle werken staan hier al als gewone HTML.
+    Met JavaScript vervangt js/producten-js.html deze lijst door dezelfde tegels, met filters, zoeken en shuffle.
+    NSFW-werken (kolom "filter") krijgen hier geen beeld: het beeld tonen is een keuze en die keuze heeft JavaScript nodig. {%- endcomment -%}
+    {%- assign pp_statisch = site.data[site.metadata] | where_exp: 'item','item.objectid and item.parentid == nil' -%}
+    <noscript><p class="small">Filters, zoeken en bestellen werken met JavaScript. Alle {{ pp_statisch | size }} werken staan hieronder; elke pagina is leesbaar zonder.</p></noscript>
+    <div id="pp-items">
+        <div class="row g-3 g-md-4">
+        {%- for item in pp_statisch %}
+            <div class="col-12 col-sm-6 col-lg-4">
+                <a class="poster-tegel" href="{{ '/items/' | append: item.objectid | append: '.html' | relative_url }}">
+                    {%- if item.filter and item.filter != "" %}
+                    <span class="poster-leeg" role="img" aria-label="NSFW (18+): beeld verborgen"></span>
+                    {%- else %}
+                    <img loading="lazy" src="{{ item.image_small | default: item.image_thumb | relative_url }}" alt="{{ item.image_alt_text | default: item.title | escape }}">
+                    {%- endif %}
+                    <span class="poster-overlay"><span class="poster-titel">{{ item.title | strip | escape }}</span>
+                    {%- if item.creator %}<span class="poster-maker">{{ item.creator | escape }}{% if item.date %}, {{ item.date | escape }}{% endif %}</span>{% endif -%}
+                    <span class="poster-code">{{ item.identiteitscode | escape }}</span></span>
+                </a>
+            </div>
+        {%- endfor %}
+        </div>
+    </div>
 </section>
 {{ content }}
 </div>
