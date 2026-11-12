@@ -106,8 +106,8 @@
     }
 
     function tegel(it) {
-        return '<a class="poster-tegel" href="' + it.href + '">' +
-            '<img class="lazyload" src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 3 4\'%3E%3C/svg%3E" data-src="' + it.img + '" alt="' + esc(it.alt) + '">' +
+        return '<a class="poster-tegel" href="' + esc(it.href) + '">' +
+            '<img loading="lazy" src="' + esc(it.img) + '" alt="' + esc(it.alt) + '">' +
             '<span class="poster-overlay"><span class="poster-titel">' + esc(it.title) + '</span>' +
             (it.creator ? '<span class="poster-maker">' + esc(it.creator) + (it.date ? ', ' + esc(it.date) : '') + '</span>' : '') +
             '<span class="poster-code">' + esc(it.code) + '</span>' +
