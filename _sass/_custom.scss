@@ -1,7 +1,17 @@
-/* peapickers postershop: look van de peapickers-site. IBM Plex Sans KR, gecentreerd,
-   bijna-wit en bijna-zwart, dunne lijnen in zacht grijs. */
-$eggshell: #FBFBFA; /* achtergrond: een drupje grijzer dan wit */
-$ink: #222222;      /* tekst: een drupje lichter dan zwart */
+/* peapickers postershop: huisstijl (BESLISSINGEN.md, Vaste regels): Courier Prime,
+   achtergrond #F7F7F6, tekst #111111, dunne lijnen in zacht grijs. */
+/* Courier Prime staat in de repo (assets/fonts/, SIL Open Font License), zodat de site
+   geen lettertype bij een externe server ophaalt. */
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/courier-prime-latin-ext-400-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Courier Prime'; font-style: italic; font-weight: 400; font-display: swap; src: url('../fonts/courier-prime-latin-ext-400-italic.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/courier-prime-latin-ext-700-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Courier Prime'; font-style: italic; font-weight: 700; font-display: swap; src: url('../fonts/courier-prime-latin-ext-700-italic.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/courier-prime-latin-400-normal.woff2') format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Courier Prime'; font-style: italic; font-weight: 400; font-display: swap; src: url('../fonts/courier-prime-latin-400-italic.woff2') format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/courier-prime-latin-700-normal.woff2') format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Courier Prime'; font-style: italic; font-weight: 700; font-display: swap; src: url('../fonts/courier-prime-latin-700-italic.woff2') format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+$eggshell: #F7F7F6; /* achtergrond van de huisstijl */
+$ink: #111111;      /* tekst van de huisstijl */
 $muted: #666666;    /* menu en bijschriften */
 $line: #DDDDDB;     /* subtiele lijnen */
 $line-strong: #BDBDBA;
@@ -10,8 +20,8 @@ body, .bg-light, .navbar.bg-light, .card, .modal-content, .list-group-item, .dro
   color: $ink;
 }
 .table { --bs-table-bg: #{$eggshell}; --bs-table-color: #{$ink}; }
-h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.02em; }
-body { letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; line-height: 1.6; }
+h1, h2, h3, h4, h5, h6 { font-weight: 700; letter-spacing: 0; }
+body { letter-spacing: 0; -webkit-font-smoothing: antialiased; line-height: 1.6; }
 a { color: $ink; text-decoration: underline; text-underline-offset: 2px; }
 .card, .form-control, .list-group-item, .modal-content { border: 1px solid $line-strong !important; border-radius: 0 !important; }
 .btn, .badge { border-radius: 0 !important; }
@@ -129,7 +139,7 @@ a[class*="tagcloud"] { white-space: normal; max-width: 100%; overflow-wrap: anyw
 
 // ── Kop zoals de peapickers-site: gecentreerd, ruim, dunne grijze lijn eronder
 .pp-kop { text-align: center; padding: 3.25rem 1.5rem 1.75rem; }
-.pp-kop h1 { font-size: 2rem; font-weight: 600; margin: 0 0 .35rem; letter-spacing: -0.02em; }
+.pp-kop h1 { font-size: 2rem; font-weight: 700; margin: 0 0 .35rem; letter-spacing: 0; }
 .pp-kop h1 a { color: $ink; text-decoration: none; }
 .pp-kop .pp-tagline { margin: 0; color: $muted; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
 .pp-kop .pp-tagline a { color: inherit; text-decoration: underline; text-underline-offset: .2em; }
@@ -162,8 +172,9 @@ footer.pp-footer a { color: $muted; }
 #about-title-box, #about-wrapper { max-width: 800px !important; }
 
 // Filter naaktheid: beelden op een posterpagina met filter blijven wazig tot de bezoeker ze toont
-body.pp-verborgen main img { filter: blur(28px); }
-body.pp-verborgen .pp-volledig { display: none; }
+/* Het beeld is verborgen zolang de melding op de pagina staat, dus ook zonder JavaScript. */
+body.pp-verborgen main img, body:has(#pp-naakt-melding) main img { filter: blur(28px); }
+body.pp-verborgen .pp-volledig, body:has(#pp-naakt-melding) .pp-volledig { display: none; }
 .pp-maat { max-width: 6rem; }
 .table.pp-opbouw { max-width: 26rem; --bs-table-bg: transparent; background-color: transparent !important; }
 .pp-opbouw th, .pp-opbouw td { background: transparent; box-shadow: none; padding-top: .15rem; padding-bottom: .15rem; }
